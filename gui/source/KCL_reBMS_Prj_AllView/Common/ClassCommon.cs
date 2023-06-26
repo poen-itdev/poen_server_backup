@@ -98,6 +98,17 @@ namespace KCL_reBMS_Prj
             return crc;
         }
 
+        public byte RcvComputeCRC8(ref byte[,] data, byte iCount, int length)
+        {
+            byte crc = 0x56;
+            int i;
+            for (i = 0; i < length; i++)
+            {
+                crc = CRC8_TABLE[crc ^ data[iCount, i]];
+            }
+            return crc;
+        }
+
         /// <summary> CRC16의 값을 미리 계산하여 Table을 생성해 놓는다.
         /// </summary>
         public void Gen_Crc16_Table()

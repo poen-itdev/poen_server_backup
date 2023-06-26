@@ -1474,7 +1474,7 @@ namespace KCL_reBMS_Prj
             //if (logcomm.getReady()) logInfo("PSelfSystem_DiagEnable:" + clsComm.commData.PSelfSystemDiagEnable);
 
             if (logcomm.getReady()) logInfo("GUI -> BMS : Set Protect Enable Values");
-            ClassCommunication.iCURRENT_OP = ClassCommunication.CMD_SEND_PROTECT_ENABLE;
+            ClassCommunication.OPQueue.Enqueue(ClassCommunication.CMD_SEND_PROTECT_ENABLE);
         }
 
         void ProtectSetting()
@@ -1541,7 +1541,7 @@ namespace KCL_reBMS_Prj
             //if (logcomm.getReady()) logInfo("PSelfSystemDiagRetain:" + clsComm.commData.PsetSelfSystemDiagRetain);
 
             if (logcomm.getReady()) logInfo("GUI -> BMS : Set Protect Value and Retain Time");
-            ClassCommunication.iCURRENT_OP = ClassCommunication.CMD_SEND_PROTECT_SET;
+            ClassCommunication.OPQueue.Enqueue(ClassCommunication.CMD_SEND_PROTECT_SET);
         }
 
         void ProtectReleaseSetting()
@@ -1609,19 +1609,19 @@ namespace KCL_reBMS_Prj
 
             if (logcomm.getReady()) logInfo("GUI -> BMS : Set Protect Release Value and Retain Time");
 
-            ClassCommunication.iCURRENT_OP = ClassCommunication.CMD_SEND_PROTECT_RELEASE_SET;
+            ClassCommunication.OPQueue.Enqueue(ClassCommunication.CMD_SEND_PROTECT_RELEASE_SET);
         }
 
         void RelayOn()
         {
             if (logcomm.getReady()) logInfo("GUI -> BMS : Set Relay On");
-            ClassCommunication.iCURRENT_OP = ClassCommunication.CMD_SEND_RLYON;
+            ClassCommunication.OPQueue.Enqueue(ClassCommunication.CMD_SEND_RLYON);
         }
 
         void RelayOff()
         {
             if (logcomm.getReady()) logInfo("GUI -> BMS : Set Relay Off");
-            ClassCommunication.iCURRENT_OP = ClassCommunication.CMD_SEND_RLYOFF;
+            ClassCommunication.OPQueue.Enqueue(ClassCommunication.CMD_SEND_RLYOFF);
         }
 
         void WarnningEnable()
@@ -1653,7 +1653,7 @@ namespace KCL_reBMS_Prj
 
             if (logcomm.getReady()) logInfo("GUI -> BMS : Set Warnning Enable");
 
-            ClassCommunication.iCURRENT_OP = ClassCommunication.CMD_SEND_WARNNING_ENABLE;
+            ClassCommunication.OPQueue.Enqueue(ClassCommunication.CMD_SEND_WARNNING_ENABLE);
         }
 
         void WarnningSetting()
@@ -1708,7 +1708,7 @@ namespace KCL_reBMS_Prj
             
             if (logcomm.getReady()) logInfo("GUI -> BMS : Set Warnning Value and Retain Time");
 
-            ClassCommunication.iCURRENT_OP = ClassCommunication.CMD_SEND_WARNNING_SET;
+            ClassCommunication.OPQueue.Enqueue(ClassCommunication.CMD_SEND_WARNNING_SET);
         }
 
         void WarnningReleaseSetting()
@@ -1763,75 +1763,75 @@ namespace KCL_reBMS_Prj
 
             if (logcomm.getReady()) logInfo("GUI -> BMS : Set Warnning Release Value and Retain Time");
 
-            ClassCommunication.iCURRENT_OP = ClassCommunication.CMD_SEND_WARNNING_RELEASE_SET;
+            ClassCommunication.OPQueue.Enqueue(ClassCommunication.CMD_SEND_WARNNING_RELEASE_SET);
         }
 
         void WarnningEnableLoad()
         {
             if (logcomm.getReady()) logInfo("GUI -> BMS : Loading Warnning Enable Value");
-            ClassCommunication.iCURRENT_OP = ClassCommunication.CMD_SEND_WARNNING_ENABLE_GET;
+            ClassCommunication.OPQueue.Enqueue(ClassCommunication.CMD_SEND_WARNNING_ENABLE_GET);
         }
 
         void WarnningLoad()
         {
             if (logcomm.getReady()) logInfo("GUI -> BMS : Loading Warnning Value");
-            ClassCommunication.iCURRENT_OP = ClassCommunication.CMD_SEND_WARNNING_GET;
+            ClassCommunication.OPQueue.Enqueue(ClassCommunication.CMD_SEND_WARNNING_GET);
         }
 
         void WarnningReleaseLoad()
         {
             if (logcomm.getReady()) logInfo("GUI -> BMS : Loading Warnning Release Value");
-            ClassCommunication.iCURRENT_OP = ClassCommunication.CMD_SEND_WARNNING_RELEASE_GET;
+            ClassCommunication.OPQueue.Enqueue(ClassCommunication.CMD_SEND_WARNNING_RELEASE_GET);
         }
 
         void ProtectEnableLoad()
         {
             if (logcomm.getReady()) logInfo("GUI -> BMS : Loading Protect Enable Value");
-            ClassCommunication.iCURRENT_OP = ClassCommunication.CMD_SEND_PROTECT_ENABLE_GET;
+            ClassCommunication.OPQueue.Enqueue(ClassCommunication.CMD_SEND_PROTECT_ENABLE_GET);
         }
 
         void ProtectLoad()
         {
             if (logcomm.getReady()) logInfo("GUI -> BMS : Loading Protect Value");
-            ClassCommunication.iCURRENT_OP = ClassCommunication.CMD_SEND_PROTECT_GET;
+            ClassCommunication.OPQueue.Enqueue(ClassCommunication.CMD_SEND_PROTECT_GET);
         }
 
         void ProtectReleaseLoad()
         {
             if (logcomm.getReady()) logInfo("GUI -> BMS : Loading Protect Release Value");
-            ClassCommunication.iCURRENT_OP = ClassCommunication.CMD_SEND_PROTECT_RELEASE_GET;
+            ClassCommunication.OPQueue.Enqueue(ClassCommunication.CMD_SEND_PROTECT_RELEASE_GET);
         }
 
         void SocSetting()
         {
             if (logcomm.getReady()) logInfo("GUI -> BMS : Set SOC Value : " + tbSetSOC.Text);
             clsComm.commData.SetSoc = Convert.ToInt16(tbSetSOC.Text);
-            ClassCommunication.iCURRENT_OP = ClassCommunication.CMD_SEND_SOC_SET;
+            ClassCommunication.OPQueue.Enqueue(ClassCommunication.CMD_SEND_SOC_SET);
         }
 
         void SohSetting()
         {
             if (logcomm.getReady()) logInfo("GUI->BMS : Set SOH Value : " + tbSetSOH.Text);
             clsComm.commData.SetSoh = Convert.ToInt16(tbSetSOH.Text);
-            ClassCommunication.iCURRENT_OP = ClassCommunication.CMD_SEND_SOH_SET;
+            ClassCommunication.OPQueue.Enqueue(ClassCommunication.CMD_SEND_SOH_SET);
         }
 
         void SocReset()
         {
             if (logcomm.getReady()) logInfo("GUI -> BMS : Reset SOC");
-            ClassCommunication.iCURRENT_OP = ClassCommunication.CMD_SEND_SOC_RESET;
+            ClassCommunication.OPQueue.Enqueue(ClassCommunication.CMD_SEND_SOC_RESET);
         }
 
         void SohReset()
         {
             if (logcomm.getReady()) logInfo("GUI -> BMS : Reset SOH");
-            ClassCommunication.iCURRENT_OP = ClassCommunication.CMD_SEND_SOH_RESET;
+            ClassCommunication.OPQueue.Enqueue(ClassCommunication.CMD_SEND_SOH_RESET);
         }
 
         void FactoryInit()
         {
             if (logcomm.getReady()) logInfo("GUI -> BMS : Reset To Factory");
-            ClassCommunication.iCURRENT_OP = ClassCommunication.CMD_FACTORY_RESET;
+            ClassCommunication.OPQueue.Enqueue(ClassCommunication.CMD_FACTORY_RESET);
         }
 
         bool isPreCommConnected = true;
@@ -1857,7 +1857,7 @@ namespace KCL_reBMS_Prj
                     btConnect.BackColor = System.Drawing.Color.LightSkyBlue;
                     lbStandbyStatus.BackColor = System.Drawing.Color.Green;
                     connecting_time = 0;
-                    ClassCommunication.iCURRENT_OP = ClassCommunication.CMD_SEND_VERSION_GET;
+                    ClassCommunication.OPQueue.Enqueue(ClassCommunication.CMD_SEND_VERSION_GET);
                     bStartCount = false;
                 }
                 else
@@ -2545,11 +2545,11 @@ namespace KCL_reBMS_Prj
             iniFile.IniWriteValue("Protect", "PRsetCellUnderTempRetain       ", clsComm.commData.PRsetCellUnderTempRetain.ToString());
             iniFile.IniWriteValue("Protect", "PRsetChargeOverCurrentRetain   ", clsComm.commData.PRsetChargeOverCurrentRetain.ToString());
             iniFile.IniWriteValue("Protect", "PRsetDischargeOverCurrentRetain", clsComm.commData.PRsetDischargeOverCurrentRetain.ToString());
-            iniFile.IniWriteValue("Protect", "PRsetSensingLineMeasureRetain  ", clsComm.commData.PRsetSensingLineMeasure.ToString());
-            iniFile.IniWriteValue("Protect", "PRsetCommunicationErrorRetain  ", clsComm.commData.PRsetCommunicationError.ToString());
-            iniFile.IniWriteValue("Protect", "PRsetCurrentSensorErrorRetain  ", clsComm.commData.PRsetCurrentSensorError.ToString());
-            iniFile.IniWriteValue("Protect", "PRsetInterLockErrorRetain      ", clsComm.commData.PRsetInterLockError.ToString());
-            iniFile.IniWriteValue("Protect", "PRsetSelfSystemDiagRetain      ", clsComm.commData.PRsetSelfSystemDiag.ToString());
+            iniFile.IniWriteValue("Protect", "PRsetSensingLineMeasureRetain  ", clsComm.commData.PRsetSensingLineMeasureRetain.ToString());
+            iniFile.IniWriteValue("Protect", "PRsetCommunicationErrorRetain  ", clsComm.commData.PRsetCommunicationErrorRetain.ToString());
+            iniFile.IniWriteValue("Protect", "PRsetCurrentSensorErrorRetain  ", clsComm.commData.PRsetCurrentSensorErrorRetain.ToString());
+            iniFile.IniWriteValue("Protect", "PRsetInterLockErrorRetain      ", clsComm.commData.PRsetInterLockErrorRetain.ToString());
+            iniFile.IniWriteValue("Protect", "PRsetSelfSystemDiagRetain      ", clsComm.commData.PRsetSelfSystemDiagRetain.ToString());
 
             logInfo("[PC]Save protect config data");
         }

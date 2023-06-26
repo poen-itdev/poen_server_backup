@@ -61,6 +61,7 @@ namespace KCL_reBMS_Prj
         // Process Step 관련
         int iRESERVE_OP = CMD_IDLE;
         static public int iCURRENT_OP = CMD_IDLE;
+        static public Queue<int> OPQueue = new Queue<int>();
         DateTime dtTimer = DateTime.Now;
         const int TIMEOUT = 50;
         DateTime dtPollTimer = DateTime.Now;
@@ -234,13 +235,19 @@ namespace KCL_reBMS_Prj
                     while (!isStopThread)
                     {
                         POLL_TIME = commData.iMonitoringCycleTime;
+                        Console.Write(clsCm.GetElepsedTime(dtPollTimer) + "\r\n");
                         if ((clsCm.GetElepsedTime(dtPollTimer) > POLL_TIME))
                         {
-                            iCURRENT_OP = CMD_SEND_GET_MONITORING;
+                            OPQueue.Enqueue(CMD_SEND_GET_MONITORING);
                             if (iAliveCnt > 10) isCommOngoing = false;
                             else isCommOngoing = true;
                             iAliveCnt++;
                         }
+
+                        if (OPQueue.Count != 0)
+                            iCURRENT_OP = OPQueue.Dequeue();
+                        else
+                            iCURRENT_OP = CMD_IDLE;
 
                         // 명령 전송
                         switch (iCURRENT_OP)
@@ -266,7 +273,7 @@ namespace KCL_reBMS_Prj
                                 Array.Copy(bySndBuff, 0, clsCommMsg.byResponseData, 0, iSendSize);
                                 clsCommMsg.iResponseLength = iSendSize;
                                 OnCommMessage(this, new ClassCommunicationEventArgs(clsCommMsg));
-                                dtPollTimer = DateTime.Now;
+                                //dtPollTimer = DateTime.Now;
                                 iCURRENT_OP = CMD_IDLE;
                                 break;
 
@@ -277,7 +284,7 @@ namespace KCL_reBMS_Prj
                                 Array.Copy(bySndBuff, 0, clsCommMsg.byResponseData, 0, iSendSize);
                                 clsCommMsg.iResponseLength = iSendSize;
                                 OnCommMessage(this, new ClassCommunicationEventArgs(clsCommMsg));
-                                dtPollTimer = DateTime.Now;
+                                //dtPollTimer = DateTime.Now;
                                 iCURRENT_OP = CMD_IDLE;
                                 break;
 
@@ -288,7 +295,7 @@ namespace KCL_reBMS_Prj
                                 Array.Copy(bySndBuff, 0, clsCommMsg.byResponseData, 0, iSendSize);
                                 clsCommMsg.iResponseLength = iSendSize;
                                 OnCommMessage(this, new ClassCommunicationEventArgs(clsCommMsg));
-                                dtPollTimer = DateTime.Now;
+                                //dtPollTimer = DateTime.Now;
                                 iCURRENT_OP = CMD_IDLE;
                                 break;
 
@@ -299,7 +306,7 @@ namespace KCL_reBMS_Prj
                                 Array.Copy(bySndBuff, 0, clsCommMsg.byResponseData, 0, iSendSize);
                                 clsCommMsg.iResponseLength = iSendSize;
                                 OnCommMessage(this, new ClassCommunicationEventArgs(clsCommMsg));
-                                dtPollTimer = DateTime.Now;
+                                //dtPollTimer = DateTime.Now;
                                 iCURRENT_OP = CMD_IDLE;
                                 break;
 
@@ -310,7 +317,7 @@ namespace KCL_reBMS_Prj
                                 Array.Copy(bySndBuff, 0, clsCommMsg.byResponseData, 0, iSendSize);
                                 clsCommMsg.iResponseLength = iSendSize;
                                 OnCommMessage(this, new ClassCommunicationEventArgs(clsCommMsg));
-                                dtPollTimer = DateTime.Now;
+                                //dtPollTimer = DateTime.Now;
                                 iCURRENT_OP = CMD_IDLE;
                                 break;
 
@@ -321,7 +328,7 @@ namespace KCL_reBMS_Prj
                                 Array.Copy(bySndBuff, 0, clsCommMsg.byResponseData, 0, iSendSize);
                                 clsCommMsg.iResponseLength = iSendSize;
                                 OnCommMessage(this, new ClassCommunicationEventArgs(clsCommMsg));
-                                dtPollTimer = DateTime.Now;
+                                //dtPollTimer = DateTime.Now;
                                 iCURRENT_OP = CMD_IDLE;
                                 break;
 
@@ -332,7 +339,7 @@ namespace KCL_reBMS_Prj
                                 Array.Copy(bySndBuff, 0, clsCommMsg.byResponseData, 0, iSendSize);
                                 clsCommMsg.iResponseLength = iSendSize;
                                 OnCommMessage(this, new ClassCommunicationEventArgs(clsCommMsg));
-                                dtPollTimer = DateTime.Now;
+                                //dtPollTimer = DateTime.Now;
                                 iCURRENT_OP = CMD_IDLE;
                                 break;
 
@@ -343,7 +350,7 @@ namespace KCL_reBMS_Prj
                                 Array.Copy(bySndBuff, 0, clsCommMsg.byResponseData, 0, iSendSize);
                                 clsCommMsg.iResponseLength = iSendSize;
                                 OnCommMessage(this, new ClassCommunicationEventArgs(clsCommMsg));
-                                dtPollTimer = DateTime.Now;
+                                //dtPollTimer = DateTime.Now;
                                 iCURRENT_OP = CMD_IDLE;
                                 break;
 
@@ -354,7 +361,7 @@ namespace KCL_reBMS_Prj
                                 Array.Copy(bySndBuff, 0, clsCommMsg.byResponseData, 0, iSendSize);
                                 clsCommMsg.iResponseLength = iSendSize;
                                 OnCommMessage(this, new ClassCommunicationEventArgs(clsCommMsg));
-                                dtPollTimer = DateTime.Now;
+                                //dtPollTimer = DateTime.Now;
                                 iCURRENT_OP = CMD_IDLE;
                                 break;
 
@@ -365,7 +372,7 @@ namespace KCL_reBMS_Prj
                                 Array.Copy(bySndBuff, 0, clsCommMsg.byResponseData, 0, iSendSize);
                                 clsCommMsg.iResponseLength = iSendSize;
                                 OnCommMessage(this, new ClassCommunicationEventArgs(clsCommMsg));
-                                dtPollTimer = DateTime.Now;
+                                //dtPollTimer = DateTime.Now;
                                 iCURRENT_OP = CMD_IDLE;
                                 break;
 
@@ -376,7 +383,7 @@ namespace KCL_reBMS_Prj
                                 Array.Copy(bySndBuff, 0, clsCommMsg.byResponseData, 0, iSendSize);
                                 clsCommMsg.iResponseLength = iSendSize;
                                 OnCommMessage(this, new ClassCommunicationEventArgs(clsCommMsg));
-                                dtPollTimer = DateTime.Now;
+                                //dtPollTimer = DateTime.Now;
                                 iCURRENT_OP = CMD_IDLE;
                                 break;
 
@@ -387,7 +394,7 @@ namespace KCL_reBMS_Prj
                                 Array.Copy(bySndBuff, 0, clsCommMsg.byResponseData, 0, iSendSize);
                                 clsCommMsg.iResponseLength = iSendSize;
                                 OnCommMessage(this, new ClassCommunicationEventArgs(clsCommMsg));
-                                dtPollTimer = DateTime.Now;
+                                //dtPollTimer = DateTime.Now;
                                 iCURRENT_OP = CMD_IDLE;
                                 break;
 
@@ -398,7 +405,7 @@ namespace KCL_reBMS_Prj
                                 Array.Copy(bySndBuff, 0, clsCommMsg.byResponseData, 0, iSendSize);
                                 clsCommMsg.iResponseLength = iSendSize;
                                 OnCommMessage(this, new ClassCommunicationEventArgs(clsCommMsg));
-                                dtPollTimer = DateTime.Now;
+                                //dtPollTimer = DateTime.Now;
                                 iCURRENT_OP = CMD_IDLE;
                                 break;
 
@@ -409,7 +416,7 @@ namespace KCL_reBMS_Prj
                                 Array.Copy(bySndBuff, 0, clsCommMsg.byResponseData, 0, iSendSize);
                                 clsCommMsg.iResponseLength = iSendSize;
                                 OnCommMessage(this, new ClassCommunicationEventArgs(clsCommMsg));
-                                dtPollTimer = DateTime.Now;
+                                //dtPollTimer = DateTime.Now;
                                 iCURRENT_OP = CMD_IDLE;
                                 break;
 
@@ -420,7 +427,7 @@ namespace KCL_reBMS_Prj
                                 Array.Copy(bySndBuff, 0, clsCommMsg.byResponseData, 0, iSendSize);
                                 clsCommMsg.iResponseLength = iSendSize;
                                 OnCommMessage(this, new ClassCommunicationEventArgs(clsCommMsg));
-                                dtPollTimer = DateTime.Now;
+                                //dtPollTimer = DateTime.Now;
                                 iCURRENT_OP = CMD_IDLE;
                                 break;
 
@@ -431,7 +438,7 @@ namespace KCL_reBMS_Prj
                                 Array.Copy(bySndBuff, 0, clsCommMsg.byResponseData, 0, iSendSize);
                                 clsCommMsg.iResponseLength = iSendSize;
                                 OnCommMessage(this, new ClassCommunicationEventArgs(clsCommMsg));
-                                dtPollTimer = DateTime.Now;
+                                //dtPollTimer = DateTime.Now;
                                 iCURRENT_OP = CMD_IDLE;
                                 break;
 
@@ -442,7 +449,7 @@ namespace KCL_reBMS_Prj
                                 Array.Copy(bySndBuff, 0, clsCommMsg.byResponseData, 0, iSendSize);
                                 clsCommMsg.iResponseLength = iSendSize;
                                 OnCommMessage(this, new ClassCommunicationEventArgs(clsCommMsg));
-                                dtPollTimer = DateTime.Now;
+                                //dtPollTimer = DateTime.Now;
                                 iCURRENT_OP = CMD_IDLE;
                                 break;
 
@@ -453,7 +460,7 @@ namespace KCL_reBMS_Prj
                                 Array.Copy(bySndBuff, 0, clsCommMsg.byResponseData, 0, iSendSize);
                                 clsCommMsg.iResponseLength = iSendSize;
                                 OnCommMessage(this, new ClassCommunicationEventArgs(clsCommMsg));
-                                dtPollTimer = DateTime.Now;
+                                //dtPollTimer = DateTime.Now;
                                 iCURRENT_OP = CMD_IDLE;
                                 break;
 
@@ -464,7 +471,7 @@ namespace KCL_reBMS_Prj
                                 Array.Copy(bySndBuff, 0, clsCommMsg.byResponseData, 0, iSendSize);
                                 clsCommMsg.iResponseLength = iSendSize;
                                 OnCommMessage(this, new ClassCommunicationEventArgs(clsCommMsg));
-                                dtPollTimer = DateTime.Now;
+                                //dtPollTimer = DateTime.Now;
                                 iCURRENT_OP = CMD_IDLE;
                                 break;
 
@@ -475,7 +482,7 @@ namespace KCL_reBMS_Prj
                                 Array.Copy(bySndBuff, 0, clsCommMsg.byResponseData, 0, iSendSize);
                                 clsCommMsg.iResponseLength = iSendSize;
                                 OnCommMessage(this, new ClassCommunicationEventArgs(clsCommMsg));
-                                dtPollTimer = DateTime.Now;
+                                //dtPollTimer = DateTime.Now;
                                 iCURRENT_OP = CMD_IDLE;
                                 break;
                         }
@@ -489,6 +496,7 @@ namespace KCL_reBMS_Prj
                             case (int)Response.Packet:
                                 clsCommMsg.iMessage = (int)Communication_Message.PacketReceive;
                                 iAliveCnt = 0;
+                                pk = RcvQueue.Dequeue();
                                 Array.Copy(pk.byRcvDt, 0, clsCommMsg.byResponseData, 0, pk.iRcvIdex);
                                 clsCommMsg.iResponseLength = pk.iRcvIdex;
                                 
@@ -646,7 +654,7 @@ namespace KCL_reBMS_Prj
         }
 
         public static byte Alive_cnt = 0;
-
+        public Queue<Packet> RcvQueue = new Queue<Packet>();
         Packet pk;
 
         void RcvVariableInit() // Packet구조체의 초기화 입니다.
@@ -726,9 +734,14 @@ namespace KCL_reBMS_Prj
                         pk.iRcvStep = 0;
                         pk.byBCC = clsCm.ComputeCRC8(ref pk.byRcvDt, pk.iRcvIdex - 1);
                         if (pk.byBCC == byRx) // Checking BCC
+                        {
+                            RcvQueue.Enqueue(pk);
                             iResult = (int)Response.Packet; // Packet 수신됨
+                        }
                         else
+                        {
                             iResult = (int)Response.PacketError; // BCC가 맞지 않음
+                        }
                         break;
                 }
             }
