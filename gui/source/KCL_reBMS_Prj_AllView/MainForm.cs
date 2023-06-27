@@ -2470,11 +2470,11 @@ namespace KCL_reBMS_Prj
             clsComm.commData.PRsetCellUnderTempRetain = (short)cbProtectReleaseRetain7.Value;
             clsComm.commData.PRsetChargeOverCurrentRetain = (short)cbProtectReleaseRetain8.Value;
             clsComm.commData.PRsetDischargeOverCurrentRetain = (short)cbProtectReleaseRetain9.Value;
-            clsComm.commData.PRsetSensingLineMeasureRetain = (short)cbProtectReleaseValue10.Value;
-            clsComm.commData.PRsetCommunicationErrorRetain = (short)cbProtectReleaseValue11.Value;
-            clsComm.commData.PRsetCurrentSensorErrorRetain = (short)cbProtectReleaseValue12.Value;
-            clsComm.commData.PRsetInterLockErrorRetain = (short)cbProtectReleaseValue13.Value;
-            clsComm.commData.PRsetSelfSystemDiagRetain = (short)cbProtectReleaseValue14.Value;
+            clsComm.commData.PRsetSensingLineMeasureRetain = (short)cbProtectReleaseRetain10.Value;
+            clsComm.commData.PRsetCommunicationErrorRetain = (short)cbProtectReleaseRetain11.Value;
+            clsComm.commData.PRsetCurrentSensorErrorRetain = (short)cbProtectReleaseRetain12.Value;
+            clsComm.commData.PRsetInterLockErrorRetain = (short)cbProtectReleaseRetain13.Value;
+            clsComm.commData.PRsetSelfSystemDiagRetain = (short)cbProtectReleaseRetain14.Value;
 
             iniFile.IniWriteValue("Protect", "PCellOverVoltageEnable         ", clsComm.commData.PCellOverVoltageEnable.ToString());
             iniFile.IniWriteValue("Protect", "PCellUnderVoltageEnable        ", clsComm.commData.PCellUnderVoltageEnable.ToString());

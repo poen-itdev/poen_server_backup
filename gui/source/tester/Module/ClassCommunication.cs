@@ -487,7 +487,6 @@ namespace KCL_reBMS_Prj
                             case (int)Response.Packet:
                                 clsCommMsg.iMessage = (int)Communication_Message.PacketReceive;
                                 iAliveCnt = 0;
-                                pk = RcvQueue.Dequeue();   
                                 Array.Copy(pk.byRcvDt, 0, clsCommMsg.byResponseData, 0, pk.iRcvIdex);
                                 clsCommMsg.iResponseLength = pk.iRcvIdex;
 
@@ -557,7 +556,6 @@ namespace KCL_reBMS_Prj
         public static byte Alive_cnt = 0;
 
         Packet pk;
-        Queue<Packet> RcvQueue = new Queue<Packet>();
 
         void RcvVariableInit() // Packet구조체의 초기화 입니다.
         {
@@ -636,14 +634,9 @@ namespace KCL_reBMS_Prj
                         pk.iRcvStep = 0;
                         pk.byBCC = clsCm.ComputeCRC8(ref pk.byRcvDt, pk.iRcvIdex - 1);
                         if (pk.byBCC == byRx) // Checking BCC
-                        {
-                            RcvQueue.Enqueue(pk);
                             iResult = (int)Response.Packet; // Packet 수신됨
-                        }
                         else
-                        {
                             iResult = (int)Response.PacketError; // BCC가 맞지 않음
-                        }
                         break;
                 }
             }
