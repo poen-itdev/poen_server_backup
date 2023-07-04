@@ -91,11 +91,11 @@ namespace KCL_reBMS_Prj
         public byte PSelfSystemDiagEnable;
 
         //Set Protect
-        public short PsetCellOverVoltage;
-        public short PsetCellUnderVoltage;
-        public short PsetPackOverVoltage;
-        public short PsetPackUnderVoltage;
-        public short PsetCellVoltDiff;
+        public ushort PsetCellOverVoltage;
+        public ushort PsetCellUnderVoltage;
+        public ushort PsetPackOverVoltage;
+        public ushort PsetPackUnderVoltage;
+        public ushort PsetCellVoltDiff;
         public short PsetCellOverTemp;
         public short PsetCellUnderTemp;
         public short PsetChargeOverCurrent;
@@ -105,27 +105,27 @@ namespace KCL_reBMS_Prj
         public short PsetCurrentSensorError;
         public short PsetInterLockError;
         public short PsetSelfSystemDiag;
-        public short PsetCellOverVoltageRetain;
-        public short PsetCellUnderVoltageRetain;
-        public short PsetPackOverVoltageRetain;
-        public short PsetPackUnderVoltageRetain;
-        public short PsetCellVoltDiffRetain;
-        public short PsetCellOverTempRetain;
-        public short PsetCellUnderTempRetain;
-        public short PsetChargeOverCurrentRetain;
-        public short PsetDischargeOverCurrentRetain;
-        public short PsetSensingLineMeasureRetain;
-        public short PsetCommunicationErrorRetain;
-        public short PsetCurrentSensorErrorRetain;
-        public short PsetInterLockErrorRetain;
-        public short PsetSelfSystemDiagRetain;
+        public ushort PsetCellOverVoltageRetain;
+        public ushort PsetCellUnderVoltageRetain;
+        public ushort PsetPackOverVoltageRetain;
+        public ushort PsetPackUnderVoltageRetain;
+        public ushort PsetCellVoltDiffRetain;
+        public ushort PsetCellOverTempRetain;
+        public ushort PsetCellUnderTempRetain;
+        public ushort PsetChargeOverCurrentRetain;
+        public ushort PsetDischargeOverCurrentRetain;
+        public ushort PsetSensingLineMeasureRetain;
+        public ushort PsetCommunicationErrorRetain;
+        public ushort PsetCurrentSensorErrorRetain;
+        public ushort PsetInterLockErrorRetain;
+        public ushort PsetSelfSystemDiagRetain;
 
         //Set Release
-        public short PRsetCellOverVoltage;
-        public short PRsetCellUnderVoltage;
-        public short PRsetPackOverVoltage;
-        public short PRsetPackUnderVoltage;
-        public short PRsetCellVoltDiff;
+        public ushort PRsetCellOverVoltage;
+        public ushort PRsetCellUnderVoltage;
+        public ushort PRsetPackOverVoltage;
+        public ushort PRsetPackUnderVoltage;
+        public ushort PRsetCellVoltDiff;
         public short PRsetCellOverTemp;
         public short PRsetCellUnderTemp;
         public short PRsetChargeOverCurrent;
@@ -135,20 +135,20 @@ namespace KCL_reBMS_Prj
         public short PRsetCurrentSensorError;
         public short PRsetInterLockError;
         public short PRsetSelfSystemDiag;
-        public short PRsetCellOverVoltageRetain;
-        public short PRsetCellUnderVoltageRetain;
-        public short PRsetPackOverVoltageRetain;
-        public short PRsetPackUnderVoltageRetain;
-        public short PRsetCellVoltDiffRetain;
-        public short PRsetCellOverTempRetain;
-        public short PRsetCellUnderTempRetain;
-        public short PRsetChargeOverCurrentRetain;
-        public short PRsetDischargeOverCurrentRetain;
-        public short PRsetSensingLineMeasureRetain;
-        public short PRsetCommunicationErrorRetain;
-        public short PRsetCurrentSensorErrorRetain;
-        public short PRsetInterLockErrorRetain;
-        public short PRsetSelfSystemDiagRetain;
+        public ushort PRsetCellOverVoltageRetain;
+        public ushort PRsetCellUnderVoltageRetain;
+        public ushort PRsetPackOverVoltageRetain;
+        public ushort PRsetPackUnderVoltageRetain;
+        public ushort PRsetCellVoltDiffRetain;
+        public ushort PRsetCellOverTempRetain;
+        public ushort PRsetCellUnderTempRetain;
+        public ushort PRsetChargeOverCurrentRetain;
+        public ushort PRsetDischargeOverCurrentRetain;
+        public ushort PRsetSensingLineMeasureRetain;
+        public ushort PRsetCommunicationErrorRetain;
+        public ushort PRsetCurrentSensorErrorRetain;
+        public ushort PRsetInterLockErrorRetain;
+        public ushort PRsetSelfSystemDiagRetain;
 
         //Warnning
         //Enable
@@ -165,54 +165,54 @@ namespace KCL_reBMS_Prj
         public byte WLowSOHEnable;
 
         //Set Warnning
-        public short WsetCellOverVoltage;
-        public short WsetCellUnderVoltage;
-        public short WsetPackOverVoltage;
-        public short WsetPackUnderVoltage;
-        public short WsetCellVoltDiff;
+        public ushort WsetCellOverVoltage;
+        public ushort WsetCellUnderVoltage;
+        public ushort WsetPackOverVoltage;
+        public ushort WsetPackUnderVoltage;
+        public ushort WsetCellVoltDiff;
         public short WsetCellOverTemp;
         public short WsetCellUnderTemp;
         public short WsetChargeOverCurrent;
         public short WsetDischargeOverCurrent;
-        public short WsetLowSOC;
-        public short WsetLowSOH;
+        public ushort WsetLowSOC;
+        public ushort WsetLowSOH;
 
-        public short WsetCellOverVoltageRetain;
-        public short WsetCellUnderVoltageRetain;
-        public short WsetPackOverVoltageRetain;
-        public short WsetPackUnderVoltageRetain;
-        public short WsetCellVoltDiffRetain;
-        public short WsetCellOverTempRetain;
-        public short WsetCellUnderTempRetain;
-        public short WsetChargeOverCurrentRetain;
-        public short WsetDischargeOverCurrentRetain;
-        public short WsetLowSOCRetain;
-        public short WsetLowSOHRetain;
+        public ushort WsetCellOverVoltageRetain;
+        public ushort WsetCellUnderVoltageRetain;
+        public ushort WsetPackOverVoltageRetain;
+        public ushort WsetPackUnderVoltageRetain;
+        public ushort WsetCellVoltDiffRetain;
+        public ushort WsetCellOverTempRetain;
+        public ushort WsetCellUnderTempRetain;
+        public ushort WsetChargeOverCurrentRetain;
+        public ushort WsetDischargeOverCurrentRetain;
+        public ushort WsetLowSOCRetain;
+        public ushort WsetLowSOHRetain;
 
         //Set Release
-        public short WRsetCellOverVoltage;
-        public short WRsetCellUnderVoltage;
-        public short WRsetPackOverVoltage;
-        public short WRsetPackUnderVoltage;
-        public short WRsetCellVoltDiff;
+        public ushort WRsetCellOverVoltage;
+        public ushort WRsetCellUnderVoltage;
+        public ushort WRsetPackOverVoltage;
+        public ushort WRsetPackUnderVoltage;
+        public ushort WRsetCellVoltDiff;
         public short WRsetCellOverTemp;
         public short WRsetCellUnderTemp;
         public short WRsetChargeOverCurrent;
         public short WRsetDischargeOverCurrent;
-        public short WRsetLowSOC;
-        public short WRsetLowSOH;
+        public ushort WRsetLowSOC;
+        //public ushort WRsetLowSOH;
                     
-        public short WRsetCellOverVoltageRetain;
-        public short WRsetCellUnderVoltageRetain;
-        public short WRsetPackOverVoltageRetain;
-        public short WRsetPackUnderVoltageRetain;
-        public short WRsetCellVoltDiffRetain;
-        public short WRsetCellOverTempRetain;
-        public short WRsetCellUnderTempRetain;
-        public short WRsetChargeOverCurrentRetain;
-        public short WRsetDischargeOverCurrentRetain;
-        public short WRsetLowSOCRetain;
-        public short WRsetLowSOHRetain;
+        public ushort WRsetCellOverVoltageRetain;
+        public ushort WRsetCellUnderVoltageRetain;
+        public ushort WRsetPackOverVoltageRetain;
+        public ushort WRsetPackUnderVoltageRetain;
+        public ushort WRsetCellVoltDiffRetain;
+        public ushort WRsetCellOverTempRetain;
+        public ushort WRsetCellUnderTempRetain;
+        public ushort WRsetChargeOverCurrentRetain;
+        public ushort WRsetDischargeOverCurrentRetain;
+        public ushort WRsetLowSOCRetain;
+        //public ushort WRsetLowSOHRetain;
 
         //Relay
         public byte SetRelay;

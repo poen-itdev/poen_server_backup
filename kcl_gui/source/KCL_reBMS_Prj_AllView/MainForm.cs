@@ -278,7 +278,8 @@ namespace KCL_reBMS_Prj
             sb.Remove(0, sb.Length);
 
             itemp = Convert.ToInt32(clsComm.commData.Current); //raw Current
-            //itemp /= 100;
+            itemp /= 100;
+            itemp -= 300;
             if (bIsTitle == false) strDataLog += itemp + ",";
             else strDataLog += "Current" + ",";
             sb.AppendFormat("{0:0.00} A ", itemp);
@@ -287,7 +288,7 @@ namespace KCL_reBMS_Prj
 
             //ccc
             itemp = clsComm.commData.Ccc;
-            //itemp /= 100;
+            itemp /= 100;
             if (bIsTitle == false) strDataLog += itemp + ",";
             else strDataLog += "CCC" + ",";
             sb.AppendFormat("{0:0.00} Ah ", itemp);
@@ -296,7 +297,7 @@ namespace KCL_reBMS_Prj
 
             //cdc
             itemp = clsComm.commData.Cdc; 
-            //itemp /= 100;
+            itemp /= 100;
             if (bIsTitle == false) strDataLog += itemp + ",";
             else strDataLog += "CDC" + ",";
             sb.AppendFormat("{0:0.00} Ah ", itemp);
@@ -664,26 +665,6 @@ namespace KCL_reBMS_Prj
 
             if ((byteTemp & 0x04) == 0x04)
             {
-                lbVCellStatus.BackColor = Color.Red;
-                logWarnning("CuttedVCell");
-            }
-            else
-            {
-                lbVCellStatus.BackColor = Color.Transparent;
-            }
-
-            if ((byteTemp & 0x08) == 0x08)
-            {
-                lbTCellStatus.BackColor = Color.Red;
-                logWarnning("CuttedTCell");
-            }
-            else
-            {
-                lbTCellStatus.BackColor = Color.Transparent;
-            }
-
-            if ((byteTemp & 0x10) == 0x10)
-            {
                 lbSerialStatus.BackColor = Color.Red;
                 logWarnning("CuttedUSBserial/CuttedUARTserial");
             }
@@ -692,6 +673,25 @@ namespace KCL_reBMS_Prj
                 lbSerialStatus.BackColor = Color.Transparent;
             }
 
+            if ((byteTemp & 0x08) == 0x08)
+            {
+                lbVCellStatus.BackColor = Color.Red;
+                logWarnning("CuttedVCell");
+            }
+            else
+            {
+                lbVCellStatus.BackColor = Color.Transparent;
+            }
+
+            if ((byteTemp & 0x10) == 0x10)
+            {
+                lbTCellStatus.BackColor = Color.Red;
+                logWarnning("CuttedTCell");
+            }
+            else
+            {
+                lbTCellStatus.BackColor = Color.Transparent;
+            }
 
             itemp = Convert.ToInt32(clsComm.commData.OCVState);
             if (itemp != 0)
@@ -720,7 +720,8 @@ namespace KCL_reBMS_Prj
         {
             StringBuilder sb = new StringBuilder();
             Double itemp;
-            if (data[7] == 0x80)
+
+            if (data[7] < 3 || data[7] > 0x7F)
             {
                 sb.AppendFormat("No Version");
                 tbBMUVersion.Text = sb.ToString();
@@ -729,7 +730,8 @@ namespace KCL_reBMS_Prj
 
                 return;
             }
-            clsComm.commData.Version = (short)((data[7] ^ 0x02) & 0x7F); 
+
+            clsComm.commData.Version = (short)data[7]; 
  
             itemp = Convert.ToInt32((sbyte)clsComm.commData.Version);
             sb.AppendFormat("{0:0}", itemp);
@@ -923,41 +925,41 @@ namespace KCL_reBMS_Prj
             if (data[6] != 0x03) return;
             if (data[29] != 0x01) return;
 
-            clsComm.commData.WsetCellOverVoltage = (short)((data[7] * 256) + data[8]);
-            clsComm.commData.WsetCellUnderVoltage = (short)((data[9] * 256) + data[10]);
-            clsComm.commData.WsetPackOverVoltage = (short)((data[11] * 256) + data[12]);
-            clsComm.commData.WsetPackUnderVoltage = (short)((data[13] * 256) + data[14]);
-            clsComm.commData.WsetCellVoltDiff = (short)((data[15] * 256) + data[16]);
+            clsComm.commData.WsetCellOverVoltage = (ushort)((data[7] * 256) + data[8]);
+            clsComm.commData.WsetCellUnderVoltage = (ushort)((data[9] * 256) + data[10]);
+            clsComm.commData.WsetPackOverVoltage = (ushort)((data[11] * 256) + data[12]);
+            clsComm.commData.WsetPackUnderVoltage = (ushort)((data[13] * 256) + data[14]);
+            clsComm.commData.WsetCellVoltDiff = (ushort)((data[15] * 256) + data[16]);
             clsComm.commData.WsetCellOverTemp = (short)((data[17] * 256) + data[18]);
             clsComm.commData.WsetCellUnderTemp = (short)((data[19] * 256) + data[20]);
             clsComm.commData.WsetChargeOverCurrent = (short)((data[21] * 256) + data[22]);
             clsComm.commData.WsetDischargeOverCurrent = (short)((data[23] * 256) + data[24]);
-            clsComm.commData.WsetLowSOC = (short)((data[25] * 256) + data[26]);
-            clsComm.commData.WsetLowSOH = (short)((data[27] * 256) + data[28]);
+            clsComm.commData.WsetLowSOC = (ushort)((data[25] * 256) + data[26]);
+            clsComm.commData.WsetLowSOH = (ushort)((data[27] * 256) + data[28]);
 
-            clsComm.commData.WsetCellOverVoltageRetain = (short)((data[30] * 256) + data[31]);
-            clsComm.commData.WsetCellUnderVoltageRetain = (short)((data[32] * 256) + data[33]);
-            clsComm.commData.WsetPackOverVoltageRetain = (short)((data[34] * 256) + data[35]);
-            clsComm.commData.WsetPackUnderVoltageRetain = (short)((data[36] * 256) + data[37]);
-            clsComm.commData.WsetCellVoltDiffRetain = (short)((data[38] * 256) + data[39]);
-            clsComm.commData.WsetCellOverTempRetain = (short)((data[40] * 256) + data[41]);
-            clsComm.commData.WsetCellUnderTempRetain = (short)((data[42] * 256) + data[43]);
-            clsComm.commData.WsetChargeOverCurrentRetain = (short)((data[44] * 256) + data[45]);
-            clsComm.commData.WsetDischargeOverCurrentRetain = (short)((data[46] * 256) + data[47]);
-            clsComm.commData.WsetLowSOCRetain = (short)((data[48] * 256) + data[49]);
-            clsComm.commData.WsetLowSOHRetain = (short)((data[50] * 256) + data[51]);
+            clsComm.commData.WsetCellOverVoltageRetain = (ushort)((data[30] * 256) + data[31]);
+            clsComm.commData.WsetCellUnderVoltageRetain = (ushort)((data[32] * 256) + data[33]);
+            clsComm.commData.WsetPackOverVoltageRetain = (ushort)((data[34] * 256) + data[35]);
+            clsComm.commData.WsetPackUnderVoltageRetain = (ushort)((data[36] * 256) + data[37]);
+            clsComm.commData.WsetCellVoltDiffRetain = (ushort)((data[38] * 256) + data[39]);
+            clsComm.commData.WsetCellOverTempRetain = (ushort)((data[40] * 256) + data[41]);
+            clsComm.commData.WsetCellUnderTempRetain = (ushort)((data[42] * 256) + data[43]);
+            clsComm.commData.WsetChargeOverCurrentRetain = (ushort)((data[44] * 256) + data[45]);
+            clsComm.commData.WsetDischargeOverCurrentRetain = (ushort)((data[46] * 256) + data[47]);
+            clsComm.commData.WsetLowSOCRetain = (ushort)((data[48] * 256) + data[49]);
+            clsComm.commData.WsetLowSOHRetain = (ushort)((data[50] * 256) + data[51]);
 
-            cbWarnningValue1.Value = clsComm.commData.WsetCellOverVoltage / 1000;
-            cbWarnningValue2.Value = clsComm.commData.WsetCellUnderVoltage / 1000;
+            cbWarnningValue1.Value = clsComm.commData.WsetCellOverVoltage;
+            cbWarnningValue2.Value = clsComm.commData.WsetCellUnderVoltage;
             cbWarnningValue3.Value = clsComm.commData.WsetPackOverVoltage / 100;
             cbWarnningValue4.Value = clsComm.commData.WsetPackUnderVoltage / 100;
-            cbWarnningValue5.Value = clsComm.commData.WsetCellVoltDiff / 1000;
+            cbWarnningValue5.Value = clsComm.commData.WsetCellVoltDiff;
             cbWarnningValue6.Value = (clsComm.commData.WsetCellOverTemp / 10) - 40;
             cbWarnningValue7.Value = (clsComm.commData.WsetCellUnderTemp / 10) - 40;
-            cbWarnningValue8.Value = clsComm.commData.WsetChargeOverCurrent;
-            cbWarnningValue9.Value = clsComm.commData.WsetDischargeOverCurrent;
-            cbWarnningValue10.Value = clsComm.commData.WsetLowSOC;
-            cbWarnningValue11.Value = clsComm.commData.WsetLowSOH;
+            cbWarnningValue8.Value = (clsComm.commData.WsetChargeOverCurrent / 10) - 300;
+            cbWarnningValue9.Value = (clsComm.commData.WsetDischargeOverCurrent / 10) - 300;
+            cbWarnningValue10.Value = clsComm.commData.WsetLowSOC / 100;
+            cbWarnningValue11.Value = clsComm.commData.WsetLowSOH / 100;
 
             cbWarnningRetainTime1.Value = clsComm.commData.WsetCellOverVoltageRetain;
             cbWarnningRetainTime2.Value = clsComm.commData.WsetCellUnderVoltageRetain;
@@ -977,43 +979,43 @@ namespace KCL_reBMS_Prj
         void WarnningReleaseStatus(byte[] data)
         {
             if (data[6] != 0x03) return;
-            if (data[29] != 0x00) return;
+            if (data[27] != 0x01) return;
 
-            clsComm.commData.WRsetCellOverVoltage = (short)((data[7] * 256) + data[8]);
-            clsComm.commData.WRsetCellUnderVoltage = (short)((data[9] * 256) + data[10]);
-            clsComm.commData.WRsetPackOverVoltage = (short)((data[11] * 256) + data[12]);
-            clsComm.commData.WRsetPackUnderVoltage = (short)((data[13] * 256) + data[14]);
-            clsComm.commData.WRsetCellVoltDiff = (short)((data[15] * 256) + data[16]);
+            clsComm.commData.WRsetCellOverVoltage = (ushort)((data[7] * 256) + data[8]);
+            clsComm.commData.WRsetCellUnderVoltage = (ushort)((data[9] * 256) + data[10]);
+            clsComm.commData.WRsetPackOverVoltage = (ushort)((data[11] * 256) + data[12]);
+            clsComm.commData.WRsetPackUnderVoltage = (ushort)((data[13] * 256) + data[14]);
+            clsComm.commData.WRsetCellVoltDiff = (ushort)((data[15] * 256) + data[16]);
             clsComm.commData.WRsetCellOverTemp = (short)((data[17] * 256) + data[18]);
             clsComm.commData.WRsetCellUnderTemp = (short)((data[19] * 256) + data[20]);
             clsComm.commData.WRsetChargeOverCurrent = (short)((data[21] * 256) + data[22]);
             clsComm.commData.WRsetDischargeOverCurrent = (short)((data[23] * 256) + data[24]);
-            clsComm.commData.WRsetLowSOC = (short)((data[25] * 256) + data[26]);
-            clsComm.commData.WRsetLowSOH = (short)((data[37] * 256) + data[28]);
+            clsComm.commData.WRsetLowSOC = (ushort)((data[25] * 256) + data[26]);
+            //clsComm.commData.WRsetLowSOH = (ushort)((data[27] * 256) + data[28]);
 
-            clsComm.commData.WRsetCellOverVoltageRetain = (short)((data[30] * 256) + data[31]);
-            clsComm.commData.WRsetCellUnderVoltageRetain = (short)((data[32] * 256) + data[33]);
-            clsComm.commData.WRsetPackOverVoltageRetain = (short)((data[34] * 256) + data[35]);
-            clsComm.commData.WRsetPackUnderVoltageRetain = (short)((data[36] * 256) + data[37]);
-            clsComm.commData.WRsetCellVoltDiffRetain = (short)((data[38] * 256) + data[39]);
-            clsComm.commData.WRsetCellOverTempRetain = (short)((data[40] * 256) + data[41]);
-            clsComm.commData.WRsetCellUnderTempRetain = (short)((data[42] * 256) + data[43]);
-            clsComm.commData.WRsetChargeOverCurrentRetain = (short)((data[44] * 256) + data[45]);
-            clsComm.commData.WRsetDischargeOverCurrentRetain = (short)((data[46] * 256) + data[47]);
-            clsComm.commData.WRsetLowSOCRetain = (short)((data[48] * 256) + data[49]);
-            clsComm.commData.WRsetLowSOHRetain = (short)((data[50] * 256) + data[51]);
+            clsComm.commData.WRsetCellOverVoltageRetain = (ushort)((data[28] * 256) + data[29]);
+            clsComm.commData.WRsetCellUnderVoltageRetain = (ushort)((data[30] * 256) + data[31]);
+            clsComm.commData.WRsetPackOverVoltageRetain = (ushort)((data[32] * 256) + data[33]);
+            clsComm.commData.WRsetPackUnderVoltageRetain = (ushort)((data[34] * 256) + data[35]);
+            clsComm.commData.WRsetCellVoltDiffRetain = (ushort)((data[36] * 256) + data[37]);
+            clsComm.commData.WRsetCellOverTempRetain = (ushort)((data[38] * 256) + data[39]);
+            clsComm.commData.WRsetCellUnderTempRetain = (ushort)((data[40] * 256) + data[41]);
+            clsComm.commData.WRsetChargeOverCurrentRetain = (ushort)((data[42] * 256) + data[43]);
+            clsComm.commData.WRsetDischargeOverCurrentRetain = (ushort)((data[44] * 256) + data[45]);
+            clsComm.commData.WRsetLowSOCRetain = (ushort)((data[46] * 256) + data[47]);
+            //clsComm.commData.WRsetLowSOHRetain = (ushort)((data[48] * 256) + data[49]);
 
-            cbWarnningReleaseValue1.Value = clsComm.commData.WRsetCellOverVoltage / 1000;
-            cbWarnningReleaseValue2.Value = clsComm.commData.WRsetCellUnderVoltage / 1000;
+            cbWarnningReleaseValue1.Value = clsComm.commData.WRsetCellOverVoltage;
+            cbWarnningReleaseValue2.Value = clsComm.commData.WRsetCellUnderVoltage;
             cbWarnningReleaseValue3.Value = clsComm.commData.WRsetPackOverVoltage / 100;
             cbWarnningReleaseValue4.Value = clsComm.commData.WRsetPackUnderVoltage / 100;
-            cbWarnningReleaseValue5.Value = clsComm.commData.WRsetCellVoltDiff / 1000;
+            cbWarnningReleaseValue5.Value = clsComm.commData.WRsetCellVoltDiff;
             cbWarnningReleaseValue6.Value = (clsComm.commData.WRsetCellOverTemp / 10) - 40;
             cbWarnningReleaseValue7.Value = (clsComm.commData.WRsetCellUnderTemp / 10) - 40;
-            cbWarnningReleaseValue8.Value = clsComm.commData.WRsetChargeOverCurrent;
-            cbWarnningReleaseValue9.Value = clsComm.commData.WRsetDischargeOverCurrent;
-            cbWarnningReleaseValue10.Value = clsComm.commData.WRsetLowSOC;
-            cbWarnningReleaseValue11.Value = clsComm.commData.WRsetLowSOH;
+            cbWarnningReleaseValue8.Value = (clsComm.commData.WRsetChargeOverCurrent / 10) - 300;
+            cbWarnningReleaseValue9.Value = (clsComm.commData.WRsetDischargeOverCurrent / 10) - 300;
+            cbWarnningReleaseValue10.Value = clsComm.commData.WRsetLowSOC / 100;
+            //cbWarnningReleaseValue11.Value = clsComm.commData.WRsetLowSOH / 100;
 
             cbWarnningReleaseRetain1.Value = clsComm.commData.WRsetCellOverVoltageRetain;
             cbWarnningReleaseRetain2.Value = clsComm.commData.WRsetCellUnderVoltageRetain;
@@ -1025,7 +1027,7 @@ namespace KCL_reBMS_Prj
             cbWarnningReleaseRetain8.Value = clsComm.commData.WRsetChargeOverCurrentRetain;
             cbWarnningReleaseRetain9.Value = clsComm.commData.WRsetDischargeOverCurrentRetain;
             cbWarnningReleaseRetain10.Value = clsComm.commData.WRsetLowSOCRetain;
-            cbWarnningReleaseRetain11.Value = clsComm.commData.WRsetLowSOHRetain;
+            //cbWarnningReleaseRetain11.Value = clsComm.commData.WRsetLowSOHRetain;
 
             logInfo("BMS -> GUI : Warnning Release Value");
         }
@@ -1179,13 +1181,13 @@ namespace KCL_reBMS_Prj
         void ProtectStatus(byte[] data)
         {
             if (data[6] != 0x03) return;
-            if (data[30] != 0x03) return;
+            if (data[30] != 0x01) return;
 
-            clsComm.commData.PsetCellOverVoltage = (short)((data[7] * 256) + data[8]);
-            clsComm.commData.PsetCellUnderVoltage = (short)((data[9] * 256) + data[10]);
-            clsComm.commData.PsetPackOverVoltage = (short)((data[11] * 256) + data[12]);
-            clsComm.commData.PsetPackUnderVoltage = (short)((data[13] * 256) + data[14]);
-            clsComm.commData.PsetCellVoltDiff = (short)((data[15] * 256) + data[16]);
+            clsComm.commData.PsetCellOverVoltage = (ushort)((data[7] * 256) + data[8]);
+            clsComm.commData.PsetCellUnderVoltage = (ushort)((data[9] * 256) + data[10]);
+            clsComm.commData.PsetPackOverVoltage = (ushort)((data[11] * 256) + data[12]);
+            clsComm.commData.PsetPackUnderVoltage = (ushort)((data[13] * 256) + data[14]);
+            clsComm.commData.PsetCellVoltDiff = (ushort)((data[15] * 256) + data[16]);
             clsComm.commData.PsetCellOverTemp = (short)((data[17] * 256) + data[18]);
             clsComm.commData.PsetCellUnderTemp = (short)((data[19] * 256) + data[20]);
             clsComm.commData.PsetChargeOverCurrent = (short)((data[21] * 256) + data[22]);
@@ -1196,30 +1198,30 @@ namespace KCL_reBMS_Prj
             clsComm.commData.PsetInterLockError = data[28];
             clsComm.commData.PsetSelfSystemDiag = data[29];
 
-            clsComm.commData.PsetCellOverVoltageRetain = (short)((data[31] * 256) + data[32]);
-            clsComm.commData.PsetCellUnderVoltageRetain = (short)((data[33] * 256) + data[34]);
-            clsComm.commData.PsetPackOverVoltageRetain = (short)((data[35] * 256) + data[36]);
-            clsComm.commData.PsetPackUnderVoltageRetain = (short)((data[37] * 256) + data[38]);
-            clsComm.commData.PsetCellVoltDiffRetain = (short)((data[39] * 256) + data[40]);
-            clsComm.commData.PsetCellOverTempRetain = (short)((data[41] * 256) + data[42]);
-            clsComm.commData.PsetCellUnderTempRetain = (short)((data[43] * 256) + data[44]);
-            clsComm.commData.PsetChargeOverCurrentRetain = (short)((data[45] * 256) + data[46]);
-            clsComm.commData.PsetDischargeOverCurrentRetain = (short)((data[47] * 256) + data[48]);
-            clsComm.commData.PsetSensingLineMeasureRetain = (short)((data[49] * 256) + data[50]);
-            clsComm.commData.PsetCommunicationErrorRetain = (short)((data[51] * 256) + data[52]);
-            clsComm.commData.PsetCurrentSensorErrorRetain = (short)((data[53] * 256) + data[54]);
-            clsComm.commData.PsetInterLockErrorRetain = (short)((data[55] * 256) + data[56]);
-            clsComm.commData.PsetSelfSystemDiagRetain = (short)((data[57] * 256) + data[58]);
+            clsComm.commData.PsetCellOverVoltageRetain = (ushort)((data[31] * 256) + data[32]);
+            clsComm.commData.PsetCellUnderVoltageRetain = (ushort)((data[33] * 256) + data[34]);
+            clsComm.commData.PsetPackOverVoltageRetain = (ushort)((data[35] * 256) + data[36]);
+            clsComm.commData.PsetPackUnderVoltageRetain = (ushort)((data[37] * 256) + data[38]);
+            clsComm.commData.PsetCellVoltDiffRetain = (ushort)((data[39] * 256) + data[40]);
+            clsComm.commData.PsetCellOverTempRetain = (ushort)((data[41] * 256) + data[42]);
+            clsComm.commData.PsetCellUnderTempRetain = (ushort)((data[43] * 256) + data[44]);
+            clsComm.commData.PsetChargeOverCurrentRetain = (ushort)((data[45] * 256) + data[46]);
+            clsComm.commData.PsetDischargeOverCurrentRetain = (ushort)((data[47] * 256) + data[48]);
+            clsComm.commData.PsetSensingLineMeasureRetain = (ushort)((data[49] * 256) + data[50]);
+            clsComm.commData.PsetCommunicationErrorRetain = (ushort)((data[51] * 256) + data[52]);
+            clsComm.commData.PsetCurrentSensorErrorRetain = (ushort)((data[53] * 256) + data[54]);
+            clsComm.commData.PsetInterLockErrorRetain = (ushort)((data[55] * 256) + data[56]);
+            clsComm.commData.PsetSelfSystemDiagRetain = (ushort)((data[57] * 256) + data[58]);
 
-            cbProtectValue1.Value = clsComm.commData.PsetCellOverVoltage / 1000;
-            cbProtectValue2.Value = clsComm.commData.PsetCellUnderVoltage / 1000;
+            cbProtectValue1.Value = clsComm.commData.PsetCellOverVoltage;
+            cbProtectValue2.Value = clsComm.commData.PsetCellUnderVoltage;
             cbProtectValue3.Value = clsComm.commData.PsetPackOverVoltage / 100;
             cbProtectValue4.Value = clsComm.commData.PsetPackUnderVoltage / 100;
-            cbProtectValue5.Value = clsComm.commData.PsetCellVoltDiff / 1000;
+            cbProtectValue5.Value = clsComm.commData.PsetCellVoltDiff;
             cbProtectValue6.Value = (clsComm.commData.PsetCellOverTemp / 10) - 40; 
             cbProtectValue7.Value = (clsComm.commData.PsetCellUnderTemp / 10) - 40;
-            cbProtectValue8.Value = clsComm.commData.PsetChargeOverCurrent;
-            cbProtectValue9.Value = clsComm.commData.PsetDischargeOverCurrent;
+            cbProtectValue8.Value = (clsComm.commData.PsetChargeOverCurrent / 10) - 300;
+            cbProtectValue9.Value = (clsComm.commData.PsetDischargeOverCurrent / 10) - 300;
             cbProtectValue10.Value = clsComm.commData.PsetSensingLineMeasure;
             cbProtectValue11.Value = clsComm.commData.PsetCommunicationError;
             cbProtectValue12.Value = clsComm.commData.PsetCurrentSensorError;
@@ -1247,13 +1249,13 @@ namespace KCL_reBMS_Prj
         void ProtectReleaseStatus(byte[] data)
         {
             if (data[6] != 0x03) return;
-            if (data[30] != 0x03) return;
+            if (data[30] != 0x01) return;
 
-            clsComm.commData.PRsetCellOverVoltage = (short)((data[7] * 256) + data[8]);
-            clsComm.commData.PRsetCellUnderVoltage = (short)((data[9] * 256) + data[10]);
-            clsComm.commData.PRsetPackOverVoltage = (short)((data[11] * 256) + data[12]);
-            clsComm.commData.PRsetPackUnderVoltage = (short)((data[13] * 256) + data[14]);
-            clsComm.commData.PRsetCellVoltDiff = (short)((data[15] * 256) + data[16]);
+            clsComm.commData.PRsetCellOverVoltage = (ushort)((data[7] * 256) + data[8]);
+            clsComm.commData.PRsetCellUnderVoltage = (ushort)((data[9] * 256) + data[10]);
+            clsComm.commData.PRsetPackOverVoltage = (ushort)((data[11] * 256) + data[12]);
+            clsComm.commData.PRsetPackUnderVoltage = (ushort)((data[13] * 256) + data[14]);
+            clsComm.commData.PRsetCellVoltDiff = (ushort)((data[15] * 256) + data[16]);
             clsComm.commData.PRsetCellOverTemp = (short)((data[17] * 256) + data[18]);
             clsComm.commData.PRsetCellUnderTemp = (short)((data[19] * 256) + data[20]);
             clsComm.commData.PRsetChargeOverCurrent = (short)((data[21] * 256) + data[22]);
@@ -1264,31 +1266,31 @@ namespace KCL_reBMS_Prj
             clsComm.commData.PRsetInterLockError = data[28];
             clsComm.commData.PRsetSelfSystemDiag = data[29];
                               
-            clsComm.commData.PRsetCellOverVoltageRetain = (short)((data[31] * 256) + data[32]);
-            clsComm.commData.PRsetCellUnderVoltageRetain = (short)((data[33] * 256) + data[34]);
-            clsComm.commData.PRsetPackOverVoltageRetain = (short)((data[35] * 256) + data[36]);
-            clsComm.commData.PRsetPackUnderVoltageRetain = (short)((data[37] * 256) + data[38]);
-            clsComm.commData.PRsetCellVoltDiffRetain = (short)((data[39] * 256) + data[40]);
-            clsComm.commData.PRsetCellOverTempRetain = (short)((data[41] * 256) + data[42]);
-            clsComm.commData.PRsetCellUnderTempRetain = (short)((data[43] * 256) + data[44]);
-            clsComm.commData.PRsetChargeOverCurrentRetain = (short)((data[45] * 256) + data[46]);
-            clsComm.commData.PRsetDischargeOverCurrentRetain = (short)((data[47] * 256) + data[48]);
-            clsComm.commData.PRsetSensingLineMeasureRetain  = (short)((data[49] * 256) + data[50]);
-            clsComm.commData.PRsetCommunicationErrorRetain = (short)((data[51] * 256) + data[52]);
-            clsComm.commData.PRsetCurrentSensorErrorRetain = (short)((data[53] * 256) + data[54]);
-            clsComm.commData.PRsetInterLockErrorRetain     = (short)((data[55] * 256) + data[56]);
-            clsComm.commData.PRsetSelfSystemDiagRetain     = (short)((data[57] * 256) + data[58]);
+            clsComm.commData.PRsetCellOverVoltageRetain = (ushort)((data[31] * 256) + data[32]);
+            clsComm.commData.PRsetCellUnderVoltageRetain = (ushort)((data[33] * 256) + data[34]);
+            clsComm.commData.PRsetPackOverVoltageRetain = (ushort)((data[35] * 256) + data[36]);
+            clsComm.commData.PRsetPackUnderVoltageRetain = (ushort)((data[37] * 256) + data[38]);
+            clsComm.commData.PRsetCellVoltDiffRetain = (ushort)((data[39] * 256) + data[40]);
+            clsComm.commData.PRsetCellOverTempRetain = (ushort)((data[41] * 256) + data[42]);
+            clsComm.commData.PRsetCellUnderTempRetain = (ushort)((data[43] * 256) + data[44]);
+            clsComm.commData.PRsetChargeOverCurrentRetain = (ushort)((data[45] * 256) + data[46]);
+            clsComm.commData.PRsetDischargeOverCurrentRetain = (ushort)((data[47] * 256) + data[48]);
+            clsComm.commData.PRsetSensingLineMeasureRetain  = (ushort)((data[49] * 256) + data[50]);
+            clsComm.commData.PRsetCommunicationErrorRetain = (ushort)((data[51] * 256) + data[52]);
+            clsComm.commData.PRsetCurrentSensorErrorRetain = (ushort)((data[53] * 256) + data[54]);
+            clsComm.commData.PRsetInterLockErrorRetain     = (ushort)((data[55] * 256) + data[56]);
+            clsComm.commData.PRsetSelfSystemDiagRetain     = (ushort)((data[57] * 256) + data[58]);
 
 
-            cbProtectReleaseValue1.Value = clsComm.commData.PRsetCellOverVoltage / 1000;
-            cbProtectReleaseValue2.Value = clsComm.commData.PRsetCellUnderVoltage / 1000;
+            cbProtectReleaseValue1.Value = clsComm.commData.PRsetCellOverVoltage;
+            cbProtectReleaseValue2.Value = clsComm.commData.PRsetCellUnderVoltage;
             cbProtectReleaseValue3.Value = clsComm.commData.PRsetPackOverVoltage / 100;
             cbProtectReleaseValue4.Value = clsComm.commData.PRsetPackUnderVoltage / 100;
-            cbProtectReleaseValue5.Value = clsComm.commData.PRsetCellVoltDiff / 1000;
+            cbProtectReleaseValue5.Value = clsComm.commData.PRsetCellVoltDiff;
             cbProtectReleaseValue6.Value = (clsComm.commData.PRsetCellOverTemp / 10) - 40;
             cbProtectReleaseValue7.Value = (clsComm.commData.PRsetCellUnderTemp / 10) - 40;
-            cbProtectReleaseValue8.Value = clsComm.commData.PRsetChargeOverCurrent;
-            cbProtectReleaseValue9.Value = clsComm.commData.PRsetDischargeOverCurrent;
+            cbProtectReleaseValue8.Value = (clsComm.commData.PRsetChargeOverCurrent / 10) - 300;
+            cbProtectReleaseValue9.Value = (clsComm.commData.PRsetDischargeOverCurrent / 10) - 300;
             cbProtectReleaseValue10.Value = clsComm.commData.PRsetSensingLineMeasure;
             cbProtectReleaseValue11.Value = clsComm.commData.PRsetCommunicationError;
             cbProtectReleaseValue12.Value = clsComm.commData.PRsetCurrentSensorError;
@@ -1440,6 +1442,86 @@ namespace KCL_reBMS_Prj
             tbLogPath.Text = selected;
         }
 
+        void WarnningEnable()
+        {
+            clsComm.commData.WCellOverVoltageEnable = (byte)(cbWarnningEnable1.Checked ? 1 : 0);
+            clsComm.commData.WCellUnderVoltageEnable = (byte)(cbWarnningEnable2.Checked ? 1 : 0);
+            clsComm.commData.WPackOverVoltageEnable = (byte)(cbWarnningEnable3.Checked ? 1 : 0);
+            clsComm.commData.WPackUnderVoltageEnable = (byte)(cbWarnningEnable4.Checked ? 1 : 0);
+            clsComm.commData.WCellVoltageDiffEnable = (byte)(cbWarnningEnable5.Checked ? 1 : 0);
+            clsComm.commData.WCellOverTempEnable = (byte)(cbWarnningEnable6.Checked ? 1 : 0);
+            clsComm.commData.WCellUnderTempEnable = (byte)(cbWarnningEnable7.Checked ? 1 : 0);
+            clsComm.commData.WChargingOverCurrentEnable = (byte)(cbWarnningEnable8.Checked ? 1 : 0);
+            clsComm.commData.WDisChargingOverCurrentEnable = (byte)(cbWarnningEnable9.Checked ? 1 : 0);
+            clsComm.commData.WLowSOCEnable = (byte)(cbWarnningEnable10.Checked ? 1 : 0);
+            clsComm.commData.WLowSOHEnable = (byte)(cbWarnningEnable11.Checked ? 1 : 0);
+
+            if (logcomm.getReady()) logInfo("GUI -> BMS : Set Warnning Enable");
+
+            clsComm.queueSend.Enqueue(ClassCommunication.CMD_SEND_WARNNING_ENABLE);
+        }
+
+        void WarnningSetting()
+        {
+            clsComm.commData.WsetCellOverVoltage = (ushort)((int)cbWarnningValue1.Value);
+            clsComm.commData.WsetCellUnderVoltage = (ushort)cbWarnningValue2.Value;
+            clsComm.commData.WsetPackOverVoltage = (ushort)((double)cbWarnningValue3.Value * 100);
+            clsComm.commData.WsetPackUnderVoltage = (ushort)((double)cbWarnningValue4.Value * 100);
+            clsComm.commData.WsetCellVoltDiff = (ushort)((int)cbWarnningValue5.Value);
+            clsComm.commData.WsetCellOverTemp = (short)(((double)cbWarnningValue6.Value + 40) * 10);
+            clsComm.commData.WsetCellUnderTemp = (short)(((double)cbWarnningValue7.Value + 40) * 10);
+            clsComm.commData.WsetChargeOverCurrent = (short)(((int)cbWarnningValue8.Value + 300) * 10);
+            clsComm.commData.WsetDischargeOverCurrent = (short)(((int)cbWarnningValue9.Value + 300) * 10);
+            clsComm.commData.WsetLowSOC = (ushort)((double)cbWarnningValue10.Value * 100);
+            clsComm.commData.WsetLowSOH = (ushort)((double)cbWarnningValue11.Value * 100);
+
+            clsComm.commData.WsetCellOverVoltageRetain = (ushort)cbWarnningRetainTime1.Value;
+            clsComm.commData.WsetCellUnderVoltageRetain = (ushort)cbWarnningRetainTime2.Value;
+            clsComm.commData.WsetPackOverVoltageRetain = (ushort)cbWarnningRetainTime3.Value;
+            clsComm.commData.WsetPackUnderVoltageRetain = (ushort)cbWarnningRetainTime4.Value;
+            clsComm.commData.WsetCellVoltDiffRetain = (ushort)cbWarnningRetainTime5.Value;
+            clsComm.commData.WsetCellOverTempRetain = (ushort)cbWarnningRetainTime6.Value;
+            clsComm.commData.WsetCellUnderTempRetain = (ushort)cbWarnningRetainTime7.Value;
+            clsComm.commData.WsetChargeOverCurrentRetain = (ushort)cbWarnningRetainTime8.Value;
+            clsComm.commData.WsetDischargeOverCurrentRetain = (ushort)cbWarnningRetainTime9.Value;
+            clsComm.commData.WsetLowSOCRetain = (ushort)cbWarnningRetainTime10.Value;
+            clsComm.commData.WsetLowSOHRetain = (ushort)cbWarnningRetainTime11.Value;
+
+            if (logcomm.getReady()) logInfo("GUI -> BMS : Set Warnning Value and Retain Time");
+
+            clsComm.queueSend.Enqueue(ClassCommunication.CMD_SEND_WARNNING_SET);
+        }
+
+        void WarnningReleaseSetting()
+        {
+            clsComm.commData.WRsetCellOverVoltage = (ushort)((int)cbWarnningReleaseValue1.Value);
+            clsComm.commData.WRsetCellUnderVoltage = (ushort)((int)cbWarnningReleaseValue2.Value);
+            clsComm.commData.WRsetPackOverVoltage = (ushort)((double)cbWarnningReleaseValue3.Value * 100);
+            clsComm.commData.WRsetPackUnderVoltage = (ushort)((double)cbWarnningReleaseValue4.Value * 100);
+            clsComm.commData.WRsetCellVoltDiff = (ushort)((int)cbWarnningReleaseValue5.Value);
+            clsComm.commData.WRsetCellOverTemp = (short)((double)(cbWarnningReleaseValue6.Value + 40) * 10);
+            clsComm.commData.WRsetCellUnderTemp = (short)((double)(cbWarnningReleaseValue7.Value + 40) * 10);
+            clsComm.commData.WRsetChargeOverCurrent = (short)((int)(cbWarnningReleaseValue8.Value + 300) * 10);
+            clsComm.commData.WRsetDischargeOverCurrent = (short)((int)(cbWarnningReleaseValue9.Value + 300) * 10);
+            clsComm.commData.WRsetLowSOC = (ushort)((double)cbWarnningReleaseValue10.Value * 100);
+            //clsComm.commData.WRsetLowSOH = (ushort)((double)cbWarnningReleaseValue11.Value * 100);
+
+            clsComm.commData.WRsetCellOverVoltageRetain = (ushort)cbWarnningReleaseRetain1.Value;
+            clsComm.commData.WRsetCellUnderVoltageRetain = (ushort)cbWarnningReleaseRetain2.Value;
+            clsComm.commData.WRsetPackOverVoltageRetain = (ushort)cbWarnningReleaseRetain3.Value;
+            clsComm.commData.WRsetPackUnderVoltageRetain = (ushort)cbWarnningReleaseRetain4.Value;
+            clsComm.commData.WRsetCellVoltDiffRetain = (ushort)cbWarnningReleaseRetain5.Value;
+            clsComm.commData.WRsetCellOverTempRetain = (ushort)cbWarnningReleaseRetain6.Value;
+            clsComm.commData.WRsetCellUnderTempRetain = (ushort)cbWarnningReleaseRetain7.Value;
+            clsComm.commData.WRsetChargeOverCurrentRetain = (ushort)cbWarnningReleaseRetain8.Value;
+            clsComm.commData.WRsetDischargeOverCurrentRetain = (ushort)cbWarnningReleaseRetain9.Value;
+            clsComm.commData.WRsetLowSOCRetain = (ushort)cbWarnningReleaseRetain10.Value;
+
+            if (logcomm.getReady()) logInfo("GUI -> BMS : Set Warnning Release Value and Retain Time");
+
+            clsComm.queueSend.Enqueue(ClassCommunication.CMD_SEND_WARNNING_RELEASE_SET);
+        }
+
         void ProtectEnable()
         {
             clsComm.commData.PCellOverVoltageEnable = (byte)(cbProtectEnable1.Checked ? 1 : 0);
@@ -1457,381 +1539,163 @@ namespace KCL_reBMS_Prj
             clsComm.commData.PInterLockErrorEnable = (byte)(cbProtectEnable13.Checked ? 1 : 0);
             clsComm.commData.PSelfSystemDiagEnable = (byte)(cbProtectEnable14.Checked ? 1 : 0);
             
-            //if (logcomm.getReady()) logInfo("Set Protect Enabel");
-            //if (logcomm.getReady()) logInfo("PCell_OverVoltageEnable:" + clsComm.commData.PCellOverVoltageEnable);
-            //if (logcomm.getReady()) logInfo("PCell_UnderVoltageEnable:" + clsComm.commData.PCellUnderVoltageEnable);
-            //if (logcomm.getReady()) logInfo("PPack_OverVoltageEnable:" + clsComm.commData.PPackOverVoltageEnable);
-            //if (logcomm.getReady()) logInfo("PPack_UnderVoltageEnable:" + clsComm.commData.PPackUnderVoltageEnable);
-            //if (logcomm.getReady()) logInfo("PCell_VoltageDiffEnable:" + clsComm.commData.PCellVoltageDiffEnable);
-            //if (logcomm.getReady()) logInfo("PCell_OverTempEnable:" + clsComm.commData.PCellOverTempEnable);
-            //if (logcomm.getReady()) logInfo("PCell_UnderTempEnable:" + clsComm.commData.PCellUnderTempEnable);
-            //if (logcomm.getReady()) logInfo("PCharging_OverCurrentEnable:" + clsComm.commData.PChargingOverCurrentEnable);
-            //if (logcomm.getReady()) logInfo("PDisCharging_OverCurrentEnable:" + clsComm.commData.PDisChargingOverCurrentEnable);
-            //if (logcomm.getReady()) logInfo("PSensing_LineMeasureEnable:" + clsComm.commData.PSensingLineMeasureEnable);
-            //if (logcomm.getReady()) logInfo("PCommunication_ErrorEnable:" + clsComm.commData.PCommunicationErrorEnable);
-            //if (logcomm.getReady()) logInfo("PCurrent_SensorErrorEnable:" + clsComm.commData.PCurrentSensorErrorEnable);
-            //if (logcomm.getReady()) logInfo("PInterLock_ErrorEnable:" + clsComm.commData.PInterLockErrorEnable);
-            //if (logcomm.getReady()) logInfo("PSelfSystem_DiagEnable:" + clsComm.commData.PSelfSystemDiagEnable);
 
             if (logcomm.getReady()) logInfo("GUI -> BMS : Set Protect Enable Values");
-            ClassCommunication.iCURRENT_OP = ClassCommunication.CMD_SEND_PROTECT_ENABLE;
+            clsComm.queueSend.Enqueue(ClassCommunication.CMD_SEND_PROTECT_ENABLE);
         }
 
         void ProtectSetting()
         {
-            clsComm.commData.PsetCellOverVoltage =  (short)((int)cbProtectValue1.Value * 1000);
-            clsComm.commData.PsetCellUnderVoltage = (short)((int)cbProtectValue2.Value * 1000);
-            clsComm.commData.PsetPackOverVoltage = (short)((int)cbProtectValue3.Value * 100);
-            clsComm.commData.PsetPackUnderVoltage = (short)((int)cbProtectValue4.Value * 100);
-            clsComm.commData.PsetCellVoltDiff = (short)((int)cbProtectValue5.Value * 1000);
-            clsComm.commData.PsetCellOverTemp = (short)(((int)cbProtectValue6.Value + 40) * 10);
-            clsComm.commData.PsetCellUnderTemp = (short)(((int)cbProtectValue7.Value + 40) * 10);
-            clsComm.commData.PsetChargeOverCurrent = (short)cbProtectValue8.Value;
-            clsComm.commData.PsetDischargeOverCurrent = (short)cbProtectValue9.Value;
-            clsComm.commData.PsetSensingLineMeasure = (short)cbProtectValue10.Value;
-            clsComm.commData.PsetCommunicationError = (short)cbProtectValue11.Value;
-            clsComm.commData.PsetCurrentSensorError = (short)cbProtectValue12.Value;
-            clsComm.commData.PsetInterLockError = (short)cbProtectValue13.Value;
-            clsComm.commData.PsetSelfSystemDiag = (short)cbProtectValue14.Value;
+            clsComm.commData.PsetCellOverVoltage =  (ushort)((int)cbProtectValue1.Value);
+            clsComm.commData.PsetCellUnderVoltage = (ushort)((int)cbProtectValue2.Value);
+            clsComm.commData.PsetPackOverVoltage = (ushort)((double)cbProtectValue3.Value * 100);
+            clsComm.commData.PsetPackUnderVoltage = (ushort)((double)cbProtectValue4.Value * 100);
+            clsComm.commData.PsetCellVoltDiff = (ushort)((int)cbProtectValue5.Value);
+            clsComm.commData.PsetCellOverTemp = (short)(((double)cbProtectValue6.Value + 40) * 10);
+            clsComm.commData.PsetCellUnderTemp = (short)(((double)cbProtectValue7.Value + 40) * 10);
+            clsComm.commData.PsetChargeOverCurrent = (short)(((int)cbProtectValue8.Value + 300) * 10);
+            clsComm.commData.PsetDischargeOverCurrent = (short)(((int)cbProtectValue9.Value + 300) * 10);
+            clsComm.commData.PsetSensingLineMeasure = (short)((cbProtectValue10.Value > 0) ? 1 : 0);
+            clsComm.commData.PsetCommunicationError = (short)((cbProtectValue11.Value > 0) ? 1 : 0);
+            clsComm.commData.PsetCurrentSensorError = (short)((cbProtectValue12.Value > 0) ? 1 : 0);
+            clsComm.commData.PsetInterLockError = (short)((cbProtectValue13.Value > 0) ? 1 : 0);
+            clsComm.commData.PsetSelfSystemDiag = (short)((cbProtectValue14.Value > 0) ? 1 : 0);
 
-            clsComm.commData.PsetCellOverVoltageRetain = (short)cbProtectValue1.Value;
-            clsComm.commData.PsetCellUnderVoltageRetain = (short)cbProtectValue2.Value;
-            clsComm.commData.PsetPackOverVoltageRetain = (short)cbProtectValue3.Value;
-            clsComm.commData.PsetPackUnderVoltageRetain = (short)cbProtectValue4.Value;
-            clsComm.commData.PsetCellVoltDiffRetain = (short)cbProtectValue5.Value;
-            clsComm.commData.PsetCellOverTempRetain = (short)cbProtectValue6.Value;
-            clsComm.commData.PsetCellUnderTempRetain = (short)cbProtectValue7.Value;
-            clsComm.commData.PsetChargeOverCurrentRetain = (short)cbProtectValue8.Value;
-            clsComm.commData.PsetDischargeOverCurrentRetain = (short)cbProtectValue9.Value;
-            clsComm.commData.PsetSensingLineMeasureRetain = (short)cbProtectValue10.Value;
-            clsComm.commData.PsetCommunicationErrorRetain = (short)cbProtectValue11.Value;
-            clsComm.commData.PsetCurrentSensorErrorRetain = (short)cbProtectValue12.Value;
-            clsComm.commData.PsetInterLockErrorRetain = (short)cbProtectValue13.Value;
-            clsComm.commData.PsetSelfSystemDiagRetain = (short)cbProtectValue14.Value;
-
-            //if (logcomm.getReady()) logInfo("Set Protect Value and Retain");
-            //if (logcomm.getReady()) logInfo("PCell_OverVoltage:" + clsComm.commData.PsetCellOverVoltage);
-            //if (logcomm.getReady()) logInfo("PCell_UnderVoltage:" + clsComm.commData.PsetCellUnderVoltage);
-            //if (logcomm.getReady()) logInfo("PPack_OverVoltage:" + clsComm.commData.PsetPackOverVoltage);
-            //if (logcomm.getReady()) logInfo("PPack_UnderVoltage:" + clsComm.commData.PsetPackUnderVoltage);
-            //if (logcomm.getReady()) logInfo("PCell_VoltageDiff:" + clsComm.commData.PsetCellVoltDiff);
-            //if (logcomm.getReady()) logInfo("PCell_OverTemp:" + clsComm.commData.PsetCellOverTemp);
-            //if (logcomm.getReady()) logInfo("PCell_UnderTemp:" + clsComm.commData.PsetCellUnderTemp);
-            //if (logcomm.getReady()) logInfo("PCharging_OverCurrent:" + clsComm.commData.PsetChargeOverCurrent);
-            //if (logcomm.getReady()) logInfo("PDisCharging_OverCurrent:" + clsComm.commData.PsetDischargeOverCurrent);
-            //if (logcomm.getReady()) logInfo("PSensing_LineMeasure:" + clsComm.commData.PsetSensingLineMeasure);
-            //if (logcomm.getReady()) logInfo("PCommunication_Error:" + clsComm.commData.PsetCommunicationError);
-            //if (logcomm.getReady()) logInfo("PCurrent_SensorError:" + clsComm.commData.PsetCurrentSensorError);
-            //if (logcomm.getReady()) logInfo("PInterLock_Error:" + clsComm.commData.PsetInterLockError);
-            //if (logcomm.getReady()) logInfo("PSelfSystem_Diag:" + clsComm.commData.PsetSelfSystemDiag);
-            //
-            //if (logcomm.getReady()) logInfo("PCellOverVoltageRetain:" + clsComm.commData.PsetCellOverVoltageRetain);
-            //if (logcomm.getReady()) logInfo("PCellUnderVoltageRetain:" + clsComm.commData.PsetCellUnderVoltageRetain);
-            //if (logcomm.getReady()) logInfo("PPackOverVoltageRetain:" + clsComm.commData.PsetPackOverVoltageRetain);
-            //if (logcomm.getReady()) logInfo("PPackUnderVoltageRetain:" + clsComm.commData.PsetPackUnderVoltageRetain);
-            //if (logcomm.getReady()) logInfo("PCellVoltageDiffRetain:" + clsComm.commData.PsetCellVoltDiffRetain);
-            //if (logcomm.getReady()) logInfo("PCellOverTempRetain:" + clsComm.commData.PsetCellOverTempRetain);
-            //if (logcomm.getReady()) logInfo("PCellUnderTempRetain:" + clsComm.commData.PsetCellUnderTempRetain);
-            //if (logcomm.getReady()) logInfo("PCharging_OverCurrentRetain:" + clsComm.commData.PsetChargeOverCurrentRetain);
-            //if (logcomm.getReady()) logInfo("PDisCharging_OverCurrentRetain:" + clsComm.commData.PsetDischargeOverCurrentRetain);
-            //if (logcomm.getReady()) logInfo("PSensingLineMeasureRetain:" + clsComm.commData.PsetSensingLineMeasureRetain);
-            //if (logcomm.getReady()) logInfo("PCommunicationErrorRetain:" + clsComm.commData.PsetCommunicationErrorRetain);
-            //if (logcomm.getReady()) logInfo("PCurrentSensorErrorRetain:" + clsComm.commData.PsetCurrentSensorErrorRetain);
-            //if (logcomm.getReady()) logInfo("PInterLockErrorRetain:" + clsComm.commData.PsetInterLockErrorRetain);
-            //if (logcomm.getReady()) logInfo("PSelfSystemDiagRetain:" + clsComm.commData.PsetSelfSystemDiagRetain);
+            clsComm.commData.PsetCellOverVoltageRetain = (ushort)cbProtectRetainTime1.Value;
+            clsComm.commData.PsetCellUnderVoltageRetain = (ushort)cbProtectRetainTime2.Value;
+            clsComm.commData.PsetPackOverVoltageRetain = (ushort)cbProtectRetainTime3.Value;
+            clsComm.commData.PsetPackUnderVoltageRetain = (ushort)cbProtectRetainTime4.Value;
+            clsComm.commData.PsetCellVoltDiffRetain = (ushort)cbProtectRetainTime5.Value;
+            clsComm.commData.PsetCellOverTempRetain = (ushort)cbProtectRetainTime6.Value;
+            clsComm.commData.PsetCellUnderTempRetain = (ushort)cbProtectRetainTime7.Value;
+            clsComm.commData.PsetChargeOverCurrentRetain = (ushort)cbProtectRetainTime8.Value;
+            clsComm.commData.PsetDischargeOverCurrentRetain = (ushort)cbProtectRetainTime9.Value;
+            clsComm.commData.PsetSensingLineMeasureRetain = (ushort)cbProtectRetainTime10.Value;
+            clsComm.commData.PsetCommunicationErrorRetain = (ushort)cbProtectRetainTime11.Value;
+            clsComm.commData.PsetCurrentSensorErrorRetain = (ushort)cbProtectRetainTime12.Value;
+            clsComm.commData.PsetInterLockErrorRetain = (ushort)cbProtectRetainTime13.Value;
+            clsComm.commData.PsetSelfSystemDiagRetain = (ushort)cbProtectRetainTime14.Value;
 
             if (logcomm.getReady()) logInfo("GUI -> BMS : Set Protect Value and Retain Time");
-            ClassCommunication.iCURRENT_OP = ClassCommunication.CMD_SEND_PROTECT_SET;
+            clsComm.queueSend.Enqueue(ClassCommunication.CMD_SEND_PROTECT_SET);
         }
 
         void ProtectReleaseSetting()
         {
-            clsComm.commData.PRsetCellOverVoltage = (short)((int)cbProtectValue1.Value * 1000);
-            clsComm.commData.PRsetCellUnderVoltage = (short)((int)cbProtectValue2.Value * 1000); 
-            clsComm.commData.PRsetPackOverVoltage = (short)((int)cbProtectValue3.Value * 100);
-            clsComm.commData.PRsetPackUnderVoltage = (short)((int)cbProtectValue4.Value * 100);
-            clsComm.commData.PRsetCellVoltDiff = (short)((int)cbProtectValue5.Value * 1000);
-            clsComm.commData.PRsetCellOverTemp = (short)(((int)cbProtectValue6.Value + 40) * 10);
-            clsComm.commData.PRsetCellUnderTemp = (short)(((int)cbProtectValue7.Value + 40) * 10);
-            clsComm.commData.PRsetChargeOverCurrent = (short)cbProtectValue8.Value;
-            clsComm.commData.PRsetDischargeOverCurrent = (short)cbProtectValue9.Value;
-            clsComm.commData.PRsetSensingLineMeasure = (short)cbProtectValue10.Value;
-            clsComm.commData.PRsetCommunicationError = (short)cbProtectValue11.Value;
-            clsComm.commData.PRsetCurrentSensorError = (short)cbProtectValue12.Value;
-            clsComm.commData.PRsetInterLockError = (short)cbProtectValue13.Value;
-            clsComm.commData.PRsetSelfSystemDiag = (short)cbProtectValue14.Value;
+            clsComm.commData.PRsetCellOverVoltage = (ushort)((int)cbProtectReleaseValue1.Value);
+            clsComm.commData.PRsetCellUnderVoltage = (ushort)((int)cbProtectReleaseValue2.Value); 
+            clsComm.commData.PRsetPackOverVoltage = (ushort)((double)cbProtectReleaseValue3.Value * 100);
+            clsComm.commData.PRsetPackUnderVoltage = (ushort)((double)cbProtectReleaseValue4.Value * 100);
+            clsComm.commData.PRsetCellVoltDiff = (ushort)((int)cbProtectReleaseValue5.Value);
+            clsComm.commData.PRsetCellOverTemp = (short)(((double)cbProtectReleaseValue6.Value + 40) * 10);
+            clsComm.commData.PRsetCellUnderTemp = (short)(((double)cbProtectReleaseValue7.Value + 40) * 10);
+            clsComm.commData.PRsetChargeOverCurrent = (short)(((int)cbProtectReleaseValue8.Value + 300) * 10);
+            clsComm.commData.PRsetDischargeOverCurrent = (short)(((int)cbProtectReleaseValue9.Value + 300) * 10);
+            clsComm.commData.PRsetSensingLineMeasure = (short)((cbProtectReleaseValue10.Value > 0) ? 1 : 0);
+            clsComm.commData.PRsetCommunicationError = (short)((cbProtectReleaseValue11.Value > 0) ? 1 : 0);
+            clsComm.commData.PRsetCurrentSensorError = (short)((cbProtectReleaseValue12.Value > 0) ? 1 : 0); 
+            clsComm.commData.PRsetInterLockError = (short)((cbProtectReleaseValue13.Value > 0) ? 1 : 0); 
+            clsComm.commData.PRsetSelfSystemDiag = (short)((cbProtectReleaseValue14.Value > 0) ? 1 : 0); 
                               
-            clsComm.commData.PRsetCellOverVoltageRetain = (short)cbProtectValue1.Value;
-            clsComm.commData.PRsetCellUnderVoltageRetain = (short)cbProtectValue2.Value;
-            clsComm.commData.PRsetPackOverVoltageRetain = (short)cbProtectValue3.Value;
-            clsComm.commData.PRsetPackUnderVoltageRetain = (short)cbProtectValue4.Value;
-            clsComm.commData.PRsetCellVoltDiffRetain = (short)cbProtectValue5.Value;
-            clsComm.commData.PRsetCellOverTempRetain = (short)cbProtectValue6.Value;
-            clsComm.commData.PRsetCellUnderTempRetain = (short)cbProtectValue7.Value;
-            clsComm.commData.PRsetChargeOverCurrentRetain = (short)cbProtectValue8.Value;
-            clsComm.commData.PRsetDischargeOverCurrentRetain = (short)cbProtectValue9.Value;
-            clsComm.commData.PRsetSensingLineMeasureRetain = (short)cbProtectValue10.Value;
-            clsComm.commData.PRsetCommunicationErrorRetain = (short)cbProtectValue11.Value;
-            clsComm.commData.PRsetCurrentSensorErrorRetain = (short)cbProtectValue12.Value;
-            clsComm.commData.PRsetInterLockErrorRetain = (short)cbProtectValue13.Value;
-            clsComm.commData.PRsetSelfSystemDiagRetain = (short)cbProtectValue14.Value;
-
-            //if (logcomm.getReady()) logInfo("Set Protect Release Value and Retain Time");
-            //if (logcomm.getReady()) logInfo("PRCell_OverVoltage:" + clsComm.commData.PRsetCellOverVoltage);
-            //if (logcomm.getReady()) logInfo("PRCell_UnderVoltage:" + clsComm.commData.PRsetCellUnderVoltage);
-            //if (logcomm.getReady()) logInfo("PRPack_OverVoltage:" + clsComm.commData.PRsetPackOverVoltage);
-            //if (logcomm.getReady()) logInfo("PRPack_UnderVoltage:" + clsComm.commData.PRsetPackUnderVoltage);
-            //if (logcomm.getReady()) logInfo("PRCell_VoltageDiff:" + clsComm.commData.PRsetCellVoltDiff);
-            //if (logcomm.getReady()) logInfo("PRCell_OverTemp:" + clsComm.commData.PRsetCellOverTemp);
-            //if (logcomm.getReady()) logInfo("PRCell_UnderTemp:" + clsComm.commData.PRsetCellUnderTemp);
-            //if (logcomm.getReady()) logInfo("PRCharging_OverCurrent:" + clsComm.commData.PRsetChargeOverCurrent);
-            //if (logcomm.getReady()) logInfo("PRDisCharging_OverCurrent:" + clsComm.commData.PRsetDischargeOverCurrent);
-            //if (logcomm.getReady()) logInfo("PRSensing_LineMeasure:" + clsComm.commData.PRsetSensingLineMeasure);
-            //if (logcomm.getReady()) logInfo("PRCommunication_Error:" + clsComm.commData.PRsetCommunicationError);
-            //if (logcomm.getReady()) logInfo("PR+Current_SensorError:" + clsComm.commData.PRsetCurrentSensorError);
-            //if (logcomm.getReady()) logInfo("PRInterLock_Error:" + clsComm.commData.PRsetInterLockError);
-            //if (logcomm.getReady()) logInfo("PRSelfSystem_Diag:" + clsComm.commData.PRsetSelfSystemDiag);
-            //          
-            //if (logcomm.getReady()) logInfo("PRCellOverVoltageRetain:" + clsComm.commData.PRsetCellOverVoltageRetain);
-            //if (logcomm.getReady()) logInfo("PRCellUnderVoltageRetain:" + clsComm.commData.PRsetCellUnderVoltageRetain);
-            //if (logcomm.getReady()) logInfo("PRPackOverVoltageRetain:" + clsComm.commData.PRsetPackOverVoltageRetain);
-            //if (logcomm.getReady()) logInfo("PRPackUnderVoltageRetain:" + clsComm.commData.PRsetPackUnderVoltageRetain);
-            //if (logcomm.getReady()) logInfo("PRCellVoltageDiffRetain:" + clsComm.commData.PRsetCellVoltDiffRetain);
-            //if (logcomm.getReady()) logInfo("PRCellOverTempRetain:" + clsComm.commData.PRsetCellOverTempRetain);
-            //if (logcomm.getReady()) logInfo("PRCellUnderTempRetain:" + clsComm.commData.PRsetCellUnderTempRetain);
-            //if (logcomm.getReady()) logInfo("PRCharging_OverCurrentRetain:" + clsComm.commData.PRsetChargeOverCurrentRetain);
-            //if (logcomm.getReady()) logInfo("PRDisCharging_OverCurrentRetain:" + clsComm.commData.PRsetDischargeOverCurrentRetain);
-            //if (logcomm.getReady()) logInfo("PRSensingLineMeasureRetain:" + clsComm.commData.PRsetSensingLineMeasureRetain);
-            //if (logcomm.getReady()) logInfo("PRCommunicationErrorRetain:" + clsComm.commData.PRsetCommunicationErrorRetain);
-            //if (logcomm.getReady()) logInfo("PR+CurrentSensorErrorRetain:" + clsComm.commData.PRsetCurrentSensorErrorRetain);
-            //if (logcomm.getReady()) logInfo("PRInterLockErrorRetain:" + clsComm.commData.PRsetInterLockErrorRetain);
-            //if (logcomm.getReady()) logInfo("PRSelfSystemDiagRetain:" + clsComm.commData.PRsetSelfSystemDiagRetain);
+            clsComm.commData.PRsetCellOverVoltageRetain = (ushort)cbProtectReleaseRetain1.Value;
+            clsComm.commData.PRsetCellUnderVoltageRetain = (ushort)cbProtectReleaseRetain2.Value;
+            clsComm.commData.PRsetPackOverVoltageRetain = (ushort)cbProtectReleaseRetain3.Value;
+            clsComm.commData.PRsetPackUnderVoltageRetain = (ushort)cbProtectReleaseRetain4.Value;
+            clsComm.commData.PRsetCellVoltDiffRetain = (ushort)cbProtectReleaseRetain5.Value;
+            clsComm.commData.PRsetCellOverTempRetain = (ushort)cbProtectReleaseRetain6.Value;
+            clsComm.commData.PRsetCellUnderTempRetain = (ushort)cbProtectReleaseRetain7.Value;
+            clsComm.commData.PRsetChargeOverCurrentRetain = (ushort)cbProtectReleaseRetain8.Value;
+            clsComm.commData.PRsetDischargeOverCurrentRetain = (ushort)cbProtectReleaseRetain9.Value;
+            clsComm.commData.PRsetSensingLineMeasureRetain = (ushort)cbProtectReleaseRetain10.Value;
+            clsComm.commData.PRsetCommunicationErrorRetain = (ushort)cbProtectReleaseRetain11.Value;
+            clsComm.commData.PRsetCurrentSensorErrorRetain = (ushort)cbProtectReleaseRetain12.Value;
+            clsComm.commData.PRsetInterLockErrorRetain = (ushort)cbProtectReleaseRetain13.Value;
+            clsComm.commData.PRsetSelfSystemDiagRetain = (ushort)cbProtectReleaseRetain14.Value;
 
             if (logcomm.getReady()) logInfo("GUI -> BMS : Set Protect Release Value and Retain Time");
 
-            ClassCommunication.iCURRENT_OP = ClassCommunication.CMD_SEND_PROTECT_RELEASE_SET;
+            clsComm.queueSend.Enqueue(ClassCommunication.CMD_SEND_PROTECT_RELEASE_SET);
         }
 
         void RelayOn()
         {
             if (logcomm.getReady()) logInfo("GUI -> BMS : Set Relay On");
-            ClassCommunication.iCURRENT_OP = ClassCommunication.CMD_SEND_RLYON;
+            clsComm.queueSend.Enqueue(ClassCommunication.CMD_SEND_RLYON);
         }
 
         void RelayOff()
         {
             if (logcomm.getReady()) logInfo("GUI -> BMS : Set Relay Off");
-            ClassCommunication.iCURRENT_OP = ClassCommunication.CMD_SEND_RLYOFF;
+            clsComm.queueSend.Enqueue(ClassCommunication.CMD_SEND_RLYOFF);
         }
 
-        void WarnningEnable()
-        {
-            clsComm.commData.WCellOverVoltageEnable = (byte)(cbWarnningEnable1.Checked ? 1 : 0);
-            clsComm.commData.WCellUnderVoltageEnable = (byte)(cbWarnningEnable2.Checked ? 1 : 0);
-            clsComm.commData.WPackOverVoltageEnable = (byte)(cbWarnningEnable3.Checked ? 1 : 0);
-            clsComm.commData.WPackUnderVoltageEnable = (byte)(cbWarnningEnable4.Checked ? 1 : 0);
-            clsComm.commData.WCellVoltageDiffEnable = (byte)(cbWarnningEnable5.Checked ? 1 : 0);
-            clsComm.commData.WCellOverTempEnable = (byte)(cbWarnningEnable6.Checked ? 1 : 0);
-            clsComm.commData.WCellUnderTempEnable = (byte)(cbWarnningEnable7.Checked ? 1 : 0);
-            clsComm.commData.WChargingOverCurrentEnable = (byte)(cbWarnningEnable8.Checked ? 1 : 0);
-            clsComm.commData.WDisChargingOverCurrentEnable = (byte)(cbWarnningEnable9.Checked ? 1 : 0);
-            clsComm.commData.WLowSOCEnable = (byte)(cbWarnningEnable10.Checked ? 1 : 0);
-            clsComm.commData.WLowSOHEnable = (byte)(cbWarnningEnable11.Checked ? 1 : 0);
-
-            //if (logcomm.getReady()) logInfo("Set Warnning Enabel");
-            //if (logcomm.getReady()) logInfo("WCell_OverVoltageEnable:" + clsComm.commData.WCellOverVoltageEnable);
-            //if (logcomm.getReady()) logInfo("WCell_UnderVoltageEnable:" + clsComm.commData.WCellUnderVoltageEnable);
-            //if (logcomm.getReady()) logInfo("WPack_OverVoltageEnable:" + clsComm.commData.WPackOverVoltageEnable);
-            //if (logcomm.getReady()) logInfo("WPack_UnderVoltageEnable:" + clsComm.commData.WPackUnderVoltageEnable);
-            //if (logcomm.getReady()) logInfo("WCell_VoltageDiffEnable:" + clsComm.commData.WCellVoltageDiffEnable);
-            //if (logcomm.getReady()) logInfo("WCell_OverTempEnable:" + clsComm.commData.WCellOverTempEnable);
-            //if (logcomm.getReady()) logInfo("WCell_UnderTempEnable:" + clsComm.commData.WCellUnderTempEnable);
-            //if (logcomm.getReady()) logInfo("WCharging_OverCurrentEnable:" + clsComm.commData.WChargingOverCurrentEnable);
-            //if (logcomm.getReady()) logInfo("WDisCharging_OverCurrentEnable:" + clsComm.commData.WDisChargingOverCurrentEnable);
-            //if (logcomm.getReady()) logInfo("WLow_SOCEnable:" + clsComm.commData.WLowSOCEnable);
-            //if (logcomm.getReady()) logInfo("WLow_SOHEnable:" + clsComm.commData.WLowSOHEnable);
-
-            if (logcomm.getReady()) logInfo("GUI -> BMS : Set Warnning Enable");
-
-            ClassCommunication.iCURRENT_OP = ClassCommunication.CMD_SEND_WARNNING_ENABLE;
-        }
-
-        void WarnningSetting()
-        {
-            clsComm.commData.WsetCellOverVoltage = (short)((int)cbWarnningValue1.Value * 1000);
-            clsComm.commData.WsetCellUnderVoltage = (short)cbWarnningValue2.Value;
-            clsComm.commData.WsetPackOverVoltage = (short)((int)cbWarnningValue3.Value * 100);
-            clsComm.commData.WsetPackUnderVoltage = (short)((int)cbWarnningValue4.Value * 100);
-            clsComm.commData.WsetCellVoltDiff = (short)((int)cbWarnningValue5.Value * 1000);
-            clsComm.commData.WsetCellOverTemp = (short)(((int)cbWarnningValue6.Value + 40) * 10);
-            clsComm.commData.WsetCellUnderTemp = (short)(((int)cbWarnningValue7.Value + 40) * 10);
-            clsComm.commData.WsetChargeOverCurrent = (short)cbWarnningValue8.Value;
-            clsComm.commData.WsetDischargeOverCurrent = (short)cbWarnningValue9.Value;
-            clsComm.commData.WsetLowSOC = (short)((int)cbWarnningValue10.Value * 100);
-            clsComm.commData.WsetLowSOH = (short)((int)cbWarnningValue11.Value * 100);
-                             
-            clsComm.commData.WsetCellOverVoltageRetain = (short)cbWarnningValue1.Value;
-            clsComm.commData.WsetCellUnderVoltageRetain = (short)cbWarnningValue2.Value;
-            clsComm.commData.WsetPackOverVoltageRetain = (short)cbWarnningValue3.Value;
-            clsComm.commData.WsetPackUnderVoltageRetain = (short)cbWarnningValue4.Value;
-            clsComm.commData.WsetCellVoltDiffRetain = (short)cbWarnningValue5.Value;
-            clsComm.commData.WsetCellOverTempRetain = (short)cbWarnningValue6.Value;
-            clsComm.commData.WsetCellUnderTempRetain = (short)cbWarnningValue7.Value;
-            clsComm.commData.WsetChargeOverCurrentRetain = (short)cbWarnningValue8.Value;
-            clsComm.commData.WsetDischargeOverCurrentRetain = (short)cbWarnningValue9.Value;
-            clsComm.commData.WsetLowSOCRetain = (short)cbWarnningValue10.Value;
-            clsComm.commData.WsetLowSOHRetain = (short)cbWarnningValue11.Value;
-
-            //if (logcomm.getReady()) logInfo("Set Warnning Value");
-            //if (logcomm.getReady()) logInfo("WsetCellOverVoltage:"  + clsComm.commData.WsetCellOverVoltage );
-            //if (logcomm.getReady()) logInfo("WsetCellUnderVoltage:" + clsComm.commData.WsetCellUnderVoltage);
-            //if (logcomm.getReady()) logInfo("WsetPackOverVoltage:"  + clsComm.commData.WsetPackOverVoltage );
-            //if (logcomm.getReady()) logInfo("WsetPackUnderVoltage:" + clsComm.commData.WsetPackUnderVoltage);
-            //if (logcomm.getReady()) logInfo("WsetCellVoltDiff:" + clsComm.commData.WsetCellVoltDiff);
-            //if (logcomm.getReady()) logInfo("WsetCellOverTemp:" + clsComm.commData.WsetCellOverTemp);
-            //if (logcomm.getReady()) logInfo("WsetCellUnderTemp:" + clsComm.commData.WsetCellUnderTemp);
-            //if (logcomm.getReady()) logInfo("WsetChargeOverCurrent:" + clsComm.commData.WsetChargeOverCurrent);
-            //if (logcomm.getReady()) logInfo("WsetDischargeOverCurrent:" + clsComm.commData.WsetDischargeOverCurrent);
-            //if (logcomm.getReady()) logInfo("WsetLowSOC:" + clsComm.commData.WsetLowSOC);
-            //if (logcomm.getReady()) logInfo("WsetLowSOH:" + clsComm.commData.WsetLowSOH);
-            //if (logcomm.getReady()) logInfo("WsetCellOverVoltageRetain:" + clsComm.commData.WsetCellOverVoltageRetain);
-            //if (logcomm.getReady()) logInfo("WsetCellUnderVoltage Retain:" + clsComm.commData.WsetCellUnderVoltageRetain);
-            //if (logcomm.getReady()) logInfo("WsetPackOverVoltage Retain:" + clsComm.commData.WsetPackOverVoltageRetain);
-            //if (logcomm.getReady()) logInfo("WsetPackUnderVoltage Retain:" + clsComm.commData.WsetPackUnderVoltageRetain);
-            //if (logcomm.getReady()) logInfo("WsetCellVoltDiff Retain:" + clsComm.commData.WsetCellVoltDiffRetain);
-            //if (logcomm.getReady()) logInfo("WsetCellOverTemp Retain:" + clsComm.commData.WsetCellOverTempRetain);
-            //if (logcomm.getReady()) logInfo("WsetCellUnderTemp Retain:" + clsComm.commData.WsetCellUnderTempRetain);
-            //if (logcomm.getReady()) logInfo("WsetChargeOverCurrent Retain:" + clsComm.commData.WsetChargeOverCurrentRetain);
-            //if (logcomm.getReady()) logInfo("WsetDischargeOverCurrent Retain:" + clsComm.commData.WsetDischargeOverCurrentRetain);
-            //if (logcomm.getReady()) logInfo("WsetLowSOC Retain:" + clsComm.commData.WsetLowSOCRetain);
-            //if (logcomm.getReady()) logInfo("WsetLowSOH Retain:" + clsComm.commData.WsetLowSOHRetain);
-            
-            if (logcomm.getReady()) logInfo("GUI -> BMS : Set Warnning Value and Retain Time");
-
-            ClassCommunication.iCURRENT_OP = ClassCommunication.CMD_SEND_WARNNING_SET;
-        }
-
-        void WarnningReleaseSetting()
-        {
-            clsComm.commData.WRsetCellOverVoltage = (short)((int)cbWarnningValue1.Value * 1000);
-            clsComm.commData.WRsetCellUnderVoltage = (short)((int)cbWarnningValue2.Value * 1000);
-            clsComm.commData.WRsetPackOverVoltage = (short)((int)cbWarnningValue3.Value * 100);
-            clsComm.commData.WRsetPackUnderVoltage = (short)((int)cbWarnningValue4.Value * 100);
-            clsComm.commData.WRsetCellVoltDiff = (short)((int)cbWarnningValue5.Value * 1000);
-            clsComm.commData.WRsetCellOverTemp = (short)((int)(cbWarnningValue6.Value + 40) * 10);
-            clsComm.commData.WRsetCellUnderTemp = (short)((int)(cbWarnningValue7.Value + 40) * 10);
-            clsComm.commData.WRsetChargeOverCurrent = (short)cbWarnningValue8.Value;
-            clsComm.commData.WRsetDischargeOverCurrent = (short)cbWarnningValue9.Value;
-            clsComm.commData.WRsetLowSOC = (short)((int)cbWarnningValue10.Value * 100);
-            clsComm.commData.WRsetLowSOH = (short)((int)cbWarnningValue11.Value * 100);
-                             
-            clsComm.commData.WRsetCellOverVoltageRetain      = (short)cbWarnningValue1.Value;
-            clsComm.commData.WRsetCellUnderVoltageRetain     = (short)cbWarnningValue2.Value;
-            clsComm.commData.WRsetPackOverVoltageRetain      = (short)cbWarnningValue3.Value;
-            clsComm.commData.WRsetPackUnderVoltageRetain     = (short)cbWarnningValue4.Value;
-            clsComm.commData.WRsetCellVoltDiffRetain         = (short)cbWarnningValue5.Value;
-            clsComm.commData.WRsetCellOverTempRetain         = (short)cbWarnningValue6.Value;
-            clsComm.commData.WRsetCellUnderTempRetain        = (short)cbWarnningValue7.Value;
-            clsComm.commData.WRsetChargeOverCurrentRetain    = (short)cbWarnningValue8.Value;
-            clsComm.commData.WRsetDischargeOverCurrentRetain = (short)cbWarnningValue9.Value;
-            clsComm.commData.WRsetLowSOCRetain               = (short)cbWarnningValue10.Value;
-            clsComm.commData.WRsetLowSOHRetain               = (short)cbWarnningValue11.Value;
-
-            //if (logcomm.getReady()) logInfo("Set Warnning Release");              
-            //if (logcomm.getReady()) logInfo("WRsetCellOverVoltage:"             + clsComm.commData.WRsetCellOverVoltage);
-            //if (logcomm.getReady()) logInfo("WRsetCellUnderVoltage:"            + clsComm.commData.WRsetCellUnderVoltage);
-            //if (logcomm.getReady()) logInfo("WRsetPackOverVoltage:"             + clsComm.commData.WRsetPackOverVoltage);
-            //if (logcomm.getReady()) logInfo("WRsetPackUnderVoltage:"            + clsComm.commData.WRsetPackUnderVoltage);
-            //if (logcomm.getReady()) logInfo("WRsetCellVoltDiff:"                + clsComm.commData.WRsetCellVoltDiff);
-            //if (logcomm.getReady()) logInfo("WRsetCellOverTemp:"                + clsComm.commData.WRsetCellOverTemp);
-            //if (logcomm.getReady()) logInfo("WRsetCellUnderTemp:"               + clsComm.commData.WRsetCellUnderTemp);
-            //if (logcomm.getReady()) logInfo("WRsetChargeOverCurrent:"           + clsComm.commData.WRsetChargeOverCurrent);
-            //if (logcomm.getReady()) logInfo("WRsetDischargeOverCurrent:"        + clsComm.commData.WRsetDischargeOverCurrent);
-            //if (logcomm.getReady()) logInfo("WRsetLowSOC:"                      + clsComm.commData.WRsetLowSOC);
-            //if (logcomm.getReady()) logInfo("WRsetLowSOH:"                      + clsComm.commData.WRsetLowSOH);
-            //if (logcomm.getReady()) logInfo("WRsetCellOverVoltageRetain:"       + clsComm.commData.WRsetCellOverVoltageRetain);
-            //if (logcomm.getReady()) logInfo("WRsetCellUnderVoltage Retain:"     + clsComm.commData.WRsetCellUnderVoltageRetain    );
-            //if (logcomm.getReady()) logInfo("WRsetPackOverVoltage Retain:"      + clsComm.commData.WRsetPackOverVoltageRetain     );
-            //if (logcomm.getReady()) logInfo("WRsetPackUnderVoltage Retain:"     + clsComm.commData.WRsetPackUnderVoltageRetain    );
-            //if (logcomm.getReady()) logInfo("WRsetCellVoltDiff Retain:"         + clsComm.commData.WRsetCellVoltDiffRetain        );
-            //if (logcomm.getReady()) logInfo("WRsetCellOverTemp Retain:"         + clsComm.commData.WRsetCellOverTempRetain        );
-            //if (logcomm.getReady()) logInfo("WRsetCellUnderTemp Retain:"        + clsComm.commData.WRsetCellUnderTempRetain       );
-            //if (logcomm.getReady()) logInfo("WRsetChargeOverCurrent Retain:"    + clsComm.commData.WRsetChargeOverCurrentRetain   );
-            //if (logcomm.getReady()) logInfo("WRsetDischargeOverCurrent Retain:" + clsComm.commData.WRsetDischargeOverCurrentRetain);
-            //if (logcomm.getReady()) logInfo("WRsetLowSOC Retain:"               + clsComm.commData.WRsetLowSOCRetain              );
-            //if (logcomm.getReady()) logInfo("WRsetLowSOH Retain:"               + clsComm.commData.WRsetLowSOHRetain              );
-
-            if (logcomm.getReady()) logInfo("GUI -> BMS : Set Warnning Release Value and Retain Time");
-
-            ClassCommunication.iCURRENT_OP = ClassCommunication.CMD_SEND_WARNNING_RELEASE_SET;
-        }
 
         void WarnningEnableLoad()
         {
             if (logcomm.getReady()) logInfo("GUI -> BMS : Loading Warnning Enable Value");
-            ClassCommunication.iCURRENT_OP = ClassCommunication.CMD_SEND_WARNNING_ENABLE_GET;
+            clsComm.queueSend.Enqueue(ClassCommunication.CMD_SEND_WARNNING_ENABLE_GET);
         }
 
         void WarnningLoad()
         {
             if (logcomm.getReady()) logInfo("GUI -> BMS : Loading Warnning Value");
-            ClassCommunication.iCURRENT_OP = ClassCommunication.CMD_SEND_WARNNING_GET;
+            clsComm.queueSend.Enqueue(ClassCommunication.CMD_SEND_WARNNING_GET);
         }
 
         void WarnningReleaseLoad()
         {
             if (logcomm.getReady()) logInfo("GUI -> BMS : Loading Warnning Release Value");
-            ClassCommunication.iCURRENT_OP = ClassCommunication.CMD_SEND_WARNNING_RELEASE_GET;
+            clsComm.queueSend.Enqueue(ClassCommunication.CMD_SEND_WARNNING_RELEASE_GET);
         }
 
         void ProtectEnableLoad()
         {
             if (logcomm.getReady()) logInfo("GUI -> BMS : Loading Protect Enable Value");
-            ClassCommunication.iCURRENT_OP = ClassCommunication.CMD_SEND_PROTECT_ENABLE_GET;
+            clsComm.queueSend.Enqueue(ClassCommunication.CMD_SEND_PROTECT_ENABLE_GET);
         }
 
         void ProtectLoad()
         {
             if (logcomm.getReady()) logInfo("GUI -> BMS : Loading Protect Value");
-            ClassCommunication.iCURRENT_OP = ClassCommunication.CMD_SEND_PROTECT_GET;
+            clsComm.queueSend.Enqueue(ClassCommunication.CMD_SEND_PROTECT_GET);
         }
 
         void ProtectReleaseLoad()
         {
             if (logcomm.getReady()) logInfo("GUI -> BMS : Loading Protect Release Value");
-            ClassCommunication.iCURRENT_OP = ClassCommunication.CMD_SEND_PROTECT_RELEASE_GET;
+            clsComm.queueSend.Enqueue(ClassCommunication.CMD_SEND_PROTECT_RELEASE_GET);
         }
 
         void SocSetting()
         {
             if (logcomm.getReady()) logInfo("GUI -> BMS : Set SOC Value : " + tbSetSOC.Text);
             clsComm.commData.SetSoc = (short)(Convert.ToInt16(tbSetSOC.Text) * 100);
-            ClassCommunication.iCURRENT_OP = ClassCommunication.CMD_SEND_SOC_SET;
+            clsComm.queueSend.Enqueue(ClassCommunication.CMD_SEND_SOC_SET);
         }
 
         void SohSetting()
         {
             if (logcomm.getReady()) logInfo("GUI->BMS : Set SOH Value : " + tbSetSOH.Text);
             clsComm.commData.SetSoh = (short)(Convert.ToInt16(tbSetSOH.Text) * 100);
-            ClassCommunication.iCURRENT_OP = ClassCommunication.CMD_SEND_SOH_SET;
+            clsComm.queueSend.Enqueue(ClassCommunication.CMD_SEND_SOH_SET);
         }
 
         void SocReset()
         {
             if (logcomm.getReady()) logInfo("GUI -> BMS : Reset SOC");
-            ClassCommunication.iCURRENT_OP = ClassCommunication.CMD_SEND_SOC_RESET;
+            clsComm.queueSend.Enqueue(ClassCommunication.CMD_SEND_SOC_RESET);
         }
 
         void SohReset()
         {
             if (logcomm.getReady()) logInfo("GUI -> BMS : Reset SOH");
-            ClassCommunication.iCURRENT_OP = ClassCommunication.CMD_SEND_SOH_RESET;
+            clsComm.queueSend.Enqueue(ClassCommunication.CMD_SEND_SOH_RESET);
         }
 
         void FactoryInit()
         {
             if (logcomm.getReady()) logInfo("GUI -> BMS : Reset To Factory");
-            ClassCommunication.iCURRENT_OP = ClassCommunication.CMD_FACTORY_RESET;
+            clsComm.queueSend.Enqueue(ClassCommunication.CMD_FACTORY_RESET);
         }
 
         bool isPreCommConnected = true;
@@ -1857,7 +1721,8 @@ namespace KCL_reBMS_Prj
                     btConnect.BackColor = System.Drawing.Color.LightSkyBlue;
                     lbStandbyStatus.BackColor = System.Drawing.Color.Green;
                     connecting_time = 0;
-                    ClassCommunication.iCURRENT_OP = ClassCommunication.CMD_SEND_VERSION_GET;
+                    clsComm.dtPollTimer = DateTime.Now;
+                    clsComm.queueSend.Enqueue(ClassCommunication.CMD_SEND_VERSION_GET);
                     bStartCount = false;
                 }
                 else
@@ -2178,50 +2043,50 @@ namespace KCL_reBMS_Prj
             clsComm.commData.WLowSOCEnable                   = (byte)(cbWarnningEnable10.Checked ? 1 : 0);
             clsComm.commData.WLowSOHEnable                   = (byte)(cbWarnningEnable11.Checked ? 1 : 0);
                                                              
-            clsComm.commData.WsetCellOverVoltage             = (short)cbWarnningValue1.Value;
-            clsComm.commData.WsetCellUnderVoltage            = (short)cbWarnningValue2.Value;
-            clsComm.commData.WsetPackOverVoltage             = (short)cbWarnningValue3.Value;
-            clsComm.commData.WsetPackUnderVoltage            = (short)cbWarnningValue4.Value;
-            clsComm.commData.WsetCellVoltDiff                = (short)cbWarnningValue5.Value;
+            clsComm.commData.WsetCellOverVoltage             = (ushort)cbWarnningValue1.Value;
+            clsComm.commData.WsetCellUnderVoltage            = (ushort)cbWarnningValue2.Value;
+            clsComm.commData.WsetPackOverVoltage             = (ushort)cbWarnningValue3.Value;
+            clsComm.commData.WsetPackUnderVoltage            = (ushort)cbWarnningValue4.Value;
+            clsComm.commData.WsetCellVoltDiff                = (ushort)cbWarnningValue5.Value;
             clsComm.commData.WsetCellOverTemp                = (short)cbWarnningValue6.Value;
             clsComm.commData.WsetCellUnderTemp               = (short)cbWarnningValue7.Value;
             clsComm.commData.WsetChargeOverCurrent           = (short)cbWarnningValue8.Value;
             clsComm.commData.WsetDischargeOverCurrent        = (short)cbWarnningValue9.Value;
-            clsComm.commData.WsetLowSOC                      = (short)cbWarnningValue10.Value;
-            clsComm.commData.WsetLowSOH                      = (short)cbWarnningValue11.Value;
-            clsComm.commData.WsetCellOverVoltageRetain       = (short)cbWarnningRetainTime1.Value;
-            clsComm.commData.WsetCellUnderVoltageRetain      = (short)cbWarnningRetainTime2.Value;
-            clsComm.commData.WsetPackOverVoltageRetain       = (short)cbWarnningRetainTime3.Value;
-            clsComm.commData.WsetPackUnderVoltageRetain      = (short)cbWarnningRetainTime4.Value;
-            clsComm.commData.WsetCellVoltDiffRetain          = (short)cbWarnningRetainTime5.Value;
-            clsComm.commData.WsetCellOverTempRetain          = (short)cbWarnningRetainTime6.Value;
-            clsComm.commData.WsetCellUnderTempRetain         = (short)cbWarnningRetainTime7.Value;
-            clsComm.commData.WsetChargeOverCurrentRetain     = (short)cbWarnningRetainTime8.Value;
-            clsComm.commData.WsetDischargeOverCurrentRetain  = (short)cbWarnningRetainTime9.Value;
-            clsComm.commData.WsetLowSOCRetain                = (short)cbWarnningRetainTime10.Value;
-            clsComm.commData.WsetLowSOHRetain                = (short)cbWarnningRetainTime11.Value;
-            clsComm.commData.WRsetCellOverVoltage            = (short)cbWarnningReleaseValue1.Value;
-            clsComm.commData.WRsetCellUnderVoltage           = (short)cbWarnningReleaseValue2.Value;
-            clsComm.commData.WRsetPackOverVoltage            = (short)cbWarnningReleaseValue3.Value;
-            clsComm.commData.WRsetPackUnderVoltage           = (short)cbWarnningReleaseValue4.Value;
-            clsComm.commData.WRsetCellVoltDiff               = (short)cbWarnningReleaseValue5.Value;
+            clsComm.commData.WsetLowSOC                      = (ushort)cbWarnningValue10.Value;
+            clsComm.commData.WsetLowSOH                      = (ushort)cbWarnningValue11.Value;
+            clsComm.commData.WsetCellOverVoltageRetain       = (ushort)cbWarnningRetainTime1.Value;
+            clsComm.commData.WsetCellUnderVoltageRetain      = (ushort)cbWarnningRetainTime2.Value;
+            clsComm.commData.WsetPackOverVoltageRetain       = (ushort)cbWarnningRetainTime3.Value;
+            clsComm.commData.WsetPackUnderVoltageRetain      = (ushort)cbWarnningRetainTime4.Value;
+            clsComm.commData.WsetCellVoltDiffRetain          = (ushort)cbWarnningRetainTime5.Value;
+            clsComm.commData.WsetCellOverTempRetain          = (ushort)cbWarnningRetainTime6.Value;
+            clsComm.commData.WsetCellUnderTempRetain         = (ushort)cbWarnningRetainTime7.Value;
+            clsComm.commData.WsetChargeOverCurrentRetain     = (ushort)cbWarnningRetainTime8.Value;
+            clsComm.commData.WsetDischargeOverCurrentRetain  = (ushort)cbWarnningRetainTime9.Value;
+            clsComm.commData.WsetLowSOCRetain                = (ushort)cbWarnningRetainTime10.Value;
+            clsComm.commData.WsetLowSOHRetain                = (ushort)cbWarnningRetainTime11.Value;
+            clsComm.commData.WRsetCellOverVoltage            = (ushort)cbWarnningReleaseValue1.Value;
+            clsComm.commData.WRsetCellUnderVoltage           = (ushort)cbWarnningReleaseValue2.Value;
+            clsComm.commData.WRsetPackOverVoltage            = (ushort)cbWarnningReleaseValue3.Value;
+            clsComm.commData.WRsetPackUnderVoltage           = (ushort)cbWarnningReleaseValue4.Value;
+            clsComm.commData.WRsetCellVoltDiff               = (ushort)cbWarnningReleaseValue5.Value;
             clsComm.commData.WRsetCellOverTemp               = (short)cbWarnningReleaseValue6.Value;
             clsComm.commData.WRsetCellUnderTemp              = (short)cbWarnningReleaseValue7.Value;
             clsComm.commData.WRsetChargeOverCurrent          = (short)cbWarnningReleaseValue8.Value;
             clsComm.commData.WRsetDischargeOverCurrent       = (short)cbWarnningReleaseValue9.Value;
-            clsComm.commData.WRsetLowSOC                     = (short)cbWarnningReleaseValue10.Value;
-            clsComm.commData.WRsetLowSOH                     = (short)cbWarnningReleaseValue11.Value;
-            clsComm.commData.WRsetCellOverVoltageRetain      = (short)cbWarnningReleaseRetain1.Value;
-            clsComm.commData.WRsetCellUnderVoltageRetain     = (short)cbWarnningReleaseRetain2.Value;
-            clsComm.commData.WRsetPackOverVoltageRetain      = (short)cbWarnningReleaseRetain3.Value;
-            clsComm.commData.WRsetPackUnderVoltageRetain     = (short)cbWarnningReleaseRetain4.Value;
-            clsComm.commData.WRsetCellVoltDiffRetain         = (short)cbWarnningReleaseRetain5.Value;
-            clsComm.commData.WRsetCellOverTempRetain         = (short)cbWarnningReleaseRetain6.Value;
-            clsComm.commData.WRsetCellUnderTempRetain        = (short)cbWarnningReleaseRetain7.Value;
-            clsComm.commData.WRsetChargeOverCurrentRetain    = (short)cbWarnningReleaseRetain8.Value;
-            clsComm.commData.WRsetDischargeOverCurrentRetain = (short)cbWarnningReleaseRetain9.Value;
-            clsComm.commData.WRsetLowSOCRetain               = (short)cbWarnningReleaseRetain10.Value;
-            clsComm.commData.WRsetLowSOHRetain               = (short)cbWarnningReleaseRetain11.Value;
+            clsComm.commData.WRsetLowSOC                     = (ushort)cbWarnningReleaseValue10.Value;
+            //clsComm.commData.WRsetLowSOH                     = (ushort)cbWarnningReleaseValue11.Value;
+            clsComm.commData.WRsetCellOverVoltageRetain      = (ushort)cbWarnningReleaseRetain1.Value;
+            clsComm.commData.WRsetCellUnderVoltageRetain     = (ushort)cbWarnningReleaseRetain2.Value;
+            clsComm.commData.WRsetPackOverVoltageRetain      = (ushort)cbWarnningReleaseRetain3.Value;
+            clsComm.commData.WRsetPackUnderVoltageRetain     = (ushort)cbWarnningReleaseRetain4.Value;
+            clsComm.commData.WRsetCellVoltDiffRetain         = (ushort)cbWarnningReleaseRetain5.Value;
+            clsComm.commData.WRsetCellOverTempRetain         = (ushort)cbWarnningReleaseRetain6.Value;
+            clsComm.commData.WRsetCellUnderTempRetain        = (ushort)cbWarnningReleaseRetain7.Value;
+            clsComm.commData.WRsetChargeOverCurrentRetain    = (ushort)cbWarnningReleaseRetain8.Value;
+            clsComm.commData.WRsetDischargeOverCurrentRetain = (ushort)cbWarnningReleaseRetain9.Value;
+            clsComm.commData.WRsetLowSOCRetain               = (ushort)cbWarnningReleaseRetain10.Value;
+            //clsComm.commData.WRsetLowSOHRetain               = (ushort)cbWarnningReleaseRetain11.Value;
 
             iniFile.IniWriteValue("Warnning", "WCellOverVoltageEnable         ", clsComm.commData.WCellOverVoltageEnable.ToString());
             iniFile.IniWriteValue("Warnning", "WCellUnderVoltageEnable        ", clsComm.commData.WCellUnderVoltageEnable.ToString());
@@ -2266,7 +2131,7 @@ namespace KCL_reBMS_Prj
             iniFile.IniWriteValue("Warnning", "WRsetChargeOverCurrent         ", clsComm.commData.WRsetChargeOverCurrent.ToString());
             iniFile.IniWriteValue("Warnning", "WRsetDischargeOverCurrent      ", clsComm.commData.WRsetDischargeOverCurrent.ToString());
             iniFile.IniWriteValue("Warnning", "WRsetLowSOC                    ", clsComm.commData.WRsetLowSOC.ToString());
-            iniFile.IniWriteValue("Warnning", "WRsetLowSOH                    ", clsComm.commData.WRsetLowSOH.ToString());
+            //iniFile.IniWriteValue("Warnning", "WRsetLowSOH                    ", clsComm.commData.WRsetLowSOH.ToString());
             iniFile.IniWriteValue("Warnning", "WRsetCellOverVoltageRetain     ", clsComm.commData.WRsetCellOverVoltageRetain.ToString());
             iniFile.IniWriteValue("Warnning", "WRsetCellUnderVoltageRetain    ", clsComm.commData.WRsetCellUnderVoltageRetain.ToString());
             iniFile.IniWriteValue("Warnning", "WRsetPackOverVoltageRetain     ", clsComm.commData.WRsetPackOverVoltageRetain.ToString());
@@ -2277,7 +2142,7 @@ namespace KCL_reBMS_Prj
             iniFile.IniWriteValue("Warnning", "WRsetChargeOverCurrentRetain   ", clsComm.commData.WRsetChargeOverCurrentRetain.ToString());
             iniFile.IniWriteValue("Warnning", "WRsetDischargeOverCurrentRetain", clsComm.commData.WRsetDischargeOverCurrentRetain.ToString());
             iniFile.IniWriteValue("Warnning", "WRsetLowSOCRetain              ", clsComm.commData.WRsetLowSOCRetain.ToString());
-            iniFile.IniWriteValue("Warnning", "WRsetLowSOHRetain              ", clsComm.commData.WRsetLowSOHRetain.ToString());
+            //iniFile.IniWriteValue("Warnning", "WRsetLowSOHRetain              ", clsComm.commData.WRsetLowSOHRetain.ToString());
             logInfo("[PC]Save warnning config data");
         }
 
@@ -2385,7 +2250,7 @@ namespace KCL_reBMS_Prj
             cbWarnningReleaseValue8.Value = Int16.Parse(strWRsetChargeOverCurrent);
             cbWarnningReleaseValue9.Value = Int16.Parse(strWRsetDischargeOverCurrent);
             cbWarnningReleaseValue10.Value = Int16.Parse(strWRsetLowSOC);
-            cbWarnningReleaseValue11.Value = Int16.Parse(strWRsetLowSOH);
+ 
             cbWarnningReleaseRetain1.Value = Int16.Parse(strWRsetCellOverVoltageRetain);
             cbWarnningReleaseRetain2.Value = Int16.Parse(strWRsetCellUnderVoltageRetain);
             cbWarnningReleaseRetain3.Value = Int16.Parse(strWRsetPackOverVoltageRetain);
@@ -2396,7 +2261,6 @@ namespace KCL_reBMS_Prj
             cbWarnningReleaseRetain8.Value = Int16.Parse(strWRsetChargeOverCurrentRetain);
             cbWarnningReleaseRetain9.Value = Int16.Parse(strWRsetDischargeOverCurrentRetain);
             cbWarnningReleaseRetain10.Value = Int16.Parse(strWRsetLowSOCRetain);
-            cbWarnningReleaseRetain11.Value = Int16.Parse(strWRsetLowSOHRetain);
 
             logInfo("[PC]Load warnning config data");
         }
@@ -2419,11 +2283,11 @@ namespace KCL_reBMS_Prj
             clsComm.commData.PCurrentSensorErrorEnable = (byte)(cbProtectEnable12.Checked ? 1 : 0);
             clsComm.commData.PInterLockErrorEnable = (byte)(cbProtectEnable13.Checked ? 1 : 0);
             clsComm.commData.PSelfSystemDiagEnable = (byte)(cbProtectEnable13.Checked ? 1 : 0);
-            clsComm.commData.PsetCellOverVoltage = (short)cbProtectValue1.Value;
-            clsComm.commData.PsetCellUnderVoltage = (short)cbProtectValue2.Value;
-            clsComm.commData.PsetPackOverVoltage = (short)cbProtectValue3.Value;
-            clsComm.commData.PsetPackUnderVoltage = (short)cbProtectValue4.Value;
-            clsComm.commData.PsetCellVoltDiff = (short)cbProtectValue5.Value;
+            clsComm.commData.PsetCellOverVoltage = (ushort)cbProtectValue1.Value;
+            clsComm.commData.PsetCellUnderVoltage = (ushort)cbProtectValue2.Value;
+            clsComm.commData.PsetPackOverVoltage = (ushort)cbProtectValue3.Value;
+            clsComm.commData.PsetPackUnderVoltage = (ushort)cbProtectValue4.Value;
+            clsComm.commData.PsetCellVoltDiff = (ushort)cbProtectValue5.Value;
             clsComm.commData.PsetCellOverTemp = (short)cbProtectValue6.Value;
             clsComm.commData.PsetCellUnderTemp = (short)cbProtectValue7.Value;
             clsComm.commData.PsetChargeOverCurrent = (short)cbProtectValue8.Value;
@@ -2433,25 +2297,25 @@ namespace KCL_reBMS_Prj
             clsComm.commData.PsetCurrentSensorError = (short)cbProtectValue12.Value;
             clsComm.commData.PsetInterLockError = (short)cbProtectValue13.Value;
             clsComm.commData.PsetSelfSystemDiag = (short)cbProtectValue14.Value;
-            clsComm.commData.PsetCellOverVoltageRetain = (short)cbProtectRetainTime1.Value;
-            clsComm.commData.PsetCellUnderVoltageRetain = (short)cbProtectRetainTime2.Value;
-            clsComm.commData.PsetPackOverVoltageRetain = (short)cbProtectRetainTime3.Value;
-            clsComm.commData.PsetPackUnderVoltageRetain = (short)cbProtectRetainTime4.Value;
-            clsComm.commData.PsetCellVoltDiffRetain = (short)cbProtectRetainTime5.Value;
-            clsComm.commData.PsetCellOverTempRetain = (short)cbProtectRetainTime6.Value;
-            clsComm.commData.PsetCellUnderTempRetain = (short)cbProtectRetainTime7.Value;
-            clsComm.commData.PsetChargeOverCurrentRetain = (short)cbProtectRetainTime8.Value;
-            clsComm.commData.PsetDischargeOverCurrentRetain = (short)cbProtectRetainTime9.Value;
-            clsComm.commData.PsetSensingLineMeasureRetain = (short)cbProtectRetainTime10.Value;
-            clsComm.commData.PsetCommunicationErrorRetain = (short)cbProtectRetainTime11.Value;
-            clsComm.commData.PsetCurrentSensorErrorRetain = (short)cbProtectRetainTime12.Value;
-            clsComm.commData.PsetInterLockErrorRetain = (short)cbProtectRetainTime13.Value;
-            clsComm.commData.PsetSelfSystemDiagRetain = (short)cbProtectRetainTime14.Value;
-            clsComm.commData.PRsetCellOverVoltage = (short)cbProtectReleaseValue1.Value;
-            clsComm.commData.PRsetCellUnderVoltage = (short)cbProtectReleaseValue2.Value;
-            clsComm.commData.PRsetPackOverVoltage = (short)cbProtectReleaseValue3.Value;
-            clsComm.commData.PRsetPackUnderVoltage = (short)cbProtectReleaseValue4.Value;
-            clsComm.commData.PRsetCellVoltDiff = (short)cbProtectReleaseValue5.Value;
+            clsComm.commData.PsetCellOverVoltageRetain = (ushort)cbProtectRetainTime1.Value;
+            clsComm.commData.PsetCellUnderVoltageRetain = (ushort)cbProtectRetainTime2.Value;
+            clsComm.commData.PsetPackOverVoltageRetain = (ushort)cbProtectRetainTime3.Value;
+            clsComm.commData.PsetPackUnderVoltageRetain = (ushort)cbProtectRetainTime4.Value;
+            clsComm.commData.PsetCellVoltDiffRetain = (ushort)cbProtectRetainTime5.Value;
+            clsComm.commData.PsetCellOverTempRetain = (ushort)cbProtectRetainTime6.Value;
+            clsComm.commData.PsetCellUnderTempRetain = (ushort)cbProtectRetainTime7.Value;
+            clsComm.commData.PsetChargeOverCurrentRetain = (ushort)cbProtectRetainTime8.Value;
+            clsComm.commData.PsetDischargeOverCurrentRetain = (ushort)cbProtectRetainTime9.Value;
+            clsComm.commData.PsetSensingLineMeasureRetain = (ushort)cbProtectRetainTime10.Value;
+            clsComm.commData.PsetCommunicationErrorRetain = (ushort)cbProtectRetainTime11.Value;
+            clsComm.commData.PsetCurrentSensorErrorRetain = (ushort)cbProtectRetainTime12.Value;
+            clsComm.commData.PsetInterLockErrorRetain = (ushort)cbProtectRetainTime13.Value;
+            clsComm.commData.PsetSelfSystemDiagRetain = (ushort)cbProtectRetainTime14.Value;
+            clsComm.commData.PRsetCellOverVoltage = (ushort)cbProtectReleaseValue1.Value;
+            clsComm.commData.PRsetCellUnderVoltage = (ushort)cbProtectReleaseValue2.Value;
+            clsComm.commData.PRsetPackOverVoltage = (ushort)cbProtectReleaseValue3.Value;
+            clsComm.commData.PRsetPackUnderVoltage = (ushort)cbProtectReleaseValue4.Value;
+            clsComm.commData.PRsetCellVoltDiff = (ushort)cbProtectReleaseValue5.Value;
             clsComm.commData.PRsetCellOverTemp = (short)cbProtectReleaseValue6.Value;
             clsComm.commData.PRsetCellUnderTemp = (short)cbProtectReleaseValue7.Value;
             clsComm.commData.PRsetChargeOverCurrent = (short)cbProtectReleaseValue8.Value;
@@ -2461,20 +2325,20 @@ namespace KCL_reBMS_Prj
             clsComm.commData.PRsetCurrentSensorError = (short)cbProtectReleaseValue12.Value;
             clsComm.commData.PRsetInterLockError = (short)cbProtectReleaseValue13.Value;
             clsComm.commData.PRsetSelfSystemDiag = (short)cbProtectReleaseValue14.Value;
-            clsComm.commData.PRsetCellOverVoltageRetain = (short)cbProtectReleaseRetain1.Value;
-            clsComm.commData.PRsetCellUnderVoltageRetain = (short)cbProtectReleaseRetain2.Value;
-            clsComm.commData.PRsetPackOverVoltageRetain = (short)cbProtectReleaseRetain3.Value;
-            clsComm.commData.PRsetPackUnderVoltageRetain = (short)cbProtectReleaseRetain4.Value;
-            clsComm.commData.PRsetCellVoltDiffRetain = (short)cbProtectReleaseRetain5.Value;
-            clsComm.commData.PRsetCellOverTempRetain = (short)cbProtectReleaseRetain6.Value;
-            clsComm.commData.PRsetCellUnderTempRetain = (short)cbProtectReleaseRetain7.Value;
-            clsComm.commData.PRsetChargeOverCurrentRetain = (short)cbProtectReleaseRetain8.Value;
-            clsComm.commData.PRsetDischargeOverCurrentRetain = (short)cbProtectReleaseRetain9.Value;
-            clsComm.commData.PRsetSensingLineMeasureRetain = (short)cbProtectReleaseRetain10.Value;
-            clsComm.commData.PRsetCommunicationErrorRetain = (short)cbProtectReleaseRetain11.Value;
-            clsComm.commData.PRsetCurrentSensorErrorRetain = (short)cbProtectReleaseRetain12.Value;
-            clsComm.commData.PRsetInterLockErrorRetain = (short)cbProtectReleaseRetain13.Value;
-            clsComm.commData.PRsetSelfSystemDiagRetain = (short)cbProtectReleaseRetain14.Value;
+            clsComm.commData.PRsetCellOverVoltageRetain = (ushort)cbProtectReleaseRetain1.Value;
+            clsComm.commData.PRsetCellUnderVoltageRetain = (ushort)cbProtectReleaseRetain2.Value;
+            clsComm.commData.PRsetPackOverVoltageRetain = (ushort)cbProtectReleaseRetain3.Value;
+            clsComm.commData.PRsetPackUnderVoltageRetain = (ushort)cbProtectReleaseRetain4.Value;
+            clsComm.commData.PRsetCellVoltDiffRetain = (ushort)cbProtectReleaseRetain5.Value;
+            clsComm.commData.PRsetCellOverTempRetain = (ushort)cbProtectReleaseRetain6.Value;
+            clsComm.commData.PRsetCellUnderTempRetain = (ushort)cbProtectReleaseRetain7.Value;
+            clsComm.commData.PRsetChargeOverCurrentRetain = (ushort)cbProtectReleaseRetain8.Value;
+            clsComm.commData.PRsetDischargeOverCurrentRetain = (ushort)cbProtectReleaseRetain9.Value;
+            clsComm.commData.PRsetSensingLineMeasureRetain = (ushort)cbProtectReleaseRetain10.Value;
+            clsComm.commData.PRsetCommunicationErrorRetain = (ushort)cbProtectReleaseRetain11.Value;
+            clsComm.commData.PRsetCurrentSensorErrorRetain = (ushort)cbProtectReleaseRetain12.Value;
+            clsComm.commData.PRsetInterLockErrorRetain = (ushort)cbProtectReleaseRetain13.Value;
+            clsComm.commData.PRsetSelfSystemDiagRetain = (ushort)cbProtectReleaseRetain14.Value;
 
             iniFile.IniWriteValue("Protect", "PCellOverVoltageEnable         ", clsComm.commData.PCellOverVoltageEnable.ToString());
             iniFile.IniWriteValue("Protect", "PCellUnderVoltageEnable        ", clsComm.commData.PCellUnderVoltageEnable.ToString());

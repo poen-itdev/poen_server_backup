@@ -823,9 +823,9 @@ namespace KCL_reBMS_Prj
             byData[iIndex++] = 0x01;//byte)(commData.WRsetDischargeOverCurrent & 0xff);                        //24
             byData[iIndex++] = 0x01;//byte)((commData.WRsetLowSOC >> 8) & 0xff);                               //25
             byData[iIndex++] = 0x01;//byte)(commData.WRsetLowSOC & 0xff);                                      //26
-            byData[iIndex++] = 0x01;//byte)((commData.WRsetLowSOH >> 8) & 0xff);                               //27
-            byData[iIndex++] = 0x01;//byte)(commData.WRsetLowSOH & 0xff);                                      //28
-            byData[iIndex++] = 0x00;//x00;                                                                     //29
+            //byData[iIndex++] = 0x01;//byte)((commData.WRsetLowSOH >> 8) & 0xff);                               //27
+            //byData[iIndex++] = 0x01;//byte)(commData.WRsetLowSOH & 0xff);                                      //28
+            byData[iIndex++] = 0x01;//0x01;                                                                     //29
             byData[iIndex++] = 0x01;//byte)((commData.WRsetCellOverVoltageRetain >> 8) & 0xff);                //30
             byData[iIndex++] = 0x01;//byte)(commData.WRsetCellOverVoltageRetain & 0xff);                       //31
             byData[iIndex++] = 0x01;//byte)((commData.WRsetCellUnderVoltageRetain >> 8) & 0xff);               //32
@@ -846,8 +846,8 @@ namespace KCL_reBMS_Prj
             byData[iIndex++] = 0x01;//byte)(commData.WRsetDischargeOverCurrentRetain & 0xff);                  //47
             byData[iIndex++] = 0x01;//byte)((commData.WRsetLowSOCRetain >> 8) & 0xff);                         //48
             byData[iIndex++] = 0x01;//byte)(commData.WRsetLowSOCRetain & 0xff);                                //49
-            byData[iIndex++] = 0x01;//byte)((commData.WRsetLowSOHRetain >> 8) & 0xff);                         //50
-            byData[iIndex++] = 0x01;//(byte)(commData.WRsetLowSOHRetain & 0xff);                                //51
+            //byData[iIndex++] = 0x01;//byte)((commData.WRsetLowSOHRetain >> 8) & 0xff);                         //50
+            //byData[iIndex++] = 0x01;//(byte)(commData.WRsetLowSOHRetain & 0xff);                                //51
             byData[2] = (byte)(((iIndex - 4) >> 8) & 0x00FF);
             byData[3] = (byte)((iIndex - 4) & 0x00FF);
             byte crc = clsCm.ComputeCRC8(ref byData, iIndex);
@@ -960,7 +960,7 @@ namespace KCL_reBMS_Prj
             byData[iIndex++] = 0x01; //byte)commData.PsetCurrentSensorError;                                   //27
             byData[iIndex++] = 0x01; //byte)commData.PsetInterLockError;                                       //28
             byData[iIndex++] = 0x01; //byte)commData.PsetSelfSystemDiag;                                       //29
-            byData[iIndex++] = 0x03; //x00;                                                                    //30
+            byData[iIndex++] = 0x01; //x00;                                                                    //30
             byData[iIndex++] = 0x01; //byte)((commData.PsetCellOverVoltageRetain >> 8) & 0xff);                //31
             byData[iIndex++] = 0x01; //byte)(commData.PsetCellOverVoltageRetain & 0xff);                       //32
             byData[iIndex++] = 0x01; //byte)((commData.PsetCellUnderVoltageRetain >> 8) & 0xff);               //33
@@ -1052,7 +1052,7 @@ namespace KCL_reBMS_Prj
             byData[iIndex++] = 0x01; //(byte)commData.PRsetCurrentSensorError;                                  //27
             byData[iIndex++] = 0x01; //(byte)commData.PRsetInterLockError;                                      //28
             byData[iIndex++] = 0x01; //(byte)commData.PRsetSelfSystemDiag;                                      //29
-            byData[iIndex++] = 0x03; //0x00;                                                                    //30
+            byData[iIndex++] = 0x01; //0x00;                                                                    //30
             byData[iIndex++] = 0x01; //(byte)((commData.PRsetCellOverVoltageRetain >> 8) & 0xff);               //31
             byData[iIndex++] = 0x01; //(byte)(commData.PRsetCellOverVoltageRetain & 0xff);                      //32
             byData[iIndex++] = 0x01; //(byte)((commData.PRsetCellUnderVoltageRetain >> 8) & 0xff);              //33

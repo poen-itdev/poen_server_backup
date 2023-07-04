@@ -30,9 +30,9 @@ namespace KCL_reBMS_Prj
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.pbPoenLogo = new System.Windows.Forms.PictureBox();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
@@ -284,7 +284,6 @@ namespace KCL_reBMS_Prj
             this.cbWarnningReleaseValue4 = new System.Windows.Forms.NumericUpDown();
             this.cbWarnningReleaseValue3 = new System.Windows.Forms.NumericUpDown();
             this.label187 = new System.Windows.Forms.Label();
-            this.cbWarnningReleaseValue11 = new System.Windows.Forms.NumericUpDown();
             this.cbWarnningReleaseValue10 = new System.Windows.Forms.NumericUpDown();
             this.cbWarnningReleaseValue9 = new System.Windows.Forms.NumericUpDown();
             this.cbWarnningReleaseValue8 = new System.Windows.Forms.NumericUpDown();
@@ -298,7 +297,6 @@ namespace KCL_reBMS_Prj
             this.lbPOVWR = new System.Windows.Forms.Label();
             this.lbPLVWR = new System.Windows.Forms.Label();
             this.cbWarnningReleaseRetain10 = new System.Windows.Forms.NumericUpDown();
-            this.cbWarnningReleaseRetain11 = new System.Windows.Forms.NumericUpDown();
             this.label185 = new System.Windows.Forms.Label();
             this.cbWarnningReleaseRetain9 = new System.Windows.Forms.NumericUpDown();
             this.cbWarnningReleaseRetain8 = new System.Windows.Forms.NumericUpDown();
@@ -308,7 +306,6 @@ namespace KCL_reBMS_Prj
             this.cbWarnningReleaseRetain2 = new System.Windows.Forms.NumericUpDown();
             this.cbWarnningReleaseRetain1 = new System.Windows.Forms.NumericUpDown();
             this.lbLSOCWR = new System.Windows.Forms.Label();
-            this.lbLSOHWR = new System.Windows.Forms.Label();
             this.lbCDWR = new System.Windows.Forms.Label();
             this.lbCOVWR = new System.Windows.Forms.Label();
             this.lbCLVWR = new System.Windows.Forms.Label();
@@ -458,7 +455,6 @@ namespace KCL_reBMS_Prj
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cbWarnningReleaseValue4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbWarnningReleaseValue3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cbWarnningReleaseValue11)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbWarnningReleaseValue10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbWarnningReleaseValue9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbWarnningReleaseValue8)).BeginInit();
@@ -470,7 +466,6 @@ namespace KCL_reBMS_Prj
             ((System.ComponentModel.ISupportInitialize)(this.cbWarnningReleaseRetain4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbWarnningReleaseRetain3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbWarnningReleaseRetain10)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cbWarnningReleaseRetain11)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbWarnningReleaseRetain9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbWarnningReleaseRetain8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbWarnningReleaseRetain7)).BeginInit();
@@ -1091,7 +1086,7 @@ namespace KCL_reBMS_Prj
             this.cbProtectReleaseValue14.Size = new System.Drawing.Size(120, 26);
             this.cbProtectReleaseValue14.TabIndex = 83;
             this.cbProtectReleaseValue14.Value = new decimal(new int[] {
-            500,
+            1,
             0,
             0,
             0});
@@ -1118,7 +1113,7 @@ namespace KCL_reBMS_Prj
             this.cbProtectReleaseValue13.Size = new System.Drawing.Size(120, 26);
             this.cbProtectReleaseValue13.TabIndex = 82;
             this.cbProtectReleaseValue13.Value = new decimal(new int[] {
-            500,
+            1,
             0,
             0,
             0});
@@ -1155,7 +1150,7 @@ namespace KCL_reBMS_Prj
             this.cbProtectReleaseValue12.Size = new System.Drawing.Size(120, 26);
             this.cbProtectReleaseValue12.TabIndex = 80;
             this.cbProtectReleaseValue12.Value = new decimal(new int[] {
-            500,
+            1,
             0,
             0,
             0});
@@ -1202,7 +1197,7 @@ namespace KCL_reBMS_Prj
             this.cbProtectReleaseValue4.Size = new System.Drawing.Size(120, 26);
             this.cbProtectReleaseValue4.TabIndex = 54;
             this.cbProtectReleaseValue4.Value = new decimal(new int[] {
-            3000,
+            295,
             0,
             0,
             0});
@@ -1229,10 +1224,10 @@ namespace KCL_reBMS_Prj
             this.cbProtectReleaseValue3.Size = new System.Drawing.Size(120, 26);
             this.cbProtectReleaseValue3.TabIndex = 55;
             this.cbProtectReleaseValue3.Value = new decimal(new int[] {
-            4200,
+            4106,
             0,
             0,
-            0});
+            65536});
             // 
             // label189
             // 
@@ -1264,7 +1259,7 @@ namespace KCL_reBMS_Prj
             this.cbProtectReleaseValue11.Size = new System.Drawing.Size(120, 26);
             this.cbProtectReleaseValue11.TabIndex = 52;
             this.cbProtectReleaseValue11.Value = new decimal(new int[] {
-            500,
+            1,
             0,
             0,
             0});
@@ -1291,7 +1286,7 @@ namespace KCL_reBMS_Prj
             this.cbProtectReleaseValue10.Size = new System.Drawing.Size(120, 26);
             this.cbProtectReleaseValue10.TabIndex = 51;
             this.cbProtectReleaseValue10.Value = new decimal(new int[] {
-            500,
+            1,
             0,
             0,
             0});
@@ -1318,10 +1313,10 @@ namespace KCL_reBMS_Prj
             this.cbProtectReleaseValue9.Size = new System.Drawing.Size(120, 26);
             this.cbProtectReleaseValue9.TabIndex = 44;
             this.cbProtectReleaseValue9.Value = new decimal(new int[] {
-            500,
+            170,
             0,
             0,
-            0});
+            -2147483648});
             // 
             // cbProtectReleaseValue8
             // 
@@ -1340,7 +1335,7 @@ namespace KCL_reBMS_Prj
             this.cbProtectReleaseValue8.Size = new System.Drawing.Size(120, 26);
             this.cbProtectReleaseValue8.TabIndex = 45;
             this.cbProtectReleaseValue8.Value = new decimal(new int[] {
-            500,
+            95,
             0,
             0,
             0});
@@ -1362,10 +1357,10 @@ namespace KCL_reBMS_Prj
             this.cbProtectReleaseValue7.Size = new System.Drawing.Size(120, 26);
             this.cbProtectReleaseValue7.TabIndex = 46;
             this.cbProtectReleaseValue7.Value = new decimal(new int[] {
-            500,
+            22,
             0,
             0,
-            0});
+            -2147483648});
             // 
             // cbProtectReleaseValue6
             // 
@@ -1384,7 +1379,7 @@ namespace KCL_reBMS_Prj
             this.cbProtectReleaseValue6.Size = new System.Drawing.Size(120, 26);
             this.cbProtectReleaseValue6.TabIndex = 47;
             this.cbProtectReleaseValue6.Value = new decimal(new int[] {
-            500,
+            47,
             0,
             0,
             0});
@@ -1406,7 +1401,7 @@ namespace KCL_reBMS_Prj
             this.cbProtectReleaseValue5.Size = new System.Drawing.Size(120, 26);
             this.cbProtectReleaseValue5.TabIndex = 48;
             this.cbProtectReleaseValue5.Value = new decimal(new int[] {
-            500,
+            450,
             0,
             0,
             0});
@@ -1433,7 +1428,7 @@ namespace KCL_reBMS_Prj
             this.cbProtectReleaseValue2.Size = new System.Drawing.Size(120, 26);
             this.cbProtectReleaseValue2.TabIndex = 49;
             this.cbProtectReleaseValue2.Value = new decimal(new int[] {
-            3000,
+            3010,
             0,
             0,
             0});
@@ -1460,7 +1455,7 @@ namespace KCL_reBMS_Prj
             this.cbProtectReleaseValue1.Size = new System.Drawing.Size(120, 26);
             this.cbProtectReleaseValue1.TabIndex = 50;
             this.cbProtectReleaseValue1.Value = new decimal(new int[] {
-            4200,
+            4190,
             0,
             0,
             0});
@@ -1957,7 +1952,7 @@ namespace KCL_reBMS_Prj
             this.cbProtectRetainTime13.Size = new System.Drawing.Size(120, 26);
             this.cbProtectRetainTime13.TabIndex = 66;
             this.cbProtectRetainTime13.Value = new decimal(new int[] {
-            10000,
+            10,
             0,
             0,
             0});
@@ -1980,7 +1975,7 @@ namespace KCL_reBMS_Prj
             this.cbProtectRetainTime14.Size = new System.Drawing.Size(120, 26);
             this.cbProtectRetainTime14.TabIndex = 65;
             this.cbProtectRetainTime14.Value = new decimal(new int[] {
-            10000,
+            10,
             0,
             0,
             0});
@@ -2003,7 +1998,7 @@ namespace KCL_reBMS_Prj
             this.cbProtectRetainTime12.Size = new System.Drawing.Size(120, 26);
             this.cbProtectRetainTime12.TabIndex = 64;
             this.cbProtectRetainTime12.Value = new decimal(new int[] {
-            10000,
+            10,
             0,
             0,
             0});
@@ -2029,11 +2024,6 @@ namespace KCL_reBMS_Prj
             this.cbProtectValue14.Name = "cbProtectValue14";
             this.cbProtectValue14.Size = new System.Drawing.Size(120, 26);
             this.cbProtectValue14.TabIndex = 63;
-            this.cbProtectValue14.Value = new decimal(new int[] {
-            500,
-            0,
-            0,
-            0});
             // 
             // cbProtectValue13
             // 
@@ -2056,11 +2046,6 @@ namespace KCL_reBMS_Prj
             this.cbProtectValue13.Name = "cbProtectValue13";
             this.cbProtectValue13.Size = new System.Drawing.Size(120, 26);
             this.cbProtectValue13.TabIndex = 62;
-            this.cbProtectValue13.Value = new decimal(new int[] {
-            500,
-            0,
-            0,
-            0});
             // 
             // lbCommunicationErrorP
             // 
@@ -2093,11 +2078,6 @@ namespace KCL_reBMS_Prj
             this.cbProtectValue12.Name = "cbProtectValue12";
             this.cbProtectValue12.Size = new System.Drawing.Size(120, 26);
             this.cbProtectValue12.TabIndex = 60;
-            this.cbProtectValue12.Value = new decimal(new int[] {
-            500,
-            0,
-            0,
-            0});
             // 
             // lbSLMP
             // 
@@ -2137,7 +2117,7 @@ namespace KCL_reBMS_Prj
             this.cbProtectRetainTime4.Size = new System.Drawing.Size(120, 26);
             this.cbProtectRetainTime4.TabIndex = 56;
             this.cbProtectRetainTime4.Value = new decimal(new int[] {
-            10000,
+            3000,
             0,
             0,
             0});
@@ -2160,7 +2140,7 @@ namespace KCL_reBMS_Prj
             this.cbProtectRetainTime3.Size = new System.Drawing.Size(120, 26);
             this.cbProtectRetainTime3.TabIndex = 57;
             this.cbProtectRetainTime3.Value = new decimal(new int[] {
-            10000,
+            3000,
             0,
             0,
             0});
@@ -2183,7 +2163,7 @@ namespace KCL_reBMS_Prj
             this.cbProtectRetainTime10.Size = new System.Drawing.Size(120, 26);
             this.cbProtectRetainTime10.TabIndex = 55;
             this.cbProtectRetainTime10.Value = new decimal(new int[] {
-            10000,
+            10,
             0,
             0,
             0});
@@ -2206,7 +2186,7 @@ namespace KCL_reBMS_Prj
             this.cbProtectRetainTime11.Size = new System.Drawing.Size(120, 26);
             this.cbProtectRetainTime11.TabIndex = 54;
             this.cbProtectRetainTime11.Value = new decimal(new int[] {
-            10000,
+            10,
             0,
             0,
             0});
@@ -2238,7 +2218,7 @@ namespace KCL_reBMS_Prj
             this.cbProtectRetainTime9.Size = new System.Drawing.Size(120, 26);
             this.cbProtectRetainTime9.TabIndex = 46;
             this.cbProtectRetainTime9.Value = new decimal(new int[] {
-            10000,
+            10,
             0,
             0,
             0});
@@ -2261,7 +2241,7 @@ namespace KCL_reBMS_Prj
             this.cbProtectRetainTime8.Size = new System.Drawing.Size(120, 26);
             this.cbProtectRetainTime8.TabIndex = 47;
             this.cbProtectRetainTime8.Value = new decimal(new int[] {
-            10000,
+            10,
             0,
             0,
             0});
@@ -2284,7 +2264,7 @@ namespace KCL_reBMS_Prj
             this.cbProtectRetainTime7.Size = new System.Drawing.Size(120, 26);
             this.cbProtectRetainTime7.TabIndex = 48;
             this.cbProtectRetainTime7.Value = new decimal(new int[] {
-            10000,
+            3000,
             0,
             0,
             0});
@@ -2307,7 +2287,7 @@ namespace KCL_reBMS_Prj
             this.cbProtectRetainTime6.Size = new System.Drawing.Size(120, 26);
             this.cbProtectRetainTime6.TabIndex = 49;
             this.cbProtectRetainTime6.Value = new decimal(new int[] {
-            10000,
+            3000,
             0,
             0,
             0});
@@ -2330,7 +2310,7 @@ namespace KCL_reBMS_Prj
             this.cbProtectRetainTime5.Size = new System.Drawing.Size(120, 26);
             this.cbProtectRetainTime5.TabIndex = 50;
             this.cbProtectRetainTime5.Value = new decimal(new int[] {
-            10000,
+            3000,
             0,
             0,
             0});
@@ -2353,7 +2333,7 @@ namespace KCL_reBMS_Prj
             this.cbProtectRetainTime2.Size = new System.Drawing.Size(120, 26);
             this.cbProtectRetainTime2.TabIndex = 51;
             this.cbProtectRetainTime2.Value = new decimal(new int[] {
-            10000,
+            3000,
             0,
             0,
             0});
@@ -2376,7 +2356,7 @@ namespace KCL_reBMS_Prj
             this.cbProtectRetainTime1.Size = new System.Drawing.Size(120, 26);
             this.cbProtectRetainTime1.TabIndex = 52;
             this.cbProtectRetainTime1.Value = new decimal(new int[] {
-            10000,
+            3000,
             0,
             0,
             0});
@@ -2419,7 +2399,7 @@ namespace KCL_reBMS_Prj
             this.cbProtectValue4.Size = new System.Drawing.Size(120, 26);
             this.cbProtectValue4.TabIndex = 40;
             this.cbProtectValue4.Value = new decimal(new int[] {
-            3000,
+            294,
             0,
             0,
             0});
@@ -2446,10 +2426,10 @@ namespace KCL_reBMS_Prj
             this.cbProtectValue3.Size = new System.Drawing.Size(120, 26);
             this.cbProtectValue3.TabIndex = 41;
             this.cbProtectValue3.Value = new decimal(new int[] {
-            4200,
+            4116,
             0,
             0,
-            0});
+            65536});
             // 
             // lbPLVP
             // 
@@ -2582,19 +2562,9 @@ namespace KCL_reBMS_Prj
             this.cbProtectValue11.Name = "cbProtectValue11";
             this.cbProtectValue11.Size = new System.Drawing.Size(120, 26);
             this.cbProtectValue11.TabIndex = 13;
-            this.cbProtectValue11.Value = new decimal(new int[] {
-            500,
-            0,
-            0,
-            0});
             // 
             // cbProtectValue10
             // 
-            this.cbProtectValue10.Increment = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
             this.cbProtectValue10.Location = new System.Drawing.Point(247, 358);
             this.cbProtectValue10.Maximum = new decimal(new int[] {
             1000000,
@@ -2609,11 +2579,6 @@ namespace KCL_reBMS_Prj
             this.cbProtectValue10.Name = "cbProtectValue10";
             this.cbProtectValue10.Size = new System.Drawing.Size(120, 26);
             this.cbProtectValue10.TabIndex = 11;
-            this.cbProtectValue10.Value = new decimal(new int[] {
-            500,
-            0,
-            0,
-            0});
             // 
             // cbProtectValue9
             // 
@@ -2637,10 +2602,10 @@ namespace KCL_reBMS_Prj
             this.cbProtectValue9.Size = new System.Drawing.Size(120, 26);
             this.cbProtectValue9.TabIndex = 8;
             this.cbProtectValue9.Value = new decimal(new int[] {
-            500,
+            180,
             0,
             0,
-            0});
+            -2147483648});
             // 
             // cbProtectValue8
             // 
@@ -2659,7 +2624,7 @@ namespace KCL_reBMS_Prj
             this.cbProtectValue8.Size = new System.Drawing.Size(120, 26);
             this.cbProtectValue8.TabIndex = 8;
             this.cbProtectValue8.Value = new decimal(new int[] {
-            500,
+            100,
             0,
             0,
             0});
@@ -2681,10 +2646,10 @@ namespace KCL_reBMS_Prj
             this.cbProtectValue7.Size = new System.Drawing.Size(120, 26);
             this.cbProtectValue7.TabIndex = 8;
             this.cbProtectValue7.Value = new decimal(new int[] {
-            500,
+            25,
             0,
             0,
-            0});
+            -2147483648});
             // 
             // cbProtectValue6
             // 
@@ -2703,7 +2668,7 @@ namespace KCL_reBMS_Prj
             this.cbProtectValue6.Size = new System.Drawing.Size(120, 26);
             this.cbProtectValue6.TabIndex = 8;
             this.cbProtectValue6.Value = new decimal(new int[] {
-            500,
+            50,
             0,
             0,
             0});
@@ -2945,16 +2910,16 @@ namespace KCL_reBMS_Prj
             // 
             // chart1
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
+            chartArea2.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chart1.Legends.Add(legend2);
             this.chart1.Location = new System.Drawing.Point(98, 305);
             this.chart1.Name = "chart1";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chart1.Series.Add(series1);
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.chart1.Series.Add(series2);
             this.chart1.Size = new System.Drawing.Size(300, 300);
             this.chart1.TabIndex = 1;
             this.chart1.Text = "chart1";
@@ -4022,7 +3987,6 @@ namespace KCL_reBMS_Prj
             this.groupBox2.Controls.Add(this.cbWarnningReleaseValue4);
             this.groupBox2.Controls.Add(this.cbWarnningReleaseValue3);
             this.groupBox2.Controls.Add(this.label187);
-            this.groupBox2.Controls.Add(this.cbWarnningReleaseValue11);
             this.groupBox2.Controls.Add(this.cbWarnningReleaseValue10);
             this.groupBox2.Controls.Add(this.cbWarnningReleaseValue9);
             this.groupBox2.Controls.Add(this.cbWarnningReleaseValue8);
@@ -4036,7 +4000,6 @@ namespace KCL_reBMS_Prj
             this.groupBox2.Controls.Add(this.lbPOVWR);
             this.groupBox2.Controls.Add(this.lbPLVWR);
             this.groupBox2.Controls.Add(this.cbWarnningReleaseRetain10);
-            this.groupBox2.Controls.Add(this.cbWarnningReleaseRetain11);
             this.groupBox2.Controls.Add(this.label185);
             this.groupBox2.Controls.Add(this.cbWarnningReleaseRetain9);
             this.groupBox2.Controls.Add(this.cbWarnningReleaseRetain8);
@@ -4046,7 +4009,6 @@ namespace KCL_reBMS_Prj
             this.groupBox2.Controls.Add(this.cbWarnningReleaseRetain2);
             this.groupBox2.Controls.Add(this.cbWarnningReleaseRetain1);
             this.groupBox2.Controls.Add(this.lbLSOCWR);
-            this.groupBox2.Controls.Add(this.lbLSOHWR);
             this.groupBox2.Controls.Add(this.lbCDWR);
             this.groupBox2.Controls.Add(this.lbCOVWR);
             this.groupBox2.Controls.Add(this.lbCLVWR);
@@ -4084,10 +4046,10 @@ namespace KCL_reBMS_Prj
             this.cbWarnningReleaseValue4.Size = new System.Drawing.Size(120, 26);
             this.cbWarnningReleaseValue4.TabIndex = 63;
             this.cbWarnningReleaseValue4.Value = new decimal(new int[] {
-            3000,
+            30478,
             0,
             0,
-            0});
+            131072});
             // 
             // cbWarnningReleaseValue3
             // 
@@ -4111,10 +4073,10 @@ namespace KCL_reBMS_Prj
             this.cbWarnningReleaseValue3.Size = new System.Drawing.Size(120, 26);
             this.cbWarnningReleaseValue3.TabIndex = 64;
             this.cbWarnningReleaseValue3.Value = new decimal(new int[] {
-            4200,
+            40572,
             0,
             0,
-            0});
+            131072});
             // 
             // label187
             // 
@@ -4123,33 +4085,6 @@ namespace KCL_reBMS_Prj
             this.label187.Size = new System.Drawing.Size(125, 22);
             this.label187.TabIndex = 62;
             this.label187.Text = "Value";
-            // 
-            // cbWarnningReleaseValue11
-            // 
-            this.cbWarnningReleaseValue11.Increment = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
-            this.cbWarnningReleaseValue11.Location = new System.Drawing.Point(289, 399);
-            this.cbWarnningReleaseValue11.Maximum = new decimal(new int[] {
-            1000000,
-            0,
-            0,
-            0});
-            this.cbWarnningReleaseValue11.Minimum = new decimal(new int[] {
-            1000000,
-            0,
-            0,
-            -2147483648});
-            this.cbWarnningReleaseValue11.Name = "cbWarnningReleaseValue11";
-            this.cbWarnningReleaseValue11.Size = new System.Drawing.Size(120, 26);
-            this.cbWarnningReleaseValue11.TabIndex = 61;
-            this.cbWarnningReleaseValue11.Value = new decimal(new int[] {
-            500,
-            0,
-            0,
-            0});
             // 
             // cbWarnningReleaseValue10
             // 
@@ -4173,7 +4108,7 @@ namespace KCL_reBMS_Prj
             this.cbWarnningReleaseValue10.Size = new System.Drawing.Size(120, 26);
             this.cbWarnningReleaseValue10.TabIndex = 60;
             this.cbWarnningReleaseValue10.Value = new decimal(new int[] {
-            500,
+            25,
             0,
             0,
             0});
@@ -4200,10 +4135,10 @@ namespace KCL_reBMS_Prj
             this.cbWarnningReleaseValue9.Size = new System.Drawing.Size(120, 26);
             this.cbWarnningReleaseValue9.TabIndex = 53;
             this.cbWarnningReleaseValue9.Value = new decimal(new int[] {
-            500,
+            140,
             0,
             0,
-            0});
+            -2147483648});
             // 
             // cbWarnningReleaseValue8
             // 
@@ -4222,10 +4157,10 @@ namespace KCL_reBMS_Prj
             this.cbWarnningReleaseValue8.Size = new System.Drawing.Size(120, 26);
             this.cbWarnningReleaseValue8.TabIndex = 54;
             this.cbWarnningReleaseValue8.Value = new decimal(new int[] {
-            20,
+            85,
             0,
             0,
-            -2147483648});
+            0});
             // 
             // cbWarnningReleaseValue7
             // 
@@ -4244,10 +4179,10 @@ namespace KCL_reBMS_Prj
             this.cbWarnningReleaseValue7.Size = new System.Drawing.Size(120, 26);
             this.cbWarnningReleaseValue7.TabIndex = 55;
             this.cbWarnningReleaseValue7.Value = new decimal(new int[] {
-            20,
+            17,
             0,
             0,
-            0});
+            -2147483648});
             // 
             // cbWarnningReleaseValue6
             // 
@@ -4266,10 +4201,10 @@ namespace KCL_reBMS_Prj
             this.cbWarnningReleaseValue6.Size = new System.Drawing.Size(120, 26);
             this.cbWarnningReleaseValue6.TabIndex = 56;
             this.cbWarnningReleaseValue6.Value = new decimal(new int[] {
-            20,
+            42,
             0,
             0,
-            -2147483648});
+            0});
             // 
             // cbWarnningReleaseValue5
             // 
@@ -4288,7 +4223,7 @@ namespace KCL_reBMS_Prj
             this.cbWarnningReleaseValue5.Size = new System.Drawing.Size(120, 26);
             this.cbWarnningReleaseValue5.TabIndex = 57;
             this.cbWarnningReleaseValue5.Value = new decimal(new int[] {
-            50,
+            350,
             0,
             0,
             0});
@@ -4315,7 +4250,7 @@ namespace KCL_reBMS_Prj
             this.cbWarnningReleaseValue2.Size = new System.Drawing.Size(120, 26);
             this.cbWarnningReleaseValue2.TabIndex = 58;
             this.cbWarnningReleaseValue2.Value = new decimal(new int[] {
-            3000,
+            3110,
             0,
             0,
             0});
@@ -4342,7 +4277,7 @@ namespace KCL_reBMS_Prj
             this.cbWarnningReleaseValue1.Size = new System.Drawing.Size(120, 26);
             this.cbWarnningReleaseValue1.TabIndex = 59;
             this.cbWarnningReleaseValue1.Value = new decimal(new int[] {
-            4200,
+            4140,
             0,
             0,
             0});
@@ -4396,7 +4331,7 @@ namespace KCL_reBMS_Prj
             // lbPOVWR
             // 
             this.lbPOVWR.Font = new System.Drawing.Font("함초롬바탕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lbPOVWR.Location = new System.Drawing.Point(85, 132);
+            this.lbPOVWR.Location = new System.Drawing.Point(57, 129);
             this.lbPOVWR.Name = "lbPOVWR";
             this.lbPOVWR.Size = new System.Drawing.Size(198, 25);
             this.lbPOVWR.TabIndex = 26;
@@ -4406,7 +4341,7 @@ namespace KCL_reBMS_Prj
             // lbPLVWR
             // 
             this.lbPLVWR.Font = new System.Drawing.Font("함초롬바탕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lbPLVWR.Location = new System.Drawing.Point(85, 166);
+            this.lbPLVWR.Location = new System.Drawing.Point(57, 163);
             this.lbPLVWR.Name = "lbPLVWR";
             this.lbPLVWR.Size = new System.Drawing.Size(210, 25);
             this.lbPLVWR.TabIndex = 25;
@@ -4431,29 +4366,6 @@ namespace KCL_reBMS_Prj
             this.cbWarnningReleaseRetain10.Size = new System.Drawing.Size(120, 26);
             this.cbWarnningReleaseRetain10.TabIndex = 24;
             this.cbWarnningReleaseRetain10.Value = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-            // 
-            // cbWarnningReleaseRetain11
-            // 
-            this.cbWarnningReleaseRetain11.Location = new System.Drawing.Point(450, 399);
-            this.cbWarnningReleaseRetain11.Maximum = new decimal(new int[] {
-            1000000,
-            0,
-            0,
-            0});
-            this.cbWarnningReleaseRetain11.Minimum = new decimal(new int[] {
-            1000000,
-            0,
-            0,
-            -2147483648});
-            this.cbWarnningReleaseRetain11.Name = "cbWarnningReleaseRetain11";
-            this.cbWarnningReleaseRetain11.ReadOnly = true;
-            this.cbWarnningReleaseRetain11.Size = new System.Drawing.Size(120, 26);
-            this.cbWarnningReleaseRetain11.TabIndex = 23;
-            this.cbWarnningReleaseRetain11.Value = new decimal(new int[] {
             10000,
             0,
             0,
@@ -4631,27 +4543,17 @@ namespace KCL_reBMS_Prj
             // lbLSOCWR
             // 
             this.lbLSOCWR.Font = new System.Drawing.Font("함초롬바탕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lbLSOCWR.Location = new System.Drawing.Point(86, 368);
+            this.lbLSOCWR.Location = new System.Drawing.Point(58, 365);
             this.lbLSOCWR.Name = "lbLSOCWR";
-            this.lbLSOCWR.Size = new System.Drawing.Size(184, 25);
+            this.lbLSOCWR.Size = new System.Drawing.Size(197, 25);
             this.lbLSOCWR.TabIndex = 12;
             this.lbLSOCWR.Text = "Low SOC";
             this.lbLSOCWR.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // lbLSOHWR
-            // 
-            this.lbLSOHWR.Font = new System.Drawing.Font("함초롬바탕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lbLSOHWR.Location = new System.Drawing.Point(86, 400);
-            this.lbLSOHWR.Name = "lbLSOHWR";
-            this.lbLSOHWR.Size = new System.Drawing.Size(184, 25);
-            this.lbLSOHWR.TabIndex = 11;
-            this.lbLSOHWR.Text = "Low SOH";
-            this.lbLSOHWR.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
             // lbCDWR
             // 
             this.lbCDWR.Font = new System.Drawing.Font("함초롬바탕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lbCDWR.Location = new System.Drawing.Point(85, 202);
+            this.lbCDWR.Location = new System.Drawing.Point(57, 199);
             this.lbCDWR.Name = "lbCDWR";
             this.lbCDWR.Size = new System.Drawing.Size(185, 25);
             this.lbCDWR.TabIndex = 1;
@@ -4661,7 +4563,7 @@ namespace KCL_reBMS_Prj
             // lbCOVWR
             // 
             this.lbCOVWR.Font = new System.Drawing.Font("함초롬바탕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lbCOVWR.Location = new System.Drawing.Point(85, 64);
+            this.lbCOVWR.Location = new System.Drawing.Point(57, 61);
             this.lbCOVWR.Name = "lbCOVWR";
             this.lbCOVWR.Size = new System.Drawing.Size(185, 25);
             this.lbCOVWR.TabIndex = 7;
@@ -4671,7 +4573,7 @@ namespace KCL_reBMS_Prj
             // lbCLVWR
             // 
             this.lbCLVWR.Font = new System.Drawing.Font("함초롬바탕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lbCLVWR.Location = new System.Drawing.Point(85, 98);
+            this.lbCLVWR.Location = new System.Drawing.Point(57, 95);
             this.lbCLVWR.Name = "lbCLVWR";
             this.lbCLVWR.Size = new System.Drawing.Size(198, 25);
             this.lbCLVWR.TabIndex = 6;
@@ -4681,7 +4583,7 @@ namespace KCL_reBMS_Prj
             // lbCOTWR
             // 
             this.lbCOTWR.Font = new System.Drawing.Font("함초롬바탕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lbCOTWR.Location = new System.Drawing.Point(85, 236);
+            this.lbCOTWR.Location = new System.Drawing.Point(57, 233);
             this.lbCOTWR.Name = "lbCOTWR";
             this.lbCOTWR.Size = new System.Drawing.Size(185, 25);
             this.lbCOTWR.TabIndex = 5;
@@ -4691,7 +4593,7 @@ namespace KCL_reBMS_Prj
             // lbCLTWR
             // 
             this.lbCLTWR.Font = new System.Drawing.Font("함초롬바탕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lbCLTWR.Location = new System.Drawing.Point(85, 271);
+            this.lbCLTWR.Location = new System.Drawing.Point(57, 268);
             this.lbCLTWR.Name = "lbCLTWR";
             this.lbCLTWR.Size = new System.Drawing.Size(185, 25);
             this.lbCLTWR.TabIndex = 4;
@@ -4701,9 +4603,9 @@ namespace KCL_reBMS_Prj
             // lbCOAWR
             // 
             this.lbCOAWR.Font = new System.Drawing.Font("함초롬바탕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lbCOAWR.Location = new System.Drawing.Point(85, 305);
+            this.lbCOAWR.Location = new System.Drawing.Point(57, 302);
             this.lbCOAWR.Name = "lbCOAWR";
-            this.lbCOAWR.Size = new System.Drawing.Size(185, 25);
+            this.lbCOAWR.Size = new System.Drawing.Size(226, 25);
             this.lbCOAWR.TabIndex = 3;
             this.lbCOAWR.Text = "Charging Over Current(A)";
             this.lbCOAWR.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -4711,9 +4613,9 @@ namespace KCL_reBMS_Prj
             // lbDOAWR
             // 
             this.lbDOAWR.Font = new System.Drawing.Font("함초롬바탕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lbDOAWR.Location = new System.Drawing.Point(85, 339);
+            this.lbDOAWR.Location = new System.Drawing.Point(57, 336);
             this.lbDOAWR.Name = "lbDOAWR";
-            this.lbDOAWR.Size = new System.Drawing.Size(185, 25);
+            this.lbDOAWR.Size = new System.Drawing.Size(226, 25);
             this.lbDOAWR.TabIndex = 2;
             this.lbDOAWR.Text = "DisChargingOverCurren(A)";
             this.lbDOAWR.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -4822,6 +4724,11 @@ namespace KCL_reBMS_Prj
             this.cbWarnningValue4.Name = "cbWarnningValue4";
             this.cbWarnningValue4.Size = new System.Drawing.Size(120, 26);
             this.cbWarnningValue4.TabIndex = 49;
+            this.cbWarnningValue4.Value = new decimal(new int[] {
+            3038,
+            0,
+            0,
+            65536});
             // 
             // cbWarnningValue3
             // 
@@ -4844,6 +4751,11 @@ namespace KCL_reBMS_Prj
             this.cbWarnningValue3.Name = "cbWarnningValue3";
             this.cbWarnningValue3.Size = new System.Drawing.Size(120, 26);
             this.cbWarnningValue3.TabIndex = 50;
+            this.cbWarnningValue3.Value = new decimal(new int[] {
+            4067,
+            0,
+            0,
+            65536});
             // 
             // lbPLVW
             // 
@@ -4953,7 +4865,7 @@ namespace KCL_reBMS_Prj
             this.cbWarnningRetainTime4.Size = new System.Drawing.Size(120, 26);
             this.cbWarnningRetainTime4.TabIndex = 27;
             this.cbWarnningRetainTime4.Value = new decimal(new int[] {
-            10000,
+            3000,
             0,
             0,
             0});
@@ -4986,7 +4898,7 @@ namespace KCL_reBMS_Prj
             this.cbWarnningRetainTime3.Size = new System.Drawing.Size(120, 26);
             this.cbWarnningRetainTime3.TabIndex = 28;
             this.cbWarnningRetainTime3.Value = new decimal(new int[] {
-            10000,
+            3000,
             0,
             0,
             0});
@@ -5012,6 +4924,11 @@ namespace KCL_reBMS_Prj
             this.cbWarnningValue11.Name = "cbWarnningValue11";
             this.cbWarnningValue11.Size = new System.Drawing.Size(120, 26);
             this.cbWarnningValue11.TabIndex = 13;
+            this.cbWarnningValue11.Value = new decimal(new int[] {
+            85,
+            0,
+            0,
+            0});
             // 
             // cbWarnningValue10
             // 
@@ -5034,6 +4951,11 @@ namespace KCL_reBMS_Prj
             this.cbWarnningValue10.Name = "cbWarnningValue10";
             this.cbWarnningValue10.Size = new System.Drawing.Size(120, 26);
             this.cbWarnningValue10.TabIndex = 11;
+            this.cbWarnningValue10.Value = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
             // 
             // lbLSOCW
             // 
@@ -5066,6 +4988,11 @@ namespace KCL_reBMS_Prj
             this.cbWarnningValue9.Name = "cbWarnningValue9";
             this.cbWarnningValue9.Size = new System.Drawing.Size(120, 26);
             this.cbWarnningValue9.TabIndex = 8;
+            this.cbWarnningValue9.Value = new decimal(new int[] {
+            150,
+            0,
+            0,
+            -2147483648});
             // 
             // cbWarnningValue8
             // 
@@ -5084,10 +5011,10 @@ namespace KCL_reBMS_Prj
             this.cbWarnningValue8.Size = new System.Drawing.Size(120, 26);
             this.cbWarnningValue8.TabIndex = 8;
             this.cbWarnningValue8.Value = new decimal(new int[] {
-            20,
+            90,
             0,
             0,
-            -2147483648});
+            0});
             // 
             // cbWarnningValue7
             // 
@@ -5105,6 +5032,11 @@ namespace KCL_reBMS_Prj
             this.cbWarnningValue7.Name = "cbWarnningValue7";
             this.cbWarnningValue7.Size = new System.Drawing.Size(120, 26);
             this.cbWarnningValue7.TabIndex = 8;
+            this.cbWarnningValue7.Value = new decimal(new int[] {
+            20,
+            0,
+            0,
+            -2147483648});
             // 
             // cbWarnningValue6
             // 
@@ -5123,10 +5055,10 @@ namespace KCL_reBMS_Prj
             this.cbWarnningValue6.Size = new System.Drawing.Size(120, 26);
             this.cbWarnningValue6.TabIndex = 8;
             this.cbWarnningValue6.Value = new decimal(new int[] {
-            20,
+            45,
             0,
             0,
-            -2147483648});
+            0});
             // 
             // cbWarnningValue5
             // 
@@ -5144,6 +5076,11 @@ namespace KCL_reBMS_Prj
             this.cbWarnningValue5.Name = "cbWarnningValue5";
             this.cbWarnningValue5.Size = new System.Drawing.Size(120, 26);
             this.cbWarnningValue5.TabIndex = 8;
+            this.cbWarnningValue5.Value = new decimal(new int[] {
+            400,
+            0,
+            0,
+            0});
             // 
             // cbWarnningValue2
             // 
@@ -5166,6 +5103,11 @@ namespace KCL_reBMS_Prj
             this.cbWarnningValue2.Name = "cbWarnningValue2";
             this.cbWarnningValue2.Size = new System.Drawing.Size(120, 26);
             this.cbWarnningValue2.TabIndex = 8;
+            this.cbWarnningValue2.Value = new decimal(new int[] {
+            3100,
+            0,
+            0,
+            0});
             // 
             // cbWarnningRetainTime10
             // 
@@ -5185,7 +5127,7 @@ namespace KCL_reBMS_Prj
             this.cbWarnningRetainTime10.Size = new System.Drawing.Size(120, 26);
             this.cbWarnningRetainTime10.TabIndex = 14;
             this.cbWarnningRetainTime10.Value = new decimal(new int[] {
-            10000,
+            3000,
             0,
             0,
             0});
@@ -5211,6 +5153,11 @@ namespace KCL_reBMS_Prj
             this.cbWarnningValue1.Name = "cbWarnningValue1";
             this.cbWarnningValue1.Size = new System.Drawing.Size(120, 26);
             this.cbWarnningValue1.TabIndex = 8;
+            this.cbWarnningValue1.Value = new decimal(new int[] {
+            4150,
+            0,
+            0,
+            0});
             // 
             // cbWarnningRetainTime11
             // 
@@ -5230,7 +5177,7 @@ namespace KCL_reBMS_Prj
             this.cbWarnningRetainTime11.Size = new System.Drawing.Size(120, 26);
             this.cbWarnningRetainTime11.TabIndex = 13;
             this.cbWarnningRetainTime11.Value = new decimal(new int[] {
-            10000,
+            3000,
             0,
             0,
             0});
@@ -5292,7 +5239,7 @@ namespace KCL_reBMS_Prj
             this.cbWarnningRetainTime9.Size = new System.Drawing.Size(120, 26);
             this.cbWarnningRetainTime9.TabIndex = 8;
             this.cbWarnningRetainTime9.Value = new decimal(new int[] {
-            10000,
+            10,
             0,
             0,
             0});
@@ -5325,7 +5272,7 @@ namespace KCL_reBMS_Prj
             this.cbWarnningRetainTime8.Size = new System.Drawing.Size(120, 26);
             this.cbWarnningRetainTime8.TabIndex = 8;
             this.cbWarnningRetainTime8.Value = new decimal(new int[] {
-            10000,
+            10,
             0,
             0,
             0});
@@ -5368,7 +5315,7 @@ namespace KCL_reBMS_Prj
             this.cbWarnningRetainTime7.Size = new System.Drawing.Size(120, 26);
             this.cbWarnningRetainTime7.TabIndex = 8;
             this.cbWarnningRetainTime7.Value = new decimal(new int[] {
-            10000,
+            3000,
             0,
             0,
             0});
@@ -5401,7 +5348,7 @@ namespace KCL_reBMS_Prj
             this.cbWarnningRetainTime1.Size = new System.Drawing.Size(120, 26);
             this.cbWarnningRetainTime1.TabIndex = 8;
             this.cbWarnningRetainTime1.Value = new decimal(new int[] {
-            10000,
+            3000,
             0,
             0,
             0});
@@ -5424,7 +5371,7 @@ namespace KCL_reBMS_Prj
             this.cbWarnningRetainTime6.Size = new System.Drawing.Size(120, 26);
             this.cbWarnningRetainTime6.TabIndex = 8;
             this.cbWarnningRetainTime6.Value = new decimal(new int[] {
-            10000,
+            3000,
             0,
             0,
             0});
@@ -5447,7 +5394,7 @@ namespace KCL_reBMS_Prj
             this.cbWarnningRetainTime2.Size = new System.Drawing.Size(120, 26);
             this.cbWarnningRetainTime2.TabIndex = 8;
             this.cbWarnningRetainTime2.Value = new decimal(new int[] {
-            10000,
+            3000,
             0,
             0,
             0});
@@ -5470,7 +5417,7 @@ namespace KCL_reBMS_Prj
             this.cbWarnningRetainTime5.Size = new System.Drawing.Size(120, 26);
             this.cbWarnningRetainTime5.TabIndex = 8;
             this.cbWarnningRetainTime5.Value = new decimal(new int[] {
-            10000,
+            3000,
             0,
             0,
             0});
@@ -5674,7 +5621,6 @@ namespace KCL_reBMS_Prj
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.cbWarnningReleaseValue4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbWarnningReleaseValue3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cbWarnningReleaseValue11)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbWarnningReleaseValue10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbWarnningReleaseValue9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbWarnningReleaseValue8)).EndInit();
@@ -5686,7 +5632,6 @@ namespace KCL_reBMS_Prj
             ((System.ComponentModel.ISupportInitialize)(this.cbWarnningReleaseRetain4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbWarnningReleaseRetain3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbWarnningReleaseRetain10)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cbWarnningReleaseRetain11)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbWarnningReleaseRetain9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbWarnningReleaseRetain8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbWarnningReleaseRetain7)).EndInit();
@@ -5930,7 +5875,6 @@ namespace KCL_reBMS_Prj
         private System.Windows.Forms.NumericUpDown cbWarnningReleaseValue4;
         private System.Windows.Forms.NumericUpDown cbWarnningReleaseValue3;
         private System.Windows.Forms.Label label187;
-        private System.Windows.Forms.NumericUpDown cbWarnningReleaseValue11;
         private System.Windows.Forms.NumericUpDown cbWarnningReleaseValue10;
         private System.Windows.Forms.NumericUpDown cbWarnningReleaseValue9;
         private System.Windows.Forms.NumericUpDown cbWarnningReleaseValue8;
@@ -5944,7 +5888,6 @@ namespace KCL_reBMS_Prj
         private System.Windows.Forms.Label lbPOVWR;
         private System.Windows.Forms.Label lbPLVWR;
         private System.Windows.Forms.NumericUpDown cbWarnningReleaseRetain10;
-        private System.Windows.Forms.NumericUpDown cbWarnningReleaseRetain11;
         private System.Windows.Forms.Label label185;
         private System.Windows.Forms.NumericUpDown cbWarnningReleaseRetain9;
         private System.Windows.Forms.NumericUpDown cbWarnningReleaseRetain8;
@@ -5954,7 +5897,6 @@ namespace KCL_reBMS_Prj
         private System.Windows.Forms.NumericUpDown cbWarnningReleaseRetain2;
         private System.Windows.Forms.NumericUpDown cbWarnningReleaseRetain1;
         private System.Windows.Forms.Label lbLSOCWR;
-        private System.Windows.Forms.Label lbLSOHWR;
         private System.Windows.Forms.Label lbCDWR;
         private System.Windows.Forms.Label lbCOVWR;
         private System.Windows.Forms.Label lbCLVWR;

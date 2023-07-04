@@ -64,7 +64,7 @@ namespace KCL_reBMS_Prj
         
         DateTime dtTimer = DateTime.Now;
         const int TIMEOUT = 50;
-        DateTime dtPollTimer = DateTime.Now;
+        public DateTime dtPollTimer = DateTime.Now;
         int POLL_TIME = 1000;  // 전체 Loop Time - 초기 500 //whl
 
 
@@ -146,6 +146,8 @@ namespace KCL_reBMS_Prj
         Packet_ RcvPkt;
         Packet_ SndPkt;
 
+        public Queue<int> queueSend;
+
 
         void RcvPktVariableInit() // Packet구조체의 초기화 입니다.
         {
@@ -184,6 +186,8 @@ namespace KCL_reBMS_Prj
             RcvPktVariableInit();
             RcvVariableInit();
             SndPktVarialbeInit();
+
+            queueSend = new Queue<int>();
         }
 
         // 시리얼 설정
@@ -235,17 +239,20 @@ namespace KCL_reBMS_Prj
                     while (!isStopThread)
                     {
                         POLL_TIME = commData.iMonitoringCycleTime;
-                        Console.Write(clsCm.GetElepsedTime(dtPollTimer) + "\r\n");
+                        //Console.Write(clsCm.GetElepsedTime(dtPollTimer) + "\r\n");
                         if ((clsCm.GetElepsedTime(dtPollTimer) > POLL_TIME))
                         {
-                            iCURRENT_OP = CMD_SEND_GET_MONITORING;
+                            queueSend.Enqueue(CMD_SEND_GET_MONITORING);
+                            
                             if (iAliveCnt > 10) isCommOngoing = false;
                             else isCommOngoing = true;
                             iAliveCnt++;
                         }
 
-                        // 명령 전송
-                        switch (iCURRENT_OP)
+                        if (iCURRENT_OP == CMD_IDLE && queueSend.Count > 0) iCURRENT_OP = queueSend.Dequeue();
+
+                            // 명령 전송
+                            switch (iCURRENT_OP)
                         {
                             case CMD_IDLE:
                                 break;
@@ -923,8 +930,8 @@ namespace KCL_reBMS_Prj
             byData[iIndex++] = (byte)(commData.WRsetDischargeOverCurrent & 0xff);                        //24
             byData[iIndex++] = (byte)((commData.WRsetLowSOC >> 8) & 0xff);                               //25
             byData[iIndex++] = (byte)(commData.WRsetLowSOC & 0xff);                                      //26
-            byData[iIndex++] = (byte)((commData.WRsetLowSOH >> 8) & 0xff);                               //27
-            byData[iIndex++] = (byte)(commData.WRsetLowSOH & 0xff);                                      //28
+            //byData[iIndex++] = (byte)((commData.WRsetLowSOH >> 8) & 0xff);                               //27
+            //byData[iIndex++] = (byte)(commData.WRsetLowSOH & 0xff);                                      //28
             byData[iIndex++] = 0x00;                                                                     //29
             byData[iIndex++] = (byte)((commData.WRsetCellOverVoltageRetain >> 8) & 0xff);                //30
             byData[iIndex++] = (byte)(commData.WRsetCellOverVoltageRetain & 0xff);                       //31
@@ -946,8 +953,8 @@ namespace KCL_reBMS_Prj
             byData[iIndex++] = (byte)(commData.WRsetDischargeOverCurrentRetain & 0xff);                  //47
             byData[iIndex++] = (byte)((commData.WRsetLowSOCRetain >> 8) & 0xff);                         //48
             byData[iIndex++] = (byte)(commData.WRsetLowSOCRetain & 0xff);                                //49
-            byData[iIndex++] = (byte)((commData.WRsetLowSOHRetain >> 8) & 0xff);                         //50
-            byData[iIndex++] = (byte)(commData.WRsetLowSOHRetain & 0xff);                                //51
+            //byData[iIndex++] = (byte)((commData.WRsetLowSOHRetain >> 8) & 0xff);                         //50
+            //byData[iIndex++] = (byte)(commData.WRsetLowSOHRetain & 0xff);                                //51
             byData[2] = (byte)(((iIndex - 4) >> 8) & 0x00FF);
             byData[3] = (byte)((iIndex - 4) & 0x00FF);
             byte crc = clsCm.ComputeCRC8(ref byData, iIndex);
