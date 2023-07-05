@@ -13,7 +13,7 @@ using System.Reflection;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Net.NetworkInformation;
-
+using System.Diagnostics.Eventing.Reader;
 
 namespace KCL_reBMS_Prj
 {
@@ -142,42 +142,64 @@ namespace KCL_reBMS_Prj
                     else if (clsCommMsg.byResponseData[5] == 0X10)
                     {
                         WarnningEnableStatus(clsCommMsg.byResponseData);
-                        if (bIsLoad == false) 
+                        if (bIsLoad == false)
+                        {
                             WarnningSetting();
-                        else 
+                            gbWarnningSet.BackColor = Color.Red;
+                        }
+                        else
+                        {
                             WarnningLoad();
+                        }
                     }
                     else if (clsCommMsg.byResponseData[5] == 0X11)
                     {
                         WarnningStatus(clsCommMsg.byResponseData);
-                        if(bIsLoad == false) 
+                        
+                        if (bIsLoad == false)
+                        {
                             WarnningReleaseSetting();
-                        else 
+                            gbWarnningRelease.BackColor = Color.Red;
+                        }
+                        else
                             WarnningReleaseLoad();
                     }
                     else if (clsCommMsg.byResponseData[5] == 0X12)
                     {
                         WarnningReleaseStatus(clsCommMsg.byResponseData);
+                        gbWarnningRelease.BackColor = Color.GreenYellow;
                     }
                     else if (clsCommMsg.byResponseData[5] == 0X13)
                     {
                         ProtectEnableStatus(clsCommMsg.byResponseData);
-                        if(bIsLoad == false)
+                        if (bIsLoad == false)
+                        {
                             ProtectSetting();
+                            gbProtectSet.BackColor = Color.Red;
+                        }
                         else
+                        {
                             ProtectLoad();
+                        }
                     }
                     else if (clsCommMsg.byResponseData[5] == 0X14)
                     {
                         ProtectStatus(clsCommMsg.byResponseData);
-                        if(bIsLoad == false) 
+                        gbProtectSet.BackColor = Color.GreenYellow;
+                        if (bIsLoad == false)
+                        {
                             ProtectReleaseSetting();
+                            gbProtectRelease.BackColor = Color.Red;
+                        }
                         else
+                        {
                             ProtectReleaseLoad();
+                        }
                     }
                     else if (clsCommMsg.byResponseData[5] == 0X15)
                     {
                         ProtectReleaseStatus(clsCommMsg.byResponseData);
+                        gbProtectRelease.BackColor = Color.GreenYellow;
                     }
 
                     break;
@@ -252,7 +274,7 @@ namespace KCL_reBMS_Prj
             sb.Remove(0, sb.Length);
 
             itemp = Convert.ToInt32(clsComm.commData.PVoltage); //Pack voltage
-            itemp /= 100;
+            itemp /= 10;
             if (bIsTitle == false) strDataLog += itemp + ",";
             else strDataLog += "Pack Voltage" + ",";
             sb.AppendFormat("{0:0.0} V ", itemp);
@@ -396,10 +418,26 @@ namespace KCL_reBMS_Prj
             {
                 for (int k = 0; k < ClassData.TEMPEA; k++)
                 {
+                    if(k == 3)
+                    {
+                        if (bIsTitle == false) strDataLog += "-,";
+                        else strDataLog += "T" + index + ",";
+                        index++;
+
+                        continue;
+                    }
+
                     itemp = clsComm.commData.max17841b[i].Temperature[k];
                     itemp = (itemp / 10) - 40;
-                    if (bIsTitle == false) strDataLog += itemp + ",";
-                    else strDataLog += "T" + index + ",";
+                    if (itemp > -50)
+                    {
+                        if (bIsTitle == false) strDataLog += itemp + ",";
+                        else strDataLog += "T" + index + ",";
+                    } else
+                    {
+                        if (bIsTitle == false) strDataLog += "-,";
+                        else strDataLog += "T" + index + ",";
+                    }
                     index++;
                 }
             }
@@ -449,9 +487,22 @@ namespace KCL_reBMS_Prj
 
                 for(int k = 0; k < ClassData.TEMPEA; k++)
                 {
-                    itemp = clsComm.commData.max17841b[i].Temperature[k];
-                    itemp = (itemp / 10) - 40;
-                    sb.AppendFormat("{0:0} ℃", itemp);
+                    if (k == 3)
+                    {
+                        sb.AppendFormat(" - ℃");
+                    }
+                    else
+                    {
+                        itemp = clsComm.commData.max17841b[i].Temperature[k];
+                        itemp = (itemp / 10) - 40;
+                        if (itemp > -50)
+                        {
+                            sb.AppendFormat("{0:0} ℃", itemp);
+                        } else
+                        {
+                            sb.AppendFormat("- ℃");
+                        }
+                    }
                     if (fc != null)
                     {
                         detailForm.set_Temper((byte)i, (byte)k, sb.ToString());
@@ -482,28 +533,52 @@ namespace KCL_reBMS_Prj
 
             itemp = Convert.ToInt32(clsComm.commData.max17841b[Clicked_CMUbtn].Temperature[0]);
             itemp = (itemp / 10) - 40; 
-            sb.AppendFormat("{0:0} ℃ ", itemp);
-            lbTemp1Value.Text = sb.ToString();
-            sb.Remove(0, sb.Length);
+            if(itemp > -50) {
+                sb.AppendFormat("{0:0} ℃ ", itemp);
+                lbTemp1Value.Text = sb.ToString();
+                sb.Remove(0, sb.Length);
+            } else {
+                sb.AppendFormat("- ℃ ");
+                lbTemp1Value.Text = sb.ToString();
+                sb.Remove(0, sb.Length);
+            }
 
             //Temp 2
             itemp = Convert.ToInt32(clsComm.commData.max17841b[Clicked_CMUbtn].Temperature[1]);
             itemp = (itemp / 10) - 40;
-            sb.AppendFormat("{0:0} ℃ ", itemp);
-            lbTemp2Value.Text = sb.ToString();
-            sb.Remove(0, sb.Length);
-
+            if (itemp > -50)
+            {
+                sb.AppendFormat("{0:0} ℃ ", itemp);
+                lbTemp1Value.Text = sb.ToString();
+                sb.Remove(0, sb.Length);
+            }
+            else
+            {
+                sb.AppendFormat("- ℃ ");
+                lbTemp1Value.Text = sb.ToString();
+                sb.Remove(0, sb.Length);
+            }
+            
             //Temp 3
             itemp = Convert.ToInt32(clsComm.commData.max17841b[Clicked_CMUbtn].Temperature[2]);
             itemp = (itemp / 10) - 40;
-            sb.AppendFormat("{0:0} ℃ ", itemp);
-            lbTemp3Value.Text = sb.ToString();
-            sb.Remove(0, sb.Length);
-
+            if (itemp > -50)
+            {
+                sb.AppendFormat("{0:0} ℃ ", itemp);
+                lbTemp1Value.Text = sb.ToString();
+                sb.Remove(0, sb.Length);
+            }
+            else
+            {
+                sb.AppendFormat("- ℃ ");
+                lbTemp1Value.Text = sb.ToString();
+                sb.Remove(0, sb.Length);
+            }
+            
             //Temp 4
-            itemp = Convert.ToInt32(clsComm.commData.max17841b[Clicked_CMUbtn].Temperature[3]);
-            itemp = (itemp / 10) - 40;
-            sb.AppendFormat("{0:0} ℃ ", itemp);
+            //itemp = Convert.ToInt32(clsComm.commData.max17841b[Clicked_CMUbtn].Temperature[3]);
+            //itemp = (itemp / 10) - 40;
+            sb.AppendFormat("- ℃ ");
             lbTemp4Value.Text = sb.ToString();
             sb.Remove(0, sb.Length);
 
@@ -951,8 +1026,8 @@ namespace KCL_reBMS_Prj
 
             cbWarnningValue1.Value = clsComm.commData.WsetCellOverVoltage;
             cbWarnningValue2.Value = clsComm.commData.WsetCellUnderVoltage;
-            cbWarnningValue3.Value = clsComm.commData.WsetPackOverVoltage / 100;
-            cbWarnningValue4.Value = clsComm.commData.WsetPackUnderVoltage / 100;
+            cbWarnningValue3.Value = clsComm.commData.WsetPackOverVoltage / 10;
+            cbWarnningValue4.Value = clsComm.commData.WsetPackUnderVoltage / 10;
             cbWarnningValue5.Value = clsComm.commData.WsetCellVoltDiff;
             cbWarnningValue6.Value = (clsComm.commData.WsetCellOverTemp / 10) - 40;
             cbWarnningValue7.Value = (clsComm.commData.WsetCellUnderTemp / 10) - 40;
@@ -974,6 +1049,7 @@ namespace KCL_reBMS_Prj
             cbWarnningRetainTime11.Value = clsComm.commData.WsetLowSOHRetain;
 
             logInfo("BMS -> GUI : Warnning Value");
+            gbWarnningSet.BackColor = Color.GreenYellow;
         }
 
         void WarnningReleaseStatus(byte[] data)
@@ -1007,8 +1083,8 @@ namespace KCL_reBMS_Prj
 
             cbWarnningReleaseValue1.Value = clsComm.commData.WRsetCellOverVoltage;
             cbWarnningReleaseValue2.Value = clsComm.commData.WRsetCellUnderVoltage;
-            cbWarnningReleaseValue3.Value = clsComm.commData.WRsetPackOverVoltage / 100;
-            cbWarnningReleaseValue4.Value = clsComm.commData.WRsetPackUnderVoltage / 100;
+            cbWarnningReleaseValue3.Value = clsComm.commData.WRsetPackOverVoltage / 10;
+            cbWarnningReleaseValue4.Value = clsComm.commData.WRsetPackUnderVoltage / 10;
             cbWarnningReleaseValue5.Value = clsComm.commData.WRsetCellVoltDiff;
             cbWarnningReleaseValue6.Value = (clsComm.commData.WRsetCellOverTemp / 10) - 40;
             cbWarnningReleaseValue7.Value = (clsComm.commData.WRsetCellUnderTemp / 10) - 40;
@@ -1030,6 +1106,7 @@ namespace KCL_reBMS_Prj
             //cbWarnningReleaseRetain11.Value = clsComm.commData.WRsetLowSOHRetain;
 
             logInfo("BMS -> GUI : Warnning Release Value");
+            gbWarnningRelease.BackColor = Color.GreenYellow;
         }
 
         void ProtectEnableStatus(byte[] data)
@@ -1215,8 +1292,8 @@ namespace KCL_reBMS_Prj
 
             cbProtectValue1.Value = clsComm.commData.PsetCellOverVoltage;
             cbProtectValue2.Value = clsComm.commData.PsetCellUnderVoltage;
-            cbProtectValue3.Value = clsComm.commData.PsetPackOverVoltage / 100;
-            cbProtectValue4.Value = clsComm.commData.PsetPackUnderVoltage / 100;
+            cbProtectValue3.Value = clsComm.commData.PsetPackOverVoltage / 10;
+            cbProtectValue4.Value = clsComm.commData.PsetPackUnderVoltage / 10;
             cbProtectValue5.Value = clsComm.commData.PsetCellVoltDiff;
             cbProtectValue6.Value = (clsComm.commData.PsetCellOverTemp / 10) - 40; 
             cbProtectValue7.Value = (clsComm.commData.PsetCellUnderTemp / 10) - 40;
@@ -1284,8 +1361,8 @@ namespace KCL_reBMS_Prj
 
             cbProtectReleaseValue1.Value = clsComm.commData.PRsetCellOverVoltage;
             cbProtectReleaseValue2.Value = clsComm.commData.PRsetCellUnderVoltage;
-            cbProtectReleaseValue3.Value = clsComm.commData.PRsetPackOverVoltage / 100;
-            cbProtectReleaseValue4.Value = clsComm.commData.PRsetPackUnderVoltage / 100;
+            cbProtectReleaseValue3.Value = clsComm.commData.PRsetPackOverVoltage / 10;
+            cbProtectReleaseValue4.Value = clsComm.commData.PRsetPackUnderVoltage / 10;
             cbProtectReleaseValue5.Value = clsComm.commData.PRsetCellVoltDiff;
             cbProtectReleaseValue6.Value = (clsComm.commData.PRsetCellOverTemp / 10) - 40;
             cbProtectReleaseValue7.Value = (clsComm.commData.PRsetCellUnderTemp / 10) - 40;
@@ -1465,8 +1542,8 @@ namespace KCL_reBMS_Prj
         {
             clsComm.commData.WsetCellOverVoltage = (ushort)((int)cbWarnningValue1.Value);
             clsComm.commData.WsetCellUnderVoltage = (ushort)cbWarnningValue2.Value;
-            clsComm.commData.WsetPackOverVoltage = (ushort)((double)cbWarnningValue3.Value * 100);
-            clsComm.commData.WsetPackUnderVoltage = (ushort)((double)cbWarnningValue4.Value * 100);
+            clsComm.commData.WsetPackOverVoltage = (ushort)((double)cbWarnningValue3.Value * 10);
+            clsComm.commData.WsetPackUnderVoltage = (ushort)((double)cbWarnningValue4.Value * 10);
             clsComm.commData.WsetCellVoltDiff = (ushort)((int)cbWarnningValue5.Value);
             clsComm.commData.WsetCellOverTemp = (short)(((double)cbWarnningValue6.Value + 40) * 10);
             clsComm.commData.WsetCellUnderTemp = (short)(((double)cbWarnningValue7.Value + 40) * 10);
@@ -1496,8 +1573,8 @@ namespace KCL_reBMS_Prj
         {
             clsComm.commData.WRsetCellOverVoltage = (ushort)((int)cbWarnningReleaseValue1.Value);
             clsComm.commData.WRsetCellUnderVoltage = (ushort)((int)cbWarnningReleaseValue2.Value);
-            clsComm.commData.WRsetPackOverVoltage = (ushort)((double)cbWarnningReleaseValue3.Value * 100);
-            clsComm.commData.WRsetPackUnderVoltage = (ushort)((double)cbWarnningReleaseValue4.Value * 100);
+            clsComm.commData.WRsetPackOverVoltage = (ushort)((double)cbWarnningReleaseValue3.Value * 10);
+            clsComm.commData.WRsetPackUnderVoltage = (ushort)((double)cbWarnningReleaseValue4.Value * 10);
             clsComm.commData.WRsetCellVoltDiff = (ushort)((int)cbWarnningReleaseValue5.Value);
             clsComm.commData.WRsetCellOverTemp = (short)((double)(cbWarnningReleaseValue6.Value + 40) * 10);
             clsComm.commData.WRsetCellUnderTemp = (short)((double)(cbWarnningReleaseValue7.Value + 40) * 10);
@@ -1548,8 +1625,8 @@ namespace KCL_reBMS_Prj
         {
             clsComm.commData.PsetCellOverVoltage =  (ushort)((int)cbProtectValue1.Value);
             clsComm.commData.PsetCellUnderVoltage = (ushort)((int)cbProtectValue2.Value);
-            clsComm.commData.PsetPackOverVoltage = (ushort)((double)cbProtectValue3.Value * 100);
-            clsComm.commData.PsetPackUnderVoltage = (ushort)((double)cbProtectValue4.Value * 100);
+            clsComm.commData.PsetPackOverVoltage = (ushort)((double)cbProtectValue3.Value * 10);
+            clsComm.commData.PsetPackUnderVoltage = (ushort)((double)cbProtectValue4.Value * 10);
             clsComm.commData.PsetCellVoltDiff = (ushort)((int)cbProtectValue5.Value);
             clsComm.commData.PsetCellOverTemp = (short)(((double)cbProtectValue6.Value + 40) * 10);
             clsComm.commData.PsetCellUnderTemp = (short)(((double)cbProtectValue7.Value + 40) * 10);
@@ -1584,8 +1661,8 @@ namespace KCL_reBMS_Prj
         {
             clsComm.commData.PRsetCellOverVoltage = (ushort)((int)cbProtectReleaseValue1.Value);
             clsComm.commData.PRsetCellUnderVoltage = (ushort)((int)cbProtectReleaseValue2.Value); 
-            clsComm.commData.PRsetPackOverVoltage = (ushort)((double)cbProtectReleaseValue3.Value * 100);
-            clsComm.commData.PRsetPackUnderVoltage = (ushort)((double)cbProtectReleaseValue4.Value * 100);
+            clsComm.commData.PRsetPackOverVoltage = (ushort)((double)cbProtectReleaseValue3.Value * 10);
+            clsComm.commData.PRsetPackUnderVoltage = (ushort)((double)cbProtectReleaseValue4.Value * 10);
             clsComm.commData.PRsetCellVoltDiff = (ushort)((int)cbProtectReleaseValue5.Value);
             clsComm.commData.PRsetCellOverTemp = (short)(((double)cbProtectReleaseValue6.Value + 40) * 10);
             clsComm.commData.PRsetCellUnderTemp = (short)(((double)cbProtectReleaseValue7.Value + 40) * 10);
@@ -1913,24 +1990,32 @@ namespace KCL_reBMS_Prj
         private void btProtectSettingSave_Click(object sender, EventArgs e)
         {
             bIsLoad = false;
+            gbProtectSet.BackColor = Color.Red;
+            gbProtectRelease.BackColor = Color.Red;
             ProtectEnable();
         }
 
         private void btProtectSettingLoad_Click(object sender, EventArgs e)
         {
             bIsLoad = true;
+            gbProtectSet.BackColor = Color.Red;
+            gbProtectRelease.BackColor = Color.Red;
             ProtectEnableLoad();
         }
 
         private void btWarnningSettingSave_Click(object sender, EventArgs e)
         {
             bIsLoad = false;
+            gbWarnningSet.BackColor = Color.Red;
+            gbWarnningRelease.BackColor = Color.Red;
             WarnningEnable();
         }
 
         private void btWarnningSettingLoad_Click(object sender, EventArgs e)
         {
-            bIsLoad = true; 
+            bIsLoad = true;
+            gbWarnningSet.BackColor = Color.Red;
+            gbWarnningRelease.BackColor = Color.Red;
             WarnningEnableLoad();
         }
 

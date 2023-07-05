@@ -69,7 +69,7 @@ namespace KCL_reBMS_Prj
             this.panel4 = new System.Windows.Forms.Panel();
             this.btProtectSettingLoad = new System.Windows.Forms.Button();
             this.btProtectSettingSave = new System.Windows.Forms.Button();
-            this.gbRetainTime = new System.Windows.Forms.GroupBox();
+            this.gbProtectRelease = new System.Windows.Forms.GroupBox();
             this.lbinterLockErrorPR = new System.Windows.Forms.Label();
             this.lbSelfSystemDiagPR = new System.Windows.Forms.Label();
             this.cbProtectReleaseRetain13 = new System.Windows.Forms.NumericUpDown();
@@ -114,7 +114,7 @@ namespace KCL_reBMS_Prj
             this.lbCLTPR = new System.Windows.Forms.Label();
             this.lbCOAPR = new System.Windows.Forms.Label();
             this.lbDOAPR = new System.Windows.Forms.Label();
-            this.gbProtectSetting = new System.Windows.Forms.GroupBox();
+            this.gbProtectSet = new System.Windows.Forms.GroupBox();
             this.lbCDP = new System.Windows.Forms.Label();
             this.lbinterLockErrorP = new System.Windows.Forms.Label();
             this.lbSelfSystemDiagP = new System.Windows.Forms.Label();
@@ -280,7 +280,7 @@ namespace KCL_reBMS_Prj
             this.panel1 = new System.Windows.Forms.Panel();
             this.btWarnningSettingLoad = new System.Windows.Forms.Button();
             this.btWarnningSettingSave = new System.Windows.Forms.Button();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.gbWarnningRelease = new System.Windows.Forms.GroupBox();
             this.cbWarnningReleaseValue4 = new System.Windows.Forms.NumericUpDown();
             this.cbWarnningReleaseValue3 = new System.Windows.Forms.NumericUpDown();
             this.label187 = new System.Windows.Forms.Label();
@@ -313,7 +313,7 @@ namespace KCL_reBMS_Prj
             this.lbCLTWR = new System.Windows.Forms.Label();
             this.lbCOAWR = new System.Windows.Forms.Label();
             this.lbDOAWR = new System.Windows.Forms.Label();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.gbWarnningSet = new System.Windows.Forms.GroupBox();
             this.lbPOVW = new System.Windows.Forms.Label();
             this.cbWarnningEnable4 = new System.Windows.Forms.CheckBox();
             this.cbWarnningEnable3 = new System.Windows.Forms.CheckBox();
@@ -379,7 +379,7 @@ namespace KCL_reBMS_Prj
             this.tabPage2.SuspendLayout();
             this.pnSaveFileRelease.SuspendLayout();
             this.panel4.SuspendLayout();
-            this.gbRetainTime.SuspendLayout();
+            this.gbProtectRelease.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cbProtectReleaseRetain13)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbProtectReleaseRetain14)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbProtectReleaseRetain12)).BeginInit();
@@ -408,7 +408,7 @@ namespace KCL_reBMS_Prj
             ((System.ComponentModel.ISupportInitialize)(this.cbProtectReleaseRetain5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbProtectReleaseRetain2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbProtectReleaseRetain1)).BeginInit();
-            this.gbProtectSetting.SuspendLayout();
+            this.gbProtectSet.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cbProtectRetainTime13)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbProtectRetainTime14)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbProtectRetainTime12)).BeginInit();
@@ -452,7 +452,7 @@ namespace KCL_reBMS_Prj
             this.tabPage3.SuspendLayout();
             this.pnSaveFile.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
+            this.gbWarnningRelease.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cbWarnningReleaseValue4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbWarnningReleaseValue3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbWarnningReleaseValue10)).BeginInit();
@@ -473,7 +473,7 @@ namespace KCL_reBMS_Prj
             ((System.ComponentModel.ISupportInitialize)(this.cbWarnningReleaseRetain5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbWarnningReleaseRetain2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbWarnningReleaseRetain1)).BeginInit();
-            this.groupBox3.SuspendLayout();
+            this.gbWarnningSet.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cbWarnningValue4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbWarnningValue3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbWarnningRetainTime4)).BeginInit();
@@ -851,8 +851,8 @@ namespace KCL_reBMS_Prj
             this.tabPage2.BackColor = System.Drawing.Color.Transparent;
             this.tabPage2.Controls.Add(this.pnSaveFileRelease);
             this.tabPage2.Controls.Add(this.panel4);
-            this.tabPage2.Controls.Add(this.gbRetainTime);
-            this.tabPage2.Controls.Add(this.gbProtectSetting);
+            this.tabPage2.Controls.Add(this.gbProtectRelease);
+            this.tabPage2.Controls.Add(this.gbProtectSet);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -920,60 +920,60 @@ namespace KCL_reBMS_Prj
             this.btProtectSettingSave.UseVisualStyleBackColor = true;
             this.btProtectSettingSave.Click += new System.EventHandler(this.btProtectSettingSave_Click);
             // 
-            // gbRetainTime
+            // gbProtectRelease
             // 
-            this.gbRetainTime.BackColor = System.Drawing.Color.GhostWhite;
-            this.gbRetainTime.Controls.Add(this.lbinterLockErrorPR);
-            this.gbRetainTime.Controls.Add(this.lbSelfSystemDiagPR);
-            this.gbRetainTime.Controls.Add(this.cbProtectReleaseRetain13);
-            this.gbRetainTime.Controls.Add(this.cbProtectReleaseRetain14);
-            this.gbRetainTime.Controls.Add(this.cbProtectReleaseRetain12);
-            this.gbRetainTime.Controls.Add(this.cbProtectReleaseValue14);
-            this.gbRetainTime.Controls.Add(this.cbProtectReleaseValue13);
-            this.gbRetainTime.Controls.Add(this.lbCommunicationErrorPR);
-            this.gbRetainTime.Controls.Add(this.cbProtectReleaseValue12);
-            this.gbRetainTime.Controls.Add(this.lbSLMPR);
-            this.gbRetainTime.Controls.Add(this.lbCurrentSensorErrorPR);
-            this.gbRetainTime.Controls.Add(this.cbProtectReleaseValue4);
-            this.gbRetainTime.Controls.Add(this.cbProtectReleaseValue3);
-            this.gbRetainTime.Controls.Add(this.label189);
-            this.gbRetainTime.Controls.Add(this.cbProtectReleaseValue11);
-            this.gbRetainTime.Controls.Add(this.cbProtectReleaseValue10);
-            this.gbRetainTime.Controls.Add(this.cbProtectReleaseValue9);
-            this.gbRetainTime.Controls.Add(this.cbProtectReleaseValue8);
-            this.gbRetainTime.Controls.Add(this.cbProtectReleaseValue7);
-            this.gbRetainTime.Controls.Add(this.cbProtectReleaseValue6);
-            this.gbRetainTime.Controls.Add(this.cbProtectReleaseValue5);
-            this.gbRetainTime.Controls.Add(this.cbProtectReleaseValue2);
-            this.gbRetainTime.Controls.Add(this.cbProtectReleaseValue1);
-            this.gbRetainTime.Controls.Add(this.cbProtectReleaseRetain4);
-            this.gbRetainTime.Controls.Add(this.cbProtectReleaseRetain3);
-            this.gbRetainTime.Controls.Add(this.lbPOVPR);
-            this.gbRetainTime.Controls.Add(this.lbPLVPR);
-            this.gbRetainTime.Controls.Add(this.cbProtectReleaseRetain10);
-            this.gbRetainTime.Controls.Add(this.cbProtectReleaseRetain11);
-            this.gbRetainTime.Controls.Add(this.label188);
-            this.gbRetainTime.Controls.Add(this.cbProtectReleaseRetain9);
-            this.gbRetainTime.Controls.Add(this.cbProtectReleaseRetain8);
-            this.gbRetainTime.Controls.Add(this.cbProtectReleaseRetain7);
-            this.gbRetainTime.Controls.Add(this.cbProtectReleaseRetain6);
-            this.gbRetainTime.Controls.Add(this.cbProtectReleaseRetain5);
-            this.gbRetainTime.Controls.Add(this.cbProtectReleaseRetain2);
-            this.gbRetainTime.Controls.Add(this.cbProtectReleaseRetain1);
-            this.gbRetainTime.Controls.Add(this.lbCDPR);
-            this.gbRetainTime.Controls.Add(this.lbCOVPR);
-            this.gbRetainTime.Controls.Add(this.lbCLVPR);
-            this.gbRetainTime.Controls.Add(this.lbCOTPR);
-            this.gbRetainTime.Controls.Add(this.lbCLTPR);
-            this.gbRetainTime.Controls.Add(this.lbCOAPR);
-            this.gbRetainTime.Controls.Add(this.lbDOAPR);
-            this.gbRetainTime.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.gbRetainTime.Location = new System.Drawing.Point(603, 19);
-            this.gbRetainTime.Name = "gbRetainTime";
-            this.gbRetainTime.Size = new System.Drawing.Size(566, 538);
-            this.gbRetainTime.TabIndex = 3;
-            this.gbRetainTime.TabStop = false;
-            this.gbRetainTime.Text = "Protect Release Value";
+            this.gbProtectRelease.BackColor = System.Drawing.Color.GhostWhite;
+            this.gbProtectRelease.Controls.Add(this.lbinterLockErrorPR);
+            this.gbProtectRelease.Controls.Add(this.lbSelfSystemDiagPR);
+            this.gbProtectRelease.Controls.Add(this.cbProtectReleaseRetain13);
+            this.gbProtectRelease.Controls.Add(this.cbProtectReleaseRetain14);
+            this.gbProtectRelease.Controls.Add(this.cbProtectReleaseRetain12);
+            this.gbProtectRelease.Controls.Add(this.cbProtectReleaseValue14);
+            this.gbProtectRelease.Controls.Add(this.cbProtectReleaseValue13);
+            this.gbProtectRelease.Controls.Add(this.lbCommunicationErrorPR);
+            this.gbProtectRelease.Controls.Add(this.cbProtectReleaseValue12);
+            this.gbProtectRelease.Controls.Add(this.lbSLMPR);
+            this.gbProtectRelease.Controls.Add(this.lbCurrentSensorErrorPR);
+            this.gbProtectRelease.Controls.Add(this.cbProtectReleaseValue4);
+            this.gbProtectRelease.Controls.Add(this.cbProtectReleaseValue3);
+            this.gbProtectRelease.Controls.Add(this.label189);
+            this.gbProtectRelease.Controls.Add(this.cbProtectReleaseValue11);
+            this.gbProtectRelease.Controls.Add(this.cbProtectReleaseValue10);
+            this.gbProtectRelease.Controls.Add(this.cbProtectReleaseValue9);
+            this.gbProtectRelease.Controls.Add(this.cbProtectReleaseValue8);
+            this.gbProtectRelease.Controls.Add(this.cbProtectReleaseValue7);
+            this.gbProtectRelease.Controls.Add(this.cbProtectReleaseValue6);
+            this.gbProtectRelease.Controls.Add(this.cbProtectReleaseValue5);
+            this.gbProtectRelease.Controls.Add(this.cbProtectReleaseValue2);
+            this.gbProtectRelease.Controls.Add(this.cbProtectReleaseValue1);
+            this.gbProtectRelease.Controls.Add(this.cbProtectReleaseRetain4);
+            this.gbProtectRelease.Controls.Add(this.cbProtectReleaseRetain3);
+            this.gbProtectRelease.Controls.Add(this.lbPOVPR);
+            this.gbProtectRelease.Controls.Add(this.lbPLVPR);
+            this.gbProtectRelease.Controls.Add(this.cbProtectReleaseRetain10);
+            this.gbProtectRelease.Controls.Add(this.cbProtectReleaseRetain11);
+            this.gbProtectRelease.Controls.Add(this.label188);
+            this.gbProtectRelease.Controls.Add(this.cbProtectReleaseRetain9);
+            this.gbProtectRelease.Controls.Add(this.cbProtectReleaseRetain8);
+            this.gbProtectRelease.Controls.Add(this.cbProtectReleaseRetain7);
+            this.gbProtectRelease.Controls.Add(this.cbProtectReleaseRetain6);
+            this.gbProtectRelease.Controls.Add(this.cbProtectReleaseRetain5);
+            this.gbProtectRelease.Controls.Add(this.cbProtectReleaseRetain2);
+            this.gbProtectRelease.Controls.Add(this.cbProtectReleaseRetain1);
+            this.gbProtectRelease.Controls.Add(this.lbCDPR);
+            this.gbProtectRelease.Controls.Add(this.lbCOVPR);
+            this.gbProtectRelease.Controls.Add(this.lbCLVPR);
+            this.gbProtectRelease.Controls.Add(this.lbCOTPR);
+            this.gbProtectRelease.Controls.Add(this.lbCLTPR);
+            this.gbProtectRelease.Controls.Add(this.lbCOAPR);
+            this.gbProtectRelease.Controls.Add(this.lbDOAPR);
+            this.gbProtectRelease.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.gbProtectRelease.Location = new System.Drawing.Point(603, 19);
+            this.gbProtectRelease.Name = "gbProtectRelease";
+            this.gbProtectRelease.Size = new System.Drawing.Size(566, 538);
+            this.gbProtectRelease.TabIndex = 3;
+            this.gbProtectRelease.TabStop = false;
+            this.gbProtectRelease.Text = "Protect Release Value";
             // 
             // lbinterLockErrorPR
             // 
@@ -1066,11 +1066,6 @@ namespace KCL_reBMS_Prj
             // 
             // cbProtectReleaseValue14
             // 
-            this.cbProtectReleaseValue14.Increment = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
             this.cbProtectReleaseValue14.Location = new System.Drawing.Point(260, 490);
             this.cbProtectReleaseValue14.Maximum = new decimal(new int[] {
             1000000,
@@ -1093,11 +1088,6 @@ namespace KCL_reBMS_Prj
             // 
             // cbProtectReleaseValue13
             // 
-            this.cbProtectReleaseValue13.Increment = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
             this.cbProtectReleaseValue13.Location = new System.Drawing.Point(260, 458);
             this.cbProtectReleaseValue13.Maximum = new decimal(new int[] {
             1000000,
@@ -1130,11 +1120,6 @@ namespace KCL_reBMS_Prj
             // 
             // cbProtectReleaseValue12
             // 
-            this.cbProtectReleaseValue12.Increment = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
             this.cbProtectReleaseValue12.Location = new System.Drawing.Point(260, 426);
             this.cbProtectReleaseValue12.Maximum = new decimal(new int[] {
             1000000,
@@ -1239,11 +1224,6 @@ namespace KCL_reBMS_Prj
             // 
             // cbProtectReleaseValue11
             // 
-            this.cbProtectReleaseValue11.Increment = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
             this.cbProtectReleaseValue11.Location = new System.Drawing.Point(260, 394);
             this.cbProtectReleaseValue11.Maximum = new decimal(new int[] {
             1000000,
@@ -1266,11 +1246,6 @@ namespace KCL_reBMS_Prj
             // 
             // cbProtectReleaseValue10
             // 
-            this.cbProtectReleaseValue10.Increment = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
             this.cbProtectReleaseValue10.Location = new System.Drawing.Point(260, 362);
             this.cbProtectReleaseValue10.Maximum = new decimal(new int[] {
             1000000,
@@ -1811,79 +1786,79 @@ namespace KCL_reBMS_Prj
             this.lbDOAPR.Text = "DisChargingOverCurren(A)";
             this.lbDOAPR.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // gbProtectSetting
+            // gbProtectSet
             // 
-            this.gbProtectSetting.BackColor = System.Drawing.Color.GhostWhite;
-            this.gbProtectSetting.Controls.Add(this.lbCDP);
-            this.gbProtectSetting.Controls.Add(this.lbinterLockErrorP);
-            this.gbProtectSetting.Controls.Add(this.lbSelfSystemDiagP);
-            this.gbProtectSetting.Controls.Add(this.cbProtectEnable14);
-            this.gbProtectSetting.Controls.Add(this.cbProtectEnable13);
-            this.gbProtectSetting.Controls.Add(this.cbProtectEnable12);
-            this.gbProtectSetting.Controls.Add(this.cbProtectRetainTime13);
-            this.gbProtectSetting.Controls.Add(this.cbProtectRetainTime14);
-            this.gbProtectSetting.Controls.Add(this.cbProtectRetainTime12);
-            this.gbProtectSetting.Controls.Add(this.cbProtectValue14);
-            this.gbProtectSetting.Controls.Add(this.cbProtectValue13);
-            this.gbProtectSetting.Controls.Add(this.lbCommunicationErrorP);
-            this.gbProtectSetting.Controls.Add(this.cbProtectValue12);
-            this.gbProtectSetting.Controls.Add(this.lbSLMP);
-            this.gbProtectSetting.Controls.Add(this.lbCurrentSensorErrorP);
-            this.gbProtectSetting.Controls.Add(this.cbProtectRetainTime4);
-            this.gbProtectSetting.Controls.Add(this.cbProtectRetainTime3);
-            this.gbProtectSetting.Controls.Add(this.cbProtectRetainTime10);
-            this.gbProtectSetting.Controls.Add(this.cbProtectRetainTime11);
-            this.gbProtectSetting.Controls.Add(this.label88);
-            this.gbProtectSetting.Controls.Add(this.cbProtectRetainTime9);
-            this.gbProtectSetting.Controls.Add(this.cbProtectRetainTime8);
-            this.gbProtectSetting.Controls.Add(this.cbProtectRetainTime7);
-            this.gbProtectSetting.Controls.Add(this.cbProtectRetainTime6);
-            this.gbProtectSetting.Controls.Add(this.cbProtectRetainTime5);
-            this.gbProtectSetting.Controls.Add(this.cbProtectRetainTime2);
-            this.gbProtectSetting.Controls.Add(this.cbProtectRetainTime1);
-            this.gbProtectSetting.Controls.Add(this.cbProtectEnable4);
-            this.gbProtectSetting.Controls.Add(this.cbProtectEnable3);
-            this.gbProtectSetting.Controls.Add(this.cbProtectValue4);
-            this.gbProtectSetting.Controls.Add(this.cbProtectValue3);
-            this.gbProtectSetting.Controls.Add(this.lbPLVP);
-            this.gbProtectSetting.Controls.Add(this.lbPOVP);
-            this.gbProtectSetting.Controls.Add(this.cbProtectEnable11);
-            this.gbProtectSetting.Controls.Add(this.cbProtectEnable10);
-            this.gbProtectSetting.Controls.Add(this.cbProtectEnable9);
-            this.gbProtectSetting.Controls.Add(this.cbProtectEnable8);
-            this.gbProtectSetting.Controls.Add(this.cbProtectEnable7);
-            this.gbProtectSetting.Controls.Add(this.cbProtectEnable6);
-            this.gbProtectSetting.Controls.Add(this.cbProtectEnable5);
-            this.gbProtectSetting.Controls.Add(this.cbProtectEnable2);
-            this.gbProtectSetting.Controls.Add(this.cbProtectEnable1);
-            this.gbProtectSetting.Controls.Add(this.label190);
-            this.gbProtectSetting.Controls.Add(this.lbCOAP);
-            this.gbProtectSetting.Controls.Add(this.cbProtectValue11);
-            this.gbProtectSetting.Controls.Add(this.cbProtectValue10);
-            this.gbProtectSetting.Controls.Add(this.cbProtectValue9);
-            this.gbProtectSetting.Controls.Add(this.cbProtectValue8);
-            this.gbProtectSetting.Controls.Add(this.cbProtectValue7);
-            this.gbProtectSetting.Controls.Add(this.cbProtectValue6);
-            this.gbProtectSetting.Controls.Add(this.cbProtectValue5);
-            this.gbProtectSetting.Controls.Add(this.cbProtectValue2);
-            this.gbProtectSetting.Controls.Add(this.cbProtectValue1);
-            this.gbProtectSetting.Controls.Add(this.lbDOAP);
-            this.gbProtectSetting.Controls.Add(this.lbCLTP);
-            this.gbProtectSetting.Controls.Add(this.lbCOTP);
-            this.gbProtectSetting.Controls.Add(this.lbCLVP);
-            this.gbProtectSetting.Controls.Add(this.lbCOVP);
-            this.gbProtectSetting.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.gbProtectSetting.Location = new System.Drawing.Point(34, 19);
-            this.gbProtectSetting.Name = "gbProtectSetting";
-            this.gbProtectSetting.Size = new System.Drawing.Size(563, 538);
-            this.gbProtectSetting.TabIndex = 4;
-            this.gbProtectSetting.TabStop = false;
-            this.gbProtectSetting.Text = "Protect Value";
+            this.gbProtectSet.BackColor = System.Drawing.Color.GhostWhite;
+            this.gbProtectSet.Controls.Add(this.lbCDP);
+            this.gbProtectSet.Controls.Add(this.lbinterLockErrorP);
+            this.gbProtectSet.Controls.Add(this.lbSelfSystemDiagP);
+            this.gbProtectSet.Controls.Add(this.cbProtectEnable14);
+            this.gbProtectSet.Controls.Add(this.cbProtectEnable13);
+            this.gbProtectSet.Controls.Add(this.cbProtectEnable12);
+            this.gbProtectSet.Controls.Add(this.cbProtectRetainTime13);
+            this.gbProtectSet.Controls.Add(this.cbProtectRetainTime14);
+            this.gbProtectSet.Controls.Add(this.cbProtectRetainTime12);
+            this.gbProtectSet.Controls.Add(this.cbProtectValue14);
+            this.gbProtectSet.Controls.Add(this.cbProtectValue13);
+            this.gbProtectSet.Controls.Add(this.lbCommunicationErrorP);
+            this.gbProtectSet.Controls.Add(this.cbProtectValue12);
+            this.gbProtectSet.Controls.Add(this.lbSLMP);
+            this.gbProtectSet.Controls.Add(this.lbCurrentSensorErrorP);
+            this.gbProtectSet.Controls.Add(this.cbProtectRetainTime4);
+            this.gbProtectSet.Controls.Add(this.cbProtectRetainTime3);
+            this.gbProtectSet.Controls.Add(this.cbProtectRetainTime10);
+            this.gbProtectSet.Controls.Add(this.cbProtectRetainTime11);
+            this.gbProtectSet.Controls.Add(this.label88);
+            this.gbProtectSet.Controls.Add(this.cbProtectRetainTime9);
+            this.gbProtectSet.Controls.Add(this.cbProtectRetainTime8);
+            this.gbProtectSet.Controls.Add(this.cbProtectRetainTime7);
+            this.gbProtectSet.Controls.Add(this.cbProtectRetainTime6);
+            this.gbProtectSet.Controls.Add(this.cbProtectRetainTime5);
+            this.gbProtectSet.Controls.Add(this.cbProtectRetainTime2);
+            this.gbProtectSet.Controls.Add(this.cbProtectRetainTime1);
+            this.gbProtectSet.Controls.Add(this.cbProtectEnable4);
+            this.gbProtectSet.Controls.Add(this.cbProtectEnable3);
+            this.gbProtectSet.Controls.Add(this.cbProtectValue4);
+            this.gbProtectSet.Controls.Add(this.cbProtectValue3);
+            this.gbProtectSet.Controls.Add(this.lbPLVP);
+            this.gbProtectSet.Controls.Add(this.lbPOVP);
+            this.gbProtectSet.Controls.Add(this.cbProtectEnable11);
+            this.gbProtectSet.Controls.Add(this.cbProtectEnable10);
+            this.gbProtectSet.Controls.Add(this.cbProtectEnable9);
+            this.gbProtectSet.Controls.Add(this.cbProtectEnable8);
+            this.gbProtectSet.Controls.Add(this.cbProtectEnable7);
+            this.gbProtectSet.Controls.Add(this.cbProtectEnable6);
+            this.gbProtectSet.Controls.Add(this.cbProtectEnable5);
+            this.gbProtectSet.Controls.Add(this.cbProtectEnable2);
+            this.gbProtectSet.Controls.Add(this.cbProtectEnable1);
+            this.gbProtectSet.Controls.Add(this.label190);
+            this.gbProtectSet.Controls.Add(this.lbCOAP);
+            this.gbProtectSet.Controls.Add(this.cbProtectValue11);
+            this.gbProtectSet.Controls.Add(this.cbProtectValue10);
+            this.gbProtectSet.Controls.Add(this.cbProtectValue9);
+            this.gbProtectSet.Controls.Add(this.cbProtectValue8);
+            this.gbProtectSet.Controls.Add(this.cbProtectValue7);
+            this.gbProtectSet.Controls.Add(this.cbProtectValue6);
+            this.gbProtectSet.Controls.Add(this.cbProtectValue5);
+            this.gbProtectSet.Controls.Add(this.cbProtectValue2);
+            this.gbProtectSet.Controls.Add(this.cbProtectValue1);
+            this.gbProtectSet.Controls.Add(this.lbDOAP);
+            this.gbProtectSet.Controls.Add(this.lbCLTP);
+            this.gbProtectSet.Controls.Add(this.lbCOTP);
+            this.gbProtectSet.Controls.Add(this.lbCLVP);
+            this.gbProtectSet.Controls.Add(this.lbCOVP);
+            this.gbProtectSet.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.gbProtectSet.Location = new System.Drawing.Point(34, 19);
+            this.gbProtectSet.Name = "gbProtectSet";
+            this.gbProtectSet.Size = new System.Drawing.Size(563, 538);
+            this.gbProtectSet.TabIndex = 4;
+            this.gbProtectSet.TabStop = false;
+            this.gbProtectSet.Text = "Protect Value";
             // 
             // lbCDP
             // 
             this.lbCDP.Font = new System.Drawing.Font("함초롬바탕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lbCDP.Location = new System.Drawing.Point(26, 199);
+            this.lbCDP.Location = new System.Drawing.Point(8, 199);
             this.lbCDP.Name = "lbCDP";
             this.lbCDP.Size = new System.Drawing.Size(176, 25);
             this.lbCDP.TabIndex = 78;
@@ -1893,7 +1868,7 @@ namespace KCL_reBMS_Prj
             // lbinterLockErrorP
             // 
             this.lbinterLockErrorP.Font = new System.Drawing.Font("함초롬바탕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lbinterLockErrorP.Location = new System.Drawing.Point(26, 452);
+            this.lbinterLockErrorP.Location = new System.Drawing.Point(8, 453);
             this.lbinterLockErrorP.Name = "lbinterLockErrorP";
             this.lbinterLockErrorP.Size = new System.Drawing.Size(176, 25);
             this.lbinterLockErrorP.TabIndex = 71;
@@ -1903,7 +1878,7 @@ namespace KCL_reBMS_Prj
             // lbSelfSystemDiagP
             // 
             this.lbSelfSystemDiagP.Font = new System.Drawing.Font("함초롬바탕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lbSelfSystemDiagP.Location = new System.Drawing.Point(26, 484);
+            this.lbSelfSystemDiagP.Location = new System.Drawing.Point(8, 485);
             this.lbSelfSystemDiagP.Name = "lbSelfSystemDiagP";
             this.lbSelfSystemDiagP.Size = new System.Drawing.Size(176, 25);
             this.lbSelfSystemDiagP.TabIndex = 70;
@@ -2005,11 +1980,6 @@ namespace KCL_reBMS_Prj
             // 
             // cbProtectValue14
             // 
-            this.cbProtectValue14.Increment = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
             this.cbProtectValue14.Location = new System.Drawing.Point(247, 486);
             this.cbProtectValue14.Maximum = new decimal(new int[] {
             1000000,
@@ -2027,11 +1997,6 @@ namespace KCL_reBMS_Prj
             // 
             // cbProtectValue13
             // 
-            this.cbProtectValue13.Increment = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
             this.cbProtectValue13.Location = new System.Drawing.Point(247, 454);
             this.cbProtectValue13.Maximum = new decimal(new int[] {
             1000000,
@@ -2050,7 +2015,7 @@ namespace KCL_reBMS_Prj
             // lbCommunicationErrorP
             // 
             this.lbCommunicationErrorP.Font = new System.Drawing.Font("함초롬바탕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lbCommunicationErrorP.Location = new System.Drawing.Point(26, 389);
+            this.lbCommunicationErrorP.Location = new System.Drawing.Point(8, 390);
             this.lbCommunicationErrorP.Name = "lbCommunicationErrorP";
             this.lbCommunicationErrorP.Size = new System.Drawing.Size(195, 25);
             this.lbCommunicationErrorP.TabIndex = 61;
@@ -2059,11 +2024,6 @@ namespace KCL_reBMS_Prj
             // 
             // cbProtectValue12
             // 
-            this.cbProtectValue12.Increment = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
             this.cbProtectValue12.Location = new System.Drawing.Point(247, 422);
             this.cbProtectValue12.Maximum = new decimal(new int[] {
             1000000,
@@ -2082,7 +2042,7 @@ namespace KCL_reBMS_Prj
             // lbSLMP
             // 
             this.lbSLMP.Font = new System.Drawing.Font("함초롬바탕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lbSLMP.Location = new System.Drawing.Point(26, 357);
+            this.lbSLMP.Location = new System.Drawing.Point(8, 358);
             this.lbSLMP.Name = "lbSLMP";
             this.lbSLMP.Size = new System.Drawing.Size(195, 25);
             this.lbSLMP.TabIndex = 58;
@@ -2092,7 +2052,7 @@ namespace KCL_reBMS_Prj
             // lbCurrentSensorErrorP
             // 
             this.lbCurrentSensorErrorP.Font = new System.Drawing.Font("함초롬바탕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lbCurrentSensorErrorP.Location = new System.Drawing.Point(26, 421);
+            this.lbCurrentSensorErrorP.Location = new System.Drawing.Point(8, 422);
             this.lbCurrentSensorErrorP.Name = "lbCurrentSensorErrorP";
             this.lbCurrentSensorErrorP.Size = new System.Drawing.Size(195, 25);
             this.lbCurrentSensorErrorP.TabIndex = 59;
@@ -2434,21 +2394,21 @@ namespace KCL_reBMS_Prj
             // lbPLVP
             // 
             this.lbPLVP.Font = new System.Drawing.Font("함초롬바탕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lbPLVP.Location = new System.Drawing.Point(26, 167);
+            this.lbPLVP.Location = new System.Drawing.Point(8, 167);
             this.lbPLVP.Name = "lbPLVP";
             this.lbPLVP.Size = new System.Drawing.Size(210, 25);
             this.lbPLVP.TabIndex = 38;
-            this.lbPLVP.Text = "Pack Under Voltage(mV)";
+            this.lbPLVP.Text = "Pack Under Voltage(V)";
             this.lbPLVP.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lbPOVP
             // 
             this.lbPOVP.Font = new System.Drawing.Font("함초롬바탕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lbPOVP.Location = new System.Drawing.Point(26, 133);
+            this.lbPOVP.Location = new System.Drawing.Point(8, 133);
             this.lbPOVP.Name = "lbPOVP";
             this.lbPOVP.Size = new System.Drawing.Size(190, 25);
             this.lbPOVP.TabIndex = 39;
-            this.lbPOVP.Text = "Pack Over Voltage(mV)";
+            this.lbPOVP.Text = "Pack Over Voltage(V)";
             this.lbPOVP.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // cbProtectEnable11
@@ -2534,20 +2494,15 @@ namespace KCL_reBMS_Prj
             // lbCOAP
             // 
             this.lbCOAP.Font = new System.Drawing.Font("함초롬바탕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lbCOAP.Location = new System.Drawing.Point(26, 292);
+            this.lbCOAP.Location = new System.Drawing.Point(6, 291);
             this.lbCOAP.Name = "lbCOAP";
-            this.lbCOAP.Size = new System.Drawing.Size(176, 25);
+            this.lbCOAP.Size = new System.Drawing.Size(236, 25);
             this.lbCOAP.TabIndex = 14;
             this.lbCOAP.Text = "Charging Over Current(A)";
             this.lbCOAP.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // cbProtectValue11
             // 
-            this.cbProtectValue11.Increment = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
             this.cbProtectValue11.Location = new System.Drawing.Point(247, 390);
             this.cbProtectValue11.Maximum = new decimal(new int[] {
             1000000,
@@ -2752,7 +2707,7 @@ namespace KCL_reBMS_Prj
             // lbDOAP
             // 
             this.lbDOAP.Font = new System.Drawing.Font("함초롬바탕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lbDOAP.Location = new System.Drawing.Point(26, 324);
+            this.lbDOAP.Location = new System.Drawing.Point(8, 325);
             this.lbDOAP.Name = "lbDOAP";
             this.lbDOAP.Size = new System.Drawing.Size(226, 25);
             this.lbDOAP.TabIndex = 2;
@@ -2762,7 +2717,7 @@ namespace KCL_reBMS_Prj
             // lbCLTP
             // 
             this.lbCLTP.Font = new System.Drawing.Font("함초롬바탕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lbCLTP.Location = new System.Drawing.Point(26, 259);
+            this.lbCLTP.Location = new System.Drawing.Point(8, 259);
             this.lbCLTP.Name = "lbCLTP";
             this.lbCLTP.Size = new System.Drawing.Size(176, 25);
             this.lbCLTP.TabIndex = 4;
@@ -2772,7 +2727,7 @@ namespace KCL_reBMS_Prj
             // lbCOTP
             // 
             this.lbCOTP.Font = new System.Drawing.Font("함초롬바탕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lbCOTP.Location = new System.Drawing.Point(26, 230);
+            this.lbCOTP.Location = new System.Drawing.Point(8, 230);
             this.lbCOTP.Name = "lbCOTP";
             this.lbCOTP.Size = new System.Drawing.Size(176, 25);
             this.lbCOTP.TabIndex = 5;
@@ -2782,7 +2737,7 @@ namespace KCL_reBMS_Prj
             // lbCLVP
             // 
             this.lbCLVP.Font = new System.Drawing.Font("함초롬바탕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lbCLVP.Location = new System.Drawing.Point(24, 100);
+            this.lbCLVP.Location = new System.Drawing.Point(6, 100);
             this.lbCLVP.Name = "lbCLVP";
             this.lbCLVP.Size = new System.Drawing.Size(192, 25);
             this.lbCLVP.TabIndex = 6;
@@ -2792,7 +2747,7 @@ namespace KCL_reBMS_Prj
             // lbCOVP
             // 
             this.lbCOVP.Font = new System.Drawing.Font("함초롬바탕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lbCOVP.Location = new System.Drawing.Point(24, 66);
+            this.lbCOVP.Location = new System.Drawing.Point(6, 66);
             this.lbCOVP.Name = "lbCOVP";
             this.lbCOVP.Size = new System.Drawing.Size(197, 25);
             this.lbCOVP.TabIndex = 7;
@@ -3912,8 +3867,8 @@ namespace KCL_reBMS_Prj
             this.tabPage3.BackColor = System.Drawing.Color.Transparent;
             this.tabPage3.Controls.Add(this.pnSaveFile);
             this.tabPage3.Controls.Add(this.panel1);
-            this.tabPage3.Controls.Add(this.groupBox2);
-            this.tabPage3.Controls.Add(this.groupBox3);
+            this.tabPage3.Controls.Add(this.gbWarnningRelease);
+            this.tabPage3.Controls.Add(this.gbWarnningSet);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
@@ -3981,48 +3936,48 @@ namespace KCL_reBMS_Prj
             this.btWarnningSettingSave.UseVisualStyleBackColor = true;
             this.btWarnningSettingSave.Click += new System.EventHandler(this.btWarnningSettingSave_Click);
             // 
-            // groupBox2
+            // gbWarnningRelease
             // 
-            this.groupBox2.BackColor = System.Drawing.Color.GhostWhite;
-            this.groupBox2.Controls.Add(this.cbWarnningReleaseValue4);
-            this.groupBox2.Controls.Add(this.cbWarnningReleaseValue3);
-            this.groupBox2.Controls.Add(this.label187);
-            this.groupBox2.Controls.Add(this.cbWarnningReleaseValue10);
-            this.groupBox2.Controls.Add(this.cbWarnningReleaseValue9);
-            this.groupBox2.Controls.Add(this.cbWarnningReleaseValue8);
-            this.groupBox2.Controls.Add(this.cbWarnningReleaseValue7);
-            this.groupBox2.Controls.Add(this.cbWarnningReleaseValue6);
-            this.groupBox2.Controls.Add(this.cbWarnningReleaseValue5);
-            this.groupBox2.Controls.Add(this.cbWarnningReleaseValue2);
-            this.groupBox2.Controls.Add(this.cbWarnningReleaseValue1);
-            this.groupBox2.Controls.Add(this.cbWarnningReleaseRetain4);
-            this.groupBox2.Controls.Add(this.cbWarnningReleaseRetain3);
-            this.groupBox2.Controls.Add(this.lbPOVWR);
-            this.groupBox2.Controls.Add(this.lbPLVWR);
-            this.groupBox2.Controls.Add(this.cbWarnningReleaseRetain10);
-            this.groupBox2.Controls.Add(this.label185);
-            this.groupBox2.Controls.Add(this.cbWarnningReleaseRetain9);
-            this.groupBox2.Controls.Add(this.cbWarnningReleaseRetain8);
-            this.groupBox2.Controls.Add(this.cbWarnningReleaseRetain7);
-            this.groupBox2.Controls.Add(this.cbWarnningReleaseRetain6);
-            this.groupBox2.Controls.Add(this.cbWarnningReleaseRetain5);
-            this.groupBox2.Controls.Add(this.cbWarnningReleaseRetain2);
-            this.groupBox2.Controls.Add(this.cbWarnningReleaseRetain1);
-            this.groupBox2.Controls.Add(this.lbLSOCWR);
-            this.groupBox2.Controls.Add(this.lbCDWR);
-            this.groupBox2.Controls.Add(this.lbCOVWR);
-            this.groupBox2.Controls.Add(this.lbCLVWR);
-            this.groupBox2.Controls.Add(this.lbCOTWR);
-            this.groupBox2.Controls.Add(this.lbCLTWR);
-            this.groupBox2.Controls.Add(this.lbCOAWR);
-            this.groupBox2.Controls.Add(this.lbDOAWR);
-            this.groupBox2.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.groupBox2.Location = new System.Drawing.Point(636, 21);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(632, 473);
-            this.groupBox2.TabIndex = 5;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Warnning Release Value";
+            this.gbWarnningRelease.BackColor = System.Drawing.Color.GhostWhite;
+            this.gbWarnningRelease.Controls.Add(this.cbWarnningReleaseValue4);
+            this.gbWarnningRelease.Controls.Add(this.cbWarnningReleaseValue3);
+            this.gbWarnningRelease.Controls.Add(this.label187);
+            this.gbWarnningRelease.Controls.Add(this.cbWarnningReleaseValue10);
+            this.gbWarnningRelease.Controls.Add(this.cbWarnningReleaseValue9);
+            this.gbWarnningRelease.Controls.Add(this.cbWarnningReleaseValue8);
+            this.gbWarnningRelease.Controls.Add(this.cbWarnningReleaseValue7);
+            this.gbWarnningRelease.Controls.Add(this.cbWarnningReleaseValue6);
+            this.gbWarnningRelease.Controls.Add(this.cbWarnningReleaseValue5);
+            this.gbWarnningRelease.Controls.Add(this.cbWarnningReleaseValue2);
+            this.gbWarnningRelease.Controls.Add(this.cbWarnningReleaseValue1);
+            this.gbWarnningRelease.Controls.Add(this.cbWarnningReleaseRetain4);
+            this.gbWarnningRelease.Controls.Add(this.cbWarnningReleaseRetain3);
+            this.gbWarnningRelease.Controls.Add(this.lbPOVWR);
+            this.gbWarnningRelease.Controls.Add(this.lbPLVWR);
+            this.gbWarnningRelease.Controls.Add(this.cbWarnningReleaseRetain10);
+            this.gbWarnningRelease.Controls.Add(this.label185);
+            this.gbWarnningRelease.Controls.Add(this.cbWarnningReleaseRetain9);
+            this.gbWarnningRelease.Controls.Add(this.cbWarnningReleaseRetain8);
+            this.gbWarnningRelease.Controls.Add(this.cbWarnningReleaseRetain7);
+            this.gbWarnningRelease.Controls.Add(this.cbWarnningReleaseRetain6);
+            this.gbWarnningRelease.Controls.Add(this.cbWarnningReleaseRetain5);
+            this.gbWarnningRelease.Controls.Add(this.cbWarnningReleaseRetain2);
+            this.gbWarnningRelease.Controls.Add(this.cbWarnningReleaseRetain1);
+            this.gbWarnningRelease.Controls.Add(this.lbLSOCWR);
+            this.gbWarnningRelease.Controls.Add(this.lbCDWR);
+            this.gbWarnningRelease.Controls.Add(this.lbCOVWR);
+            this.gbWarnningRelease.Controls.Add(this.lbCLVWR);
+            this.gbWarnningRelease.Controls.Add(this.lbCOTWR);
+            this.gbWarnningRelease.Controls.Add(this.lbCLTWR);
+            this.gbWarnningRelease.Controls.Add(this.lbCOAWR);
+            this.gbWarnningRelease.Controls.Add(this.lbDOAWR);
+            this.gbWarnningRelease.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.gbWarnningRelease.Location = new System.Drawing.Point(636, 21);
+            this.gbWarnningRelease.Name = "gbWarnningRelease";
+            this.gbWarnningRelease.Size = new System.Drawing.Size(632, 473);
+            this.gbWarnningRelease.TabIndex = 5;
+            this.gbWarnningRelease.TabStop = false;
+            this.gbWarnningRelease.Text = "Warnning Release Value";
             // 
             // cbWarnningReleaseValue4
             // 
@@ -4620,71 +4575,71 @@ namespace KCL_reBMS_Prj
             this.lbDOAWR.Text = "DisChargingOverCurren(A)";
             this.lbDOAWR.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // groupBox3
+            // gbWarnningSet
             // 
-            this.groupBox3.BackColor = System.Drawing.Color.GhostWhite;
-            this.groupBox3.Controls.Add(this.lbPOVW);
-            this.groupBox3.Controls.Add(this.cbWarnningEnable4);
-            this.groupBox3.Controls.Add(this.cbWarnningEnable3);
-            this.groupBox3.Controls.Add(this.cbWarnningValue4);
-            this.groupBox3.Controls.Add(this.cbWarnningValue3);
-            this.groupBox3.Controls.Add(this.lbPLVW);
-            this.groupBox3.Controls.Add(this.cbWarnningEnable11);
-            this.groupBox3.Controls.Add(this.cbWarnningEnable10);
-            this.groupBox3.Controls.Add(this.cbWarnningEnable9);
-            this.groupBox3.Controls.Add(this.cbWarnningEnable8);
-            this.groupBox3.Controls.Add(this.cbWarnningEnable7);
-            this.groupBox3.Controls.Add(this.cbWarnningEnable6);
-            this.groupBox3.Controls.Add(this.cbWarnningEnable5);
-            this.groupBox3.Controls.Add(this.cbWarnningEnable2);
-            this.groupBox3.Controls.Add(this.cbWarnningEnable1);
-            this.groupBox3.Controls.Add(this.label186);
-            this.groupBox3.Controls.Add(this.cbWarnningRetainTime4);
-            this.groupBox3.Controls.Add(this.lbCOAW);
-            this.groupBox3.Controls.Add(this.cbWarnningRetainTime3);
-            this.groupBox3.Controls.Add(this.cbWarnningValue11);
-            this.groupBox3.Controls.Add(this.cbWarnningValue10);
-            this.groupBox3.Controls.Add(this.lbLSOCW);
-            this.groupBox3.Controls.Add(this.cbWarnningValue9);
-            this.groupBox3.Controls.Add(this.cbWarnningValue8);
-            this.groupBox3.Controls.Add(this.cbWarnningValue7);
-            this.groupBox3.Controls.Add(this.cbWarnningValue6);
-            this.groupBox3.Controls.Add(this.cbWarnningValue5);
-            this.groupBox3.Controls.Add(this.cbWarnningValue2);
-            this.groupBox3.Controls.Add(this.cbWarnningRetainTime10);
-            this.groupBox3.Controls.Add(this.cbWarnningValue1);
-            this.groupBox3.Controls.Add(this.cbWarnningRetainTime11);
-            this.groupBox3.Controls.Add(this.lbCDW);
-            this.groupBox3.Controls.Add(this.lbDOAW);
-            this.groupBox3.Controls.Add(this.lbLSOHW);
-            this.groupBox3.Controls.Add(this.label127);
-            this.groupBox3.Controls.Add(this.cbWarnningRetainTime9);
-            this.groupBox3.Controls.Add(this.lbCLTW);
-            this.groupBox3.Controls.Add(this.cbWarnningRetainTime8);
-            this.groupBox3.Controls.Add(this.lbCOTW);
-            this.groupBox3.Controls.Add(this.lbCLVW);
-            this.groupBox3.Controls.Add(this.cbWarnningRetainTime7);
-            this.groupBox3.Controls.Add(this.lbCOVW);
-            this.groupBox3.Controls.Add(this.cbWarnningRetainTime1);
-            this.groupBox3.Controls.Add(this.cbWarnningRetainTime6);
-            this.groupBox3.Controls.Add(this.cbWarnningRetainTime2);
-            this.groupBox3.Controls.Add(this.cbWarnningRetainTime5);
-            this.groupBox3.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.groupBox3.Location = new System.Drawing.Point(18, 21);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(598, 473);
-            this.groupBox3.TabIndex = 6;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Warnning Value";
+            this.gbWarnningSet.BackColor = System.Drawing.Color.GhostWhite;
+            this.gbWarnningSet.Controls.Add(this.lbPOVW);
+            this.gbWarnningSet.Controls.Add(this.cbWarnningEnable4);
+            this.gbWarnningSet.Controls.Add(this.cbWarnningEnable3);
+            this.gbWarnningSet.Controls.Add(this.cbWarnningValue4);
+            this.gbWarnningSet.Controls.Add(this.cbWarnningValue3);
+            this.gbWarnningSet.Controls.Add(this.lbPLVW);
+            this.gbWarnningSet.Controls.Add(this.cbWarnningEnable11);
+            this.gbWarnningSet.Controls.Add(this.cbWarnningEnable10);
+            this.gbWarnningSet.Controls.Add(this.cbWarnningEnable9);
+            this.gbWarnningSet.Controls.Add(this.cbWarnningEnable8);
+            this.gbWarnningSet.Controls.Add(this.cbWarnningEnable7);
+            this.gbWarnningSet.Controls.Add(this.cbWarnningEnable6);
+            this.gbWarnningSet.Controls.Add(this.cbWarnningEnable5);
+            this.gbWarnningSet.Controls.Add(this.cbWarnningEnable2);
+            this.gbWarnningSet.Controls.Add(this.cbWarnningEnable1);
+            this.gbWarnningSet.Controls.Add(this.label186);
+            this.gbWarnningSet.Controls.Add(this.cbWarnningRetainTime4);
+            this.gbWarnningSet.Controls.Add(this.lbCOAW);
+            this.gbWarnningSet.Controls.Add(this.cbWarnningRetainTime3);
+            this.gbWarnningSet.Controls.Add(this.cbWarnningValue11);
+            this.gbWarnningSet.Controls.Add(this.cbWarnningValue10);
+            this.gbWarnningSet.Controls.Add(this.lbLSOCW);
+            this.gbWarnningSet.Controls.Add(this.cbWarnningValue9);
+            this.gbWarnningSet.Controls.Add(this.cbWarnningValue8);
+            this.gbWarnningSet.Controls.Add(this.cbWarnningValue7);
+            this.gbWarnningSet.Controls.Add(this.cbWarnningValue6);
+            this.gbWarnningSet.Controls.Add(this.cbWarnningValue5);
+            this.gbWarnningSet.Controls.Add(this.cbWarnningValue2);
+            this.gbWarnningSet.Controls.Add(this.cbWarnningRetainTime10);
+            this.gbWarnningSet.Controls.Add(this.cbWarnningValue1);
+            this.gbWarnningSet.Controls.Add(this.cbWarnningRetainTime11);
+            this.gbWarnningSet.Controls.Add(this.lbCDW);
+            this.gbWarnningSet.Controls.Add(this.lbDOAW);
+            this.gbWarnningSet.Controls.Add(this.lbLSOHW);
+            this.gbWarnningSet.Controls.Add(this.label127);
+            this.gbWarnningSet.Controls.Add(this.cbWarnningRetainTime9);
+            this.gbWarnningSet.Controls.Add(this.lbCLTW);
+            this.gbWarnningSet.Controls.Add(this.cbWarnningRetainTime8);
+            this.gbWarnningSet.Controls.Add(this.lbCOTW);
+            this.gbWarnningSet.Controls.Add(this.lbCLVW);
+            this.gbWarnningSet.Controls.Add(this.cbWarnningRetainTime7);
+            this.gbWarnningSet.Controls.Add(this.lbCOVW);
+            this.gbWarnningSet.Controls.Add(this.cbWarnningRetainTime1);
+            this.gbWarnningSet.Controls.Add(this.cbWarnningRetainTime6);
+            this.gbWarnningSet.Controls.Add(this.cbWarnningRetainTime2);
+            this.gbWarnningSet.Controls.Add(this.cbWarnningRetainTime5);
+            this.gbWarnningSet.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.gbWarnningSet.Location = new System.Drawing.Point(18, 21);
+            this.gbWarnningSet.Name = "gbWarnningSet";
+            this.gbWarnningSet.Size = new System.Drawing.Size(598, 473);
+            this.gbWarnningSet.TabIndex = 6;
+            this.gbWarnningSet.TabStop = false;
+            this.gbWarnningSet.Text = "Warnning Value";
             // 
             // lbPOVW
             // 
             this.lbPOVW.Font = new System.Drawing.Font("함초롬바탕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lbPOVW.Location = new System.Drawing.Point(33, 130);
+            this.lbPOVW.Location = new System.Drawing.Point(12, 130);
             this.lbPOVW.Name = "lbPOVW";
             this.lbPOVW.Size = new System.Drawing.Size(198, 25);
             this.lbPOVW.TabIndex = 55;
-            this.lbPOVW.Text = "Pack Over Voltage(mV)";
+            this.lbPOVW.Text = "Pack Over Voltage(V)";
             this.lbPOVW.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // cbWarnningEnable4
@@ -4760,11 +4715,11 @@ namespace KCL_reBMS_Prj
             // lbPLVW
             // 
             this.lbPLVW.Font = new System.Drawing.Font("함초롬바탕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lbPLVW.Location = new System.Drawing.Point(34, 162);
+            this.lbPLVW.Location = new System.Drawing.Point(13, 162);
             this.lbPLVW.Name = "lbPLVW";
             this.lbPLVW.Size = new System.Drawing.Size(199, 25);
             this.lbPLVW.TabIndex = 47;
-            this.lbPLVW.Text = "Pack Under Voltage(mV)";
+            this.lbPLVW.Text = "Pack Under Voltage(V)";
             this.lbPLVW.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // cbWarnningEnable11
@@ -4873,9 +4828,9 @@ namespace KCL_reBMS_Prj
             // lbCOAW
             // 
             this.lbCOAW.Font = new System.Drawing.Font("함초롬바탕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lbCOAW.Location = new System.Drawing.Point(34, 291);
+            this.lbCOAW.Location = new System.Drawing.Point(13, 294);
             this.lbCOAW.Name = "lbCOAW";
-            this.lbCOAW.Size = new System.Drawing.Size(213, 25);
+            this.lbCOAW.Size = new System.Drawing.Size(231, 25);
             this.lbCOAW.TabIndex = 14;
             this.lbCOAW.Text = "Charging Over Current(A)";
             this.lbCOAW.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -4960,7 +4915,7 @@ namespace KCL_reBMS_Prj
             // lbLSOCW
             // 
             this.lbLSOCW.Font = new System.Drawing.Font("함초롬바탕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lbLSOCW.Location = new System.Drawing.Point(34, 356);
+            this.lbLSOCW.Location = new System.Drawing.Point(13, 355);
             this.lbLSOCW.Name = "lbLSOCW";
             this.lbLSOCW.Size = new System.Drawing.Size(176, 25);
             this.lbLSOCW.TabIndex = 10;
@@ -5185,7 +5140,7 @@ namespace KCL_reBMS_Prj
             // lbCDW
             // 
             this.lbCDW.Font = new System.Drawing.Font("함초롬바탕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lbCDW.Location = new System.Drawing.Point(33, 195);
+            this.lbCDW.Location = new System.Drawing.Point(12, 195);
             this.lbCDW.Name = "lbCDW";
             this.lbCDW.Size = new System.Drawing.Size(176, 25);
             this.lbCDW.TabIndex = 1;
@@ -5195,7 +5150,7 @@ namespace KCL_reBMS_Prj
             // lbDOAW
             // 
             this.lbDOAW.Font = new System.Drawing.Font("함초롬바탕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lbDOAW.Location = new System.Drawing.Point(34, 325);
+            this.lbDOAW.Location = new System.Drawing.Point(13, 324);
             this.lbDOAW.Name = "lbDOAW";
             this.lbDOAW.Size = new System.Drawing.Size(225, 25);
             this.lbDOAW.TabIndex = 2;
@@ -5205,7 +5160,7 @@ namespace KCL_reBMS_Prj
             // lbLSOHW
             // 
             this.lbLSOHW.Font = new System.Drawing.Font("함초롬바탕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lbLSOHW.Location = new System.Drawing.Point(34, 388);
+            this.lbLSOHW.Location = new System.Drawing.Point(13, 387);
             this.lbLSOHW.Name = "lbLSOHW";
             this.lbLSOHW.Size = new System.Drawing.Size(176, 25);
             this.lbLSOHW.TabIndex = 3;
@@ -5247,9 +5202,9 @@ namespace KCL_reBMS_Prj
             // lbCLTW
             // 
             this.lbCLTW.Font = new System.Drawing.Font("함초롬바탕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lbCLTW.Location = new System.Drawing.Point(34, 259);
+            this.lbCLTW.Location = new System.Drawing.Point(13, 259);
             this.lbCLTW.Name = "lbCLTW";
-            this.lbCLTW.Size = new System.Drawing.Size(176, 25);
+            this.lbCLTW.Size = new System.Drawing.Size(201, 25);
             this.lbCLTW.TabIndex = 4;
             this.lbCLTW.Text = "Cell Under Temp(℃)";
             this.lbCLTW.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -5280,9 +5235,9 @@ namespace KCL_reBMS_Prj
             // lbCOTW
             // 
             this.lbCOTW.Font = new System.Drawing.Font("함초롬바탕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lbCOTW.Location = new System.Drawing.Point(33, 225);
+            this.lbCOTW.Location = new System.Drawing.Point(12, 225);
             this.lbCOTW.Name = "lbCOTW";
-            this.lbCOTW.Size = new System.Drawing.Size(176, 25);
+            this.lbCOTW.Size = new System.Drawing.Size(211, 25);
             this.lbCOTW.TabIndex = 5;
             this.lbCOTW.Text = "Cell Over Temp(℃)";
             this.lbCOTW.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
@@ -5290,7 +5245,7 @@ namespace KCL_reBMS_Prj
             // lbCLVW
             // 
             this.lbCLVW.Font = new System.Drawing.Font("함초롬바탕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lbCLVW.Location = new System.Drawing.Point(34, 96);
+            this.lbCLVW.Location = new System.Drawing.Point(13, 96);
             this.lbCLVW.Name = "lbCLVW";
             this.lbCLVW.Size = new System.Drawing.Size(201, 25);
             this.lbCLVW.TabIndex = 6;
@@ -5323,7 +5278,7 @@ namespace KCL_reBMS_Prj
             // lbCOVW
             // 
             this.lbCOVW.Font = new System.Drawing.Font("함초롬바탕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lbCOVW.Location = new System.Drawing.Point(34, 62);
+            this.lbCOVW.Location = new System.Drawing.Point(13, 62);
             this.lbCOVW.Name = "lbCOVW";
             this.lbCOVW.Size = new System.Drawing.Size(201, 25);
             this.lbCOVW.TabIndex = 7;
@@ -5543,7 +5498,7 @@ namespace KCL_reBMS_Prj
             this.tabPage2.ResumeLayout(false);
             this.pnSaveFileRelease.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
-            this.gbRetainTime.ResumeLayout(false);
+            this.gbProtectRelease.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.cbProtectReleaseRetain13)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbProtectReleaseRetain14)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbProtectReleaseRetain12)).EndInit();
@@ -5572,8 +5527,8 @@ namespace KCL_reBMS_Prj
             ((System.ComponentModel.ISupportInitialize)(this.cbProtectReleaseRetain5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbProtectReleaseRetain2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbProtectReleaseRetain1)).EndInit();
-            this.gbProtectSetting.ResumeLayout(false);
-            this.gbProtectSetting.PerformLayout();
+            this.gbProtectSet.ResumeLayout(false);
+            this.gbProtectSet.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cbProtectRetainTime13)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbProtectRetainTime14)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbProtectRetainTime12)).EndInit();
@@ -5618,7 +5573,7 @@ namespace KCL_reBMS_Prj
             this.tabPage3.ResumeLayout(false);
             this.pnSaveFile.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
+            this.gbWarnningRelease.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.cbWarnningReleaseValue4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbWarnningReleaseValue3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbWarnningReleaseValue10)).EndInit();
@@ -5639,8 +5594,8 @@ namespace KCL_reBMS_Prj
             ((System.ComponentModel.ISupportInitialize)(this.cbWarnningReleaseRetain5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbWarnningReleaseRetain2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbWarnningReleaseRetain1)).EndInit();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
+            this.gbWarnningSet.ResumeLayout(false);
+            this.gbWarnningSet.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cbWarnningValue4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbWarnningValue3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbWarnningRetainTime4)).EndInit();
@@ -5688,7 +5643,7 @@ namespace KCL_reBMS_Prj
         private System.Windows.Forms.TextBox tbSetSOC;
         private System.Windows.Forms.Button btSetSOC;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.GroupBox gbRetainTime;
+        private System.Windows.Forms.GroupBox gbProtectRelease;
         private System.Windows.Forms.NumericUpDown cbProtectReleaseRetain4;
         private System.Windows.Forms.NumericUpDown cbProtectReleaseRetain3;
         private System.Windows.Forms.Label lbPOVPR;
@@ -5710,7 +5665,7 @@ namespace KCL_reBMS_Prj
         private System.Windows.Forms.Label lbCLTPR;
         private System.Windows.Forms.Label lbCOAPR;
         private System.Windows.Forms.Label lbDOAPR;
-        private System.Windows.Forms.GroupBox gbProtectSetting;
+        private System.Windows.Forms.GroupBox gbProtectSet;
         private System.Windows.Forms.CheckBox cbProtectEnable4;
         private System.Windows.Forms.CheckBox cbProtectEnable3;
         private System.Windows.Forms.NumericUpDown cbProtectValue4;
@@ -5871,7 +5826,7 @@ namespace KCL_reBMS_Prj
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btWarnningSettingLoad;
         private System.Windows.Forms.Button btWarnningSettingSave;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox gbWarnningRelease;
         private System.Windows.Forms.NumericUpDown cbWarnningReleaseValue4;
         private System.Windows.Forms.NumericUpDown cbWarnningReleaseValue3;
         private System.Windows.Forms.Label label187;
@@ -5930,7 +5885,7 @@ namespace KCL_reBMS_Prj
         private System.Windows.Forms.Label lbSLMPR;
         private System.Windows.Forms.Label lbCurrentSensorErrorPR;
         private System.Windows.Forms.Label lbCDP;
-        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.GroupBox gbWarnningSet;
         private System.Windows.Forms.CheckBox cbWarnningEnable4;
         private System.Windows.Forms.CheckBox cbWarnningEnable3;
         private System.Windows.Forms.NumericUpDown cbWarnningValue4;

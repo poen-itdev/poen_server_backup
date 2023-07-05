@@ -312,10 +312,10 @@ namespace KCL_reBMS_Prj
             // lbModuleT1
             // 
             this.lbModuleT1.Font = new System.Drawing.Font("함초롬바탕", 8.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lbModuleT1.Location = new System.Drawing.Point(47, 163);
+            this.lbModuleT1.Location = new System.Drawing.Point(35, 163);
             this.lbModuleT1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbModuleT1.Name = "lbModuleT1";
-            this.lbModuleT1.Size = new System.Drawing.Size(40, 17);
+            this.lbModuleT1.Size = new System.Drawing.Size(64, 17);
             this.lbModuleT1.TabIndex = 21;
             this.lbModuleT1.Text = "10 ℃";
             this.lbModuleT1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -328,10 +328,10 @@ namespace KCL_reBMS_Prj
             // lbModuleT4
             // 
             this.lbModuleT4.Font = new System.Drawing.Font("함초롬바탕", 8.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lbModuleT4.Location = new System.Drawing.Point(134, 188);
+            this.lbModuleT4.Location = new System.Drawing.Point(125, 188);
             this.lbModuleT4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbModuleT4.Name = "lbModuleT4";
-            this.lbModuleT4.Size = new System.Drawing.Size(58, 17);
+            this.lbModuleT4.Size = new System.Drawing.Size(74, 17);
             this.lbModuleT4.TabIndex = 27;
             this.lbModuleT4.Text = "10 ℃";
             this.lbModuleT4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -339,10 +339,10 @@ namespace KCL_reBMS_Prj
             // lbModuleT3
             // 
             this.lbModuleT3.Font = new System.Drawing.Font("함초롬바탕", 8.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lbModuleT3.Location = new System.Drawing.Point(47, 188);
+            this.lbModuleT3.Location = new System.Drawing.Point(35, 184);
             this.lbModuleT3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbModuleT3.Name = "lbModuleT3";
-            this.lbModuleT3.Size = new System.Drawing.Size(40, 17);
+            this.lbModuleT3.Size = new System.Drawing.Size(64, 25);
             this.lbModuleT3.TabIndex = 28;
             this.lbModuleT3.Text = "10 ℃";
             this.lbModuleT3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -370,10 +370,10 @@ namespace KCL_reBMS_Prj
             // label26
             // 
             this.label26.Font = new System.Drawing.Font("함초롬바탕", 8.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label26.Location = new System.Drawing.Point(125, 163);
+            this.label26.Location = new System.Drawing.Point(125, 159);
             this.label26.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(56, 17);
+            this.label26.Size = new System.Drawing.Size(74, 25);
             this.label26.TabIndex = 1;
             this.label26.Text = "10 ℃";
             this.label26.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;

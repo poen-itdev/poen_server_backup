@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Windows.Forms;
 using System.Drawing;
+using System.Windows.Forms;
 
 namespace KCL_reBMS_Prj
 {
@@ -22,7 +22,8 @@ namespace KCL_reBMS_Prj
             lbModuleT3.Text = _Temper[2];
             lbModuleT4.Text = _Temper[3];
 
-            if(iCellCnt == 9) {
+            if (iCellCnt == 9)
+            {
                 label18.Visible = false;
                 label24.Visible = false;
             }
@@ -58,7 +59,7 @@ namespace KCL_reBMS_Prj
                 _Voltage = value;
             }
             get { return _Voltage; }
-             
+
         }
 
         public bool[] Balancing
@@ -93,7 +94,8 @@ namespace KCL_reBMS_Prj
             if (_Balancing[0] == true)
             {
                 label4.BackColor = Color.Yellow;
-            } else
+            }
+            else
             {
                 label4.BackColor = Color.Transparent;
             }
@@ -121,7 +123,7 @@ namespace KCL_reBMS_Prj
                 label10.BackColor = Color.Yellow;
             }
             else
-            { 
+            {
                 label10.BackColor = Color.Transparent;
             }
 
