@@ -588,6 +588,8 @@ namespace KCL_reBMS_Prj
                                     index++;
                                     commData.CCVState = clsCommMsg.byResponseData[index];
                                     index++;
+                                    commData.CellBalanceStatus = clsCommMsg.byResponseData[index];
+                                    index++;
 
                                     for (int i = 0; i < ClassData.CMUEA; i++)
                                     {

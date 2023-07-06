@@ -71,6 +71,7 @@ namespace KCL_reBMS_Prj
         public byte sensinglineErr;
         public byte OCVState;
         public byte CCVState;
+        public byte CellBalanceStatus;
 
 
         //Protect
