@@ -225,7 +225,10 @@ namespace KCL_reBMS_Prj
         //Set SOH
         public short SetSoh; 
 
-        //BMU Version
+        //BMS Version
         public short Version;
+
+        //BMS Reboot 
+        public byte BMSReboot;
     }
 }

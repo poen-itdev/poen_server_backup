@@ -789,6 +789,12 @@ namespace KCL_reBMS_Prj
             {
                 lbCCVStateStatus.BackColor = Color.Transparent;
             }
+            
+            if(clsComm.commData.BMSReboot == 0x04)
+            {
+                clsComm.queueSend.Enqueue(ClassCommunication.CMD_SEND_WARNNING_ENABLE_GET);
+                clsComm.queueSend.Enqueue(ClassCommunication.CMD_SEND_PROTECT_ENABLE_GET);
+            }
         }
 
         void Version(byte[] data)
@@ -870,12 +876,14 @@ namespace KCL_reBMS_Prj
         void SOCResetStatus(byte[] data)
         {
             clsComm.commData.Soc = (short)((data[7] * 256) + data[8]);
+            clsComm.commData.Soc /= 100;
             logInfo("BMS -> GUI : SOC = " + clsComm.commData.Soc);
         }
 
         void SOHResetStatus(byte[] data)
         {
             clsComm.commData.Soh = (short)((data[7] * 256) + data[8]);
+            clsComm.commData.Soh /= 100;
             logInfo("BMS -> GUI : SOH = " + clsComm.commData.Soh);
         }
 

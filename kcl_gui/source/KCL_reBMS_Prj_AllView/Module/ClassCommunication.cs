@@ -599,6 +599,7 @@ namespace KCL_reBMS_Prj
                                             index++;
                                         }
                                     }
+                                    commData.BMSReboot = clsCommMsg.byResponseData[6];
                                 }
                                 comm_flag = true;
                                 Array.Copy(RcvPkt.Data, 0, clsCommMsg.byResponseData, 0, RcvPkt.Idex);
