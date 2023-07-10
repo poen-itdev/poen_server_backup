@@ -66,8 +66,8 @@ namespace KCL_reBMS_Prj
         public byte PDisChargingOverCurrentStatus;
         public byte PCellDiffVoltageStatus;
         public byte PSensinglinemeasureStatus;
-        public byte PlusRelayStatus;
-        public byte PreRelayStatus;
+        //public byte PlusRelayStatus;
+        //public byte PreRelayStatus;
         public byte sensinglineErr;
         public byte OCVState;
         public byte CCVState;

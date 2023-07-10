@@ -285,7 +285,7 @@ namespace KCL_reBMS_Prj
             itemp /= 100;
             if (bIsTitle == false) strDataLog += itemp + ",";
             else strDataLog += "SOC" + ",";
-            sb.AppendFormat("{0:0} % ", itemp);
+            sb.AppendFormat("{0:0.00} % ", itemp);
             lbFrontSocValue.Text = sb.ToString();
             tbSOC.Text = sb.ToString();
             sb.Remove(0, sb.Length);
@@ -294,7 +294,7 @@ namespace KCL_reBMS_Prj
             itemp /= 100;
             if (bIsTitle == false) strDataLog += itemp + ",";
             else strDataLog += "SOH" + ",";
-            sb.AppendFormat("{0:0} % ", itemp);
+            sb.AppendFormat("{0:0.00} % ", itemp);
             lbFrontSohValue.Text = sb.ToString();
             tbSOH.Text = sb.ToString();
             sb.Remove(0, sb.Length);
@@ -586,12 +586,21 @@ namespace KCL_reBMS_Prj
             if (itemp != 0) {
                 bWarnning = true;
                 logWarnning("WCellOverVoltage");
+                lbCOVW.BackColor = Color.Orange;
+            } else
+            {
+                lbCOVW.BackColor = Color.Transparent;
             }
+
             itemp = Convert.ToInt32(clsComm.commData.WCellUnderVoltageStatus);
             if (itemp != 0)
             {
                 bWarnning = true;
                 logWarnning("WCellUnderVoltage");
+                lbCLVW.BackColor= Color.Orange;
+            } else
+            {
+                lbCLVW.BackColor = Color.Transparent;
             }
             
             itemp = Convert.ToInt32(clsComm.commData.WChargingOverTempStatus);
@@ -599,6 +608,10 @@ namespace KCL_reBMS_Prj
             {
                 bWarnning = true;
                 logWarnning("WChargingOverTemp");
+                lbCOTW.BackColor = Color.Orange;
+            } else
+            {
+                lbCOTW.BackColor = Color.Transparent;
             }
             
             itemp = Convert.ToInt32(clsComm.commData.WChargingUnderTempStatus);
@@ -606,6 +619,10 @@ namespace KCL_reBMS_Prj
             {
                 bWarnning = true;
                 logWarnning("WChargingUnderTemp");
+                lbCLTW.BackColor = Color.Orange;   
+            } else
+            {
+                lbCLTW.BackColor = Color.Transparent;
             }
             
             itemp = Convert.ToInt32(clsComm.commData.WChargingOverCurrentStatus);
@@ -613,6 +630,10 @@ namespace KCL_reBMS_Prj
             {
                 bWarnning = true;
                 logWarnning("WChargingOverCurrent");
+                lbCOAW.BackColor = Color.Orange;
+            } else
+            {
+                lbCOAW.BackColor = Color.Transparent;
             }
             
             itemp = Convert.ToInt32(clsComm.commData.WDisChargingOverCurrentStatus);
@@ -620,6 +641,10 @@ namespace KCL_reBMS_Prj
             {
                 bWarnning = true;
                 logWarnning("WDisChargingOverCurrent");
+                lbDOAW.BackColor = Color.Orange;
+            } else
+            {
+                lbDOAW.BackColor = Color.Transparent;
             }
             
             itemp = Convert.ToInt32(clsComm.commData.WCellDiffVoltageStatus);
@@ -627,6 +652,10 @@ namespace KCL_reBMS_Prj
             {
                 bWarnning = true;
                 logWarnning("WCellDiffVoltage");
+                lbCDW.BackColor = Color.Orange;
+            } else
+            {
+                lbCDW.BackColor = Color.Transparent;
             }
             
             itemp = Convert.ToInt32(clsComm.commData.WSensingline_measureStatus);
@@ -639,11 +668,16 @@ namespace KCL_reBMS_Prj
             if(bWarnning == true) lbWarnningStatus.BackColor = Color.Red;
             else lbWarnningStatus.BackColor = Color.Transparent;
 
+            
             itemp = Convert.ToInt32(clsComm.commData.PCellOverVoltageStatus);
             if (itemp != 0)
             {
                 bProtect = true;
                 logWarnning("PCellOverVoltage");
+                lbCOVP.BackColor = Color.Orange;
+            } else
+            {
+                lbCOVP.BackColor = Color.Transparent;
             }
 
             itemp = Convert.ToInt32(clsComm.commData.PCellUnderVoltageStatus);
@@ -651,6 +685,10 @@ namespace KCL_reBMS_Prj
             {
                 bProtect = true;
                 logWarnning("PCellUnderVoltage");
+                lbCLVP.BackColor = Color.Orange;
+            } else
+            {
+                lbCLVP.BackColor = Color.Transparent;
             }
 
             itemp = Convert.ToInt32(clsComm.commData.PChargingOverTempStatus);
@@ -658,6 +696,10 @@ namespace KCL_reBMS_Prj
             {
                 bProtect = true;
                 logWarnning("PChargingOverTemp");
+                lbCOTP.BackColor = Color.Orange;
+            } else
+            {
+                lbCOTP.BackColor = Color.Transparent;
             }
 
             itemp = Convert.ToInt32(clsComm.commData.PChargingUnderTempStatus);
@@ -665,6 +707,10 @@ namespace KCL_reBMS_Prj
             {
                 bProtect = true;
                 logWarnning("PChargingUnderTemp");
+                lbCLTP.BackColor = Color.Orange;
+            } else
+            {
+                lbCLTP.BackColor = Color.Transparent;
             }
 
             itemp = Convert.ToInt32(clsComm.commData.PChargingOverCurrentStatus);
@@ -672,6 +718,10 @@ namespace KCL_reBMS_Prj
             {
                 bProtect = true;
                 logWarnning("PChargingOverCurrent");
+                lbCOAP.BackColor = Color.Orange;
+            } else
+            {
+                lbCOAP.BackColor = Color.Transparent;
             }
 
             itemp = Convert.ToInt32(clsComm.commData.PDisChargingOverCurrentStatus);
@@ -679,6 +729,10 @@ namespace KCL_reBMS_Prj
             {
                 bProtect = true;
                 logWarnning("PDisChargingOverCurrent");
+                lbDOAP.BackColor = Color.Orange;
+            } else
+            {
+                lbDOAP.BackColor = Color.Transparent;
             }
 
             itemp = Convert.ToInt32(clsComm.commData.PCellDiffVoltageStatus);
@@ -686,6 +740,10 @@ namespace KCL_reBMS_Prj
             {
                 bProtect = true;
                 logWarnning("PCellDiffVoltage");
+                lbCDP.BackColor = Color.Orange;
+            } else
+            {
+                lbCDP.BackColor = Color.Transparent;
             }
 
             itemp = Convert.ToInt32(clsComm.commData.PSensinglinemeasureStatus);
@@ -693,21 +751,40 @@ namespace KCL_reBMS_Prj
             {
                 bProtect = true;
                 logWarnning("PSensinglinemeasure");
+                lbSLMP.BackColor = Color.Orange;
+            } else
+            {
+                lbSLMP.BackColor = Color.Transparent;
             }
 
-            itemp = Convert.ToInt32(clsComm.commData.PlusRelayStatus);
-            if (itemp != 0)
+            itemp = Convert.ToInt32(clsComm.commData.RelayStatus);
+            if (itemp == 1)
             {
-                bProtect = true;
-                logWarnning("PlusRelay");
+                //sb.AppendFormat("ON");
+                //logInfo("BMS -> GUI : Relay " + sb.ToString());
+                //sb.Remove(0, sb.Length);
+
+                pbRelay.Image = global::KCL_reBMS_Prj.Properties.Resources.Bclose;
+                lbRelayStatus.BackColor = Color.Green;
             }
 
-            itemp = Convert.ToInt32(clsComm.commData.PreRelayStatus);
-            if (itemp != 0)
+            if (itemp == 0)
             {
-                bProtect = true;
-                logWarnning("PreRelay");
+                //sb.AppendFormat("OFF");
+                //logInfo("BMS -> GUI : Relay " + sb.ToString());
+                //sb.Remove(0, sb.Length);
+
+                pbRelay.Image = global::KCL_reBMS_Prj.Properties.Resources.Bopen;
+                lbRelayStatus.BackColor = Color.Transparent;
             }
+
+
+            //itemp = Convert.ToInt32(clsComm.commData.PreRelayStatus);
+            //if (itemp != 0)
+            //{
+            //    bProtect = true;
+            //    logWarnning("PreRelay");
+            //}
 
             if (bProtect == true) lbProtectStatus.BackColor = Color.Red;
             else lbProtectStatus.BackColor = Color.Transparent;
@@ -792,6 +869,7 @@ namespace KCL_reBMS_Prj
             
             if(clsComm.commData.BMSReboot == 0x04)
             {
+                bIsLoad = true;
                 clsComm.queueSend.Enqueue(ClassCommunication.CMD_SEND_WARNNING_ENABLE_GET);
                 clsComm.queueSend.Enqueue(ClassCommunication.CMD_SEND_PROTECT_ENABLE_GET);
             }
@@ -1807,7 +1885,13 @@ namespace KCL_reBMS_Prj
                     lbStandbyStatus.BackColor = System.Drawing.Color.Green;
                     connecting_time = 0;
                     clsComm.dtPollTimer = DateTime.Now;
+                    
+                    bIsLoad = true;
+                    clsComm.queueSend.Enqueue(ClassCommunication.CMD_SEND_WARNNING_ENABLE_GET);
+                    clsComm.queueSend.Enqueue(ClassCommunication.CMD_SEND_PROTECT_ENABLE_GET);
+
                     clsComm.queueSend.Enqueue(ClassCommunication.CMD_SEND_VERSION_GET);
+
                     bStartCount = false;
                 }
                 else
