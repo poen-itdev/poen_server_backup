@@ -684,6 +684,7 @@ namespace KCL_reBMS_Prj
             if (itemp != 0)
             {
                 bProtect = true;
+                lbCLVP.BackColor = Color.Red;
                 logWarnning("PCellUnderVoltage");
                 lbCLVP.BackColor = Color.Orange;
             } else
