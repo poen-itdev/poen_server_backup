@@ -300,7 +300,7 @@ namespace KCL_reBMS_Prj
             sb.Remove(0, sb.Length);
 
             itemp = Convert.ToInt32(clsComm.commData.Current); //raw Current
-            itemp /= 100;
+            itemp /= 10;
             itemp -= 300;
             if (bIsTitle == false) strDataLog += itemp + ",";
             else strDataLog += "Current" + ",";
