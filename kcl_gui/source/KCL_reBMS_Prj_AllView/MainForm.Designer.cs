@@ -30,9 +30,9 @@ namespace KCL_reBMS_Prj
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.pbPoenLogo = new System.Windows.Forms.PictureBox();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
@@ -227,6 +227,7 @@ namespace KCL_reBMS_Prj
             this.lbTemp1 = new System.Windows.Forms.Label();
             this.lbTemp1Value = new System.Windows.Forms.Label();
             this.gbSystemStatus = new System.Windows.Forms.GroupBox();
+            this.lbTCell = new System.Windows.Forms.Label();
             this.lbStatus = new System.Windows.Forms.Label();
             this.lbCCVStateStatus = new System.Windows.Forms.Label();
             this.lbCCVState = new System.Windows.Forms.Label();
@@ -245,7 +246,6 @@ namespace KCL_reBMS_Prj
             this.lbLineStatus = new System.Windows.Forms.Label();
             this.lbInterLock = new System.Windows.Forms.Label();
             this.lbCurSensor = new System.Windows.Forms.Label();
-            this.lbTCell = new System.Windows.Forms.Label();
             this.lbVCell = new System.Windows.Forms.Label();
             this.lbRelayStatus = new System.Windows.Forms.Label();
             this.lbStandbyStatus = new System.Windows.Forms.Label();
@@ -368,6 +368,8 @@ namespace KCL_reBMS_Prj
             this.button4 = new System.Windows.Forms.Button();
             this.btLogPath = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
+            this.ICStatus = new System.Windows.Forms.Label();
+            this.lbIC = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbPoenLogo)).BeginInit();
             this.tabPage4.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -1980,6 +1982,7 @@ namespace KCL_reBMS_Prj
             // 
             // cbProtectValue14
             // 
+            this.cbProtectValue14.Enabled = false;
             this.cbProtectValue14.Location = new System.Drawing.Point(247, 486);
             this.cbProtectValue14.Maximum = new decimal(new int[] {
             1000000,
@@ -1992,11 +1995,13 @@ namespace KCL_reBMS_Prj
             0,
             -2147483648});
             this.cbProtectValue14.Name = "cbProtectValue14";
+            this.cbProtectValue14.ReadOnly = true;
             this.cbProtectValue14.Size = new System.Drawing.Size(120, 26);
             this.cbProtectValue14.TabIndex = 63;
             // 
             // cbProtectValue13
             // 
+            this.cbProtectValue13.Enabled = false;
             this.cbProtectValue13.Location = new System.Drawing.Point(247, 454);
             this.cbProtectValue13.Maximum = new decimal(new int[] {
             1000000,
@@ -2009,6 +2014,7 @@ namespace KCL_reBMS_Prj
             0,
             -2147483648});
             this.cbProtectValue13.Name = "cbProtectValue13";
+            this.cbProtectValue13.ReadOnly = true;
             this.cbProtectValue13.Size = new System.Drawing.Size(120, 26);
             this.cbProtectValue13.TabIndex = 62;
             // 
@@ -2024,6 +2030,7 @@ namespace KCL_reBMS_Prj
             // 
             // cbProtectValue12
             // 
+            this.cbProtectValue12.Enabled = false;
             this.cbProtectValue12.Location = new System.Drawing.Point(247, 422);
             this.cbProtectValue12.Maximum = new decimal(new int[] {
             1000000,
@@ -2036,6 +2043,7 @@ namespace KCL_reBMS_Prj
             0,
             -2147483648});
             this.cbProtectValue12.Name = "cbProtectValue12";
+            this.cbProtectValue12.ReadOnly = true;
             this.cbProtectValue12.Size = new System.Drawing.Size(120, 26);
             this.cbProtectValue12.TabIndex = 60;
             // 
@@ -2503,6 +2511,7 @@ namespace KCL_reBMS_Prj
             // 
             // cbProtectValue11
             // 
+            this.cbProtectValue11.Enabled = false;
             this.cbProtectValue11.Location = new System.Drawing.Point(247, 390);
             this.cbProtectValue11.Maximum = new decimal(new int[] {
             1000000,
@@ -2515,11 +2524,13 @@ namespace KCL_reBMS_Prj
             0,
             -2147483648});
             this.cbProtectValue11.Name = "cbProtectValue11";
+            this.cbProtectValue11.ReadOnly = true;
             this.cbProtectValue11.Size = new System.Drawing.Size(120, 26);
             this.cbProtectValue11.TabIndex = 13;
             // 
             // cbProtectValue10
             // 
+            this.cbProtectValue10.Enabled = false;
             this.cbProtectValue10.Location = new System.Drawing.Point(247, 358);
             this.cbProtectValue10.Maximum = new decimal(new int[] {
             1000000,
@@ -2532,6 +2543,7 @@ namespace KCL_reBMS_Prj
             0,
             -2147483648});
             this.cbProtectValue10.Name = "cbProtectValue10";
+            this.cbProtectValue10.ReadOnly = true;
             this.cbProtectValue10.Size = new System.Drawing.Size(120, 26);
             this.cbProtectValue10.TabIndex = 11;
             // 
@@ -2865,16 +2877,16 @@ namespace KCL_reBMS_Prj
             // 
             // chart1
             // 
-            chartArea2.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chart1.Legends.Add(legend2);
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chart1.Legends.Add(legend1);
             this.chart1.Location = new System.Drawing.Point(98, 305);
             this.chart1.Name = "chart1";
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            this.chart1.Series.Add(series2);
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chart1.Series.Add(series1);
             this.chart1.Size = new System.Drawing.Size(300, 300);
             this.chart1.TabIndex = 1;
             this.chart1.Text = "chart1";
@@ -3367,6 +3379,9 @@ namespace KCL_reBMS_Prj
             // gbSystemStatus
             // 
             this.gbSystemStatus.BackColor = System.Drawing.Color.GhostWhite;
+            this.gbSystemStatus.Controls.Add(this.ICStatus);
+            this.gbSystemStatus.Controls.Add(this.lbIC);
+            this.gbSystemStatus.Controls.Add(this.lbTCell);
             this.gbSystemStatus.Controls.Add(this.lbStatus);
             this.gbSystemStatus.Controls.Add(this.lbCCVStateStatus);
             this.gbSystemStatus.Controls.Add(this.lbCCVState);
@@ -3385,7 +3400,6 @@ namespace KCL_reBMS_Prj
             this.gbSystemStatus.Controls.Add(this.lbLineStatus);
             this.gbSystemStatus.Controls.Add(this.lbInterLock);
             this.gbSystemStatus.Controls.Add(this.lbCurSensor);
-            this.gbSystemStatus.Controls.Add(this.lbTCell);
             this.gbSystemStatus.Controls.Add(this.lbVCell);
             this.gbSystemStatus.Controls.Add(this.lbRelayStatus);
             this.gbSystemStatus.Controls.Add(this.lbStandbyStatus);
@@ -3398,6 +3412,16 @@ namespace KCL_reBMS_Prj
             this.gbSystemStatus.TabIndex = 1;
             this.gbSystemStatus.TabStop = false;
             this.gbSystemStatus.Text = "System Status";
+            // 
+            // lbTCell
+            // 
+            this.lbTCell.Font = new System.Drawing.Font("함초롬바탕", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lbTCell.Location = new System.Drawing.Point(243, 179);
+            this.lbTCell.Name = "lbTCell";
+            this.lbTCell.Size = new System.Drawing.Size(147, 25);
+            this.lbTCell.TabIndex = 10;
+            this.lbTCell.Text = "셀 온도센서 선 감지";
+            this.lbTCell.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lbStatus
             // 
@@ -3569,16 +3593,6 @@ namespace KCL_reBMS_Prj
             this.lbCurSensor.TabIndex = 9;
             this.lbCurSensor.Text = "전류 선 감지";
             this.lbCurSensor.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // lbTCell
-            // 
-            this.lbTCell.Font = new System.Drawing.Font("함초롬바탕", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lbTCell.Location = new System.Drawing.Point(243, 179);
-            this.lbTCell.Name = "lbTCell";
-            this.lbTCell.Size = new System.Drawing.Size(147, 25);
-            this.lbTCell.TabIndex = 10;
-            this.lbTCell.Text = "셀 온도센서 선 감지";
-            this.lbTCell.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lbVCell
             // 
@@ -5470,6 +5484,25 @@ namespace KCL_reBMS_Prj
             this.label2.Text = "파일 명(.csv)";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // ICStatus
+            // 
+            this.ICStatus.BackColor = System.Drawing.Color.Red;
+            this.ICStatus.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ICStatus.Location = new System.Drawing.Point(407, 238);
+            this.ICStatus.Name = "ICStatus";
+            this.ICStatus.Size = new System.Drawing.Size(18, 18);
+            this.ICStatus.TabIndex = 30;
+            // 
+            // lbIC
+            // 
+            this.lbIC.Font = new System.Drawing.Font("함초롬바탕", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lbIC.Location = new System.Drawing.Point(243, 235);
+            this.lbIC.Name = "lbIC";
+            this.lbIC.Size = new System.Drawing.Size(162, 25);
+            this.lbIC.TabIndex = 29;
+            this.lbIC.Text = "IC State";
+            this.lbIC.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -5962,6 +5995,8 @@ namespace KCL_reBMS_Prj
         private System.Windows.Forms.Panel pnSaveFile;
         private System.Windows.Forms.Button btLoadFile;
         private System.Windows.Forms.Button btSaveFile;
+        private System.Windows.Forms.Label ICStatus;
+        private System.Windows.Forms.Label lbIC;
     }
 }
 

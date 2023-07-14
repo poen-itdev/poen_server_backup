@@ -549,8 +549,14 @@ namespace KCL_reBMS_Prj
                                     }
 
                                     commData.WCellOverVoltageStatus = clsCommMsg.byResponseData[index];
-                                    index++;      
+                                    index++;
                                     commData.WCellUnderVoltageStatus = clsCommMsg.byResponseData[index];
+                                    index++;
+                                    commData.WPackOverVoltageStatus = clsCommMsg.byResponseData[index];
+                                    index++;
+                                    commData.WPackUnderVoltageStatus = clsCommMsg.byResponseData[index];
+                                    index++;
+                                    commData.WCellDiffVoltageStatus = clsCommMsg.byResponseData[index];
                                     index++;
                                     commData.WChargingOverTempStatus = clsCommMsg.byResponseData[index];
                                     index++;
@@ -560,15 +566,23 @@ namespace KCL_reBMS_Prj
                                     index++;
                                     commData.WDisChargingOverCurrentStatus = clsCommMsg.byResponseData[index];
                                     index++;
-                                    commData.WCellDiffVoltageStatus = clsCommMsg.byResponseData[index];
+                                    commData.WLowSOC = clsCommMsg.byResponseData[index];
                                     index++;
-                                    commData.WSensingline_measureStatus = clsCommMsg.byResponseData[index];
+                                    commData.WLowSOH = clsCommMsg.byResponseData[index];
                                     index++;
                                     commData.RelayStatus = clsCommMsg.byResponseData[index];
+                                    index++;
+                                    commData.ICErrStatus = clsCommMsg.byResponseData[index];
                                     index++;
                                     commData.PCellOverVoltageStatus = clsCommMsg.byResponseData[index];
                                     index++;
                                     commData.PCellUnderVoltageStatus = clsCommMsg.byResponseData[index];
+                                    index++;
+                                    commData.PPackOverVoltageStatus = clsCommMsg.byResponseData[index];
+                                    index++;
+                                    commData.PPackUnderVoltageStatus = clsCommMsg.byResponseData[index];
+                                    index++;
+                                    commData.PCellDiffVoltageStatus = clsCommMsg.byResponseData[index];
                                     index++;
                                     commData.PChargingOverTempStatus = clsCommMsg.byResponseData[index];
                                     index++;
@@ -578,11 +592,17 @@ namespace KCL_reBMS_Prj
                                     index++;
                                     commData.PDisChargingOverCurrentStatus = clsCommMsg.byResponseData[index];
                                     index++;
-                                    commData.PCellDiffVoltageStatus = clsCommMsg.byResponseData[index];
-                                    index++;
                                     commData.PSensinglinemeasureStatus = clsCommMsg.byResponseData[index];
                                     index++;
-                                    commData.sensinglineErr = clsCommMsg.byResponseData[index];
+                                    commData.PCommunicationErr = clsCommMsg.byResponseData[index];
+                                    index++;
+                                    commData.PCurrentSensorErr = clsCommMsg.byResponseData[index];
+                                    index++;
+                                    commData.PInterLockErr = clsCommMsg.byResponseData[index];
+                                    index++;
+                                    commData.PSelfSystemDiag = clsCommMsg.byResponseData[index];
+                                    index++;
+                                    commData.SensingLineErr = clsCommMsg.byResponseData[index];
                                     index++;
                                     commData.OCVState = clsCommMsg.byResponseData[index];
                                     index++;
@@ -599,6 +619,7 @@ namespace KCL_reBMS_Prj
                                             index++;
                                         }
                                     }
+                                    commData.BMSLogCount = (short)((clsCommMsg.byResponseData[index] * 256) + clsCommMsg.byResponseData[index + 1]);
                                     commData.BMSReboot = clsCommMsg.byResponseData[6];
                                 }
                                 comm_flag = true;

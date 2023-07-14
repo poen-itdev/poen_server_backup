@@ -52,23 +52,32 @@ namespace KCL_reBMS_Prj
 
         public byte WCellOverVoltageStatus;
         public byte WCellUnderVoltageStatus;
+        public byte WPackOverVoltageStatus;
+        public byte WPackUnderVoltageStatus;
+        public byte WCellDiffVoltageStatus;
         public byte WChargingOverTempStatus;
         public byte WChargingUnderTempStatus;
         public byte WChargingOverCurrentStatus;
         public byte WDisChargingOverCurrentStatus;
-        public byte WCellDiffVoltageStatus;
-        public byte WSensingline_measureStatus;
+        public byte WLowSOC;
+        public byte WLowSOH;
+        public byte RelayStatus;
+        public byte ICErrStatus;
         public byte PCellOverVoltageStatus;
         public byte PCellUnderVoltageStatus;
+        public byte PPackOverVoltageStatus;
+        public byte PPackUnderVoltageStatus;
+        public byte PCellDiffVoltageStatus;
         public byte PChargingOverTempStatus;
         public byte PChargingUnderTempStatus;
         public byte PChargingOverCurrentStatus;
         public byte PDisChargingOverCurrentStatus;
-        public byte PCellDiffVoltageStatus;
         public byte PSensinglinemeasureStatus;
-        //public byte PlusRelayStatus;
-        //public byte PreRelayStatus;
-        public byte sensinglineErr;
+        public byte PCommunicationErr;
+        public byte PCurrentSensorErr;
+        public byte PInterLockErr;
+        public byte PSelfSystemDiag;
+        public byte SensingLineErr;
         public byte OCVState;
         public byte CCVState;
         public byte CellBalanceStatus;
@@ -217,7 +226,6 @@ namespace KCL_reBMS_Prj
 
         //Relay
         public byte SetRelay;
-        public byte RelayStatus;
 
         //Set SOC
         public short SetSoc;
@@ -230,5 +238,8 @@ namespace KCL_reBMS_Prj
 
         //BMS Reboot 
         public byte BMSReboot;
+
+        //logCount
+        public short BMSLogCount;
     }
 }

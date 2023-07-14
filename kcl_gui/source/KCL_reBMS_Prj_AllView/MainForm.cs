@@ -230,10 +230,13 @@ namespace KCL_reBMS_Prj
 
             if (logcomm.getReady() == false) clsComm.commData.uDataLogCount = 0;
             else clsComm.commData.uDataLogCount++;
+
             itemp = Convert.ToInt32(clsComm.commData.uDataLogCount);
+            //itemp = Convert.ToInt32(clsComm.commData.BMSLogCount);
             if (bIsTitle == false)
             {
                 strDataLog += itemp + ",";
+                //clsComm.commData.uDataLogCount = (uint)clsComm.commData.BMSLogCount;
             }
             else
             {
@@ -603,6 +606,30 @@ namespace KCL_reBMS_Prj
                 lbCLVW.BackColor = Color.Transparent;
             }
             
+            itemp = Convert.ToInt32(clsComm.commData.WPackOverVoltageStatus);
+            if (itemp != 0)
+            {
+                bWarnning = true;
+                logWarnning("WPackOverVoltage");
+                lbPOVW.BackColor = Color.Orange;
+            }
+            else
+            {
+                lbPOVW.BackColor = Color.Transparent;
+            }
+
+            itemp = Convert.ToInt32(clsComm.commData.WPackUnderVoltageStatus);
+            if (itemp != 0)
+            {
+                bWarnning = true;
+                logWarnning("WPackUnderVoltage");
+                lbPLVW.BackColor = Color.Orange;
+            }
+            else
+            {
+                lbPLVW.BackColor = Color.Transparent;
+            }
+
             itemp = Convert.ToInt32(clsComm.commData.WChargingOverTempStatus);
             if (itemp != 0)
             {
@@ -647,7 +674,7 @@ namespace KCL_reBMS_Prj
                 lbDOAW.BackColor = Color.Transparent;
             }
             
-            itemp = Convert.ToInt32(clsComm.commData.WCellDiffVoltageStatus);
+            itemp = Convert.ToInt32(clsComm.commData.WCellDiffVoltageStatus); 
             if (itemp != 0)
             {
                 bWarnning = true;
@@ -657,15 +684,30 @@ namespace KCL_reBMS_Prj
             {
                 lbCDW.BackColor = Color.Transparent;
             }
-            
-            itemp = Convert.ToInt32(clsComm.commData.WSensingline_measureStatus);
+
+            itemp = Convert.ToInt32(clsComm.commData.WLowSOC);
             if (itemp != 0)
             {
                 bWarnning = true;
-                logWarnning("WSensingline_measure");
+                logWarnning("WLowSOC");
+                lbLSOCW.BackColor = Color.Orange;
+            } else
+            {
+                lbLSOCW.BackColor = Color.Transparent;
             }
 
-            if(bWarnning == true) lbWarnningStatus.BackColor = Color.Red;
+            itemp = Convert.ToInt32(clsComm.commData.WLowSOH);
+            if (itemp != 0)
+            {
+                bWarnning = true;
+                logWarnning("WLowSOH");
+                lbLSOHW.BackColor = Color.Orange;
+            } else
+            {
+                lbLSOHW.BackColor = Color.Transparent;
+            }
+
+            if (bWarnning == true) lbWarnningStatus.BackColor = Color.Red;
             else lbWarnningStatus.BackColor = Color.Transparent;
 
             
@@ -689,6 +731,30 @@ namespace KCL_reBMS_Prj
             } else
             {
                 lbCLVP.BackColor = Color.Transparent;
+            }
+
+            itemp = Convert.ToInt32(clsComm.commData.PPackOverVoltageStatus);
+            if (itemp != 0)
+            {
+                bProtect = true;
+                logWarnning("PPackOverVoltage");
+                lbPOVP.BackColor = Color.Orange;
+            }
+            else
+            {
+                lbPOVP.BackColor = Color.Transparent;
+            }
+
+            itemp = Convert.ToInt32(clsComm.commData.PPackUnderVoltageStatus);
+            if (itemp != 0)
+            {
+                bProtect = true;
+                logWarnning("PPackUnderVoltage");
+                lbPLVP.BackColor = Color.Orange;
+            }
+            else
+            {
+                lbPLVP.BackColor = Color.Transparent;
             }
 
             itemp = Convert.ToInt32(clsComm.commData.PChargingOverTempStatus);
@@ -756,6 +822,54 @@ namespace KCL_reBMS_Prj
             {
                 lbSLMP.BackColor = Color.Transparent;
             }
+            
+            itemp = Convert.ToInt32(clsComm.commData.PCommunicationErr);
+            if (itemp != 0)
+            {
+                bProtect = true;
+                logWarnning("PCommunicationErr");
+                lbCommunicationErrorP.BackColor = Color.Orange;
+            } else
+            {
+                lbCommunicationErrorP.BackColor = Color.Transparent;
+            }
+
+            itemp = Convert.ToInt32(clsComm.commData.PCurrentSensorErr);
+            if (itemp != 0)
+            {
+                bProtect = true;
+                logWarnning("PCurrentSensorErr");
+                lbCurrentSensorErrorP.BackColor= Color.Orange;
+            } else
+            {
+                lbCurrentSensorErrorP.BackColor = Color.Transparent;
+            }
+
+            itemp = Convert.ToInt32(clsComm.commData.PInterLockErr);
+            if (itemp != 0)
+            {
+                bProtect = true;
+                logWarnning("PInterLockErr");
+                lbinterLockErrorP.BackColor = Color.Orange;
+            } else
+            {
+                lbinterLockErrorP.BackColor = Color.Transparent;
+            }
+
+            itemp = Convert.ToInt32(clsComm.commData.PSelfSystemDiag);
+            if (itemp != 0)
+            {
+                bProtect = true;
+                logWarnning("PSelfSystemDiagErr");
+                lbSelfSystemDiagP.BackColor = Color.Orange;
+            }
+            else
+            {
+                lbSelfSystemDiagP.BackColor = Color.Transparent;
+            }
+
+            if (bProtect == true) lbProtectStatus.BackColor = Color.Red;
+            else lbProtectStatus.BackColor = Color.Transparent;
 
             itemp = Convert.ToInt32(clsComm.commData.RelayStatus);
             if (itemp == 1)
@@ -786,10 +900,18 @@ namespace KCL_reBMS_Prj
             //    logWarnning("PreRelay");
             //}
 
-            if (bProtect == true) lbProtectStatus.BackColor = Color.Red;
-            else lbProtectStatus.BackColor = Color.Transparent;
+            itemp = Convert.ToInt32(clsComm.commData.ICErrStatus);
+            if (itemp != 0)
+            { 
+                logWarnning("PSelfSystemDiagErr");
+                ICStatus.BackColor = Color.Red;
+            }
+            else
+            {
+                ICStatus.BackColor = Color.Transparent;
+            }
 
-            byte byteTemp = clsComm.commData.sensinglineErr;
+            byte byteTemp = clsComm.commData.SensingLineErr;
             if (byteTemp != 0)
             {
                 logWarnning("WSensinglineErr");
@@ -955,6 +1077,7 @@ namespace KCL_reBMS_Prj
         {
             clsComm.commData.Soc = (short)((data[7] * 256) + data[8]);
             clsComm.commData.Soc /= 100;
+            tbSetSOC.BackColor = Color.Orange;
             logInfo("BMS -> GUI : SOC = " + clsComm.commData.Soc);
         }
 
@@ -962,6 +1085,7 @@ namespace KCL_reBMS_Prj
         {
             clsComm.commData.Soh = (short)((data[7] * 256) + data[8]);
             clsComm.commData.Soh /= 100;
+            tbSetSOH.BackColor = Color.Orange;
             logInfo("BMS -> GUI : SOH = " + clsComm.commData.Soh);
         }
 
@@ -2114,12 +2238,14 @@ namespace KCL_reBMS_Prj
         private void btSetSOC_Click(object sender, EventArgs e)
         {
             SocSetting();
+            tbSetSOC.BackColor = Color.Transparent;
             logInfo("GUI -> BMS : Set SOC");
         }
 
         private void btSetSOH_Click(object sender, EventArgs e)
         {
             SohSetting();
+            tbSetSOH.BackColor = Color.Transparent;
             logInfo("GUI -> BMS : Set SOH");
         }
 
@@ -2161,6 +2287,7 @@ namespace KCL_reBMS_Prj
             temp_msg += string.Format("Total = {0,-5} , ", clsComm.commData.uLogCount);
             temp_msg += string.Format("Log = {0,-5} : ", clsComm.commData.uDataLogCount);
 
+            if ((clsComm.commData.uLogCount % 100) == 0) tbLogStatus.Clear();
             if (bDisplay == true) tbLogStatus.AppendText(temp_msg + "[info]" + msg + "\r\n");
         }
 
@@ -2168,6 +2295,7 @@ namespace KCL_reBMS_Prj
         {
             //if (logcomm.getReady() == false) return;
 
+            if ((clsComm.commData.uLogCount % 100) == 0) tbLogStatus.Clear();
             if (bDisplay == true) tbLogStatus.AppendText("[Warnning]" + msg + "\r\n");
             
         }
@@ -2176,6 +2304,7 @@ namespace KCL_reBMS_Prj
         {
             //if (logcomm.getReady() == false) return;
 
+            if ((clsComm.commData.uLogCount % 100) == 0) tbLogStatus.Clear();
             if (bDisplay == true) tbLogStatus.AppendText("[Error]" + msg + "\r\n");
             
         }
@@ -2184,6 +2313,7 @@ namespace KCL_reBMS_Prj
         {
             //if (logcomm.getReady() == false) return;
 
+            if ((clsComm.commData.uLogCount % 100) == 0) tbLogStatus.Clear();
             if (bDisplay == true) tbLogStatus.AppendText("[Debug]" + msg + "\r\n");
         }
 
@@ -2191,6 +2321,7 @@ namespace KCL_reBMS_Prj
         {
             //if (logcomm.getReady() == false) return;
 
+            if ((clsComm.commData.uLogCount % 100) == 0) tbLogStatus.Clear();
             if (bDisplay == true) tbLogStatus.AppendText("[Fatal]" + msg + "\r\n");
         }
 
