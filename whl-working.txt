@@ -5,3 +5,5 @@ git fork
 vs git extensions
 vs 기본적으로 원격저장소 clone가 됨
  xmessiahfool_ca.key  xmessiahfool.crt  xmessiahfool.csr  xmessiahfool.key  xmessiahfool.pem  xmessiahfool_public.key
+https://www.lesstif.com/system-admin/dns-txt-record-let-s-encrypt-ssl-59343172.html
+canva ppt 양식
