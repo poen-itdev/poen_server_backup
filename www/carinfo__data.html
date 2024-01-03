@@ -16,23 +16,25 @@
             </caption>
             <colgroup>
               <col width="20%" />
-              <col width="30%" />
+              <col width="25%" />
+              <col />
               <col width="20%" />
-              <col width="30%" />
+              <col width="20%" />
             </colgroup>
             <thead>
               <tr>
-                <th colspan="3"><h3>매입 배터리 점검 항목</h3></th>
+                <th colspan="5"><h3>매입 배터리 점검 항목</h3></th>
                 <td>
                   <input type="date" class="input__date" />
                 </td>
               </tr>
-
+            </thead>
+            <tbody>
               <tr>
                 <th>
                   <label for="_차종">차종</label>
                 </th>
-                <td>
+                <td colspan="2">
                   <select
                     class="select_차종"
                     id="_차종"
@@ -53,22 +55,23 @@
                   </select>
                 </td>
 
-                <th>제품번호</th>
-                <td><input type="text" id="_품번" required /></td>
+                <th><label for="_품번">제품번호</label></th>
+                <td colspan="2"><input type="text" id="_품번" required /></td>
               </tr>
 
               <tr>
                 <th>
                   <label for="_qr_code">QR CODE</label>
                 </th>
-                <td>
+                <td colspan="2">
                   <input type="text" id="_qr_code" required />
-                  <button class="btn" onClick="배터리입력_시작();">
+                </td>
+                <td class="qr_btn">
+                  <button class="check_btn" onClick="배터리입력_시작();">
                     조 회
                   </button>
                 </td>
-              </tr>
-              <tr>
+
                 <th>
                   <label for="_생산일">생산일</label>
                 </th>
@@ -87,9 +90,10 @@
                 <th>
                   <label for="_방문업체">방문업체</label>
                 </th>
-                <td>
-                  <input type="text" id="_방문업체" required />
+                <td colspan="2">
                   <select
+                    class="select__방문업체"
+                    id="_방문업체"
                     name="language"
                     onchange="_방문업체_리스트_콤보박스(this);"
                   >
@@ -100,15 +104,21 @@
                 <th>
                   <label for="_ROM_no">ROM no.</label>
                 </th>
-                <td>
+                <td colspan="2">
                   <input type="text" id="_ROM_no" required />
                 </td>
               </tr>
-            </thead>
+            </tbody>
           </table>
-          <button class="btn" onClick="배터리입력_save();">저장</button>
-          <button class="btn" onClick="이전페이지();">이전페이지</button>
+
+          <!-- <table border="2" class="checklist">
+            <label for="_파손"></label>
+            <input type="text" />
+            <input type="text" />
+          </table> -->
         </div>
+        <button class="btn" onClick="배터리입력_save();">저장</button>
+        <button class="btn" onClick="이전페이지();">이전페이지</button>
       </div>
     </section>
 
