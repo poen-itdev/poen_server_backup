@@ -155,20 +155,31 @@ footer {
 ============================== thead*/
 .data__battery {
   margin: 50px auto;
-  width: 600px;
 }
+
 .data__battery h2 {
-  font-size: 2rem;
+  font-size: 2vw;
+  margin: 30px 0;
 }
-.data__battery table {
+
+.page {
+  width: 794px; /* 210mm x 3.78px/mm */
+  height: 1123px;
   margin: 0 auto;
+  background-color: #f4f4f4;
+  padding: 20px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.data__battery .page table {
   width: 100%;
   text-align: left;
   border: 1px solid #000;
   border-collapse: collapse;
   margin: 5px 0;
 }
-.data__battery table caption {
+.data__battery .page table caption {
   position: absolute;
   clip: rect(0 0 0 0);
   width: 1px;
@@ -176,22 +187,47 @@ footer {
   margin: -1px;
   overflow: hidden;
 }
-.data__battery thead {
+.data__battery .page table thead {
   text-align: center;
 }
-.data__battery thead th h3 {
-  font-size: 40px;
+.data__battery .page table thead th h3 {
+  font-size: clamp(20px, 2vw, 30px);
   font-weight: normal;
 }
-.data__battery td {
+.data__battery .page table td {
   padding: 0.6vw;
-  font-size: clamp(12px, 1vw, 20px);
+  font-size: clamp(16px, 1.2vw, 20px);
 }
 
-.data__battery input {
+.data__battery .page table input,
+.data__battery .page table select {
   padding: 0.5vw;
   text-indent: 5px;
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+.data__battery .page input[type="date"] {
+  position: relative;
+  border: none;
+  background: transparent;
+  outline: none;
+  cursor: pointer;
+  position: relative;
+}
+.data__battery .page input[type="date"]::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  margin-left: 5px;
+  vertical-align: middle;
 }
 
-/* ===================================
-============================== tbody*/
+.data__battery .page table select {
+  border-radius: 0; /* 아이폰 사파리 보더 없애기 */
+  -webkit-appearance: none; /* 화살표 없애기 for chrome*/
+  -moz-appearance: none; /* 화살표 없애기 for firefox*/
+  appearance: none; /* 화살표 없애기 공통*/
+}
+.data__battery .page table select::-ms-expand {
+  display: none;
+}
