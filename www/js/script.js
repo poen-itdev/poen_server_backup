@@ -1,8 +1,8 @@
 function loadPage(url) {
-  const content = document.getElementById('content');
+  const content = document.getElementById("content");
 
-  if (대기수량Timer != undefined) clearInterval(대기수량Timer);
-  if (dashboardTimer != undefined) clearInterval(dashboardTimer);
+  if (typeof 대기수량Timer != "undefined") clearInterval(대기수량Timer);
+  if (typeof dashboardTimer != "undefined") clearInterval(dashboardTimer);
 
   fetch(url)
     .then((response) => {
@@ -20,4 +20,3 @@ function loadPage(url) {
       content.innerHTML = `<p>오류가 발생했습니다. 페이지를 로드할 수 없습니다.</p>`;
     });
 }
-

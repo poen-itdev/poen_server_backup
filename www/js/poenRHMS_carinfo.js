@@ -1,51 +1,51 @@
 const DELAY = 1;
-const DELAY_SYS = 5000;
 const 계정 = "계정";
+const 배터리입력 = "배터리입력";
 
 var 계정_v = [];
+var 배터리입력_v = [];
 
 var 계정_cnt = 0;
+var 배터리입력_cnt = 0;
 
-var 관리번호 = "";
+var qr_code = "";
 var 차종 = "";
 var worker = "";
-var level = "";
 
 var flag_loaded = false;
 
 const 계정_doc = {
   id: "",
   passwd: "",
-  level: "",
   이름: "",
   기본정보: "",
-  입고: "",
-  세척: "",
-  기초검사: "",
-  분해조립: "",
-  성능검사: "",
-  EOL: "",
-  출하검사: "",
-  부품재고: "",
-  관리번호: "",
+};
+
+const 배터리입력_doc = {
+  qr_code: "",
+  차종: "",
+  품번: "",
+  ROM_no: "",
+  생산일: "",
+  방문업체: "",
 };
 
 const 계정_ = {
   _id: 0,
   id: 1,
   passwd: 1,
-  level: 1,
   이름: 1,
   기본정보: 1,
-  입고: 1,
-  세척: 1,
-  기초검사: 1,
-  분해조립: 1,
-  성능검사: 1,
-  EOL: 1,
-  출하검사: 1,
-  부품재고: 1,
-  관리번호: 1,
+};
+
+const 배터리입력_ = {
+  _id: 1,
+  qr_code: 1,
+  차종: 1,
+  품번: 1,
+  ROM_no: 1,
+  생산일: 1,
+  방문업체: 1,
 };
 
 var doc_count = 0;
@@ -65,45 +65,38 @@ socket.on("connect", function () {
   loadPage("base/carinfo__login.html");
 });
 
+socket.on("qr_lebel_result", function (result) {
+  //alert(result);
+  if (result == "complete") {
+    var a = document.createElement("a");
+    a.href = "/qr_label";
+    a.download = "EOL_QR_LABEL";
+
+    a.click();
+  }
+});
+
 socket.on("insert_result", async function (id) {
   //console.log('insert id: ', id);
   insert_id = id;
   flag_arrivedMSG = true;
 });
 
-socket.on("count_result", async function (col, count, rcv_check, option = "") {
+socket.on("count_result", async function (col, count, rcv_check) {
   reset_count();
 
+  console.log("count_result", count);
+
   if (rcv_check != check) return;
-  switch (col) {
-    case 계정:
-      계정_cnt = 0;
-      계정_cnt = JSON.parse(JSON.stringify(count));
-
-    default:
-      doc_count = 0;
-      doc_count = JSON.parse(JSON.stringify(count));
-      break;
-  }
-
+  배터리입력_cnt = count;
   flag_arrivedMSG = true;
 });
 
 socket.on("find_result", async function (col, result, rcv_check) {
-  reset_result();
+  find_array = [];
   if (rcv_check != check) return;
 
-  switch (col) {
-    case 계정:
-      계정_v = [];
-      계정_v = JSON.parse(JSON.stringify(result));
-      break;
-
-    default:
-      find_array = [];
-      find_array = JSON.parse(JSON.stringify(result));
-      break;
-  }
+  배터리입력_v = JSON.parse(JSON.stringify(result));
 
   flag_arrivedMSG = true;
 });
@@ -125,30 +118,26 @@ socket.on("delete_result", async function (count) {
   flag_arrivedMSG = true;
 });
 
-socket.on("drop_result", async function (result) {
-  console.log("drop result: ", result);
-  flag_arrivedMSG = true;
-});
-
 socket.on("disconnect", function () {
   console.log("disconnect");
-  walker = "";
-  const _login_btn = document.getElementById("login_btn");
-  _login_btn.innerHTML = "로그인";
-  _login_btn.style.coler = "red";
-  //socket = io();
 });
 
-function reset_result() {}
+function reset_result() {
+  배터리입력_v = [];
+  find_array = [];
+}
 
-function reset_count() {}
+function reset_count() {
+  배터리입력_cnt = 0;
+  doc_count = 0;
+}
 
-async function count(col, query, option = "") {
+async function count(col, query) {
   if (socket == undefined) return;
   flag_arrivedMSG = false;
   check++;
   if (check > 10) check = 0;
-  socket.emit("count", level, col, query, check, option);
+  socket.emit("count", col, query, check);
 }
 
 async function insert(col, doc) {
@@ -166,7 +155,7 @@ async function insertMany(col, doc) {
 async function update(col, doc) {
   if (socket == undefined) return;
   flag_arrivedMSG = false;
-  socket.emit("update", worker, col, { 관리번호: doc.관리번호 }, { $set: doc });
+  socket.emit("update", worker, col, { qr_code: doc.qr_code }, { $set: doc });
 }
 
 async function update_계정(col, doc) {
@@ -175,19 +164,13 @@ async function update_계정(col, doc) {
   socket.emit("update", worker, col, { id: doc.id }, { $set: doc });
 }
 
-async function update_품번(col, doc) {
+async function deleteOne(col, qr_code) {
   if (socket == undefined) return;
   flag_arrivedMSG = false;
-  socket.emit("update", worker, col, { 번호: doc.번호 }, { $set: doc });
+  socket.emit("delete", worker, col, { qr_code: qr_code });
 }
 
-async function deleteOne(col, management_id) {
-  if (socket == undefined) return;
-  flag_arrivedMSG = false;
-  socket.emit("delete", worker, col, { 관리번호: management_id });
-}
-
-async function deleteOneBSA(col, id) {
+async function deleteOneId(col, id) {
   if (socket == undefined) return;
   flag_arrivedMSG = false;
   socket.emit("delete_by_id", worker, col, id);
@@ -205,26 +188,42 @@ async function drop(_col) {
   socket.emit("drop", worker, _col);
 }
 
-async function find(col, management_id) {
+async function find(col, qr_code) {
   if (socket == undefined) return;
   flag_arrivedMSG = false;
 
-  console.log("find:", col, management_id);
+  console.log("find:", col, qr_code);
   check++;
   if (check > 10) check = 0;
+
+  switch (col) {
+    case "배터리입력":
+      socket.emit(
+        "findOne",
+        col,
+        { qr_code: qr_code },
+        { sort: { kind: 1 }, projection: 배터리입력_ },
+        check
+      );
+      break;
+
+    default:
+      console.log("collection name is not match");
+  }
 }
 
-async function findOne_품번(col, query) {
+async function findOne_배터리입력(col, query) {
   if (socket == undefined) return;
   flag_arrivedMSG = false;
   check++;
   if (check > 10) check = 0;
+
   socket.emit(
     "findOne",
     worker,
     col,
     query,
-    { sort: { kind: 1 }, projection: 품번_ },
+    { sort: { kind: 1 }, projection: 배터리입력_ },
     check
   );
 }
@@ -261,19 +260,8 @@ async function find_계정(col, query) {
   );
 }
 
-async function find_품번(col, query) {
-  if (socket == undefined) return;
-  flag_arrivedMSG = false;
-  check++;
-  if (check > 10) check = 0;
-  socket.emit(
-    "find",
-    worker,
-    col,
-    query,
-    { sort: { kind: 1 }, projection: 품번_ },
-    check
-  );
+function back() {
+  loadPage("base/carinfo__main.html");
 }
 
 function sleep(ms) {

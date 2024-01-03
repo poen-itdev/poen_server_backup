@@ -3,7 +3,118 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>매입 배터리 등록</title>
   </head>
-  <body></body>
+  <body>
+    <section class="data__battery">
+      <div class="container">
+        <h2>매입 배터리 점검 항목 입력</h2>
+        <table border="2">
+          <caption>
+            폐배터리 매입 배터리 입력 폼
+          </caption>
+          <colgroup>
+            <col width="20%" />
+            <col width="30%" />
+            <col width="20%" />
+            <col width="30%" />
+          </colgroup>
+          <thead>
+            <tr>
+              <th colspan="3"><h3>매입 배터리 점검 항목</h3></th>
+
+              <td>
+                <input type="date" />
+              </td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th>
+                <label for="_qr_code">QR CODE</label>
+              </th>
+              <td>
+                <input type="text" id="_qr_code" required />
+                <button class="btn" onClick="배터리입력_시작();">조 회</button>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <label for="_생산일">생산일</label>
+              </th>
+              <td>
+                <input
+                  type="date"
+                  id="_생산일"
+                  value="0000-00-00"
+                  min="1999-01-01"
+                  max="9999-12-31"
+                  required
+                />
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <label for="_방문업체">방문업체</label>
+              </th>
+              <td>
+                <input type="text" id="_방문업체" required />
+                <select
+                  name="language"
+                  onchange="_방문업체_리스트_콤보박스(this);"
+                >
+                  <option value="">---</option>
+                  <option value="카랜드">카랜드</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <label for="_차종">차종</label>
+              </th>
+              <td>
+                <input type="text" id="_차종" required />
+                <select name="language" onchange="_차종_리스트_콤보박스(this);">
+                  <option value="">---</option>
+                  <option value="DE_EV">DE_EV</option>
+                  <option value="OS_EV">OS_EV</option>
+                  <option value="SK3_EV">SK3_EV</option>
+                  <option value="LK_EV">LK_EV</option>
+                  <option value="PU_EV">PU_EV</option>
+                  <option value="HR_EV">HR_EV</option>
+                  <option value="CV_EV">CV_EV</option>
+                  <option value="NE_EV">NE_EV</option>
+                  <option value="LM_EV">LM_EV</option>
+                  <option value="CS_EV">CS_EV</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <th>제품번호</th>
+              <td><input type="text" id="_품번" required /></td>
+            </tr>
+            <tr>
+              <th>
+                <label for="_ROM_no">ROM no.</label>
+              </th>
+              <td>
+                <input type="text" id="_ROM_no" required />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <button class="btn" onClick="배터리입력_save();">저장</button>
+        <button class="btn" onClick="이전페이지();">이전페이지</button>
+      </div>
+    </section>
+
+    <script>
+      const _qr_code = document.getElementById("_qr_code");
+      const _차종 = document.getElementById("_차종");
+      const _품번 = document.getElementById("_품번");
+      const _ROM_no = document.getElementById("_ROM_no");
+      const _생산일 = document.getElementById("_생산일");
+      const _방문업체 = document.getElementById("_방문업체");
+    </script>
+  </body>
 </html>
