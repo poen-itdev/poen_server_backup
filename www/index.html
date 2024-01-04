@@ -20,8 +20,8 @@
 
   <body oncontextmenu="return blockRightClick()">
     <div id="main">
-      <div>
-        <img src="base/img/poen.png" width="10%" height="10%" />
+      <div class="logo__img">
+        <img src="base/img/poen.png" />
       </div>
       <div>
         <h1>RHMS</h1>
@@ -56,6 +56,14 @@
                   onclick="pre_관리번호 = ''; loadPage('base/bsa_info.html'); flag_재제조현황 = true;"
                 >
                   재제조 DATA
+                </button>
+              </li>
+              <li>
+                <button
+                  class="menu-btn"
+                  onclick="pre_관리번호 = '';  loadPage('base/품목상세입력.html'); flag_정보 = true;"
+                >
+                  배터리팩 기본정보
                 </button>
               </li>
               <li>

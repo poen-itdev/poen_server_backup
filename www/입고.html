@@ -8,6 +8,35 @@
   </head>
 
   <body>
+    <section>
+      <div class="gather-filter">
+        <select id="filter-field">
+          <option></option>
+          <option value="관리번호">관리번호</option>
+          <option value="입고일">입고일</option>
+          <option value="입고처">입고처</option>
+          <option value="차종">차종</option>
+          <option value="품번">품번</option>
+          <option value="RO_no">RO_no</option>
+        </select>
+
+        <select id="filter-type">
+          <option value="=">=</option>
+          <option value="<"><</option>
+          <option value="<="><=</option>
+          <option value=">">></option>
+          <option value=">=">>=</option>
+          <option value="!=">!=</option>
+          <option value="like">like</option>
+        </select>
+
+        <input id="filter-value" type="text" placeholder="value to filter" />
+
+        <button id="filter-clear">Clear Filter</button>
+      </div>
+      <button onClick="입고_list();">LIST</button>
+      <div id="grid_list"></div>
+    </section>
     <section class="입고">
       <div class="process__tit">
         <h2>배터리팩 등록(입고)</h2>
@@ -116,6 +145,19 @@
               <input type="text" id="_RO_no" size="40" required />
             </td>
           </tr>
+          <tr>
+            <td>
+              <label for="_Rack_번호">Rack 번호</label>
+            </td>
+            <td>
+              <input type="text" id="_Rack_번호" size="40" required />
+              <button
+                onClick="창고 = '마도'; flag_racks = true; loadPage('base/rack_배치도.html');"
+              >
+                Rack 배치도
+              </button>
+            </td>
+          </tr>
         </table>
       </div>
       <div class="input-group">
@@ -133,6 +175,7 @@
       const _차종 = document.getElementById("_차종");
       const _품번 = document.getElementById("_품번");
       const _RO_no = document.getElementById("_RO_no");
+      const _Rack_설정 = document.getElementById("_Rack_설정");
     </script>
   </body>
 </html>

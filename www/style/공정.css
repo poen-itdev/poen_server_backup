@@ -219,6 +219,26 @@ table input {
 }
 .process-step table input {
   padding: 0.3vw;
+  text-indent: 10px;
+}
+.process-step table .process__img {
+  text-align: center;
+  line-height: 1px;
+}
+.process-step table .process__img img {
+  border: 2px solid #0a723f;
+}
+@media screen and (max-width: 920px) {
+  .process-step table .process__img img {
+    width: 25vw;
+    height: 16vh;
+  }
+}
+@media screen and (max-width: 520px) {
+  .process-step table .process__img img {
+    width: 20vw;
+    height: 8vh;
+  }
 }
 /* item-detail 검사보고서 dropdwon menu Btn css */
 .select-menu {

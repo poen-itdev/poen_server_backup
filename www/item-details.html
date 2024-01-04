@@ -16,7 +16,7 @@
       <div class="process">
         <div class="inner">
           <div class="contents">
-            <div
+            <!-- <div
               class="item"
               id="기본정보"
               onClick="if(계정_stat.기본정보 == 'o') { flag_정보 = true; loadPage('base/품목상세입력.html');}"
@@ -25,11 +25,11 @@
                 <img src="base/img/info.png" alt="기본정보" />
               </div>
               <h3>기본정보</h3>
-            </div>
+            </div> -->
             <div
               class="item"
               id="입고"
-              onClick="if(계정_stat.입고 == 'o') { 창고 = '마도'; flag_racks = true; loadPage('base/rack_배치도.html');}"
+              onClick="if(계정_stat.입고 == 'o') { flag_입고 = true; loadPage('base/입고.html');}"
             >
               <div class="icon">
                 <img src="base/img/cargo-b.png" alt="입고" />
@@ -95,6 +95,12 @@
                 <img src="base/img/oqc.png" alt="출하검사" />
               </div>
               <h3>출하검사</h3>
+            </div>
+            <div class="item" id="출하">
+              <div class="icon">
+                <img src="base/img/outgoing.png" alt="출하" />
+              </div>
+              <h3>출하</h3>
             </div>
           </div>
         </div>
