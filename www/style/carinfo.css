@@ -57,14 +57,14 @@ label {
   cursor: pointer;
 }
 /* main page */
+#content {
+  width: 100%;
+  height: 100vh;
+}
 .container {
   max-width: 1000px;
   margin: 0 auto;
   background-color: #fff;
-}
-#content {
-  width: 100%;
-  /* height: calc(100vh - 300px); */
 }
 
 .btn {
