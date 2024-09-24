@@ -247,7 +247,7 @@ async function 재제조현황_조회() {
 
     document.getElementById('m_id').innerHTML = '관리번호: ' + m_id;
 
-    //await sleep(1);
+    await sleep(1);
     await grid_입고(m_id);
     progress.value = (1 / 19) * 100;
 
@@ -310,7 +310,7 @@ async function 재제조현황_조회() {
 
   //전체 공정 data를 보여줌
   
-  //await sleep(1);
+  await sleep(1);
 
   await grid_입고();
   progress.value = (1 / 19) * 100;
@@ -346,7 +346,7 @@ async function 재제조현황_조회() {
   progress.value = (11 / 19) * 100;
 
   await grid_교체부품상세4();
-  progress.value = (12 / 18) * 100;
+  progress.value = (12 / 19) * 100;
 
   await grid_교체부품상세5();
   progress.value = (13 / 19) * 100;
