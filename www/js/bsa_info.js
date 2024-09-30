@@ -310,7 +310,7 @@ async function 재제조현황_조회() {
 
   //전체 공정 data를 보여줌
   
- // await sleep(1);
+  await sleep(1);
 
   await grid_입고();
   progress.value = (1 / 19) * 100;
