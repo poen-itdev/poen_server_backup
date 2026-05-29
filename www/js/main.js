@@ -292,7 +292,6 @@ var interval = setInterval(function () {
   if (flag_BSA_제외분류 == true) {
     console.log('BSA 제외분류');
     stop_repeat();
-    stop_repeat();
     BSA_제외분류_시작();
   }
   if (flag_관리자 == true) {
@@ -361,12 +360,7 @@ var interval = setInterval(function () {
     stop_repeat();
     부품정보_list_시작();
   }
-  if (flag_기초보고서 == true) {
-    console.log('기초보고서');
-    stop_repeat();
-    기초보고서_시작();
-  }
-  if (flag_분해조립_재제조 == true) {
+   if (flag_분해조립_재제조 == true) {
     console.log('분해조립 재제조');
     stop_repeat();
     분해조립_재제조_시작();
