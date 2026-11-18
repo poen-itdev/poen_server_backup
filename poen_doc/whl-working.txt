@@ -1,0 +1,9 @@
+wonho-lee.atlassian.net
+https://poen-co.jetbrains.space/p/main/repositories/rhs/files
+https://comcube.tistory.com/entry/Synology-NAS-%EB%A5%BC-%EC%9D%B4%EC%9A%A9%ED%95%98%EC%97%AC-git-%EC%84%9C%EB%B2%84-%EA%B5%AC%EC%84%B1%ED%95%98%EA%B8%B0
+git fork 
+vs git extensions
+vs 기본적으로 원격저장소 clone가 됨
+ xmessiahfool_ca.key  xmessiahfool.crt  xmessiahfool.csr  xmessiahfool.key  xmessiahfool.pem  xmessiahfool_public.key
+https://www.lesstif.com/system-admin/dns-txt-record-let-s-encrypt-ssl-59343172.html
+canva ppt 양식
