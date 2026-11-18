@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>제공 동의서</title>
+    <link rel="stylesheet" href="base/style/contract.css" />
+    <link rel="stylesheet" href="base/style/tabulator_css/tabulator_modern.min.css" />
+
+    <script src="base/jslib/luxon.min.js"></script>
+    <script src="base/jslib/socket.io.min.js"></script>
+    <script src="base/js/poenRHS_mini.js"></script>
+    <script src="base/js/agreement.js"></script>
+    <script src="base/jslib/tabulator.js"></script>
+    <script src="base/jslib/pdfmake.min.js"></script>
+    <script src="base/jslib/html2canvas.js"></script>
+  </head>
+
+  <body>
+    <section class="agreement-all">
+      <div id="_제공동의서">
+        <div id="agreement" class="page">
+          <div class="agreement__header">
+            <h2>개인정보 수집·이용 및 제 3자 제공 동의서</h2>
+            <p>
+              (주)포엔의 보증수리 서비스와 관련하여 『개인정보보호법』제 15조 및 제22조에 따라 귀하의 <br />
+              개인정보를아래과 같이 수집·이용 및 제3자 제공을 하고자 합니다. 아래 내용을 자세히 읽어 보시고, <br />
+              동의 여부를 결정해 주시기 바랍니다.
+            </p>
+          </div>
+          <div class="agreement__content">
+            <div class="privacy__con">
+              <h3>&square; 개인정보 수집·이용 동의</h3>
+              <table class="content__table">
+                <colgroup>
+                  <col class="col_1" width="30%" />
+                  <col class="col_2" width="40%" />
+                  <col class="col_3" width="25%" />
+                </colgroup>
+                <tr>
+                  <th>개인정보 이용 목적</th>
+                  <th>수집항목</th>
+                  <th>보유이용 기간</th>
+                </tr>
+                <tr>
+                  <td>일반 및 연장 보증수리 서비스 제공을 위한 ‘고객’ 본인과 ‘가입차량’ 확인</td>
+                  <td>
+                    - 고객정보(성명/상호, 생년월일/사업자번호, 주소, 전화번호, e-mail)
+                    <br />
+                    - 가입차량 정보(차량제조사, 모델명, 트림(배터리 옵션), 제조년도, 구매 신청일 누적주행 거리, 차량 번호, 차대 번호, 차량 용도)
+                  </td>
+                  <td>‘리퍼비시 배터리팩’이 장착된 날로부터 만 1년(일반 보증수리), 5년(연장 보증수리)까지</td>
+                </tr>
+              </table>
+              <p>※ 위의 개인정보 수집·이용에 대한 동의를 거부할 권리가 있습니다. 그러나 동의를 거부할 경우 ㈜포엔이 제공하는 일반 및 연장 보증수리 서비스에 제한을 받을 수 있습니다.</p>
+              <table class="content__table mt">
+                <colgroup>
+                  <col class="col_1" width="65%" />
+                  <col class="col_2" width="35%" />
+                </colgroup>
+                <tr>
+                  <th style="background: #fff; border-right-color: rgba(0, 0, 0, 0.222)">개인정보 수집·이용동의</th>
+                  <td style="border-left: none">
+                    <input type="checkbox" id="_agree-chk1" name="chkbox1" />
+                    <label for="_agree-chk1"><em>예</em></label>
+                    <input type="checkbox" id="_diagree-chk1" name="chkbox1" />
+                    <label for="_diagree-chk1"><em>아니오</em></label>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div class="privacy__con">
+              <h3>&square; 개인정보 제 3자 제공 동의<span style="color: #444"> (※연장 보증수리 서비스 가입 시 해당) </span></h3>
+              <table class="content__table">
+                <colgroup>
+                  <col class="col_1" width="25%" />
+                  <col class="col_2" width="25%" />
+                  <col class="col_3" width="25%" />
+                  <col class="col_4" width="25%" />
+                </colgroup>
+                <tr>
+                  <th>제공받는 자</th>
+                  <th>제공 목적</th>
+                  <th>제공 항목</th>
+                  <th>보유·입력 기간</th>
+                </tr>
+                <tr>
+                  <td style="text-align: center">DB 손해보험</td>
+                  <td>연장 보증수리 서비스 제공을 위한 ‘고객’ 본인, ‘가입차량’ 및 서비스 조건 확인</td>
+                  <td>- 가입차량 정보(차량제조사, 모델명, 트림(배터리 옵션), 제조년도, 구매 신청일 누적주행 거리, 차량 번호, 차대 번호, 차량 용도)</td>
+                  <td>제조사의 무상보증 서비스기간 종료일로부터 4년까지</td>
+                </tr>
+              </table>
+              <p>※ 위의 개인정보 수집‧이용에 대한 동의를 거부할 권리가 있습니다. 그러나 동의를 거부할 경우 ㈜포엔이 제공하는 연장 보증수리 서비스에 제한을 받을 수 있습니다.</p>
+              <table class="content__table mt">
+                <colgroup>
+                  <col class="col_1" width="65%" />
+                  <col class="col_2" width="35%" />
+                </colgroup>
+                <tr>
+                  <th style="background: #fff; border-right-color: rgba(0, 0, 0, 0.222)">개인정보 제3자 제공 동의</th>
+                  <td style="border-left: none">
+                    <input type="checkbox" id="_agree-chk2" name="chkbox2" />
+                    <label for="_agree-chk2"><em>예</em></label>
+                    <input type="checkbox" id="_diagree-chk2" name="chkbox2" />
+                    <label for="_diagree-chk2"><em>아니오</em></label>
+                  </td>
+                </tr>
+              </table>
+              <p>본인은 본 개인정보의 수집·이용 및 제3자 제공 동의서 내용을 읽고 명확히 이해하였으며, 이에 동의합니다.</p>
+              <div class="privacy__con">
+                <div class="date"><input type="text" value="20" id="_year" />년 <input type="text" id="_month" />월 <input type="text" id="_day" />일</div>
+                <div class="sign sign-1">
+                  성명 :
+                  <input type="text" id="_성명" />
+                  (서명 또는 인)
+                  <img id="_서명" \ />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="apply__check">
+      <div class="apply__sign">
+        <label for="grid_제공동의서">
+          <h2>제공동의서 조회</h2>
+        </label>
+      </div>
+      <div id="grid_제공동의서"></div>
+      <div class="apply__btn">
+        <button onClick="조회();">조 회</button>
+        <button onClick="pdf();">PDF</button>
+      </div>
+      <canvas id="_canvas"></canvas>
+    </div>
+
+    <script>
+      var _ok1 = document.getElementById("_agree-chk1");
+      var _no1 = document.getElementById("_diagree-chk1");
+      var _ok2 = document.getElementById("_agree-chk2");
+      var _no2 = document.getElementById("_diagree-chk2");
+      var _year = document.getElementById("_year");
+      var _month = document.getElementById("_month");
+      var _day = document.getElementById("_day");
+      var _성명 = document.getElementById("_성명");
+      var _서명 = document.getElementById("_서명");
+
+      async function 조회() {
+        날짜ID = "";
+        find_제공동의서(제공동의서, { 날짜ID: { $exists: true } });
+        await delay();
+
+        if (find_array != null) {
+          console.log("find:", find_array);
+
+          날짜ID = "";
+
+          var table_제공동의서 = new Tabulator("#grid_제공동의서", {
+            layout: "resizableColumnFit",
+            data: find_array,
+            height: "700px",
+            columns: [
+              {
+                title: "날짜ID",
+                field: "날짜ID",
+                sorter: "string",
+                width: "200",
+              },
+              { title: "동의1", field: "ok1", sorter: "string", width: "150" },
+              { title: "동의2", field: "ok2", sorter: "string", width: "150" },
+              { title: "성명", field: "성명", sorter: "string", width: "150" },
+              { title: "year", field: "year", sorter: "string", width: "80" },
+              { title: "month", field: "month", sorter: "string", width: "80" },
+              { title: "day", field: "day", sorter: "string", width: "80" },
+              {
+                formatter: "buttonCross",
+                width: 40,
+                align: "center",
+                cellClick: async function (e, cell) {
+                  var ok = window.confirm("지워집니다. 계속하겠습니까?");
+                  if (ok == false) return;
+
+                  cell.getRow().delete();
+                  deleteOne(제공동의서, cell.getRow().getData().날짜ID);
+                  await delay();
+
+                  if (delete_count > 0) {
+                    alert("삭제 되었습니다.");
+                  }
+                  location.reload();
+                },
+              },
+            ],
+          });
+
+          table_제공동의서.on("rowClick", async function (e, row) {
+            console.log("selected 날짜ID: ", row.getData().날짜ID);
+            var 날짜ID = row.getData().날짜ID;
+
+            find_제공동의서(제공동의서, { 날짜ID: 날짜ID });
+            await delay();
+
+            console.log("find_array:", find_array);
+            _ok1.checked = find_array[0].ok1;
+            _no1.checked = find_array[0].no1;
+            _ok2.checked = find_array[0].ok2;
+            _no2.checked = find_array[0].no2;
+            _성명.value = find_array[0].성명;
+            _서명.src = find_array[0].서명;
+            _year.value = find_array[0].year;
+            _month.value = find_array[0].month;
+            _day.value = find_array[0].day;
+          });
+        }
+      }
+
+      function pdf() {
+        var _제공동의서 = document.getElementById("_제공동의서");
+        var _width = 2350;
+        var _height = 1900;
+
+        html2canvas(_제공동의서, {
+          width: (_width * window.innerWidth) / 1920,
+          height: (_height * window.innerHeight) / 1080,
+        }).then((canvas) => {
+          var data = canvas.toDataURL();
+          var canvas = document.getElementById("_canvas");
+          var ctx = canvas.getContext("2d");
+          var img = new Image();
+          img.src = data;
+          img.onload = function () {
+            ctx.drawImage(img, 1920, 1080);
+          };
+
+          canvas.width = _width / 10;
+          canvas.height = _height / 10;
+
+          var docDefinition = {
+            content: [
+              {
+                image: data,
+                width: 1920,
+                height: 1080,
+              },
+            ],
+            pageSize: "A4",
+            pageOrientation: "portrait",
+          };
+          pdfMake.createPdf(docDefinition).download("제공동의서.pdf");
+        });
+        console.log("file name:", "제공동의서.pdf");
+      }
+    </script>
+  </body>
+</html>

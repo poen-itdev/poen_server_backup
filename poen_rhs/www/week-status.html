@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>주간 현황</title>
+    <link rel="stylesheet" href="base/style/공정.css" />
+  </head>
+
+  <body>
+    <section class="주간현황">
+      <div class="process__tit change-tit">
+        <h2>주간 현황</h2>
+      </div>
+      <div class="data">
+        <input type="date" id="_검색일" size="40" value="0000-00-00" max="240-12-4" required />
+        <button onClick="날짜_조회();">조회</button>
+      </div>
+      <div class="process">
+        <div class="process__tit">
+          <label for="chart">Chart</label>
+        </div>
+        <canvas id="chart"> </canvas>
+      </div>
+      <div class="process">
+        <div class="process__tit">
+          <label for="grid_입고">입고</label>
+        </div>
+        <div id="grid_입고"></div>
+      </div>
+      <div class="process">
+        <div class="process__tit">
+          <label for="grid_제조완료">제조완료</label>
+        </div>
+        <div id="grid_제조완료"></div>
+      </div>
+      <div class="process">
+        <div class="process__tit">
+          <label for="grid_출하">출하</label>
+        </div>
+        <div id="grid_출하"></div>
+      </div>
+    </section>
+    <script>
+      const _검색일 = document.getElementById("_검색일");
+    </script>
+  </body>
+</html>

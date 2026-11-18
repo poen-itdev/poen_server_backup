@@ -1,0 +1,2897 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="wvalueth=device-wvalueth, initial-scale=1.0" />
+    <link rel="stylesheet" href="base/style/rack-layout.css" />
+    <link rel="stylesheet" href="base/style/공정.css" />
+    <title>RACK배치도</title>
+  </head>
+  <body>
+    <section>
+      <div class="gather-filter">
+        <select id="filter-field">
+          <option></option>
+          <option value="관리번호">관리번호</option>
+          <option value="재제조번호">재제조번호</option>
+          <option value="구분">구분</option>
+          <option value="차종">차종</option>
+          <option value="품번">품번</option>
+          <option value="RO_no">RO_no</option>
+          <option value="공정단계">공정단계</option>
+          <option value="적재No">적재No</option>
+          <option value="입고">입고</option>
+          <option value="제조투입">제조투입</option>
+          <option value="세척투입일">세척투입일</option>
+          <option value="세척">세척</option>
+          <option value="기초검사투입">기초검사투입</option>
+          <option value="기초검사">기초검사</option>
+          <option value="분해조립투입">분해조립투입</option>
+          <option value="분해조립">분해조립</option>
+          <option value="성능검사투입">성능검사투입</option>
+          <option value="성능검사">성능검사</option>
+          <option value="EOL투입일">EOL투입일</option>
+          <option value="EOL">EOL</option>
+          <option value="출하검사">출하검사</option>
+          <option value="납품처">납품처</option>
+          <option value="출하">출하</option>
+          <option value="소재지">소재지</option>
+          <option value="반품입고">반품입고</option>
+          <option value="재출하">재출하</option>
+          <option value="완전분해">완전분해</option>
+          <option value="폐기">폐기</option>
+          <option value="마지막충전일">마지막충전일</option>
+        </select>
+
+        <select id="filter-type">
+          <option value="=">=</option>
+          <option value="<"><</option>
+          <option value="<="><=</option>
+          <option value=">">></option>
+          <option value=">=">>=</option>
+          <option value="!=">!=</option>
+          <option value="like">like</option>
+        </select>
+
+        <input id="filter-value" type="text" placeholder="value to filter" />
+
+        <button id="filter-clear">Clear Filter</button>
+      </div>
+      <div id="grid_list"></div>
+      <button onClick="출하정보_list();">LIST</button>
+    </section>
+    <section class="incomming__rack">
+      <div id="_마도" class="center" style="display: none">
+        <h2 class="center-tit">적재위치선택</h2>
+        <div class="rack__con">
+          <div class="floor">
+            <span>바닥</span>
+            <span>1층</span>
+            <span>2층</span>
+            <span>3층</span>
+            <span>4층</span>
+            <span>5층</span>
+            <span>6층</span>
+          </div>
+          <div class="contents rack-9 f-rack">
+            <div class="rack__section">
+              <h3>입고1</h3>
+              <div class="rack_box">
+                <div class="column"></div>
+                <div class="boxes">
+                  <div class="box">
+                    <button class="rack" value="입고1_11"></button>
+                    <button class="rack" value="입고1_12"></button>
+                  </div>
+                  <div class="box">
+                    <button class="rack" value="입고1_9"></button>
+                    <button class="rack" value="입고1_10"></button>
+                  </div>
+                  <div class="box">
+                    <button class="rack" value="입고1_7"></button>
+                    <button class="rack" value="입고1_8"></button>
+                  </div>
+                  <div class="box">
+                    <button class="rack" value="입고1_5"></button>
+                    <button class="rack" value="입고1_6"></button>
+                  </div>
+                  <div class="box">
+                    <button class="rack" value="입고1_3"></button>
+                    <button class="rack" value="입고1_4"></button>
+                  </div>
+                  <div class="box">
+                    <button class="rack" value="입고1_1"></button>
+                    <button class="rack" value="입고1_2"></button>
+                  </div>
+                </div>
+                <div class="column"></div>
+              </div>
+            </div>
+            <div class="rack__section">
+              <h3>입고2</h3>
+              <div class="rack_box">
+                <div class="column"></div>
+                <div class="boxes">
+                  <div class="box">
+                    <button class="rack" value="입고2_11"></button>
+                    <button class="rack" value="입고2_12"></button>
+                  </div>
+                  <div class="box">
+                    <button class="rack" value="입고2_9"></button>
+                    <button class="rack" value="입고2_10"></button>
+                  </div>
+                  <div class="box">
+                    <button class="rack" value="입고2_7"></button>
+                    <button class="rack" value="입고2_8"></button>
+                  </div>
+                  <div class="box">
+                    <button class="rack" value="입고2_5"></button>
+                    <button class="rack" value="입고2_6"></button>
+                  </div>
+                  <div class="box">
+                    <button class="rack" value="입고2_3"></button>
+                    <button class="rack" value="입고2_4"></button>
+                  </div>
+                  <div class="box">
+                    <button class="rack" value="입고2_1"></button>
+                    <button class="rack" value="입고2_2"></button>
+                  </div>
+                </div>
+                <div class="column"></div>
+              </div>
+            </div>
+            <div class="rack__section">
+              <h3>입고3</h3>
+              <div class="rack_box">
+                <div class="column"></div>
+                <div class="boxes">
+                  <div class="box">
+                    <button class="rack" value="입고3_11"></button>
+                    <button class="rack" value="입고3_12"></button>
+                  </div>
+                  <div class="box">
+                    <button class="rack" value="입고3_9"></button>
+                    <button class="rack" value="입고3_10"></button>
+                  </div>
+                  <div class="box">
+                    <button class="rack" value="입고3_7"></button>
+                    <button class="rack" value="입고3_8"></button>
+                  </div>
+                  <div class="box">
+                    <button class="rack" value="입고3_5"></button>
+                    <button class="rack" value="입고3_6"></button>
+                  </div>
+                  <div class="box">
+                    <button class="rack" value="입고3_3"></button>
+                    <button class="rack" value="입고3_4"></button>
+                  </div>
+                  <div class="box">
+                    <button class="rack" value="입고3_1"></button>
+                    <button class="rack" value="입고3_2"></button>
+                  </div>
+                </div>
+                <div class="column"></div>
+              </div>
+            </div>
+            <div class="rack__section">
+              <h3>입고4</h3>
+              <div class="rack_box">
+                <div class="column"></div>
+                <div class="boxes">
+                  <div class="box">
+                    <button class="rack" value="입고4_11"></button>
+                    <button class="rack" value="입고4_12"></button>
+                  </div>
+                  <div class="box">
+                    <button class="rack" value="입고4_9"></button>
+                    <button class="rack" value="입고4_10"></button>
+                  </div>
+                  <div class="box">
+                    <button class="rack" value="입고4_7"></button>
+                    <button class="rack" value="입고4_8"></button>
+                  </div>
+                  <div class="box">
+                    <button class="rack" value="입고4_5"></button>
+                    <button class="rack" value="입고4_6"></button>
+                  </div>
+                  <div class="box">
+                    <button class="rack" value="입고4_3"></button>
+                    <button class="rack" value="입고4_4"></button>
+                  </div>
+                  <div class="box">
+                    <button class="rack" value="입고4_1"></button>
+                    <button class="rack" value="입고4_2"></button>
+                  </div>
+                </div>
+                <div class="column"></div>
+              </div>
+            </div>
+            <div class="rack__section">
+              <h3>입고5</h3>
+              <div class="rack_box">
+                <div class="column"></div>
+                <div class="boxes">
+                  <div class="box">
+                    <button class="rack" value="입고5_11"></button>
+                    <button class="rack" value="입고5_12"></button>
+                  </div>
+                  <div class="box">
+                    <button class="rack" value="입고5_9"></button>
+                    <button class="rack" value="입고5_10"></button>
+                  </div>
+                  <div class="box">
+                    <button class="rack" value="입고5_7"></button>
+                    <button class="rack" value="입고5_8"></button>
+                  </div>
+                  <div class="box">
+                    <button class="rack" value="입고5_5"></button>
+                    <button class="rack" value="입고5_6"></button>
+                  </div>
+                  <div class="box">
+                    <button class="rack" value="입고5_3"></button>
+                    <button class="rack" value="입고5_4"></button>
+                  </div>
+                  <div class="box">
+                    <button class="rack" value="입고5_1"></button>
+                    <button class="rack" value="입고5_2"></button>
+                  </div>
+                </div>
+                <div class="column"></div>
+              </div>
+            </div>
+            <div class="rack__section">
+              <h3>입고6</h3>
+              <div class="rack_box">
+                <div class="column"></div>
+                <div class="boxes">
+                  <div class="box">
+                    <button class="rack" value="입고6_13"></button>
+                    <button class="rack" value="입고6_14"></button>
+                  </div>
+                  <div class="box">
+                    <button class="rack" value="입고6_11"></button>
+                    <button class="rack" value="입고6_12"></button>
+                  </div>
+                  <div class="box">
+                    <button class="rack" value="입고6_9"></button>
+                    <button class="rack" value="입고6_10"></button>
+                  </div>
+                  <div class="box">
+                    <button class="rack" value="입고6_7"></button>
+                    <button class="rack" value="입고6_8"></button>
+                  </div>
+                  <div class="box">
+                    <button class="rack" value="입고6_5"></button>
+                    <button class="rack" value="입고6_6"></button>
+                  </div>
+                  <div class="box">
+                    <button class="rack" value="입고6_3"></button>
+                    <button class="rack" value="입고6_4"></button>
+                  </div>
+                  <div class="box">
+                    <button class="rack" value="입고6_1"></button>
+                    <button class="rack" value="입고6_2"></button>
+                  </div>
+                </div>
+                <div class="column"></div>
+              </div>
+            </div>
+            <div class="rack__section">
+              <h3>입고7</h3>
+              <div class="rack_box">
+                <div class="column"></div>
+                <div class="boxes">
+                  <div class="box">
+                    <button class="rack" value="입고7_11"></button>
+                    <button class="rack" value="입고7_12"></button>
+                  </div>
+                  <div class="box">
+                    <button class="rack" value="입고7_9"></button>
+                    <button class="rack" value="입고7_10"></button>
+                  </div>
+                  <div class="box">
+                    <button class="rack" value="입고7_7"></button>
+                    <button class="rack" value="입고7_8"></button>
+                  </div>
+                  <div class="box">
+                    <button class="rack" value="입고7_5"></button>
+                    <button class="rack" value="입고7_6"></button>
+                  </div>
+                  <div class="box">
+                    <button class="rack" value="입고7_3"></button>
+                    <button class="rack" value="입고7_4"></button>
+                  </div>
+                  <div class="box">
+                    <button class="rack" value="입고7_1"></button>
+                    <button class="rack" value="입고7_2"></button>
+                  </div>
+                </div>
+                <div class="column"></div>
+              </div>
+            </div>
+            <div class="rack__section">
+              <h3>입고8</h3>
+              <div class="rack_box">
+                <div class="column"></div>
+                <div class="boxes">
+                  <div class="box">
+                    <button class="rack" value="입고8_11"></button>
+                    <button class="rack" value="입고8_12"></button>
+                  </div>
+                  <div class="box">
+                    <button class="rack" value="입고8_9"></button>
+                    <button class="rack" value="입고8_10"></button>
+                  </div>
+                  <div class="box">
+                    <button class="rack" value="입고8_7"></button>
+                    <button class="rack" value="입고8_8"></button>
+                  </div>
+                  <div class="box">
+                    <button class="rack" value="입고8_5"></button>
+                    <button class="rack" value="입고8_6"></button>
+                  </div>
+                  <div class="box">
+                    <button class="rack" value="입고8_3"></button>
+                    <button class="rack" value="입고8_4"></button>
+                  </div>
+                  <div class="box">
+                    <button class="rack" value="입고8_1"></button>
+                    <button class="rack" value="입고8_2"></button>
+                  </div>
+                </div>
+                <div class="column"></div>
+              </div>
+            </div>
+            <div class="rack__section">
+              <h3>입고9</h3>
+              <div class="rack_box">
+                <div class="column"></div>
+                <div class="boxes">
+                  <div class="box">
+                    <button class="rack" value="입고9_11"></button>
+                    <button class="rack" value="입고9_12"></button>
+                  </div>
+                  <div class="box">
+                    <button class="rack" value="입고9_9"></button>
+                    <button class="rack" value="입고9_10"></button>
+                  </div>
+                  <div class="box">
+                    <button class="rack" value="입고9_7"></button>
+                    <button class="rack" value="입고9_8"></button>
+                  </div>
+                  <div class="box">
+                    <button class="rack" value="입고9_5"></button>
+                    <button class="rack" value="입고9_6"></button>
+                  </div>
+                  <div class="box">
+                    <button class="rack" value="입고9_3"></button>
+                    <button class="rack" value="입고9_4"></button>
+                  </div>
+                  <div class="box">
+                    <button class="rack" value="입고9_1"></button>
+                    <button class="rack" value="입고9_2"></button>
+                  </div>
+                </div>
+                <div class="column"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="_마도출고" style="display: none">
+        <div class="_마도출고랙 center">
+          <h2 class="center-tit">마도 완제품 입고랙</h2>
+          <div class="rack__container">
+            <h3>E랙</h3>
+            <div class="rack__con">
+              <div class="floor">
+                <span>바닥</span>
+                <span>1층</span>
+                <span>2층</span>
+                <span>3층</span>
+                <span>4층</span>
+                <span>5층</span>
+              </div>
+              <div class="contents rack-3">
+                <div class="rack__section">
+                  <div class="rack_box">
+                    <div class="column"></div>
+                    <div class="boxes">
+                      <div class="box">
+                        <button class="rack" value="5층E_1"></button>
+                        <button class="rack" value="5층E_2"></button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="4층E_1"></button>
+                        <button class="rack" value="4층E_2"></button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="3층E_1"></button>
+                        <button class="rack" value="3층E_2"></button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="2층E_1"></button>
+                        <button class="rack" value="2층E_2"></button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1층E_1"></button>
+                        <button class="rack" value="4층E_2"></button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="바닥E_1"></button>
+                        <button class="rack" value="바닥E_2"></button>
+                      </div>
+                    </div>
+                    <div class="column"></div>
+                  </div>
+                </div>
+                <div class="rack__section">
+                  <div class="rack_box">
+                    <div class="boxes">
+                      <div class="box">
+                        <button class="rack" value="5층E_3"></button>
+                        <button class="rack" value="5층E_4"></button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="4층E_3"></button>
+                        <button class="rack" value="4층E_4"></button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="3층E_3"></button>
+                        <button class="rack" value="3층E_4"></button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="2층E_3"></button>
+                        <button class="rack" value="2층E_4"></button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1층E_3"></button>
+                        <button class="rack" value="1층E_4"></button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="바닥E_3"></button>
+                        <button class="rack" value="바닥E_4"></button>
+                      </div>
+                    </div>
+                    <div class="column"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="rack__container">
+            <h3>D랙</h3>
+            <div class="rack__con">
+              <div class="floor">
+                <span>바닥</span>
+                <span>1층</span>
+                <span>2층</span>
+                <span>3층</span>
+                <span>4층</span>
+                <span>5층</span>
+              </div>
+              <div class="contents rack-3">
+                <div class="rack__section">
+                  <div class="rack_box">
+                    <div class="column"></div>
+                    <div class="boxes">
+                      <div class="box">
+                        <button class="rack" value="5층D_1"></button>
+                        <button class="rack" value="5층D_2"></button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="4층D_1"></button>
+                        <button class="rack" value="4층D_2"></button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="3층D_1"></button>
+                        <button class="rack" value="3층D_2"></button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="2층D_1"></button>
+                        <button class="rack" value="2층D_2"></button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1층D_1"></button>
+                        <button class="rack" value="1층D_2"></button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="바닥D_1"></button>
+                        <button class="rack" value="바닥D_2"></button>
+                      </div>
+                    </div>
+                    <div class="column"></div>
+                  </div>
+                </div>
+                <div class="rack__section">
+                  <div class="rack_box">
+                    <div class="boxes">
+                      <div class="box">
+                        <button class="rack" value="5층D_3"></button>
+                        <button class="rack" value="5층D_4"></button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="4층D_3"></button>
+                        <button class="rack" value="4층D_4"></button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="3층D_3"></button>
+                        <button class="rack" value="3층D_4"></button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="2층D_3"></button>
+                        <button class="rack" value="2층D_4"></button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1층D_3"></button>
+                        <button class="rack" value="1층D_4"></button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="바닥D_3"></button>
+                        <button class="rack" value="바닥D_4"></button>
+                      </div>
+                    </div>
+                    <div class="column"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="rack__container">
+            <h3>C랙</h3>
+            <div class="rack__con">
+              <div class="floor">
+                <span>바닥</span>
+                <span>1층</span>
+                <span>2층</span>
+                <span>3층</span>
+                <span>4층</span>
+                <span>5층</span>
+              </div>
+              <div class="contents rack-3">
+                <div class="rack__section">
+                  <div class="rack_box">
+                    <div class="column"></div>
+                    <div class="boxes">
+                      <div class="box">
+                        <button class="rack" value="5층C_1"></button>
+                        <button class="rack" value="5층C_2"></button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="4층C_1"></button>
+                        <button class="rack" value="4층C_2"></button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="3층C_1"></button>
+                        <button class="rack" value="3층C_2"></button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="2층C_1"></button>
+                        <button class="rack" value="2층C_2"></button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1층C_1"></button>
+                        <button class="rack" value="1층C_2"></button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="바닥C_1"></button>
+                        <button class="rack" value="바닥C_2"></button>
+                      </div>
+                    </div>
+                    <div class="column"></div>
+                  </div>
+                </div>
+                <div class="rack__section">
+                  <div class="rack_box">
+                    <div class="boxes">
+                      <div class="box">
+                        <button class="rack" value="5층C_3"></button>
+                        <button class="rack" value="5층C_4"></button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="4층C_3"></button>
+                        <button class="rack" value="4층C_4"></button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="3층C_3"></button>
+                        <button class="rack" value="3층C_4"></button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="2층C_3"></button>
+                        <button class="rack" value="2층C_4"></button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1층C_3"></button>
+                        <button class="rack" value="1층C_4"></button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="바닥C_3"></button>
+                        <button class="rack" value="바닥C_4"></button>
+                      </div>
+                    </div>
+                    <div class="column"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="rack__container">
+            <h3>B랙</h3>
+            <div class="rack__con">
+              <div class="floor">
+                <span>바닥</span>
+                <span>1층</span>
+                <span>2층</span>
+                <span>3층</span>
+                <span>4층</span>
+                <span>5층</span>
+              </div>
+              <div class="contents rack-3">
+                <div class="rack__section">
+                  <div class="rack_box">
+                    <div class="column"></div>
+                    <div class="boxes">
+                      <div class="box">
+                        <button class="rack" value="5층B_1"></button>
+                        <button class="rack" value="5층B_2"></button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="4층B_1"></button>
+                        <button class="rack" value="4층B_2"></button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="3층B_1"></button>
+                        <button class="rack" value="3층B_2"></button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="2층B_1"></button>
+                        <button class="rack" value="2층B_2"></button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1층B_1"></button>
+                        <button class="rack" value="1층B_2"></button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="바닥B_1"></button>
+                        <button class="rack" value="바닥B_2"></button>
+                      </div>
+                    </div>
+                    <div class="column"></div>
+                  </div>
+                </div>
+                <div class="rack__section">
+                  <div class="rack_box">
+                    <div class="boxes">
+                      <div class="box">
+                        <button class="rack" value="5층B_3"></button>
+                        <button class="rack" value="5층B_4"></button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="4층B_3"></button>
+                        <button class="rack" value="4층B_4"></button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="3층B_3"></button>
+                        <button class="rack" value="3층B_4"></button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="2층B_3"></button>
+                        <button class="rack" value="2층B_4"></button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1층B_3"></button>
+                        <button class="rack" value="1층B_4"></button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="바닥B_3"></button>
+                        <button class="rack" value="바닥B_4"></button>
+                      </div>
+                    </div>
+                    <div class="column"></div>
+                  </div>
+                </div>
+                <div class="rack__section">
+                  <div class="rack_box">
+                    <div class="boxes">
+                      <div class="box">
+                        <button class="rack" value="5층B_5"></button>
+                        <button class="rack" value="5층B_6"></button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="4층B_5"></button>
+                        <button class="rack" value="4층B_6"></button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="3층B_5"></button>
+                        <button class="rack" value="3층B_6"></button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="2층B_5"></button>
+                        <button class="rack" value="2층B_6"></button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1층B_5"></button>
+                        <button class="rack" value="1층B_6"></button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="바닥B_5"></button>
+                        <button class="rack" value="바닥B_6"></button>
+                      </div>
+                    </div>
+                    <div class="column"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="rack__container">
+            <h3>A랙</h3>
+            <div class="rack__con">
+              <div class="floor">
+                <span>바닥</span>
+                <span>1층</span>
+                <span>2층</span>
+                <span>3층</span>
+                <span>4층</span>
+                <span>5층</span>
+              </div>
+              <div class="contents rack-3">
+                <div class="rack__section">
+                  <div class="rack_box">
+                    <div class="column"></div>
+                    <div class="boxes">
+                      <div class="box">
+                        <button class="rack" value="5층A_1"></button>
+                        <button class="rack" value="5층A_2"></button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="4층A_1"></button>
+                        <button class="rack" value="4층A_2"></button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="3층A_1"></button>
+                        <button class="rack" value="3층A_2"></button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="2층A_1"></button>
+                        <button class="rack" value="2층A_2"></button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1층A_1"></button>
+                        <button class="rack" value="4층A_2"></button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="바닥A_1"></button>
+                        <button class="rack" value="바닥A_2"></button>
+                      </div>
+                    </div>
+                    <div class="column"></div>
+                  </div>
+                </div>
+                <div class="rack__section">
+                  <div class="rack_box">
+                    <div class="boxes">
+                      <div class="box">
+                        <button class="rack" value="5층A_3"></button>
+                        <button class="rack" value="5층A_4"></button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="4층A_3"></button>
+                        <button class="rack" value="4층A_4"></button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="3층A_3"></button>
+                        <button class="rack" value="3층A_4"></button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="2층A_3"></button>
+                        <button class="rack" value="2층A_4"></button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1층A_3"></button>
+                        <button class="rack" value="1층A_4"></button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="바닥A_3"></button>
+                        <button class="rack" value="바닥A_4"></button>
+                      </div>
+                    </div>
+                    <div class="column"></div>
+                  </div>
+                </div>
+                <div class="rack__section">
+                  <div class="rack_box">
+                    <div class="boxes">
+                      <div class="box">
+                        <button class="rack" value="5층A_5"></button>
+                        <button class="rack" value="5층A_6"></button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="4층A_5"></button>
+                        <button class="rack" value="4층A_6"></button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="3층A_5"></button>
+                        <button class="rack" value="3층B_6"></button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="2층A_5"></button>
+                        <button class="rack" value="2층A_6"></button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1층A_5"></button>
+                        <button class="rack" value="1층A_6"></button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="바닥A_5"></button>
+                        <button class="rack" value="바닥A_6"></button>
+                      </div>
+                    </div>
+                    <div class="column"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="_구장" style="display: none">
+        <div class="_구장입고랙 center">
+          <h2 class="center-tit">구장 입고랙</h2>
+          <div class="rack__container">
+            <div class="rack__con">
+              <div class="floor">
+                <span>바닥</span>
+                <span>1층</span>
+                <span>2층</span>
+                <span>3층</span>
+                <span>4층</span>
+                <span>5층</span>
+              </div>
+              <div class="contents">
+                <div class="rack__section">
+                  <h3>1a7</h3>
+                  <div class="rack_box">
+                    <div class="column"></div>
+                    <div class="boxes">
+                      <div class="box">
+                        <button class="rack" value="입고1A7_11">L</button>
+                        <button class="rack" value="입고1A7_12">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="입고1A7_9">L</button>
+                        <button class="rack" value="입고1A7_10">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="입고1A7_7">L</button>
+                        <button class="rack" value="입고1A7_8">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="입고1A7_5">L</button>
+                        <button class="rack" value="입고1A7_6">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="입고1A7_3">L</button>
+                        <button class="rack" value="입고1A7_4">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="입고1A7_1">L</button>
+                        <button class="rack" value="입고1A7_2">R</button>
+                      </div>
+                    </div>
+                    <div class="column"></div>
+                  </div>
+                </div>
+                <div class="rack__section">
+                  <h3>1a6</h3>
+                  <div class="rack_box">
+                    <div class="column"></div>
+                    <div class="boxes">
+                      <div class="box">
+                        <button class="rack" value="1A6_11">L</button>
+                        <button class="rack" value="1A6_12">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1A6_9">L</button>
+                        <button class="rack" value="1A6_10">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1A6_7">L</button>
+                        <button class="rack" value="1A6_8">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1A6_5">L</button>
+                        <button class="rack" value="1A6_6">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1A6_3">L</button>
+                        <button class="rack" value="1A6_4">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1A6_1">L</button>
+                        <button class="rack" value="1A6_2">R</button>
+                      </div>
+                    </div>
+                    <div class="column"></div>
+                  </div>
+                </div>
+                <div class="rack__section">
+                  <h3>1f5</h3>
+                  <div class="rack_box">
+                    <div class="column"></div>
+                    <div class="boxes">
+                      <div class="box">
+                        <button class="rack" value="1A5_11">L</button>
+                        <button class="rack" value="1A5_12">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1A5_9">L</button>
+                        <button class="rack" value="1A5_10">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1A5_7">L</button>
+                        <button class="rack" value="1A5_8">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1A5_5">L</button>
+                        <button class="rack" value="1A5_6">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1A5_3">L</button>
+                        <button class="rack" value="1A5_4">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1A5_1">L</button>
+                        <button class="rack" value="1A5_2">R</button>
+                      </div>
+                    </div>
+                    <div class="column"></div>
+                  </div>
+                </div>
+                <div class="rack__section">
+                  <h3>1a4</h3>
+                  <div class="rack_box">
+                    <div class="column"></div>
+                    <div class="boxes">
+                      <div class="box">
+                        <button class="rack" value="1A4_11">L</button>
+                        <button class="rack" value="1A4_12">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1A4_9">L</button>
+                        <button class="rack" value="1A4_10">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1A4_7">L</button>
+                        <button class="rack" value="1A4_8">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1A4_5">L</button>
+                        <button class="rack" value="1A4_6">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1A4_3">L</button>
+                        <button class="rack" value="1A4_4">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1A4_1">L</button>
+                        <button class="rack" value="1A4_2">R</button>
+                      </div>
+                    </div>
+                    <div class="column"></div>
+                  </div>
+                </div>
+                <div class="rack__section">
+                  <h3>1a3</h3>
+                  <div class="rack_box">
+                    <div class="column"></div>
+                    <div class="boxes">
+                      <div class="box">
+                        <button class="rack" value="1A3_11">L</button>
+                        <button class="rack" value="1A3_12">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1A3_9">L</button>
+                        <button class="rack" value="1A3_10">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1A3_7">L</button>
+                        <button class="rack" value="1A3_8">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1A3_5">L</button>
+                        <button class="rack" value="1A3_6">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1A3_3">L</button>
+                        <button class="rack" value="1A3_4">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1A3_1">L</button>
+                        <button class="rack" value="1A3_2">R</button>
+                      </div>
+                    </div>
+                    <div class="column"></div>
+                  </div>
+                </div>
+                <div class="rack__section">
+                  <h3>1a2</h3>
+                  <div class="rack_box">
+                    <div class="column"></div>
+                    <div class="boxes">
+                      <div class="box">
+                        <button class="rack" value="1A2_11">L</button>
+                        <button class="rack" value="1A2_12">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1A2_9">L</button>
+                        <button class="rack" value="1A2_10">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1A2_7">L</button>
+                        <button class="rack" value="1A2_8">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1A2_5">L</button>
+                        <button class="rack" value="1A2_6">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1A2_3">L</button>
+                        <button class="rack" value="1A2_4">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1A2_1">L</button>
+                        <button class="rack" value="1A2_2">R</button>
+                      </div>
+                    </div>
+                    <div class="column"></div>
+                  </div>
+                </div>
+                <div class="rack__section">
+                  <h3>1a1</h3>
+                  <div class="rack_box">
+                    <div class="column"></div>
+                    <div class="boxes">
+                      <div class="box">
+                        <button class="rack" value="1A1_11">L</button>
+                        <button class="rack" value="1A1_12">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1A1_9">L</button>
+                        <button class="rack" value="1A1_10">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1A1_7">L</button>
+                        <button class="rack" value="1A1_8">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1A1_5">L</button>
+                        <button class="rack" value="1A1_6">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1A1_3">L</button>
+                        <button class="rack" value="1A1_4">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1A1_1">L</button>
+                        <button class="rack" value="1A1_2">R</button>
+                      </div>
+                    </div>
+                    <div class="column"></div>
+                  </div>
+                </div>
+                <div class="rack__shelf">
+                  <p class="shelf_name">a</p>
+                </div>
+              </div>
+            </div>
+            <div class="exit">
+              <p>출입구</p>
+              <div class="arrow">
+                <div class="chevron"></div>
+                <div class="chevron"></div>
+                <div class="chevron"></div>
+              </div>
+            </div>
+          </div>
+          <div class="rack__container">
+            <div class="rack__con">
+              <div class="floor">
+                <span>바닥</span>
+                <span>1층</span>
+                <span>2층</span>
+                <span>3층</span>
+                <span>4층</span>
+                <span>5층</span>
+              </div>
+              <div class="contents rack-7">
+                <div class="rack__section">
+                  <h3>1b6</h3>
+                  <div class="rack_box">
+                    <div class="column"></div>
+                    <div class="boxes">
+                      <div class="box">
+                        <button class="rack" value="1B6_11">L</button>
+                        <button class="rack" value="1B6_12">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1B6_9">L</button>
+                        <button class="rack" value="1B6_10">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1B6_7">L</button>
+                        <button class="rack" value="1B6_8">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1B6_5">L</button>
+                        <button class="rack" value="1B6_6">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1B6_3">L</button>
+                        <button class="rack" value="1B6_4">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1B6_1">L</button>
+                        <button class="rack" value="1B6_2">R</button>
+                      </div>
+                    </div>
+                    <div class="column"></div>
+                  </div>
+                </div>
+                <div class="rack__section">
+                  <h3>1b5</h3>
+                  <div class="rack_box">
+                    <div class="column"></div>
+                    <div class="boxes">
+                      <div class="box">
+                        <button class="rack" value="1B5_11">L</button>
+                        <button class="rack" value="1B5_12">L</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1B5_9">L</button>
+                        <button class="rack" value="1B5_10">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1B5_7">L</button>
+                        <button class="rack" value="1B5_8">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1B5_5">L</button>
+                        <button class="rack" value="1B5_6">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1B5_3">L</button>
+                        <button class="rack" value="1B5_4">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1B5_1">L</button>
+                        <button class="rack" value="1B5_2">R</button>
+                      </div>
+                    </div>
+                    <div class="column"></div>
+                  </div>
+                </div>
+                <div class="rack__section">
+                  <h3>1b4</h3>
+                  <div class="rack_box">
+                    <div class="column"></div>
+                    <div class="boxes">
+                      <div class="box">
+                        <button class="rack" value="1B4_11">L</button>
+                        <button class="rack" value="1B4_12">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1B4_9">L</button>
+                        <button class="rack" value="1B4_10">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1B4_7">L</button>
+                        <button class="rack" value="1B4_8">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1B4_5">L</button>
+                        <button class="rack" value="1B4_6">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1B4_3">L</button>
+                        <button class="rack" value="1B4_4">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1B4_1">L</button>
+                        <button class="rack" value="1B4_2">R</button>
+                      </div>
+                    </div>
+                    <div class="column"></div>
+                  </div>
+                </div>
+                <div class="rack__section">
+                  <h3>1b3</h3>
+                  <div class="rack_box">
+                    <div class="column"></div>
+                    <div class="boxes">
+                      <div class="box">
+                        <button class="rack" value="1B3_11">L</button>
+                        <button class="rack" value="1B3_12">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1B3_9">L</button>
+                        <button class="rack" value="1B3_10">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1B3_7">L</button>
+                        <button class="rack" value="1B3_8">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1B3_5">L</button>
+                        <button class="rack" value="1B3_6">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1B3_3">L</button>
+                        <button class="rack" value="1B3_4">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1B3_1">L</button>
+                        <button class="rack" value="1B3_2">R</button>
+                      </div>
+                    </div>
+                    <div class="column"></div>
+                  </div>
+                </div>
+                <div class="rack__section">
+                  <h3>1b2</h3>
+                  <div class="rack_box">
+                    <div class="column"></div>
+                    <div class="boxes">
+                      <div class="box">
+                        <button class="rack" value="1B2_11">L</button>
+                        <button class="rack" value="1B2_12">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1B2_9">L</button>
+                        <button class="rack" value="1B2_10">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1B2_7">L</button>
+                        <button class="rack" value="1B2_8">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1B2_5">L</button>
+                        <button class="rack" value="1B2_6">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1B2_3">L</button>
+                        <button class="rack" value="1B2_4">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1B2_1">L</button>
+                        <button class="rack" value="1B2_2">R</button>
+                      </div>
+                    </div>
+                    <div class="column"></div>
+                  </div>
+                </div>
+                <div class="rack__section">
+                  <h3>1b1</h3>
+                  <div class="rack_box">
+                    <div class="column"></div>
+                    <div class="boxes">
+                      <div class="box">
+                        <button class="rack" value="1B1_11">L</button>
+                        <button class="rack" value="1B1_12">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1B1_9">L</button>
+                        <button class="rack" value="1B1_10">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1B1_7">L</button>
+                        <button class="rack" value="1B1_8">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1B1_5">L</button>
+                        <button class="rack" value="1B1_6">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1B1_3">L</button>
+                        <button class="rack" value="1B1_4">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1B1_1">L</button>
+                        <button class="rack" value="1B1_2">R</button>
+                      </div>
+                    </div>
+                    <div class="column"></div>
+                  </div>
+                </div>
+                <div class="rack__shelf">
+                  <p class="shelf_name">b</p>
+                </div>
+              </div>
+            </div>
+            <div class="exit"></div>
+          </div>
+          <div class="rack__container">
+            <div class="rack__con">
+              <div class="floor">
+                <span>바닥</span>
+                <span>1층</span>
+                <span>2층</span>
+                <span>3층</span>
+                <span>4층</span>
+                <span>5층</span>
+              </div>
+              <div class="contents rack-7">
+                <div class="rack__section">
+                  <h3>1c6</h3>
+                  <div class="rack_box">
+                    <div class="column"></div>
+                    <div class="boxes">
+                      <div class="box">
+                        <button class="rack" value="1C6_11">L</button>
+                        <button class="rack" value="1C6_12">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1C6_9">L</button>
+                        <button class="rack" value="1C6_10">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1C6_7">L</button>
+                        <button class="rack" value="1C6_8">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1C6_5">L</button>
+                        <button class="rack" value="1C6_6">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1C6_3">L</button>
+                        <button class="rack" value="1C6_4">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1C6_1">L</button>
+                        <button class="rack" value="1C6_2">R</button>
+                      </div>
+                    </div>
+                    <div class="column"></div>
+                  </div>
+                </div>
+                <div class="rack__section">
+                  <h3>1c5</h3>
+                  <div class="rack_box">
+                    <div class="column"></div>
+                    <div class="boxes">
+                      <div class="box">
+                        <button class="rack" value="1C5_11">L</button>
+                        <button class="rack" value="1C5_12">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1C5_9">L</button>
+                        <button class="rack" value="1C5_10">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1C5_7">L</button>
+                        <button class="rack" value="1C5_8">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1C5_5">L</button>
+                        <button class="rack" value="1C5_6">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1C5_3">L</button>
+                        <button class="rack" value="1C5_4">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1C5_1">L</button>
+                        <button class="rack" value="1C5_2">R</button>
+                      </div>
+                    </div>
+                    <div class="column"></div>
+                  </div>
+                </div>
+                <div class="rack__section">
+                  <h3>1c4</h3>
+                  <div class="rack_box">
+                    <div class="column"></div>
+                    <div class="boxes">
+                      <div class="box">
+                        <button class="rack" value="1C4_11">L</button>
+                        <button class="rack" value="1C4_12">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1C4_9">L</button>
+                        <button class="rack" value="1C4_10">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1C4_7">L</button>
+                        <button class="rack" value="1C4_8">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1C4_5">L</button>
+                        <button class="rack" value="1C4_6">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1C4_3">L</button>
+                        <button class="rack" value="1C4_4">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1C4_1">L</button>
+                        <button class="rack" value="1C4_2">R</button>
+                      </div>
+                    </div>
+                    <div class="column"></div>
+                  </div>
+                </div>
+                <div class="rack__section">
+                  <h3>1c3</h3>
+                  <div class="rack_box">
+                    <div class="column"></div>
+                    <div class="boxes">
+                      <div class="box">
+                        <button class="rack" value="1C3_11">L</button>
+                        <button class="rack" value="1C3_12">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1C3_9">L</button>
+                        <button class="rack" value="1C3_10">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1C3_7">L</button>
+                        <button class="rack" value="1C3_8">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1C3_5">L</button>
+                        <button class="rack" value="1C3_6">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1C3_3">L</button>
+                        <button class="rack" value="1C3_4">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1C3_1">L</button>
+                        <button class="rack" value="1C3_2">R</button>
+                      </div>
+                    </div>
+                    <div class="column"></div>
+                  </div>
+                </div>
+                <div class="rack__section">
+                  <h3>1c2</h3>
+                  <div class="rack_box">
+                    <div class="column"></div>
+                    <div class="boxes">
+                      <div class="box">
+                        <button class="rack" value="1C2_11">L</button>
+                        <button class="rack" value="1C2_12">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1C2_9">L</button>
+                        <button class="rack" value="1C2_10">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1C2_7">L</button>
+                        <button class="rack" value="1C2_8">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1C2_5">L</button>
+                        <button class="rack" value="1C2_6">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1C2_3">L</button>
+                        <button class="rack" value="1C2_4">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1C2_1">L</button>
+                        <button class="rack" value="1C2_2">R</button>
+                      </div>
+                    </div>
+                    <div class="column"></div>
+                  </div>
+                </div>
+                <div class="rack__section">
+                  <h3>1c1</h3>
+                  <div class="rack_box">
+                    <div class="column"></div>
+                    <div class="boxes">
+                      <div class="box">
+                        <button class="rack" value="1C1_11">L</button>
+                        <button class="rack" value="1C1_12">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1C1_9">L</button>
+                        <button class="rack" value="1C1_10">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1C1_7">L</button>
+                        <button class="rack" value="1C1_8">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1C1_5">L</button>
+                        <button class="rack" value="1C1_6">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1C1_3">L</button>
+                        <button class="rack" value="1C1_4">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1C1_1">L</button>
+                        <button class="rack" value="1C1_2">R</button>
+                      </div>
+                    </div>
+                    <div class="column"></div>
+                  </div>
+                </div>
+                <div class="rack__shelf">
+                  <p class="shelf_name">c</p>
+                </div>
+              </div>
+            </div>
+            <div class="exit exit-2">
+              <span class="direction">진<br />행<br />방<br />향</span>
+              <div class="arrow">
+                <div class="chevron"></div>
+                <div class="chevron"></div>
+                <div class="chevron"></div>
+              </div>
+            </div>
+          </div>
+          <div class="rack__container">
+            <div class="rack__con">
+              <div class="floor">
+                <span>바닥</span>
+                <span>1층</span>
+                <span>2층</span>
+                <span>3층</span>
+                <span>4층</span>
+                <span>5층</span>
+              </div>
+              <div class="contents rack-7">
+                <div class="rack__section">
+                  <h3>1d6</h3>
+                  <div class="rack_box">
+                    <div class="column"></div>
+                    <div class="boxes">
+                      <div class="box">
+                        <button class="rack" value="1D6_11">L</button>
+                        <button class="rack" value="1D6_12">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1D6_9">L</button>
+                        <button class="rack" value="1D6_10">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1D6_7">L</button>
+                        <button class="rack" value="1D6_8">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1D6_5">L</button>
+                        <button class="rack" value="1D6_6">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1D6_3">L</button>
+                        <button class="rack" value="1D6_4">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1D6_1">L</button>
+                        <button class="rack" value="1D6_2">R</button>
+                      </div>
+                    </div>
+                    <div class="column"></div>
+                  </div>
+                </div>
+                <div class="rack__section">
+                  <h3>1d5</h3>
+                  <div class="rack_box">
+                    <div class="column"></div>
+                    <div class="boxes">
+                      <div class="box">
+                        <button class="rack" value="1D5_11">L</button>
+                        <button class="rack" value="1D5_12">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1D5_9">L</button>
+                        <button class="rack" value="1D5_10">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1D5_7">L</button>
+                        <button class="rack" value="1D5_8">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1D5_5">L</button>
+                        <button class="rack" value="1D5_6">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1D5_3">L</button>
+                        <button class="rack" value="1D5_4">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1D5_1">L</button>
+                        <button class="rack" value="1D5_2">R</button>
+                      </div>
+                    </div>
+                    <div class="column"></div>
+                  </div>
+                </div>
+                <div class="rack__section">
+                  <h3>1d5</h3>
+                  <div class="rack_box">
+                    <div class="column"></div>
+                    <div class="boxes">
+                      <div class="box">
+                        <button class="rack" value="1D4_11">L</button>
+                        <button class="rack" value="1D4_12">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1D4_9">L</button>
+                        <button class="rack" value="1D4_10">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1D4_7">L</button>
+                        <button class="rack" value="1D4_8">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1D4_5">L</button>
+                        <button class="rack" value="1D4_6">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1D4_3">L</button>
+                        <button class="rack" value="1D4_4">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1D4_1">L</button>
+                        <button class="rack" value="1D4_2">R</button>
+                      </div>
+                    </div>
+                    <div class="column"></div>
+                  </div>
+                </div>
+                <div class="rack__section">
+                  <h3>1d3</h3>
+                  <div class="rack_box">
+                    <div class="column"></div>
+                    <div class="boxes">
+                      <div class="box">
+                        <button class="rack" value="1D3_11">L</button>
+                        <button class="rack" value="1D3_12">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1D3_9">L</button>
+                        <button class="rack" value="1D3_10">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1D3_7">L</button>
+                        <button class="rack" value="1D3_8">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1D3_5">L</button>
+                        <button class="rack" value="1D3_6">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1D3_3">L</button>
+                        <button class="rack" value="1D3_4">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1D3_1">L</button>
+                        <button class="rack" value="1D3_2">R</button>
+                      </div>
+                    </div>
+                    <div class="column"></div>
+                  </div>
+                </div>
+                <div class="rack__section">
+                  <h3>1d2</h3>
+                  <div class="rack_box">
+                    <div class="column"></div>
+                    <div class="boxes">
+                      <div class="box">
+                        <button class="rack" value="1D2_11">L</button>
+                        <button class="rack" value="1D2_12">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1D2_9">L</button>
+                        <button class="rack" value="1D2_10">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1D2_7">L</button>
+                        <button class="rack" value="1D2_8">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1D2_5">L</button>
+                        <button class="rack" value="1D2_6">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1D2_3">L</button>
+                        <button class="rack" value="1D2_4">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1D2_1">L</button>
+                        <button class="rack" value="1D2_2">R</button>
+                      </div>
+                    </div>
+                    <div class="column"></div>
+                  </div>
+                </div>
+                <div class="rack__section">
+                  <h3>1d1</h3>
+                  <div class="rack_box">
+                    <div class="column"></div>
+                    <div class="boxes">
+                      <div class="box">
+                        <button class="rack" value="1D1_11">L</button>
+                        <button class="rack" value="1D1_12">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1D1_9">L</button>
+                        <button class="rack" value="1D1_10">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1D1_7">L</button>
+                        <button class="rack" value="1D1_8">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1D1_5">L</button>
+                        <button class="rack" value="1D1_6">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1D1_3">L</button>
+                        <button class="rack" value="1D1_4">R</button>
+                      </div>
+                      <div class="box">
+                        <button class="rack" value="1D1_1">L</button>
+                        <button class="rack" value="1D1_2">R</button>
+                      </div>
+                    </div>
+                    <div class="column"></div>
+                  </div>
+                </div>
+                <div class="rack__shelf">
+                  <p class="shelf_name">d</p>
+                </div>
+              </div>
+            </div>
+            <div class="exit"></div>
+          </div>
+        </div>
+        <div class="_구장천막동 center">
+          <h2 class="center-tit">구장 천막동</h2>
+          <div class="rack__con">
+            <div class="floor">
+              <span>바닥</span>
+              <span>1층</span>
+              <span>2층</span>
+              <span>3층</span>
+              <span>4층</span>
+            </div>
+            <div class="contents rack-9">
+              <div class="rack__section">
+                <h3>1f6</h3>
+                <div class="rack_box">
+                  <div class="column"></div>
+                  <div class="boxes">
+                    <div class="box">
+                      <button class="rack" value="1F6_9">L</button>
+                      <button class="rack" value="1F6_10">R</button>
+                    </div>
+                    <div class="box">
+                      <button class="rack" value="1F6_7">L</button>
+                      <button class="rack" value="1F6_8">R</button>
+                    </div>
+                    <div class="box">
+                      <button class="rack" value="1F6_5">L</button>
+                      <button class="rack" value="1F6_6">R</button>
+                    </div>
+                    <div class="box">
+                      <button class="rack" value="1F6_3">L</button>
+                      <button class="rack" value="1F6_4">R</button>
+                    </div>
+                    <div class="box">
+                      <button class="rack" value="1F6_1">L</button>
+                      <button class="rack" value="1F6_2">R</button>
+                    </div>
+                  </div>
+                  <div class="column"></div>
+                </div>
+              </div>
+              <div class="rack__section">
+                <h3>1f5</h3>
+                <div class="rack_box">
+                  <div class="column"></div>
+                  <div class="boxes">
+                    <div class="box">
+                      <button class="rack" value="1F5_9">L</button>
+                      <button class="rack" value="1F5_10">R</button>
+                    </div>
+                    <div class="box">
+                      <button class="rack" value="1F5_7">L</button>
+                      <button class="rack" value="1F5_8">R</button>
+                    </div>
+                    <div class="box">
+                      <button class="rack" value="1F5_5">L</button>
+                      <button class="rack" value="1F5_6">R</button>
+                    </div>
+                    <div class="box">
+                      <button class="rack" value="1F5_3">L</button>
+                      <button class="rack" value="1F5_4">R</button>
+                    </div>
+                    <div class="box">
+                      <button class="rack" value="1F5_1">L</button>
+                      <button class="rack" value="1F5_2">R</button>
+                    </div>
+                  </div>
+                  <div class="column"></div>
+                </div>
+              </div>
+              <div class="rack__section">
+                <h3>1f4</h3>
+                <div class="rack_box">
+                  <div class="column"></div>
+                  <div class="boxes">
+                    <div class="box">
+                      <button class="rack" value="1F4_9">L</button>
+                      <button class="rack" value="1F4_10">R</button>
+                    </div>
+                    <div class="box">
+                      <button class="rack" value="1F4_7">L</button>
+                      <button class="rack" value="1F4_8">R</button>
+                    </div>
+                    <div class="box">
+                      <button class="rack" value="1F4_5">L</button>
+                      <button class="rack" value="1F4_6">R</button>
+                    </div>
+                    <div class="box">
+                      <button class="rack" value="1F4_3">L</button>
+                      <button class="rack" value="1F4_4">R</button>
+                    </div>
+                    <div class="box">
+                      <button class="rack" value="1F4_1">L</button>
+                      <button class="rack" value="1F4_2">R</button>
+                    </div>
+                  </div>
+                  <div class="column"></div>
+                </div>
+              </div>
+              <div class="rack__section">
+                <h3>1f3</h3>
+                <div class="rack_box">
+                  <div class="column"></div>
+                  <div class="boxes">
+                    <div class="box">
+                      <button class="rack" value="1F3_9">L</button>
+                      <button class="rack" value="1F3_10">R</button>
+                    </div>
+                    <div class="box">
+                      <button class="rack" value="1F3_7">L</button>
+                      <button class="rack" value="1F3_8">R</button>
+                    </div>
+                    <div class="box">
+                      <button class="rack" value="1F3_5">L</button>
+                      <button class="rack" value="1F3_6">R</button>
+                    </div>
+                    <div class="box">
+                      <button class="rack" value="1F3_3">L</button>
+                      <button class="rack" value="1F3_4">R</button>
+                    </div>
+                    <div class="box">
+                      <button class="rack" value="1F3_1">L</button>
+                      <button class="rack" value="1F3_2">R</button>
+                    </div>
+                  </div>
+                  <div class="column"></div>
+                </div>
+              </div>
+              <div class="rack__section">
+                <h3>1f2</h3>
+                <div class="rack_box">
+                  <div class="column"></div>
+                  <div class="boxes">
+                    <div class="box">
+                      <button class="rack" value="1F2_9">L</button>
+                      <button class="rack" value="1F2_10">R</button>
+                    </div>
+                    <div class="box">
+                      <button class="rack" value="1F2_7">L</button>
+                      <button class="rack" value="1F2_8">R</button>
+                    </div>
+                    <div class="box">
+                      <button class="rack" value="1F2_5">L</button>
+                      <button class="rack" value="1F2_6">R</button>
+                    </div>
+                    <div class="box">
+                      <button class="rack" value="1F2_3">L</button>
+                      <button class="rack" value="1F2_4">R</button>
+                    </div>
+                    <div class="box">
+                      <button class="rack" value="1F2_1">L</button>
+                      <button class="rack" value="1F2_2">R</button>
+                    </div>
+                  </div>
+                  <div class="column"></div>
+                </div>
+              </div>
+              <div class="rack__section">
+                <h3>1f1</h3>
+                <div class="rack_box">
+                  <div class="column"></div>
+                  <div class="boxes">
+                    <div class="box">
+                      <button class="rack" value="1F1_9">L</button>
+                      <button class="rack" value="1F1_10">R</button>
+                    </div>
+                    <div class="box">
+                      <button class="rack" value="1F1_7">L</button>
+                      <button class="rack" value="1F1_8">R</button>
+                    </div>
+                    <div class="box">
+                      <button class="rack" value="1F1_5">L</button>
+                      <button class="rack" value="1F1_6">R</button>
+                    </div>
+                    <div class="box">
+                      <button class="rack" value="1F1_3">L</button>
+                      <button class="rack" value="1F1_4">R</button>
+                    </div>
+                    <div class="box">
+                      <button class="rack" value="1F1_1">L</button>
+                      <button class="rack" value="1F1_2">R</button>
+                    </div>
+                  </div>
+                  <div class="column"></div>
+                </div>
+              </div>
+              <div class="rack__shelf">
+                <p class="shelf_name">F</p>
+              </div>
+            </div>
+          </div>
+          <div class="rack__con">
+            <div class="floor">
+              <span>바닥</span>
+              <span>1층</span>
+              <span>2층</span>
+              <span>3층</span>
+            </div>
+            <div class="contents rack-11">
+              <div class="rack__section">
+                <h3>1g10</h3>
+                <div class="rack_box">
+                  <div class="column"></div>
+                  <div class="boxes">
+                    <div class="box">
+                      <button class="rack" value="1G10_7">L</button>
+                      <button class="rack" value="1G10_8">R</button>
+                    </div>
+                    <div class="box">
+                      <button class="rack" value="1G10_5">L</button>
+                      <button class="rack" value="1G10_6">R</button>
+                    </div>
+                    <div class="box">
+                      <button class="rack" value="1G10_3">L</button>
+                      <button class="rack" value="1G10_4">R</button>
+                    </div>
+                    <div class="box">
+                      <button class="rack" value="1G10_1">L</button>
+                      <button class="rack" value="1G10_2">R</button>
+                    </div>
+                  </div>
+                  <div class="column"></div>
+                </div>
+              </div>
+              <div class="rack__section">
+                <h3>1g9</h3>
+                <div class="rack_box">
+                  <div class="column"></div>
+                  <div class="boxes">
+                    <div class="box">
+                      <button class="rack" value="1G9_7">L</button>
+                      <button class="rack" value="1G9_8">R</button>
+                    </div>
+                    <div class="box">
+                      <button class="rack" value="1G9_5">L</button>
+                      <button class="rack" value="1G9_6">R</button>
+                    </div>
+                    <div class="box">
+                      <button class="rack" value="1G9_3">L</button>
+                      <button class="rack" value="1G9_4">R</button>
+                    </div>
+                    <div class="box">
+                      <button class="rack" value="1G9_1">L</button>
+                      <button class="rack" value="1G9_2">R</button>
+                    </div>
+                  </div>
+                  <div class="column"></div>
+                </div>
+              </div>
+              <div class="rack__section">
+                <h3>1g8</h3>
+                <div class="rack_box">
+                  <div class="column"></div>
+                  <div class="boxes">
+                    <div class="box">
+                      <button class="rack" value="1G8_7">L</button>
+                      <button class="rack" value="1G8_8">R</button>
+                    </div>
+                    <div class="box">
+                      <button class="rack" value="1G8_5">L</button>
+                      <button class="rack" value="1G8_6">R</button>
+                    </div>
+                    <div class="box">
+                      <button class="rack" value="1G8_3">L</button>
+                      <button class="rack" value="1G8_4">R</button>
+                    </div>
+                    <div class="box">
+                      <button class="rack" value="1G8_1">L</button>
+                      <button class="rack" value="1G8_2">R</button>
+                    </div>
+                  </div>
+                  <div class="column"></div>
+                </div>
+              </div>
+              <div class="rack__section">
+                <h3>1g7</h3>
+                <div class="rack_box">
+                  <div class="column"></div>
+                  <div class="boxes">
+                    <div class="box">
+                      <button class="rack" value="1G7_7">L</button>
+                      <button class="rack" value="1G7_8">R</button>
+                    </div>
+                    <div class="box">
+                      <button class="rack" value="1G7_5">L</button>
+                      <button class="rack" value="1G7_6">R</button>
+                    </div>
+                    <div class="box">
+                      <button class="rack" value="1G7_3">L</button>
+                      <button class="rack" value="1G7_4">R</button>
+                    </div>
+                    <div class="box">
+                      <button class="rack" value="1G7_1">L</button>
+                      <button class="rack" value="1G7_2">R</button>
+                    </div>
+                  </div>
+                  <div class="column"></div>
+                </div>
+              </div>
+              <div class="rack__section">
+                <h3>1g6</h3>
+                <div class="rack_box">
+                  <div class="column"></div>
+                  <div class="boxes">
+                    <div class="box">
+                      <button class="rack" value="1G6_7">L</button>
+                      <button class="rack" value="1G6_8">R</button>
+                    </div>
+                    <div class="box">
+                      <button class="rack" value="1G6_5">L</button>
+                      <button class="rack" value="1G6_6">R</button>
+                    </div>
+                    <div class="box">
+                      <button class="rack" value="1G6_3">L</button>
+                      <button class="rack" value="1G6_4">R</button>
+                    </div>
+                    <div class="box">
+                      <button class="rack" value="1G6_1">L</button>
+                      <button class="rack" value="1G6_2">R</button>
+                    </div>
+                  </div>
+                  <div class="column"></div>
+                </div>
+              </div>
+              <div class="rack__section">
+                <h3>1g5</h3>
+                <div class="rack_box">
+                  <div class="column"></div>
+                  <div class="boxes">
+                    <div class="box">
+                      <button class="rack" value="1G5_7">L</button>
+                      <button class="rack" value="1G5_8">R</button>
+                    </div>
+                    <div class="box">
+                      <button class="rack" value="1G5_5">L</button>
+                      <button class="rack" value="1G5_6">R</button>
+                    </div>
+                    <div class="box">
+                      <button class="rack" value="1G5_3">L</button>
+                      <button class="rack" value="1G5_4">R</button>
+                    </div>
+                    <div class="box">
+                      <button class="rack" value="1G5_1">L</button>
+                      <button class="rack" value="1G5_2">R</button>
+                    </div>
+                  </div>
+                  <div class="column"></div>
+                </div>
+              </div>
+              <div class="rack__section">
+                <h3>1g4</h3>
+                <div class="rack_box">
+                  <div class="column"></div>
+                  <div class="boxes">
+                    <div class="box">
+                      <button class="rack" value="1G4_7">L</button>
+                      <button class="rack" value="1G4_8">R</button>
+                    </div>
+                    <div class="box">
+                      <button class="rack" value="1G4_5">L</button>
+                      <button class="rack" value="1G4_6">R</button>
+                    </div>
+                    <div class="box">
+                      <button class="rack" value="1G4_3">L</button>
+                      <button class="rack" value="1G4_4">R</button>
+                    </div>
+                    <div class="box">
+                      <button class="rack" value="1G4_1">L</button>
+                      <button class="rack" value="1G4_2">R</button>
+                    </div>
+                  </div>
+                  <div class="column"></div>
+                </div>
+              </div>
+              <div class="rack__section">
+                <h3>1g3</h3>
+                <div class="rack_box">
+                  <div class="column"></div>
+                  <div class="boxes">
+                    <div class="box">
+                      <button class="rack" value="1G3_7">L</button>
+                      <button class="rack" value="1G3_8">R</button>
+                    </div>
+                    <div class="box">
+                      <button class="rack" value="1G3_5">L</button>
+                      <button class="rack" value="1G3_6">R</button>
+                    </div>
+                    <div class="box">
+                      <button class="rack" value="1G3_3">L</button>
+                      <button class="rack" value="1G3_4">R</button>
+                    </div>
+                    <div class="box">
+                      <button class="rack" value="1G3_1">L</button>
+                      <button class="rack" value="1G3_2">R</button>
+                    </div>
+                  </div>
+                  <div class="column"></div>
+                </div>
+              </div>
+              <div class="rack__section">
+                <h3>1g2</h3>
+                <div class="rack_box">
+                  <div class="column"></div>
+                  <div class="boxes">
+                    <div class="box">
+                      <button class="rack" value="1G2_7">L</button>
+                      <button class="rack" value="1G2_8">R</button>
+                    </div>
+                    <div class="box">
+                      <button class="rack" value="1G2_5">L</button>
+                      <button class="rack" value="1G2_6">R</button>
+                    </div>
+                    <div class="box">
+                      <button class="rack" value="1G2_3">L</button>
+                      <button class="rack" value="1G2_4">R</button>
+                    </div>
+                    <div class="box">
+                      <button class="rack" value="1G2_1">L</button>
+                      <button class="rack" value="1G2_2">R</button>
+                    </div>
+                  </div>
+                  <div class="column"></div>
+                </div>
+              </div>
+              <div class="rack__section">
+                <h3>1g1</h3>
+                <div class="rack_box">
+                  <div class="column"></div>
+                  <div class="boxes">
+                    <div class="box">
+                      <button class="rack" value="1G1_7">L</button>
+                      <button class="rack" value="1G1_8">R</button>
+                    </div>
+                    <div class="box">
+                      <button class="rack" value="1G1_5">L</button>
+                      <button class="rack" value="1G1_6">R</button>
+                    </div>
+                    <div class="box">
+                      <button class="rack" value="1G1_3">L</button>
+                      <button class="rack" value="1G1_4">R</button>
+                    </div>
+                    <div class="box">
+                      <button class="rack" value="1G1_1">L</button>
+                      <button class="rack" value="1G1_2">R</button>
+                    </div>
+                  </div>
+                  <div class="column"></div>
+                </div>
+              </div>
+              <div class="rack__shelf">
+                <p class="shelf_name">G</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="_제주" class="_제주B동 center" style="display: none">
+        <h2 class="center-tit">제주 B동</h2>
+        <div class="all-rack">
+          <div>
+            <div class="line"></div>
+            <div class="all__rack__container">
+              <div class="rack__container">
+                <div class="rack__con">
+                  <div class="floor">
+                    <span>바닥</span>
+                    <span>1층</span>
+                    <span>2층</span>
+                    <span>3층</span>
+                    <span>4층</span>
+                  </div>
+                  <div class="contents rack-5">
+                    <div class="rack__section">
+                      <div class="rack_box">
+                        <div class="column"></div>
+                        <div class="boxes">
+                          <div class="box">
+                            <button class="rack" value="제주F1_9">L</button>
+                            <button class="rack" value="제주F1_10">R</button>
+                          </div>
+                          <div class="box">
+                            <button class="rack" value="제주F1_7">L</button>
+                            <button class="rack" value="제주F1_8">R</button>
+                          </div>
+                          <div class="box">
+                            <button class="rack" value="제주F1_5">L</button>
+                            <button class="rack" value="제주F1_6">R</button>
+                          </div>
+                          <div class="box">
+                            <button class="rack" value="제주F1_3">L</button>
+                            <button class="rack" value="제주F1_4">R</button>
+                          </div>
+                          <div class="box">
+                            <button class="rack" value="제주F1_1">L</button>
+                            <button class="rack" value="제주F1_2">R</button>
+                          </div>
+                        </div>
+                        <div class="column"></div>
+                      </div>
+                    </div>
+                    <div class="rack__section">
+                      <div class="rack_box">
+                        <div class="column"></div>
+                        <div class="boxes">
+                          <div class="box">
+                            <button class="rack" value="제주F2_9">L</button>
+                            <button class="rack" value="제주F2_10">R</button>
+                          </div>
+                          <div class="box">
+                            <button class="rack" value="제주F2_7">L</button>
+                            <button class="rack" value="제주F2_8">R</button>
+                          </div>
+                          <div class="box">
+                            <button class="rack" value="제주F2_5">L</button>
+                            <button class="rack" value="제주F2_6">R</button>
+                          </div>
+                          <div class="box">
+                            <button class="rack" value="제주F2_3">L</button>
+                            <button class="rack" value="제주F2_4">R</button>
+                          </div>
+                          <div class="box">
+                            <button class="rack" value="제주F2_1">L</button>
+                            <button class="rack" value="제주F2_2">R</button>
+                          </div>
+                        </div>
+                        <div class="column"></div>
+                      </div>
+                    </div>
+                    <div class="rack__section">
+                      <div class="rack_box">
+                        <div class="column"></div>
+                        <div class="boxes">
+                          <div class="box">
+                            <button class="rack" value="제주F3_9">L</button>
+                            <button class="rack" value="제주F3_10">R</button>
+                          </div>
+                          <div class="box">
+                            <button class="rack" value="제주F3_7">L</button>
+                            <button class="rack" value="제주F3_8">R</button>
+                          </div>
+                          <div class="box">
+                            <button class="rack" value="제주F3_5">L</button>
+                            <button class="rack" value="제주F3_6">R</button>
+                          </div>
+                          <div class="box">
+                            <button class="rack" value="제주F3_3">L</button>
+                            <button class="rack" value="제주F3_4">R</button>
+                          </div>
+                          <div class="box">
+                            <button class="rack" value="제주F3_1">L</button>
+                            <button class="rack" value="제주F3_2">R</button>
+                          </div>
+                        </div>
+                        <div class="column"></div>
+                      </div>
+                    </div>
+                    <div class="rack__section">
+                      <div class="rack_box">
+                        <div class="column"></div>
+                        <div class="boxes">
+                          <div class="box">
+                            <button class="rack" value="제주F4_9">L</button>
+                            <button class="rack" value="제주F4_10">R</button>
+                          </div>
+                          <div class="box">
+                            <button class="rack" value="제주F4_7">L</button>
+                            <button class="rack" value="제주F4_8">R</button>
+                          </div>
+                          <div class="box">
+                            <button class="rack" value="제주F4_5">L</button>
+                            <button class="rack" value="제주F4_6">R</button>
+                          </div>
+                          <div class="box">
+                            <button class="rack" value="제주F4_3">L</button>
+                            <button class="rack" value="제주F4_4">R</button>
+                          </div>
+                          <div class="box">
+                            <button class="rack" value="제주F4_1">L</button>
+                            <button class="rack" value="제주F4_2">R</button>
+                          </div>
+                        </div>
+                        <div class="column"></div>
+                      </div>
+                    </div>
+                    <div class="rack__shelf">
+                      <p class="shelf_name">F랙</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="rack__container">
+                <div class="rack__con">
+                  <div class="floor">
+                    <span>바닥</span>
+                    <span>1층</span>
+                    <span>2층</span>
+                    <span>3층</span>
+                    <span>4층</span>
+                  </div>
+                  <div class="contents rack-5">
+                    <div class="rack__section">
+                      <div class="rack_box">
+                        <div class="column"></div>
+                        <div class="boxes">
+                          <div class="box">
+                            <button class="rack" value="제주E1_9">L</button>
+                            <button class="rack" value="제주E1_10">R</button>
+                          </div>
+                          <div class="box">
+                            <button class="rack" value="제주E1_7">L</button>
+                            <button class="rack" value="제주E1_8">R</button>
+                          </div>
+                          <div class="box">
+                            <button class="rack" value="제주E1_5">L</button>
+                            <button class="rack" value="제주E1_6">R</button>
+                          </div>
+                          <div class="box">
+                            <button class="rack" value="제주E1_3">L</button>
+                            <button class="rack" value="제주E1_4">R</button>
+                          </div>
+                          <div class="box">
+                            <button class="rack" value="제주E1_1">L</button>
+                            <button class="rack" value="제주E1_2">R</button>
+                          </div>
+                        </div>
+                        <div class="column"></div>
+                      </div>
+                    </div>
+                    <div class="rack__section">
+                      <div class="rack_box">
+                        <div class="column"></div>
+                        <div class="boxes">
+                          <div class="box">
+                            <button class="rack" value="제주E2_9">L</button>
+                            <button class="rack" value="제주E2_10">R</button>
+                          </div>
+                          <div class="box">
+                            <button class="rack" value="제주E2_7">L</button>
+                            <button class="rack" value="제주E2_8">R</button>
+                          </div>
+                          <div class="box">
+                            <button class="rack" value="제주E2_5">L</button>
+                            <button class="rack" value="제주E2_6">R</button>
+                          </div>
+                          <div class="box">
+                            <button class="rack" value="제주E2_3">L</button>
+                            <button class="rack" value="제주E2_4">R</button>
+                          </div>
+                          <div class="box">
+                            <button class="rack" value="제주E2_1">L</button>
+                            <button class="rack" value="제주E2_2">R</button>
+                          </div>
+                        </div>
+                        <div class="column"></div>
+                      </div>
+                    </div>
+                    <div class="rack__section">
+                      <div class="rack_box">
+                        <div class="column"></div>
+                        <div class="boxes">
+                          <div class="box">
+                            <button class="rack" value="제주E3_9">L</button>
+                            <button class="rack" value="제주E3_10">R</button>
+                          </div>
+                          <div class="box">
+                            <button class="rack" value="제주E3_7">L</button>
+                            <button class="rack" value="제주E3_8">R</button>
+                          </div>
+                          <div class="box">
+                            <button class="rack" value="제주E3_5">L</button>
+                            <button class="rack" value="제주E3_6">R</button>
+                          </div>
+                          <div class="box">
+                            <button class="rack" value="제주E3_3">L</button>
+                            <button class="rack" value="제주E3_4">R</button>
+                          </div>
+                          <div class="box">
+                            <button class="rack" value="제주E3_1">L</button>
+                            <button class="rack" value="제주E3_2">R</button>
+                          </div>
+                        </div>
+                        <div class="column"></div>
+                      </div>
+                    </div>
+                    <div class="rack__shelf">
+                      <p class="shelf_name">E랙</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="rack__container">
+                <div class="rack__con">
+                  <div class="floor">
+                    <span>바닥</span>
+                    <span>1층</span>
+                    <span>2층</span>
+                    <span>3층</span>
+                    <span>4층</span>
+                  </div>
+                  <div class="contents rack-5">
+                    <div class="rack__section">
+                      <div class="rack_box">
+                        <div class="column"></div>
+                        <div class="boxes">
+                          <div class="box">
+                            <button class="rack" value="제주D1_9">L</button>
+                            <button class="rack" value="제주D1_10">R</button>
+                          </div>
+                          <div class="box">
+                            <button class="rack" value="제주D1_7">L</button>
+                            <button class="rack" value="제주D1_8">R</button>
+                          </div>
+                          <div class="box">
+                            <button class="rack" value="제주D1_5">L</button>
+                            <button class="rack" value="제주D1_6">R</button>
+                          </div>
+                          <div class="box">
+                            <button class="rack" value="제주D1_3">L</button>
+                            <button class="rack" value="제주D1_4">R</button>
+                          </div>
+                          <div class="box">
+                            <button class="rack" value="제주D1_1">L</button>
+                            <button class="rack" value="제주D1_2">R</button>
+                          </div>
+                        </div>
+                        <div class="column"></div>
+                      </div>
+                    </div>
+                    <div class="rack__section">
+                      <div class="rack_box">
+                        <div class="column"></div>
+                        <div class="boxes">
+                          <div class="box">
+                            <button class="rack" value="제주D2_9">L</button>
+                            <button class="rack" value="제주D2_10">R</button>
+                          </div>
+                          <div class="box">
+                            <button class="rack" value="제주D2_7">L</button>
+                            <button class="rack" value="제주D2_8">R</button>
+                          </div>
+                          <div class="box">
+                            <button class="rack" value="제주D2_5">L</button>
+                            <button class="rack" value="제주D2_6">R</button>
+                          </div>
+                          <div class="box">
+                            <button class="rack" value="제주D2_3">L</button>
+                            <button class="rack" value="제주D2_4">R</button>
+                          </div>
+                          <div class="box">
+                            <button class="rack" value="제주D2_1">L</button>
+                            <button class="rack" value="제주D2_2">R</button>
+                          </div>
+                        </div>
+                        <div class="column"></div>
+                      </div>
+                    </div>
+                    <div class="rack__section">
+                      <div class="rack_box">
+                        <div class="column"></div>
+                        <div class="boxes">
+                          <div class="box">
+                            <button class="rack" value="제주D3_9">L</button>
+                            <button class="rack" value="제주D3_10">R</button>
+                          </div>
+                          <div class="box">
+                            <button class="rack" value="제주D3_7">L</button>
+                            <button class="rack" value="제주D3_8">R</button>
+                          </div>
+                          <div class="box">
+                            <button class="rack" value="제주D3_5">L</button>
+                            <button class="rack" value="제주D3_6">R</button>
+                          </div>
+                          <div class="box">
+                            <button class="rack" value="제주D3_3">L</button>
+                            <button class="rack" value="제주D3_4">R</button>
+                          </div>
+                          <div class="box">
+                            <button class="rack" value="제주D3_1">L</button>
+                            <button class="rack" value="제주D3_2">R</button>
+                          </div>
+                        </div>
+                        <div class="column"></div>
+                      </div>
+                    </div>
+                    <div class="rack__shelf">
+                      <p class="shelf_name">D랙</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="rack__container">
+                <div class="rack__con">
+                  <div class="floor">
+                    <span>바닥</span>
+                    <span>1층</span>
+                    <span>2층</span>
+                    <span>3층</span>
+                    <span>4층</span>
+                  </div>
+                  <div class="contents rack-5">
+                    <div class="rack__section">
+                      <div class="rack_box">
+                        <div class="column"></div>
+                        <div class="boxes">
+                          <div class="box">
+                            <button class="rack" value="제주C1_9">L</button>
+                            <button class="rack" value="제주C1_10">R</button>
+                          </div>
+                          <div class="box">
+                            <button class="rack" value="제주C1_7">L</button>
+                            <button class="rack" value="제주C1_8">R</button>
+                          </div>
+                          <div class="box">
+                            <button class="rack" value="제주C1_5">L</button>
+                            <button class="rack" value="제주C1_6">R</button>
+                          </div>
+                          <div class="box">
+                            <button class="rack" value="제주C1_3">L</button>
+                            <button class="rack" value="제주C1_4">R</button>
+                          </div>
+                          <div class="box">
+                            <button class="rack" value="제주C1_1">L</button>
+                            <button class="rack" value="제주C1_2">R</button>
+                          </div>
+                        </div>
+                        <div class="column"></div>
+                      </div>
+                    </div>
+                    <div class="rack__section">
+                      <div class="rack_box">
+                        <div class="column"></div>
+                        <div class="boxes">
+                          <div class="box">
+                            <button class="rack" value="제주C2_9">L</button>
+                            <button class="rack" value="제주C2_10">R</button>
+                          </div>
+                          <div class="box">
+                            <button class="rack" value="제주C2_7">L</button>
+                            <button class="rack" value="제주C2_8">R</button>
+                          </div>
+                          <div class="box">
+                            <button class="rack" value="제주C2_5">L</button>
+                            <button class="rack" value="제주C2_6">R</button>
+                          </div>
+                          <div class="box">
+                            <button class="rack" value="제주C2_3">L</button>
+                            <button class="rack" value="제주C2_4">R</button>
+                          </div>
+                          <div class="box">
+                            <button class="rack" value="제주C2_1">L</button>
+                            <button class="rack" value="제주C2_2">R</button>
+                          </div>
+                        </div>
+                        <div class="column"></div>
+                      </div>
+                    </div>
+                    <div class="rack__section">
+                      <div class="rack_box">
+                        <div class="column"></div>
+                        <div class="boxes">
+                          <div class="box">
+                            <button class="rack" value="제주C1_9">L</button>
+                            <button class="rack" value="제주C1_10">R</button>
+                          </div>
+                          <div class="box">
+                            <button class="rack" value="제주C1_7">L</button>
+                            <button class="rack" value="제주C1_8">R</button>
+                          </div>
+                          <div class="box">
+                            <button class="rack" value="제주C1_5">L</button>
+                            <button class="rack" value="제주C1_6">R</button>
+                          </div>
+                          <div class="box">
+                            <button class="rack" value="제주C1_3">L</button>
+                            <button class="rack" value="제주C1_4">R</button>
+                          </div>
+                          <div class="box">
+                            <button class="rack" value="제주C1_1">L</button>
+                            <button class="rack" value="제주C1_2">R</button>
+                          </div>
+                        </div>
+                        <div class="column"></div>
+                      </div>
+                    </div>
+                    <div class="rack__shelf">
+                      <p class="shelf_name">C랙</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="rack__container">
+                <div class="rack__con">
+                  <div class="floor">
+                    <span>바닥</span>
+                    <span>1층</span>
+                    <span>2층</span>
+                    <span>3층</span>
+                    <span>4층</span>
+                  </div>
+                  <div class="contents rack-5">
+                    <div class="rack__section">
+                      <div class="rack_box">
+                        <div class="column"></div>
+                        <div class="boxes">
+                          <div class="box">
+                            <button class="rack" value="제주B1_9">L</button>
+                            <button class="rack" value="제주B1_10">R</button>
+                          </div>
+                          <div class="box">
+                            <button class="rack" value="제주B1_7">L</button>
+                            <button class="rack" value="제주B1_8">R</button>
+                          </div>
+                          <div class="box">
+                            <button class="rack" value="제주B1_5">L</button>
+                            <button class="rack" value="제주B1_6">R</button>
+                          </div>
+                          <div class="box">
+                            <button class="rack" value="제주B1_3">L</button>
+                            <button class="rack" value="제주B1_4">R</button>
+                          </div>
+                          <div class="box">
+                            <button class="rack" value="제주B1_1">L</button>
+                            <button class="rack" value="제주B1_2">R</button>
+                          </div>
+                        </div>
+                        <div class="column"></div>
+                      </div>
+                    </div>
+                    <div class="rack__section">
+                      <div class="rack_box">
+                        <div class="column"></div>
+                        <div class="boxes">
+                          <div class="box">
+                            <button class="rack" value="제주B2_9">L</button>
+                            <button class="rack" value="제주B2_10">R</button>
+                          </div>
+                          <div class="box">
+                            <button class="rack" value="제주B2_7">L</button>
+                            <button class="rack" value="제주B2_8">R</button>
+                          </div>
+                          <div class="box">
+                            <button class="rack" value="제주B2_5">L</button>
+                            <button class="rack" value="제주B2_6">R</button>
+                          </div>
+                          <div class="box">
+                            <button class="rack" value="제주B2_3">L</button>
+                            <button class="rack" value="제주B2_4">R</button>
+                          </div>
+                          <div class="box">
+                            <button class="rack" value="제주B2_1">L</button>
+                            <button class="rack" value="제주B2_2">R</button>
+                          </div>
+                        </div>
+                        <div class="column"></div>
+                      </div>
+                    </div>
+                    <div class="rack__section">
+                      <div class="rack_box">
+                        <div class="column"></div>
+                        <div class="boxes">
+                          <div class="box">
+                            <button class="rack" value="제주B3_9">L</button>
+                            <button class="rack" value="제주B3_10">R</button>
+                          </div>
+                          <div class="box">
+                            <button class="rack" value="제주B3_7">L</button>
+                            <button class="rack" value="제주B3_8">R</button>
+                          </div>
+                          <div class="box">
+                            <button class="rack" value="제주B3_5">L</button>
+                            <button class="rack" value="제주B3_6">R</button>
+                          </div>
+                          <div class="box">
+                            <button class="rack" value="제주B3_3">L</button>
+                            <button class="rack" value="제주B3_4">R</button>
+                          </div>
+                          <div class="box">
+                            <button class="rack" value="제주B3_1">L</button>
+                            <button class="rack" value="제주B3_2">R</button>
+                          </div>
+                        </div>
+                        <div class="column"></div>
+                      </div>
+                    </div>
+                    <div class="rack__shelf">
+                      <p class="shelf_name">B랙</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="rack__container">
+                <div class="rack__con">
+                  <div class="floor">
+                    <span>바닥</span>
+                    <span>1층</span>
+                    <span>2층</span>
+                    <span>3층</span>
+                    <span>4층</span>
+                  </div>
+                  <div class="contents rack-5">
+                    <div class="rack__section">
+                      <div class="rack_box">
+                        <div class="column"></div>
+                        <div class="boxes">
+                          <div class="box">
+                            <button class="rack" value="제주A1_9">L</button>
+                            <button class="rack" value="제주A1_10">R</button>
+                          </div>
+                          <div class="box">
+                            <button class="rack" value="제주A1_7">L</button>
+                            <button class="rack" value="제주A1_8">R</button>
+                          </div>
+                          <div class="box">
+                            <button class="rack" value="제주A1_5">L</button>
+                            <button class="rack" value="제주A1_6">R</button>
+                          </div>
+                          <div class="box">
+                            <button class="rack" value="제주A1_3">L</button>
+                            <button class="rack" value="제주A1_4">R</button>
+                          </div>
+                          <div class="box">
+                            <button class="rack" value="제주A1_1">L</button>
+                            <button class="rack" value="제주A1_2">R</button>
+                          </div>
+                        </div>
+                        <div class="column"></div>
+                      </div>
+                    </div>
+                    <div class="rack__section">
+                      <div class="rack_box">
+                        <div class="column"></div>
+                        <div class="boxes">
+                          <div class="box">
+                            <button class="rack" value="제주A2_9">L</button>
+                            <button class="rack" value="제주A2_10">R</button>
+                          </div>
+                          <div class="box">
+                            <button class="rack" value="제주A2_7">L</button>
+                            <button class="rack" value="제주A2_8">R</button>
+                          </div>
+                          <div class="box">
+                            <button class="rack" value="제주A2_5">L</button>
+                            <button class="rack" value="제주A2_6">R</button>
+                          </div>
+                          <div class="box">
+                            <button class="rack" value="제주A2_3">L</button>
+                            <button class="rack" value="제주A2_4">R</button>
+                          </div>
+                          <div class="box">
+                            <button class="rack" value="제주A2_1">L</button>
+                            <button class="rack" value="제주A2_2">R</button>
+                          </div>
+                        </div>
+                        <div class="column"></div>
+                      </div>
+                    </div>
+                    <div class="rack__section">
+                      <div class="rack_box">
+                        <div class="column"></div>
+                        <div class="boxes">
+                          <div class="box">
+                            <button class="rack" value="제주A3_9">L</button>
+                            <button class="rack" value="제주A3_10">R</button>
+                          </div>
+                          <div class="box">
+                            <button class="rack" value="제주A3_7">L</button>
+                            <button class="rack" value="제주A3_8">R</button>
+                          </div>
+                          <div class="box">
+                            <button class="rack" value="제주A3_5">L</button>
+                            <button class="rack" value="제주A3_6">R</button>
+                          </div>
+                          <div class="box">
+                            <button class="rack" value="제주A3_3">L</button>
+                            <button class="rack" value="제주A3_4">R</button>
+                          </div>
+                          <div class="box">
+                            <button class="rack" value="제주A3_1">L</button>
+                            <button class="rack" value="제주A3_2">R</button>
+                          </div>
+                        </div>
+                        <div class="column"></div>
+                      </div>
+                    </div>
+                    <div class="rack__section">
+                      <div class="rack_box">
+                        <div class="column"></div>
+                        <div class="boxes">
+                          <div class="box">
+                            <button class="rack" value="제주A4_9">L</button>
+                            <button class="rack" value="제주A4_10">R</button>
+                          </div>
+                          <div class="box">
+                            <button class="rack" value="제주A4_7">L</button>
+                            <button class="rack" value="제주A4_8">R</button>
+                          </div>
+                          <div class="box">
+                            <button class="rack" value="제주A4_5">L</button>
+                            <button class="rack" value="제주A4_6">R</button>
+                          </div>
+                          <div class="box">
+                            <button class="rack" value="제주A4_3">L</button>
+                            <button class="rack" value="제주A4_4">R</button>
+                          </div>
+                          <div class="box">
+                            <button class="rack" value="제주A4_1">L</button>
+                            <button class="rack" value="제주A4_2">R</button>
+                          </div>
+                        </div>
+                        <div class="column"></div>
+                      </div>
+                    </div>
+                    <div class="rack__shelf">
+                      <p class="shelf_name">A랙</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="line"></div>
+          </div>
+          <div class="exit">
+            <div class="line2"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="input-group">
+        <div class="input-btn-group">
+          <button onClick="입고_save();">저장</button>
+          <button onClick="이전페이지();">이전페이지</button>
+        </div>
+      </div>
+    </section>
+    <script>
+      var _마도 = document.getElementById("_마도");
+      var _구장 = document.getElementById("_구장");
+      var _제주 = document.getElementById("_제주");
+      var _마도출고 = document.getElementById("_마도출고");
+      //var _군포 = document.getElementById('_군포');
+    </script>
+  </body>
+</html>

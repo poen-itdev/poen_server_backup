@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>배터리팩 재제조 현황</title>
+    <link rel="stylesheet" href="base/style/camera.css" />
+    <link rel="stylesheet" href="base/style/공정.css" />
+  </head>
+
+  <body>
+    <section class="BSA재제조현황">
+      <div class="process__tit change-tit">
+        <label for="grid_BSA">구장창고 배터리팩 재고 현황</label>
+      </div>
+      <div class="data">
+        <div class="data-query">
+          <div>
+            <button onClick="구장_수량집계_year();">Year</button>
+            <button onClick="구장_수량집계_month();">Month</button>
+          </div>
+          <div class="data-check">
+            <input type="date" id="_검색일_from" size="40" value="0000-00-00" max="240-12-4" required />
+            <span class="tilde">&#126;</span>
+            <input type="date" id="_검색일_to" size="40" value="0000-00-00" max="240-12-4" required />&nbsp;
+            <button onClick="구장_수량집계_기간조회();">조회</button>
+          </div>
+        </div>
+      </div>
+      <div class="gather-filter p-pt">
+        <select id="filter-field">
+          <option></option>
+          <option value="관리번호">관리번호</option>
+          <option value="재제조번호">재제조번호</option>
+          <option value="입고일">입고일</option>
+          <option value="입고처">입고처</option>
+          <option value="RO번호">RO번호</option>
+          <option value="부품번호">부품번호</option>
+          <option value="생산연도">생산연도</option>
+          <option value="ROM_ID">ROM ID</option>
+          <option value="보관위치">보관위치</option>
+          <option value="출고일">출고일</option>
+          <option value="출고처">출고처</option>
+          <option value="비고">비고</option>
+        </select>
+
+        <select id="filter-type">
+          <option value="=">=</option>
+          <option value="<"><</option>
+
+          <option value="<="><=</option>
+          <option value=">">></option>
+          <option value=">=">>=</option>
+          <option value="!=">!=</option>
+          <option value="like">like</option>
+        </select>
+
+        <input id="filter-value" type="text" placeholder="value to filter" />
+
+        <button id="filter-clear">Clear Filter</button>
+      </div>
+      <div>
+        <div id="grid_BSA"></div>
+      </div>
+
+      <div class="pb">
+        <div class="process__btn">
+          <div>
+            <label class="id__name">선택 관리번호 : </label>
+            <label class="id__name" id="select_bsa"></label>
+          </div>
+          <div class="process__btns">
+            <button onClick="delete_구장재고_bsa();" class="delete__bsa">삭제</button>
+            <button onClick="창고_export_excel();" class="down__excel">Export to Excel</button>
+          </div>
+        </div>
+      </div>
+      <div class="pt">
+        <div class="process__tit">
+          <label for="grid_품번_수량집계">구장 창고 품번별 재고 현황</label>
+        </div>
+        <div id="grid_품번_수량집계"></div>
+      </div>
+      <div>
+        <div class="process__tit">
+          <label for="grid_입고처_수량집계">구장 창고 입고처별 재고 현황</label>
+        </div>
+        <div id="grid_입고처_수량집계"></div>
+      </div>
+      <div>
+        <div class="process__tit">
+          <label for="grid_출고처_수량집계">구장 창고 출고처별 재고 현황</label>
+        </div>
+        <div id="grid_출고처_수량집계"></div>
+      </div>
+    </section>
+  </body>
+</html>

@@ -1,0 +1,2 @@
+sudo ./start_server.sh 
+nohup sudo ./start_db.sh &

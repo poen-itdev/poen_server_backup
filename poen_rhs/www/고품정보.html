@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>부품 정보</title>
+    <link rel="stylesheet" href="base/style/공정.css" />
+  </head>
+
+  <body>
+    <section class="고품정보">
+      <div class="process__tit change-tit">
+        <h2>고품 정보 등록 및 수정</h2>
+      </div>
+      <div class="input-group process-step">
+        <table class="tb">
+          <colgroup>
+            <col class="col_1" width="30%" />
+            <col class="col_2" width="70%" />
+          </colgroup>
+          <tr>
+            <td>
+              <label for="management_id">관리번호</label>
+            </td>
+            <td>
+              <input type="text" id="_management_id" value="조회 버튼을 누르세요" size="25" required />
+              <button onClick="고품정보등록_시작();">조 회</button>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="input-group process-step">
+        <table class="tb">
+          <colgroup>
+            <col class="col_1" width="30%" />
+            <col class="col_2" width="70%" />
+          </colgroup>
+          <tr>
+            <td>
+              <label for="_품명">품명</label>
+            </td>
+            <td class="step-con">
+              <input type="text" id="_품명" size="17" required />
+              <div>
+                <select name="language" onchange="_품명_콤보박스(this);">
+                  <option value="">---</option>
+                  <option value="BMU">BMU</option>
+                  <option value="CMU">CMU</option>
+                  <option value="PRA">PRA</option>
+                  <option value="SPA">SPA</option>
+                  <option value="LWR Case">LWR Case</option>
+                  <option value="UPR Case">UPR Case</option>
+                  <option value="PBE">PBE</option>
+                  <option value="Gasket">Gasket</option>
+                  <option value="FuseBox">FuseBox</option>
+                  <option value="LV W_H">LV W/H</option>
+                  <option value="HV W_H">HV W/H</option>
+                  <option value="HV CNTR">HV CNTR</option>
+                  <option value="Heating CNTR">Heating CNTR</option>
+                  <option value="Relay">Relay</option>
+                  <option value="ETC">ETC</option>
+                  <option value="온도센서">온도센서</option>
+                  <option value="Busbars">Busbars</option>
+                  <option value="BMA">배터리모듈</option>
+                </select>
+              </div>
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              <label for="_구분">구분</label>
+            </td>
+            <td class="step-con">
+              <input type="text" id="_구분" size="7" required />
+              <div>
+                <select name="language" onchange="_구분_콤보박스(this);">
+                  <option value="">--</option>
+                  <option value="일반">일반</option>
+                  <option value="보증">보증</option>
+                </select>
+              </div>
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              <label for="_품번">품번</label>
+            </td>
+            <td>
+              <input type="text" id="_품번" size="25" required />
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              <label for="_번호">번호</label>
+            </td>
+            <td class="step-con">
+              <input type="text" id="_번호" size="5" required />
+              <div>
+                <select name="language" onchange="_번호_콤보박스(this);">
+                  <option value="">---</option>
+                  <option value="#1">#1</option>
+                  <option value="#2">#2</option>
+                  <option value="#3">#3</option>
+                  <option value="#4">#4</option>
+                  <option value="#5">#5</option>
+                  <option value="#6">#6</option>
+                  <option value="#7">#7</option>
+                  <option value="#8">#8</option>
+                  <option value="#9">#9</option>
+                  <option value="#10">#10</option>
+                  <option value="#11">#11</option>
+                  <option value="#12">#12</option>
+                  <option value="#13">#13</option>
+                  <option value="#14">#14</option>
+                  <option value="#15">#15</option>
+                  <option value="#16">#16</option>
+                  <option value="#17">#17</option>
+                  <option value="#18">#18</option>
+                  <option value="#19">#19</option>
+                  <option value="#20">#20</option>
+                  <option value="#21">#21</option>
+                  <option value="#22">#22</option>
+                  <option value="#23">#23</option>
+                  <option value="#24">#24</option>
+                  <option value="#25">#25</option>
+                  <option value="#26">#26</option>
+                  <option value="#27">#27</option>
+                  <option value="#28">#28</option>
+                  <option value="#29">#29</option>
+                  <option value="#30">#30</option>
+                  <option value="#31">#31</option>
+                  <option value="#32">#32</option>
+                  <option value="#33">#33</option>
+                  <option value="#34">#34</option>
+                  <option value="#35">#35</option>
+                  <option value="#36">#36</option>
+                  <option value="#37">#37</option>
+                  <option value="#38">#38</option>
+                  <option value="#39">#39</option>
+                  <option value="#25">#25</option>
+                  <option value="#41">#41</option>
+                  <option value="#42">#42</option>
+                  <option value="#43">#43</option>
+                  <option value="#44">#44</option>
+                  <option value="#45">#45</option>
+                  <option value="#46">#46</option>
+                  <option value="#47">#47</option>
+                  <option value="#48">#48</option>
+                  <option value="#49">#49</option>
+                  <option value="#50">#50</option>
+                </select>
+              </div>
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              <label for="_QR">QR</label>
+            </td>
+            <td>
+              <input type="text" id="_QR" size="25" required />
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              <label for="_폐기여부">폐기여부</label>
+            </td>
+            <td class="step-con">
+              <input type="text" id="_폐기여부" size="5" required />
+              <div>
+                <select name="language" onchange="_폐기여부_콤보박스(this);">
+                  <option value="">---</option>
+                  <option value="자재">자재</option>
+                  <option value="폐기">폐기</option>
+                </select>
+              </div>
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              <label for="_작업자">작업자</label>
+            </td>
+            <td class="step-con">
+              <input type="text" id="_작업자" size="10" required />
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="input-group">
+        <div class="input-btn-group">
+          <button onClick="고품정보_save();">저장</button>
+          <button onClick="이전페이지();">이전페이지</button>
+        </div>
+      </div>
+      <div style="margin-top: 30px">
+        <label for="grid_고품정보" style="display: flex; justify-content: center; font-weight: bold">부품 정보</label>
+        <div id="grid_고품정보"></div>
+      </div>
+    </section>
+    <script>
+      const _management_id = document.getElementById("_management_id");
+      const _품명 = document.getElementById("_품명");
+      const _품번 = document.getElementById("_품번");
+      const _번호 = document.getElementById("_번호");
+      const _QR = document.getElementById("_QR");
+      const _폐기여부 = document.getElementById("_폐기여부");
+      const _작업자 = document.getElementById("_작업자");
+    </script>
+  </body>
+</html>

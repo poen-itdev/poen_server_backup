@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>배터리팩 대기 수량 현황</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="base/style/공정.css" />
+    <link rel="stylesheet" href="base/style/newstyle.css" />
+  </head>
+
+  <body>
+    <section class="quantity-status">
+      <div class="wrap">
+        <div class="con__head">
+          <div class="tit">
+            <h2>배터리팩 대기 수량 현황</h2>
+            <p>poen</p>
+          </div>
+        </div>
+        <div class="con__body">
+          <div class="inner">
+            <div class="contents">
+              <div class="item d2" id="세척">
+                <div class="icon">
+                  <img src="base/img/clean.png" alt="세척대기" />
+                </div>
+                <h3>세척대기</h3>
+                <span id="check_num2"></span>
+              </div>
+              <div class="item d3" id="기초">
+                <div class="icon">
+                  <img src="base/img/quality-control.png" alt="기초검사 대기" />
+                </div>
+                <h3>기초검사</h3>
+                <span id="check_num3"></span>
+              </div>
+              <div class="item d2" id="분해">
+                <div class="icon">
+                  <img src="base/img/operation.png" alt="분해조립" />
+                </div>
+                <h3>분해조립</h3>
+                <span id="check_num4"></span>
+              </div>
+              <div class="item d3" id="성능">
+                <div class="icon">
+                  <img src="base/img/battery-status.png" alt="성능검사" />
+                </div>
+                <h3>성능검사</h3>
+                <span id="check_num5"></span>
+              </div>
+              <div class="item d1" id="EOL">
+                <div class="icon">
+                  <img src="base/img/eol.png" alt="EOL" />
+                </div>
+                <h3>EOL대기</h3>
+                <span id="check_num6"></span>
+              </div>
+              <div class="item d2" id="출하">
+                <div class="icon">
+                  <img src="base/img/outgoing.png" alt="출하대기" />
+                </div>
+                <h3>출하대기</h3>
+                <span id="check_num7"></span>
+              </div>
+              <div class="item d1" id="공정대기">
+                <div class="icon">
+                  <img src="base/img/waiting1.png" alt="공정대기" />
+                </div>
+                <h3>공정대기</h3>
+                <span id="check_num8"></span>
+              </div>
+              <div class="item d2" id="품질대기">
+                <div class="icon">
+                  <img src="base/img/waiting.png" alt="품질대기" />
+                </div>
+                <h3>품질대기</h3>
+                <span id="check_num9"></span>
+              </div>
+            </div>
+          </div>
+          <div class="process">
+            <div class="process__tit">
+              <label id="대기라벨" for="grid_대기">선택 대기 배터리팩</label>
+            </div>
+            <div id="grid_대기"></div>
+          </div>
+          <div class="gather-filter">
+            <select id="filter-field">
+              <option></option>
+              <option value="출하예약">출하예약</option>
+              <option value="관리번호">관리번호</option>
+              <option value="재제조번호">재제조번호</option>
+              <option value="차종">차종</option>
+              <option value="구분">구분</option>
+              <option value="품번">품번</option>
+              <option value="RO_no">RO_no</option>
+              <option value="공정단계">공정단계</option>
+              <option value="적재No">적재No</option>
+              <option value="입고">입고</option>
+              <option value="제조투입">제조투입</option>
+              <option value="세척투입일">세척투입일</option>
+              <option value="세척">세척</option>
+              <option value="기초검사투입">기초검사투입</option>
+              <option value="기초검사">기초검사</option>
+              <option value="분해조립투입">분해조립투입</option>
+              <option value="분해조립">분해조립</option>
+              <option value="성능검사투입">성능검사투입</option>
+              <option value="성능검사">성능검사</option>
+              <option value="EOL투입일">EOL투입일</option>
+              <option value="EOL">EOL</option>
+              <option value="출하">출하</option>
+              <option value="소재지">소재지</option>
+              <option value="반품입고">반품입고</option>
+              <option value="재출하">재출하</option>
+              <option value="완전분해">완전분해</option>
+              <option value="폐기">폐기</option>
+            </select>
+
+            <select id="filter-type">
+              <option value="=">=</option>
+              <option value="<"><</option>
+
+              <option value="<="><=</option>
+
+              <option value=">">></option>
+              <option value=">=">>=</option>
+              <option value="!=">!=</option>
+              <option value="like">like</option>
+            </select>
+
+            <input id="filter-value" type="text" placeholder="value to filter" />
+
+            <button id="filter-clear">Clear Filter</button>
+          </div>
+          <div class="process">
+            <div class="process__tit">
+              <label for="grid_출하대기">출하대기 배터리팩</label>
+            </div>
+            <div id="grid_출하대기"></div>
+            <div class="process__btn pb">
+              <label id="출하예약_관리번호">출하 예약 관리번호:</label>
+              <div class="process__btns">
+                <button onClick="출하예약();">출하 예약</button>
+                <button onClick="출하예약취소();" class="delete__bsa">예약 취소</button>
+                <button onClick="export_출하대기();" class="down__excel">Export to Excel</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

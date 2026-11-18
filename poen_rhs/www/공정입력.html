@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>품목 상세 입력</title>
+    <link rel="stylesheet" href="base/style/newstyle.css" />
+    <link rel="stylesheet" href="base/style/공정.css" />
+  </head>
+
+  <body>
+    <section class="BSA정보입력">
+      <div class="process__tit change-tit">
+        <h2>배터리팩 정보 입력</h2>
+      </div>
+      <div class="process">
+        <div class="inner">
+          <div class="contents">
+            <div class="item" id="입고" onClick="if(계정_stat.입고 == 'o') { flag_입고 = true; loadPage('base/입고.html');}">
+              <div class="icon">
+                <img src="base/img/cargo-b.png" alt="입고" />
+              </div>
+              <h3>입고</h3>
+            </div>
+            <div class="item" id="세척" onClick="if(계정_stat.세척 == 'o') { flag_세척 = true; loadPage('base/세척.html');}">
+              <div class="icon">
+                <img src="base/img/clean.png" alt="세척" />
+              </div>
+              <h3>세척</h3>
+            </div>
+            <div class="item" id="기초 " onClick="if(계정_stat.기초검사 == 'o') { flag_기초검사 = true;  loadPage('base/기초검사.html');}">
+              <div class="icon">
+                <img src="base/img/quality-control.png" alt="기초검사" />
+              </div>
+              <h3>기초검사</h3>
+            </div>
+            <div class="item" id="분해" onClick="if(계정_stat.분해조립 == 'o') { flag_new_분해조립 = true; loadPage('base/분해조립.html');}">
+              <div class="icon">
+                <img src="base/img/operation.png" alt="분해조립" />
+              </div>
+              <h3>분해조립</h3>
+            </div>
+            <div class="item" id="성능" onClick="if(계정_stat.성능검사 == 'o') { flag_성능검사 = true; loadPage('base/성능검사.html');}">
+              <div class="icon">
+                <img src="base/img/battery-status.png" alt="성능검사" />
+              </div>
+              <h3>성능검사</h3>
+            </div>
+            <div class="item" id="EOL" onClick="if(계정_stat.EOL == 'o') { flag_EOL = true; loadPage('base/EOL.html');}">
+              <div class="icon">
+                <img src="base/img/eol-b.png" alt="EOL" />
+              </div>
+              <h3>EOL</h3>
+            </div>
+            <div class="item" id="출하검사" onClick="if(계정_stat.출하검사 == 'o') { flag_출하 = true; loadPage('base/출하정보.html');}">
+              <div class="icon">
+                <img src="base/img/oqc.png" alt="출하검사" />
+              </div>
+              <h3>출하검사</h3>
+            </div>
+            <div class="item" id="출하" onClick="pre_관리번호 = ''; 창고 = '마도출고'; flag_racks = true;">
+              <div class="icon">
+                <img src="base/img/outgoing.png" alt="출하" />
+              </div>
+              <h3>출하</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

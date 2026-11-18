@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>배터리팩 공정제외 수량 현황</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="base/style/newstyle.css" />
+    <link rel="stylesheet" href="base/style/공정.css" />
+  </head>
+
+  <body>
+    <section class="exclusion">
+      <div class="wrap">
+        <div class="con__head">
+          <div class="tit">
+            <h2>배터리팩 공정제외 현황</h2>
+            <p>poen</p>
+          </div>
+        </div>
+        <div class="con__body">
+          <div class="inner">
+            <div class="contents">
+              <div class="item d2" id="일반기타">
+                <div class="icon">
+                  <img src="base/img/exclusion_battery.png" alt="일반기타" />
+                </div>
+                <h3>일반기타</h3>
+                <span id="check_num1"></span>
+              </div>
+              <div class="item d1" id="보증기타">
+                <div class="icon">
+                  <img src="base/img/exclusion_disassembled.png" alt="보증기타" />
+                </div>
+                <h3>보증기타</h3>
+                <span id="check_num2"></span>
+              </div>
+              <div class="item d3" id="완전분해">
+                <div class="icon">
+                  <img src="base/img/exclusion_warrant.png" alt="완전분해" />
+                </div>
+                <h3>완전분해</h3>
+                <span id="check_num3"></span>
+              </div>
+              <div class="item d2" id="폐기">
+                <div class="icon">
+                  <img src="base/img/exclusion_dispose.png" alt="폐기" />
+                </div>
+                <h3>폐기</h3>
+                <span id="check_num4"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="process">
+        <div class="process__tit">
+          <label id="제외분류" for="grid_제외"></label>
+        </div>
+        <div id="grid_제외분류"></div>
+      </div>
+    </section>
+  </body>
+</html>

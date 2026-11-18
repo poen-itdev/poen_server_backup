@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Dash Board</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="base/style/newstyle.css" />
+    <link rel="stylesheet" href="base/style/공정.css" />
+  </head>
+
+  <body>
+    <section class="dashboard">
+      <div class="wrap">
+        <div class="con__head">
+          <div class="tit">
+            <h2>재제조 현황</h2>
+            <p>poen</p>
+          </div>
+          <div class="dash-date">
+            <input type="date" id="_검색일_from" size="40" value="0000-00-00" max="240-12-4" required />
+            <span>&nbsp; ~ &nbsp;</span>
+            <input type="date" id="_검색일_to" size="40" value="0000-00-00" max="240-12-4" required />
+            <button onClick="dashboard_조회();" class="check-btn">조회</button>
+          </div>
+        </div>
+        <div class="con__body">
+          <div class="inner">
+            <div class="contents">
+              <div class="item d1" id="입고">
+                <div class="icon">
+                  <img src="base/img/cargo.png" alt="입고" />
+                </div>
+                <h3>입고</h3>
+                <span id="num1"></span>
+                <span id="num1t"></span>
+              </div>
+              <div class="item d2" id="세척">
+                <div class="icon">
+                  <img src="base/img/clean.png" alt="세척" />
+                </div>
+                <h3>세척</h3>
+                <span id="num2"></span>
+                <span id="num2t"></span>
+              </div>
+              <div class="item d3" id="기초">
+                <div class="icon">
+                  <img src="base/img/quality-control.png" alt="기초검사" />
+                </div>
+                <h3>기초검사</h3>
+                <span id="num3"></span>
+                <span id="num3t"></span>
+              </div>
+              <div class="item d2" id="분해">
+                <div class="icon">
+                  <img src="base/img/operation.png" alt="분해조립" />
+                </div>
+                <h3>분해조립</h3>
+                <span id="num4"></span>
+                <span id="num4t"></span>
+              </div>
+              <div class="item d3" id="성능">
+                <div class="icon">
+                  <img src="base/img/battery-status.png" alt="성능검사" />
+                </div>
+                <h3>성능검사</h3>
+                <span id="num5"></span>
+                <span id="num5t"></span>
+              </div>
+              <div class="item d1" id="EOL">
+                <div class="icon">
+                  <img src="base/img/eol.png" alt="EOL" />
+                </div>
+                <h3>EOL</h3>
+                <span id="num6"></span>
+                <span id="num6t"></span>
+              </div>
+              <div class="item d2" id="출하검사">
+                <div class="icon">
+                  <img src="base/img/oqc.png" alt="출하검사" />
+                </div>
+                <h3>출하검사</h3>
+                <span id="num7"></span>
+                <span id="num7t"></span>
+              </div>
+              <div class="item d3" id="출하">
+                <div class="icon">
+                  <img src="base/img/outgoing.png" alt="출하" />
+                </div>
+                <h3>출하</h3>
+                <span id="num8"></span>
+                <span id="num8t"></span>
+              </div>
+              <!--<div style="background-color: navy; width: 23%; margin-bottom: 1vw; padding: 1vw; text-align: center;">
+                                              <h3 style="color:#fff;">마도</h3>
+                                              <span id="num6" style="font-size:3vw; color:#fff;"></span>
+                                            </div>
+                                            <div style="background-color: gray; width: 23%; margin-bottom: 1vw; padding: 1vw; text-align: center;">
+                                              <h3 style="color:#fff;">구장</h3>
+                                              <span id="num7" style="font-size:3vw; color:#fff;"></span>
+                                            </div>-->
+              <!--<div style="background-color: black; width: 23%; margin-bottom: 1vw; padding: 1vw; text-align: center;">
+                                              <h3 style="color:#fff;">폐기</h3>
+                                              <span id="num9" style="font-size:3vw; color:#fff;"></span>
+                                            </div>-->
+            </div>
+          </div>
+        </div>
+
+        <div class="process">
+          <div class="process__tit">
+            <label id="공정라벨" for="grid_공정"></label>
+          </div>
+          <div id="grid_공정" class="bsa-title"></div>
+        </div>
+      </div>
+    </section>
+    <!-- Code injected by live-server -->
+    <script>
+      // <![CDATA[  <-- For SVG support
+      if ("WebSocket" in window) {
+        (function () {
+          function refreshCSS() {
+            var sheets = [].slice.call(document.getElementsByTagName("link"));
+            var head = document.getElementsByTagName("head")[0];
+            for (var i = 0; i < sheets.length; ++i) {
+              var elem = sheets[i];
+              var parent = elem.parentElement || head;
+              parent.removeChild(elem);
+              var rel = elem.rel;
+              if ((elem.href && typeof rel != "string") || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+                var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, "");
+                elem.href = url + (url.indexOf("?") >= 0 ? "&" : "?") + "_cacheOverride=" + new Date().valueOf();
+              }
+              parent.appendChild(elem);
+            }
+          }
+          var protocol = window.location.protocol === "http:" ? "ws://" : "wss://";
+          var address = protocol + window.location.host + window.location.pathname + "/ws";
+          var socket = new WebSocket(address);
+          socket.onmessage = function (msg) {
+            if (msg.data == "reload") window.location.reload();
+            else if (msg.data == "refreshcss") refreshCSS();
+          };
+          if (sessionStorage && !sessionStorage.getItem("IsThisFirstTime_Log_From_LiveServer")) {
+            console.log("Live reload enabled.");
+            sessionStorage.setItem("IsThisFirstTime_Log_From_LiveServer", true);
+          }
+        })();
+      } else {
+        console.error("Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.");
+      }
+      // ]]>
+    </script>
+  </body>
+</html>

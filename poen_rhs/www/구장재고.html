@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>구장 창고 재고</title>
+    <link rel="stylesheet" href="base/style/공정.css" />
+  </head>
+
+  <body>
+    <section class="구장재고">
+      <div class="process__tit change-tit">
+        <h2>구장 창고 재고</h2>
+      </div>
+      <div class="input-group">
+        <table>
+          <colgroup>
+            <col class="col_1" width="20%" />
+            <col class="col_2" width="80%" />
+          </colgroup>
+          <tr>
+            <td>
+              <label for="_management_id">관리번호</label>
+            </td>
+            <td>
+              <input type="text" id="_management_id" value="" size="40" required />
+              <button onClick="구장재고_관리번호_조회();">조 회</button>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_재제조번호">재제조번호</label>
+            </td>
+            <td>
+              <input type="text" id="_재제조번호" value="" size="40" required />
+              <button onClick="구장재고_재제조번호_조회();">조 회</button>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_입고일">입고일</label>
+            </td>
+            <td>
+              <input type="datetime-local" id="_입고일" value="0000-00-00T00:00:00" required />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_입고처">입고처</label>
+            </td>
+            <td>
+              <input type="text" id="_입고처" value="" size="40" required />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_RO번호">RO번호</label>
+            </td>
+            <td>
+              <input type="text" id="_RO번호" value="" size="40" required />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_부품번호">부품번호</label>
+            </td>
+            <td>
+              <input type="text" id="_부품번호" value="" size="40" required />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_생산연도">생산연도</label>
+            </td>
+            <td>
+              <input type="datetime-local" id="_생산연도" value="0000-00-00T00:00:00" required />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_ROM_ID">ROM ID</label>
+            </td>
+            <td>
+              <input type="text" id="_ROM_ID" value="" required />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_보관위치">보관위치</label>
+            </td>
+            <td>
+              <input type="text" id="_보관위치" value="" size="40" required />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_출고일">출고일</label>
+            </td>
+            <td>
+              <input type="datetime-local" id="_출고일" value="0000-00-00T00:00:00" required />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_출고처">출고처</label>
+            </td>
+            <td>
+              <input type="text" id="_출고처" value="" size="40" required />
+              <select name="language" onchange="_구장출고처_콤보박스(this)">
+                <option value="">---</option>
+                <option value="군포">군포</option>
+                <option value="마도">마도</option>
+                <option value="제주도">제주도</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_제조완료">제조완료</label>
+            </td>
+            <td>
+              <input type="datetime-local" id="_제조완료" value="0000-00-00T00:00:00" required />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_비고">비고</label>
+            </td>
+            <td>
+              <input type="text" id="_비고" value="" size="40" required />
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="input-group">
+        <center>
+          <button onClick="구장재고_save();">SAVE</button>
+        </center>
+      </div>
+    </section>
+    <script>
+      const _management_id = document.getElementById("_management_id");
+      const _재제조번호 = document.getElementById("_재제조번호");
+      const _입고일 = document.getElementById("_입고일");
+      const _입고처 = document.getElementById("_입고처");
+      const _RO번호 = document.getElementById("_RO번호");
+      const _부품번호 = document.getElementById("_부품번호");
+      const _생산연도 = document.getElementById("_생산연도");
+      const _ROM_ID = document.getElementById("_ROM_ID");
+      const _보관위치 = document.getElementById("_보관위치");
+      const _출고일 = document.getElementById("_출고일");
+      const _출고처 = document.getElementById("_출고처");
+      const _제조완료 = document.getElementById("_제조완료");
+      const _비고 = document.getElementById("_비고");
+    </script>
+  </body>
+</html>

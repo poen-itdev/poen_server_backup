@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>년간 현황</title>
+    <link rel="stylesheet" href="base/style/공정.css" />
+  </head>
+
+  <body>
+    <section class="년간현황">
+      <div class="process__tit change-tit">
+        <h2>년간 현황</h2>
+      </div>
+      <div class="data">
+        <!--<input type="date" id="_검색일" size="40" value="0000-00-00" required>-->
+        <select name="year" id="_검색일" onchange="yearOnChange(this)"></select>
+        <button onClick="년간_조회(true);">조회</button>
+      </div>
+      <div class="process">
+        <div class="process__tit">
+          <label for="chart">Chart</label>
+        </div>
+        <canvas id="chart"> </canvas>
+      </div>
+      <div class="process">
+        <div class="process__tit">
+          <label for="chart-detail">Chart detail</label>
+        </div>
+        <canvas id="chart-detail"> </canvas>
+      </div>
+      <div class="process">
+        <div class="process__tit">
+          <label for="grid_입고">입고</label>
+        </div>
+        <div id="grid_입고"></div>
+      </div>
+      <div class="process">
+        <div class="process__tit">
+          <label for="grid_출하">출하</label>
+        </div>
+        <div id="grid_출하"></div>
+      </div>
+    </section>
+    <script>
+      const _검색일 = document.getElementById("_검색일");
+    </script>
+  </body>
+</html>

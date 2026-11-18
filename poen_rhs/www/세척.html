@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>배터리팩정보입력 - 세척</title>
+    <link rel="stylesheet" href="base/style/공정.css" />
+  </head>
+
+  <body>
+    <section>
+      <div class="gather-filter">
+        <select id="filter-field">
+          <option></option>
+          <option value="관리번호">관리번호</option>
+          <option value="재제조번호">재제조번호</option>
+          <option value="구분">구분</option>
+          <option value="차종">차종</option>
+          <option value="품번">품번</option>
+          <option value="RO_no">RO_no</option>
+          <option value="공정단계">공정단계</option>
+          <option value="적재No">적재No</option>
+          <option value="입고">입고</option>
+          <option value="제조투입">제조투입</option>
+          <option value="세척투입일">세척투입일</option>
+          <option value="세척">세척</option>
+          <option value="기초검사투입">기초검사투입</option>
+          <option value="기초검사">기초검사</option>
+          <option value="분해조립투입">분해조립투입</option>
+          <option value="분해조립">분해조립</option>
+          <option value="성능검사투입">성능검사투입</option>
+          <option value="성능검사">성능검사</option>
+          <option value="EOL투입일">EOL투입일</option>
+          <option value="EOL">EOL</option>
+          <option value="출하검사">출하검사</option>
+          <option value="납품처">납품처</option>
+          <option value="출하">출하</option>
+          <option value="소재지">소재지</option>
+          <option value="반품입고">반품입고</option>
+          <option value="재출하">재출하</option>
+          <option value="완전분해">완전분해</option>
+          <option value="폐기">폐기</option>
+          <option value="마지막충전일">마지막충전일</option>
+        </select>
+
+        <select id="filter-type">
+          <option value="=">=</option>
+          <option value="<"><</option>
+          <option value="<="><=</option>
+          <option value=">">></option>
+          <option value=">=">>=</option>
+          <option value="!=">!=</option>
+          <option value="like">like</option>
+        </select>
+
+        <input id="filter-value" type="text" placeholder="value to filter" />
+
+        <button id="filter-clear">Clear Filter</button>
+      </div>
+      <button onClick="세척_list();">LIST</button>
+      <div id="grid_list"></div>
+    </section>
+    <br />
+    <br />
+    <section class="세척">
+      <div class="process__tit">
+        <h2>세척</h2>
+      </div>
+      <div class="input-group process-step">
+        <table class="tb">
+          <colgroup>
+            <col class="col_1" width="30%" />
+            <col class="col_2" width="55%" />
+            <col class="col_3" width="5%" />
+          </colgroup>
+          <tr>
+            <td class="_항목">
+              <label for="_management_id">관리번호</label>
+            </td>
+            <td>
+              <input type="text" id="_management_id" value="" size="40" required />
+              <button onClick="세척_시작(0);">조 회</button>
+            </td>
+          </tr>
+          <tr>
+            <td class="_항목">
+              <label for="_재제조번호">재제조번호</label>
+            </td>
+            <td>
+              <input type="text" id="_재제조번호" value="" size="40" required />
+              <button onClick="세척_시작(1);">조 회</button>
+            </td>
+          </tr>
+          <tr>
+            <td class="_항목">
+              <label for="_RO_no">RO No.</label>
+            </td>
+            <td>
+              <input type="text" id="_RO_no" value="" size="40" required />
+              <button onClick="세척_시작(2);">조 회</button>
+            </td>
+          </tr>
+          <tr>
+            <td class="_항목">
+              <label for="_구분">구분</label>
+            </td>
+            <td>
+              <input type="text" id="_구분" size="40" readonly required />
+            </td>
+          </tr>
+          <tr>
+            <td class="_항목">
+              <label for="_차종">차종</label>
+            </td>
+            <td>
+              <input type="text" id="_차종" size="40" readonly required />
+            </td>
+          </tr>
+          <tr>
+            <td class="_항목">
+              <label for="_품번">품번</label>
+            </td>
+            <td>
+              <input type="text" id="_품번" size="40" readonly required />
+            </td>
+          </tr>
+          <tr>
+            <td class="_항목">
+              <label for="_공정입고일">공정 입고일</label>
+            </td>
+            <td>
+              <input type="datetime-local" id="_공정입고일" value="0000-00-00T00:00" size="40" required />
+            </td>
+          </tr>
+          <tr>
+            <td class="_항목">
+              <label for="_공정완료일">공정 완료일</label>
+            </td>
+            <td>
+              <input type="datetime-local" id="_공정완료일" value="0000-00-00T00:00" size="40" required />
+            </td>
+          </tr>
+          <tr>
+            <td class="_항목">
+              <label for="_어퍼케이스재사용가능">어퍼케이스 재사용가능</label>
+            </td>
+            <td>
+              <input type="text" id="_어퍼케이스재사용가능" size="40" required />
+              <select name="language" onchange="_어퍼케이스재사용가능_콤보박스(this);">
+                <option value="">---</option>
+                <option value="OK">OK</option>
+                <option value="NG">NG</option>
+              </select>
+            </td>
+          </tr>
+          <tr id="_기밀검사_케이스_box">
+            <td rowspan="2" class="_항목">
+              <label for="_기밀검사_케이스">기밀검사 케이스</label>
+            </td>
+            <td>
+              <input type="text" id="_기밀검사_케이스" size="40" required />
+              <select name="language" onchange="_기밀검사_케이스_콤보박스(this);">
+                <option value="">---</option>
+                <option value="OK">OK</option>
+                <option value="NG">NG</option>
+              </select>
+            </td>
+          </tr>
+          <tr id="_기밀검사_케이스_img">
+            <td class="process__img img-box">
+              <div class="images top">
+                <img id="_img1" />
+              </div>
+              <div class="images top">
+                <img id="_img2" />
+              </div>
+            </td>
+          </tr>
+          <tr id="_기밀검사_케이스_특이사항_box">
+            <td rowspan="2" class="_항목">
+              <label for="_기밀검사_케이스_특이사항">기밀검사 케이스 특이사항</label>
+            </td>
+            <td>
+              <input type="text" id="_기밀검사_케이스_특이사항" size="100" required />
+            </td>
+          </tr>
+          <tr id="_기밀검사_케이스_특이사항_img">
+            <td class="process__img img-box">
+              <div class="images top">
+                <img id="_img3" />
+              </div>
+              <div class="images top">
+                <img id="_img4" />
+              </div>
+            </td>
+          </tr>
+          <tr id="_육안검사_외부_box">
+            <td rowspan="2" class="_항목">
+              <label for="_육안검사_외부">육안검사 외부</label>
+            </td>
+            <td colspan="2">
+              <input type="text" id="_육안검사_외부" size="40" required />
+              <select name="language" onchange="_육안검사외부_콤보박스(this);">
+                <option value="">---</option>
+                <option value="OK">OK</option>
+                <option value="NG">NG</option>
+              </select>
+            </td>
+          </tr>
+          <tr id="_육안검사_외부_img">
+            <td class="process__img img-box">
+              <div class="images">
+                <h3>top</h3>
+                <img id="_img5" />
+              </div>
+              <div class="images">
+                <h3>front</h3>
+                <img id="_img6" />
+              </div>
+              <div class="images">
+                <h3>left</h3>
+                <img id="_img7" />
+              </div>
+              <div class="images">
+                <h3>bottom</h3>
+                <img id="_img8" />
+              </div>
+              <div class="images">
+                <h3>rear</h3>
+                <img id="_img9" />
+              </div>
+              <div class="images">
+                <h3>right</h3>
+                <img id="_img10" />
+              </div>
+            </td>
+          </tr>
+          <tr id="_육안검사_외부_특이사항_box">
+            <td rowspan="2" class="_항목">
+              <label for="_육안검사_외부_특이사항">육안검사 외부 특이사항</label>
+            </td>
+            <td>
+              <input type="text" id="_육안검사_외부_특이사항" size="100" required />
+            </td>
+          </tr>
+          <tr id="_육안검사_외부_특이사항_img">
+            <td colspan="2" class="process__img img-box">
+              <div class="images top">
+                <img id="_img11" />
+              </div>
+              <div class="images top">
+                <img id="_img12" />
+              </div>
+              <div class="images top">
+                <img id="_img13" />
+              </div>
+              <div class="images top">
+                <img id="_img14" />
+              </div>
+            </td>
+          </tr>
+          <tr id="_특이사항_box">
+            <td class="_항목">
+              <label for="_특이사항">특이사항</label>
+            </td>
+            <td>
+              <input type="text" id="_특이사항" size="100" required />
+            </td>
+            <td class="process__img once">
+              <div class="images">
+                <img id="_img15" width="100vw" height="100vh" />
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="input-group">
+        <div class="input-btn-group">
+          <button onClick="세척_save();">저장</button>
+          <button onClick="이전페이지();">이전페이지</button>
+        </div>
+      </div>
+    </section>
+    <script>
+      const _management_id = document.getElementById("_management_id");
+      const _재제조번호 = document.getElementById("_재제조번호");
+      const _RO_no = document.getElementById("_RO_no");
+      const _공정입고일 = document.getElementById("_공정입고일");
+      const _공정완료일 = document.getElementById("_공정완료일");
+      const _어퍼케이스재사용가능 = document.getElementById("_어퍼케이스재사용가능");
+      const _기밀검사_케이스 = document.getElementById("_기밀검사_케이스");
+      const _기밀검사_케이스_특이사항 = document.getElementById("_기밀검사_케이스_특이사항");
+      const _육안검사_외부 = document.getElementById("_육안검사_외부");
+      const _육안검사_외부_특이사항 = document.getElementById("_육안검사_외부_특이사항");
+      const _특이사항 = document.getElementById("_특이사항");
+      const _기밀검사_케이스_box = document.getElementById("_기밀검사_케이스_box");
+      const _기밀검사_케이스_img = document.getElementById("_기밀검사_케이스_img");
+      const _기밀검사_케이스_특이사항_box = document.getElementById("_기밀검사_케이스_특이사항_box");
+      const _기밀검사_케이스_특이사항_img = document.getElementById("_기밀검사_케이스_특이사항_img");
+      const _육안검사_외부_box = document.getElementById("_육안검사_외부_box");
+      const _육안검사_외부_특이사항_box = document.getElementById("_육안검사_외부_특이사항_box");
+      const _특이사항_box = document.getElementById("_특이사항_box");
+      const _육안검사_외부_img = document.getElementById("_육안검사_외부_img");
+      const _육안검사_외부_특이사항_img = document.getElementById("_육안검사_외부_특이사항_img");
+      const _img1 = document.getElementById("_img1");
+      const _img2 = document.getElementById("_img2");
+      const _img3 = document.getElementById("_img3");
+      const _img4 = document.getElementById("_img4");
+      const _img5 = document.getElementById("_img5");
+      const _img6 = document.getElementById("_img6");
+      const _img7 = document.getElementById("_img7");
+      const _img8 = document.getElementById("_img8");
+      const _img9 = document.getElementById("_img9");
+      const _img10 = document.getElementById("_img10");
+      const _img11 = document.getElementById("_img11");
+      const _img12 = document.getElementById("_img12");
+      const _img13 = document.getElementById("_img13");
+      const _img14 = document.getElementById("_img14");
+      const _img15 = document.getElementById("_img15");
+    </script>
+  </body>
+</html>

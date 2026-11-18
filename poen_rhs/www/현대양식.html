@@ -1,0 +1,47 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>배터리팩 재제조 현황</title>
+    <link rel="stylesheet" href="base/style/공정.css" />
+    <link rel="stylesheet" href="base/style/camera.css" />
+  </head>
+
+  <body>
+    <div class="loding-bar">
+      <span>Loading..</span>
+      <progress id="progress" value="0" max="100"></progress>
+    </div>
+    <div class="process__tit change-tit">
+      <label for="grid_BSA">재제조 배터리팩 현황</label>
+    </div>
+    <section class="BSA 재제조 현황 bsa-info">
+      <div class="gather-filter">
+        <select id="filter-field">
+          <option></option>
+          <option value="관리번호">관리번호</option>
+          <option value="재제조번호">재제조번호</option>
+        </select>
+
+        <select id="filter-type">
+          <option value="=">=</option>
+          <option value="<"><</option>
+
+          <option value="<="><=</option>
+
+          <option value=">">></option>
+          <option value=">=">>=</option>
+          <option value="!=">!=</option>
+          <option value="like">like</option>
+        </select>
+
+        <input id="filter-value" type="text" placeholder="value to filter" />
+
+        <button id="filter-clear">Clear Filter</button>
+      </div>
+      <div class="process p-pb">
+        <div id="grid_BSA"></div>
+      </div>
+    </section>
+  </body>
+</html>

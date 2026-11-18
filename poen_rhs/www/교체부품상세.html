@@ -1,0 +1,124 @@
+<html>
+  <head>
+    <title>교체부품상세</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="base/style/공정.css" />
+  </head>
+
+  <body>
+    <div class="교체부품상세">
+      <div class="input-group">
+        <div>
+          <center>
+            <label id="_title_no">
+              <h2><b>교체부품상세</b></h2>
+            </label>
+          </center>
+        </div>
+        <div>
+          <center>
+            <table border="2">
+              <tr>
+                <td>
+                  <label for="management_id"><b>관리번호</b></label>
+                </td>
+                <td>
+                  <input type="text" id="_management_id" value="조회 버튼을 누르세요" size="40" required />
+                  <button onClick="교체부품상세_시작();">조 회</button>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label for="_ORIGIN_관리번호"><b>ORIGIN 관리번호</b></label>
+                </td>
+                <td>
+                  <input type="text" id="_ORIGIN_관리번호" size="40" required />
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label for="_교체전_품명"><b>교체전 품명</b></label>
+                </td>
+                <td>
+                  <input type="text" id="_교체전_품명" size="40" required />
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label for="_교체전_품번"><b>교체전 품번</b></label>
+                </td>
+                <td>
+                  <input type="text" id="_교체전_품번" size="40" required />
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label for="_교체전_QR"><b>교체전_QR</b></label>
+                </td>
+                <td>
+                  <input type="text" id="_교체전_QR" size="40" required />
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label for="_교체후_신품_고품"><b>교체후_신품_고품</b></label>
+                </td>
+                <td>
+                  <input type="text" id="_교체후_신품_고품" size="40" required />
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label for="_교체후_고품식별"><b>교체후_고품식별</b></label>
+                </td>
+                <td>
+                  <input type="text" id="_교체후_고품식별" size="40" required />
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label for="_교체후_품번"><b>교체후_품번</b></label>
+                </td>
+                <td>
+                  <input type="text" id="_교체후_품번" size="40" required />
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label for="_교체후_QR"><b>교체후_QR</b></label>
+                </td>
+                <td>
+                  <input type="text" id="_교체후_QR" size="40" required />
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label for="_교체사유"><b>교체사유</b></label>
+                </td>
+                <td>
+                  <input type="text" id="_교체사유" size="40" required />
+                </td>
+              </tr>
+            </table>
+          </center>
+        </div>
+        <div class="input-group">
+          <button onClick="교체부품상세_save();">저장</button>
+          <button onClick="이전페이지();">이전페이지</button>
+        </div>
+      </div>
+    </div>
+    <script>
+      const _management_id = document.getElementById("_management_id");
+      const _ORIGIN_관리번호 = document.getElementById("_ORIGIN_관리번호");
+      const _교체전_품명 = document.getElementById("_교체전_품명");
+      const _교체전_품번 = document.getElementById("_교체전_품번");
+      const _교체전_QR = document.getElementById("_교체전_QR");
+      const _교체후_신품_고품 = document.getElementById("_교체후_신품_고품");
+      const _교체후_고품식별 = document.getElementById("_교체후_고품식별");
+      const _교체후_품번 = document.getElementById("_교체후_품번");
+      const _교체후_QR = document.getElementById("_교체후_QR");
+      const _교체사유 = document.getElementById("_교체사유");
+    </script>
+  </body>
+</html>

@@ -1,0 +1,8 @@
+server/db/
+server/node_modules/
+server/logs/
+server/excel/
+server/nohup.out
+server/bun.lockb
+doc/all_data.csv
+doc/qr_label.docx

@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>구버전분해조립</title>
+
+    <link rel="stylesheet" href="base/style/공정.css" />
+  </head>
+
+  <body>
+    <section>
+      <div class="gather-filter">
+        <select id="filter-field">
+          <option></option>
+          <option value="관리번호">관리번호</option>
+          <option value="재제조번호">재제조번호</option>
+          <option value="구분">구분</option>
+          <option value="차종">차종</option>
+          <option value="품번">품번</option>
+          <option value="RO_no">RO_no</option>
+          <option value="공정단계">공정단계</option>
+          <option value="적재No">적재No</option>
+          <option value="입고">입고</option>
+          <option value="제조투입">제조투입</option>
+          <option value="세척투입일">세척투입일</option>
+          <option value="세척">세척</option>
+          <option value="기초검사투입">기초검사투입</option>
+          <option value="기초검사">기초검사</option>
+          <option value="분해조립투입">분해조립투입</option>
+          <option value="분해조립">분해조립</option>
+          <option value="성능검사투입">성능검사투입</option>
+          <option value="성능검사">성능검사</option>
+          <option value="EOL투입일">EOL투입일</option>
+          <option value="EOL">EOL</option>
+          <option value="출하검사">출하검사</option>
+          <option value="납품처">납품처</option>
+          <option value="출하">출하</option>
+          <option value="소재지">소재지</option>
+          <option value="반품입고">반품입고</option>
+          <option value="재출하">재출하</option>
+          <option value="완전분해">완전분해</option>
+          <option value="폐기">폐기</option>
+          <option value="마지막충전일">마지막충전일</option>
+        </select>
+
+        <select id="filter-type">
+          <option value="=">=</option>
+          <option value="<"><</option>
+
+          <option value="<="><=</option>
+
+          <option value=">">></option>
+          <option value=">=">>=</option>
+          <option value="!=">!=</option>
+          <option value="like">like</option>
+        </select>
+
+        <input id="filter-value" type="text" placeholder="value to filter" />
+
+        <button id="filter-clear">Clear Filter</button>
+      </div>
+      <button onClick="분해조립_list();">LIST</button>
+      <div id="grid_list"></div>
+    </section>
+
+    <section class="분해조립 old_분해조립">
+      <div class="process__tit">
+        <label for="_분해조립">분해조립</label>
+      </div>
+      <div class="input-group process-step">
+        <table id="_tb" class="tb">
+          <colgroup>
+            <col class="col_1" width="20%" />
+            <col class="col_2" width="70%" />
+            <col class="col_2" width="10%" />
+          </colgroup>
+          <tr>
+            <td>
+              <label for="management_id">관리번호</label>
+            </td>
+            <td>
+              <input type="text" id="_management_id" value="" size="100" style="text-transform: uppercase" required />
+              <button onClick="분해조립_시작(0);">조 회</button>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_재제조번호">재제조번호</label>
+            </td>
+            <td>
+              <input type="text" id="_재제조번호" value="" size="100" required />
+              <button onClick="분해조립_시작(1);">조 회</button>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_">RO No.</label>
+            </td>
+            <td>
+              <input type="text" id="_RO_no" value="" size="100" required />
+              <button onClick="분해조립_시작(2);">조 회</button>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_구분">구분</label>
+            </td>
+            <td>
+              <input type="text" id="_구분" size="40" readonly required />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_차종">차종</label>
+            </td>
+            <td>
+              <input type="text" id="_차종" size="40" readonly required />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_품번">품번</label>
+            </td>
+            <td>
+              <input type="text" id="_품번" size="40" readonly required />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_공정입고일">공정 입고일</label>
+            </td>
+            <td>
+              <input type="datetime-local" id="_공정입고일" value="_0000-00-00T00:00" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td rowspan="2">
+              <label for="_BMU1">BMU 1</label>
+            </td>
+            <td>
+              교환전
+              <input type="text" id="_BMU1" size="100" required />
+              <select name="language" onchange="_콤보박스('_BMU1', this);">
+                <option value="">---</option>
+                <option value="신품 교체">신품 교체</option>
+                <option value="고품 교체">고품 교체</option>
+                <option value="N/A">N/A</option>
+              </select>
+            </td>
+            <td rowspan="2" class="plus">
+              <button>+</button>
+            </td>
+          </tr>
+          <tr class="t1">
+            <td class="t1-d">
+              교환후
+              <input type="text" id="_BMU1_2" size="100" required />
+              <select name="language" onchange="_콤보박스('_BMU1_2', this);">
+                <option value="">---</option>
+                <option value="신품 교체">신품 교체</option>
+                <option value="고품 교체">고품 교체</option>
+                <option value="N/A">N/A</option>
+              </select>
+            </td>
+          </tr>
+
+          <tr class="t1">
+            <td rowspan="2">
+              <label for="_CMU1">CMU 1</label>
+            </td>
+            <td>
+              교환전
+              <input type="text" id="_CMU1" size="100" required />
+              <select name="language" onchange="_콤보박스('_CMU1', this);">
+                <option value="">---</option>
+                <option value="신품 교체">신품 교체</option>
+                <option value="고품 교체">고품 교체</option>
+                <option value="N/A">N/A</option>
+              </select>
+            </td>
+            <td rowspan="2" class="plus">
+              <button>+</button>
+            </td>
+          </tr>
+          <tr class="t1">
+            <td class="t1-d">
+              교환후
+              <input type="text" id="_CMU1_2" size="100" required />
+              <select name="language" onchange="_콤보박스('_CMU1_2', this);">
+                <option value="">---</option>
+                <option value="신품 교체">신품 교체</option>
+                <option value="고품 교체">고품 교체</option>
+                <option value="N/A">N/A</option>
+              </select>
+            </td>
+          </tr>
+
+          <tr class="t1">
+            <td rowspan="2">
+              <label for="_PRA1">PRA 1</label>
+            </td>
+            <td>
+              교환전
+              <input type="text" id="_PRA1" size="100" required />
+              <select name="language" onchange="_콤보박스('_PRA1', this);">
+                <option value="">---</option>
+                <option value="신품 교체">신품 교체</option>
+                <option value="고품 교체">고품 교체</option>
+                <option value="N/A">N/A</option>
+              </select>
+            </td>
+            <td rowspan="2" class="plus">
+              <button>+</button>
+            </td>
+          </tr>
+          <tr class="t1">
+            <td class="t1-d">
+              교환후
+              <input type="text" id="_PRA1_2" size="100" required />
+              <select name="language" onchange="_콤보박스('_PRA1_2', this);">
+                <option value="">---</option>
+                <option value="신품 교체">신품 교체</option>
+                <option value="고품 교체">고품 교체</option>
+                <option value="N/A">N/A</option>
+              </select>
+            </td>
+          </tr>
+
+          <tr class="t1">
+            <td rowspan="2">
+              <label for="_SPA1">SPA 1</label>
+            </td>
+            <td>
+              교환전
+              <input type="text" id="_SPA1" size="100" required />
+              <select name="language" onchange="_콤보박스('_SPA1', this);">
+                <option value="">---</option>
+                <option value="신품 교체">신품 교체</option>
+                <option value="고품 교체">고품 교체</option>
+                <option value="N/A">N/A</option>
+              </select>
+            </td>
+            <td rowspan="2" class="plus">
+              <button>+</button>
+            </td>
+          </tr>
+          <tr class="t1">
+            <td class="t1-d">
+              교환후
+              <input type="text" id="_SPA1_2" size="100" required />
+              <select name="language" onchange="_콤보박스('_SPA1_2', this);">
+                <option value="">---</option>
+                <option value="신품 교체">신품 교체</option>
+                <option value="고품 교체">고품 교체</option>
+                <option value="N/A">N/A</option>
+              </select>
+            </td>
+          </tr>
+
+          <tr class="t1">
+            <td rowspan="2">
+              <label for="_LWR_C1">LWR Case 1</label>
+            </td>
+            <td>
+              교환전
+              <input type="text" id="_LWR_C1" size="100" required />
+              <select name="language" onchange="_콤보박스('_LWR_C1', this);">
+                <option value="">---</option>
+                <option value="신품 교체">신품 교체</option>
+                <option value="고품 교체">고품 교체</option>
+                <option value="N/A">N/A</option>
+              </select>
+            </td>
+            <td rowspan="2" class="plus">
+              <button>+</button>
+            </td>
+          </tr>
+          <tr class="t1">
+            <td class="t1-d">
+              교환후
+              <input type="text" id="_LWR_C1_2" size="100" required />
+              <select name="language" onchange="_콤보박스('_LWR_C1_2', this);">
+                <option value="">---</option>
+                <option value="신품 교체">신품 교체</option>
+                <option value="고품 교체">고품 교체</option>
+                <option value="N/A">N/A</option>
+              </select>
+            </td>
+          </tr>
+
+          <tr class="t1">
+            <td rowspan="2">
+              <label for="_UPR_C1">UPR Case 1</label>
+            </td>
+            <td>
+              교환전
+              <input type="text" id="_UPR_C1" size="100" required />
+              <select name="language" onchange="_콤보박스('_UPR_C1', this);">
+                <option value="">---</option>
+                <option value="신품 교체">신품 교체</option>
+                <option value="고품 교체">고품 교체</option>
+                <option value="N/A">N/A</option>
+              </select>
+            </td>
+            <td rowspan="2" class="plus">
+              <button>+</button>
+            </td>
+          </tr>
+          <tr class="t1">
+            <td class="t1-d">
+              교환후
+              <input type="text" id="_UPR_C1_2" size="100" required />
+              <select name="language" onchange="_콤보박스('_UPR_C1_2', this);">
+                <option value="">---</option>
+                <option value="신품 교체">신품 교체</option>
+                <option value="고품 교체">고품 교체</option>
+                <option value="N/A">N/A</option>
+              </select>
+            </td>
+          </tr>
+
+          <tr class="t1">
+            <td rowspan="2">
+              <label for="_PBE">PBE</label>
+            </td>
+            <td>
+              교환전
+              <input type="text" id="_PBE" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td class="t1-d">
+              교환후
+              <input type="text" id="_PBE_2" size="100" required />
+            </td>
+          </tr>
+
+          <tr class="t1">
+            <td rowspan="2">
+              <label for="_Gasket">Gasket</label>
+            </td>
+            <td>
+              교환전
+              <input type="text" id="_Gasket" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td class="t1-d">
+              교환후
+              <input type="text" id="_Gasket_2" size="100" required />
+            </td>
+          </tr>
+
+          <tr class="t1">
+            <td rowspan="2">
+              <label for="_Relay1">Relay 1</label>
+            </td>
+            <td>
+              교환전
+              <input type="text" id="_Relay1" size="100" required />
+              <select name="language" onchange="_콤보박스('_Relay1', this);">
+                <option value="">---</option>
+                <option value="신품 교체">신품 교체</option>
+                <option value="고품 교체">고품 교체</option>
+                <option value="N/A">N/A</option>
+              </select>
+            </td>
+            <td rowspan="2" class="plus">
+              <button>+</button>
+            </td>
+          </tr>
+          <tr class="t1">
+            <td class="t1-d">
+              교환후
+              <input type="text" id="_Relay1_2" size="100" required />
+              <select name="language" onchange="_콤보박스('_Relay1_2', this);">
+                <option value="">---</option>
+                <option value="신품 교체">신품 교체</option>
+                <option value="고품 교체">고품 교체</option>
+                <option value="N/A">N/A</option>
+              </select>
+            </td>
+          </tr>
+
+          <tr class="t1">
+            <td rowspan="2">
+              <label for="_HV_CNTR1">HV CNTR 1</label>
+            </td>
+            <td>
+              교환전
+              <input type="text" id="_HV_CNTR1" size="100" required />
+              <select name="language" onchange="_콤보박스('_HV_CNTR1', this);">
+                <option value="">---</option>
+                <option value="신품 교체">신품 교체</option>
+                <option value="고품 교체">고품 교체</option>
+                <option value="N/A">N/A</option>
+              </select>
+            </td>
+            <td rowspan="2" class="plus">
+              <button>+</button>
+            </td>
+          </tr>
+          <tr class="t1">
+            <td class="t1-d">
+              교환후
+              <input type="text" id="_HV_CNTR1_2" size="100" required />
+              <select name="language" onchange="_콤보박스('_HV_CNTR1_2', this);">
+                <option value="">---</option>
+                <option value="신품 교체">신품 교체</option>
+                <option value="고품 교체">고품 교체</option>
+                <option value="N/A">N/A</option>
+              </select>
+            </td>
+          </tr>
+
+          <tr class="t1">
+            <td rowspan="2">
+              <label for="_Heating_CNTR1">Heating CNTR 1</label>
+            </td>
+            <td>
+              교환전
+              <input type="text" id="_Heating_CNTR1" size="100" required />
+              <select name="language" onchange="_콤보박스('_Heating_CNTR1', this);">
+                <option value="">---</option>
+                <option value="신품 교체">신품 교체</option>
+                <option value="고품 교체">고품 교체</option>
+                <option value="N/A">N/A</option>
+              </select>
+            </td>
+            <td rowspan="2" class="plus">
+              <button>+</button>
+            </td>
+          </tr>
+          <tr class="t1">
+            <td class="t1-d">
+              교환후
+              <input type="text" id="_Heating_CNTR1_2" size="100" required />
+              <select name="language" onchange="_콤보박스('_Heating_CNTR1_2', this);">
+                <option value="">---</option>
+                <option value="신품 교체">신품 교체</option>
+                <option value="고품 교체">고품 교체</option>
+                <option value="N/A">N/A</option>
+              </select>
+            </td>
+          </tr>
+
+          <tr class="t1">
+            <td rowspan="2">
+              <label for="_FuseBox1">FuseBox 1</label>
+            </td>
+            <td>
+              교환전
+              <input type="text" id="_FuseBox1" size="100" required />
+              <select name="language" onchange="_콤보박스('_FuseBox1', this);">
+                <option value="">---</option>
+                <option value="신품 교체">신품 교체</option>
+                <option value="고품 교체">고품 교체</option>
+                <option value="N/A">N/A</option>
+              </select>
+            </td>
+            <td rowspan="2" class="plus">
+              <button>+</button>
+            </td>
+          </tr>
+          <tr class="t1">
+            <td class="t1-d">
+              교환후
+              <input type="text" id="_FuseBox1_2" size="100" required />
+              <select name="language" onchange="_콤보박스('_FuseBox1_2', this);">
+                <option value="">---</option>
+                <option value="신품 교체">신품 교체</option>
+                <option value="고품 교체">고품 교체</option>
+                <option value="N/A">N/A</option>
+              </select>
+            </td>
+          </tr>
+
+          <tr class="t1">
+            <td rowspan="2">
+              <label for="_LV_W_H1">LV W/H 1</label>
+            </td>
+            <td>
+              교환전
+              <input type="text" id="_LV_W_H1" size="100" required />
+              <select name="language" onchange="_콤보박스('_LV_W_H1', this);">
+                <option value="">---</option>
+                <option value="신품 교체">신품 교체</option>
+                <option value="고품 교체">고품 교체</option>
+                <option value="N/A">N/A</option>
+              </select>
+            </td>
+            <td rowspan="2" class="plus">
+              <button>+</button>
+            </td>
+          </tr>
+          <tr class="t1">
+            <td class="t1-d">
+              교환후
+              <input type="text" id="_LV_W_H1_2" size="100" required />
+              <select name="language" onchange="_콤보박스('_LV_W_H1_2', this);">
+                <option value="">---</option>
+                <option value="신품 교체">신품 교체</option>
+                <option value="고품 교체">고품 교체</option>
+                <option value="N/A">N/A</option>
+              </select>
+            </td>
+          </tr>
+
+          <tr class="t1">
+            <td rowspan="2">
+              <label for="_HV_W_H1">HV W/H 1</label>
+            </td>
+            <td>
+              교환전
+              <input type="text" id="_HV_W_H1" size="100" required />
+              <select name="language" onchange="_콤보박스('_HV_W_H1', this);">
+                <option value="">---</option>
+                <option value="신품 교체">신품 교체</option>
+                <option value="고품 교체">고품 교체</option>
+                <option value="N/A">N/A</option>
+              </select>
+            </td>
+            <td rowspan="2" class="plus">
+              <button>+</button>
+            </td>
+          </tr>
+          <tr class="t1">
+            <td class="t1-d">
+              교환후
+              <input type="text" id="_HV_W_H1_2" size="100" required />
+              <select name="language" onchange="_콤보박스('_HV_W_H1_2', this);">
+                <option value="">---</option>
+                <option value="신품 교체">신품 교체</option>
+                <option value="고품 교체">고품 교체</option>
+                <option value="N/A">N/A</option>
+              </select>
+            </td>
+          </tr>
+
+          <tr class="t1">
+            <td rowspan="2">
+              <label for="_온도센서1">온도센서 1</label>
+            </td>
+            <td>
+              교환전
+              <input type="text" id="_온도센서1" size="100" required />
+              <select name="language" onchange="_콤보박스('_온도센서1', this);">
+                <option value="">---</option>
+                <option value="신품 교체">신품 교체</option>
+                <option value="고품 교체">고품 교체</option>
+                <option value="N/A">N/A</option>
+              </select>
+            </td>
+            <td rowspan="2" class="plus"><button>+</button></td>
+          </tr>
+          <tr class="t1">
+            <td class="t1-d">
+              교환후
+              <input type="text" id="_온도센서1_2" size="100" required />
+              <select name="language" onchange="_콤보박스('_온도센서1_2', this);">
+                <option value="">---</option>
+                <option value="신품 교체">신품 교체</option>
+                <option value="고품 교체">고품 교체</option>
+                <option value="N/A">N/A</option>
+              </select>
+            </td>
+          </tr>
+
+          <tr class="t1">
+            <td rowspan="2">
+              <label for="_Busbars">Busbars</label>
+            </td>
+            <td>
+              교환전
+              <input type="text" id="_Busbars" size="100" required />
+            </td>
+          </tr>
+          <tr class="t1">
+            <td class="t1-d">
+              교환후
+              <input type="text" id="_Busbars_2" size="100" required />
+            </td>
+          </tr>
+
+          <tr class="t1">
+            <td rowspan="2">
+              <label for="_BMA">배터리모듈 1</label>
+            </td>
+            <td>
+              교환전
+              <input type="text" id="_BMA1" size="100" required />
+              <select name="language" onchange="_콤보박스('_BMA1', this);">
+                <option value="">---</option>
+                <option value="신품 교체">신품 교체</option>
+                <option value="고품 교체">고품 교체</option>
+                <option value="N/A">N/A</option>
+              </select>
+            </td>
+            <td rowspan="2" class="plus">
+              <button>+</button>
+            </td>
+          </tr>
+          <tr class="t1">
+            <td class="t1-d">
+              교환후
+              <input type="text" id="_BMA1_2" size="100" required />
+              <select name="language" onchange="_콤보박스('_BMA1_2', this);">
+                <option value="">---</option>
+                <option value="신품 교체">신품 교체</option>
+                <option value="고품 교체">고품 교체</option>
+                <option value="N/A">N/A</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_ETC">ETC</label>
+            </td>
+            <td>
+              <input type="text" id="_ETC" size="100" required />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_공정완료일">공정 완료일</label>
+            </td>
+            <td>
+              <input type="datetime-local" id="_공정완료일" value="0000-00-00T00:00" required />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_분해조립_재의뢰사유">분해조립 재의뢰사유</label>
+            </td>
+            <td>
+              <input type="text" id="_분해조립_재의뢰사유" size="100" required />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_작업자">작업자</label>
+            </td>
+            <td>
+              <input type="text" id="_작업자" size="100" required />
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="input-group">
+        <div class="input-btn-group">
+          <button onClick="분해조립_save();">저장</button>
+          <button onClick="분해조립_exit();">이전페이지</button>
+        </div>
+      </div>
+    </section>
+    <script>
+      const _tb = document.getElementById("_tb");
+      const _management_id = document.getElementById("_management_id");
+      const _재제조번호 = document.getElementById("_재제조번호");
+      const _RO_no_id = document.getElementById("_RO_no");
+      const _공정입고일 = document.getElementById("_공정입고일");
+      const _BMU1 = document.getElementById("_BMU1");
+      const _BMU1_2 = document.getElementById("_BMU1_2");
+      const _CMU1 = document.getElementById("_CMU1");
+      const _CMU1_2 = document.getElementById("_CMU1_2");
+      const _PRA1 = document.getElementById("_PRA1");
+      const _PRA1_2 = document.getElementById("_PRA1_2");
+      const _SPA1 = document.getElementById("_SPA1");
+      const _SPA1_2 = document.getElementById("_SPA1_2");
+      const _LWR_C1 = document.getElementById("_LWR_C1");
+      const _LWR_C1_2 = document.getElementById("_LWR_C1_2");
+      const _UPR_C1 = document.getElementById("_UPR_C1");
+      const _UPR_C1_2 = document.getElementById("_UPR_C1_2");
+      const _PBE = document.getElementById("_PBE");
+      const _PBE_2 = document.getElementById("_PBE_2");
+      const _Gasket = document.getElementById("_Gasket");
+      const _Gasket_2 = document.getElementById("_Gasket_2");
+      const _FuseBox1 = document.getElementById("_FuseBox1");
+      const _FuseBox1_2 = document.getElementById("_FuseBox1_2");
+      const _LV_W_H1 = document.getElementById("_LV_W_H1");
+      const _LV_W_H1_2 = document.getElementById("_LV_W_H1_2");
+      const _HV_W_H1 = document.getElementById("_HV_W_H1");
+      const _HV_W_H1_2 = document.getElementById("_HV_W_H1_2");
+      const _HV_CNTR1 = document.getElementById("_HV_CNTR1");
+      const _HV_CNTR1_2 = document.getElementById("_HV_CNTR1_2");
+      const _Heating_CNTR1 = document.getElementById("_Heating_CNTR1");
+      const _Heating_CNTR1_2 = document.getElementById("_Heating_CNTR1_2");
+      const _Relay1 = document.getElementById("_Relay1");
+      const _Relay1_2 = document.getElementById("_Relay1_2");
+      const _온도센서1 = document.getElementById("_온도센서1");
+      const _온도센서1_2 = document.getElementById("_온도센서1_2");
+      const _Busbars = document.getElementById("_Busbars");
+      const _Busbars_2 = document.getElementById("_Busbars_2");
+      const _BMA1 = document.getElementById("_BMA1");
+      const _BMA1_2 = document.getElementById("_BMA1_2");
+      const _ETC = document.getElementById("_ETC");
+      const _공정완료일 = document.getElementById("_공정완료");
+      const _작업자 = document.getElementById("_작업자");
+    </script>
+  </body>
+</html>

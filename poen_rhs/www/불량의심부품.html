@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta class="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>부품 정보 - 불량의심부품</title>
+    <link rel="stylesheet" href="base/style/공정.css" />
+    <link rel="stylesheet" href="base/style/module.css" />
+  </head>
+
+  <body>
+    <section class="부품정보">
+      <div class="process__tit">
+        <label for="_부품정보">불량 의심 부품 정보</label>
+      </div>
+      <div class="parts__information">
+        <div class="module__group">
+          <div id="_img_1" class="module_con con__first">
+            <h3>os/de/sk3/lk</h3>
+            <div class="layout">
+              <div class="first_con">
+                <button type="button" value="A_LV_W_H" id="_A_LV_W_H" class="btn btn__black">lv<br />w/h</button>
+                <button type="button" value="A_BMU" id="_A_BMU" class="btn btn__navy">b<br />m<br />u</button>
+                <button type="button" value="A_HV_CNTR" id="_A_HV_CNTR" class="btn btn__orange">hv<br />cntr</button>
+                <button type="button" value="A_HT_CNTR" id="_A_HT_CNTR" class="btn btn__orange">h/t<br />cntr</button>
+                <button type="button" value="A_PRA" id="_A_PRA" class="btn btn__navy navy2">p<br />r<br />a</button>
+              </div>
+              <div class="second_con">
+                <button type="button" value="A_CMU_4" id="_A_CMU_4" class="btn btn__gray">cmu<br />#4</button>
+                <button type="button" value="A_CMU_5" id="_A_CMU_5" class="btn btn__gray">cmu<br />#5</button>
+              </div>
+              <div class="third_con">
+                <div class="box">
+                  <button type="button" class="product" value="A_MODULE_4" id="_A_MODULE_4">Module #4</button>
+                  <button type="button" value="A_HV_W_H_4" id="_A_HV_W_H_4" class="btn btn__orange up-btn">
+                    hv<br />
+                    w/h #4
+                  </button>
+                </div>
+                <div class="box">
+                  <button type="button" class="product" value="A_MODULE_5" id="_A_MODULE_5">Module #5</button>
+                  <button type="button" value="A_HV_W_H_5" id="_A_HV_W_H_5" class="btn btn__orange up-btn">hv <br />w/h #5</button>
+                </div>
+                <div class="box">
+                  <button type="button" class="product" value="A_MODULE_1" id="_A_MODULE_1">Module #1</button>
+                  <button type="button" value="A_HV_W_H_1" id="_A_HV_W_H_1" class="btn btn__orange up-btn">hv <br />w/h #1</button>
+                </div>
+              </div>
+              <div class="fourth_con">
+                <button type="button" value="A_CMU_3" id="_A_CMU_3" class="btn btn__gray">cmu<br />#3</button>
+                <button type="button" value="A_CMU_2" id="_A_CMU_2" class="btn btn__gray">cmu<br />#2</button>
+                <button type="button" value="A_CMU_1" id="_A_CMU_1" class="btn btn__gray">cmu<br />#1</button>
+              </div>
+              <div class="fifth_con">
+                <div class="box">
+                  <button type="button" class="product" value="A_MODULE_2" id="_A_MODULE_2">
+                    <span>Module #2</span>
+                  </button>
+                  <button type="button" value="A_HV_W_H_2" id="_A_HV_W_H_2" class="btn btn__orange up-btn">hv<br />w/h#2</button>
+                </div>
+                <div class="box">
+                  <button type="button" class="product" value="A_MODULE_3" id="_A_MODULE_3">
+                    <span>Module #3</span>
+                  </button>
+                  <button type="button" value="A_HV_W_H_3" id="_A_HV_W_H_3" class="btn btn__orange up-btn">hv<br />w/h#3</button>
+                </div>
+                <button type="button" value="A_SPA" id="_A_SPA" class="btn btn__yellow middle-btn">spa</button>
+              </div>
+              <div class="sixth_con">
+                <button type="button" value="A_LWR_CASE" id="_A_LWR_CASE" class="btn btn__green">lwr<br />case</button>
+                <button type="button" value="A_UPR_CASE" id="_A_UPR_CASE" class="btn btn__green">upr<br />case</button>
+                <button type="button" value="A_S_PLUG" id="_A_S_PLUG" class="btn btn__yellow">s/plug</button>
+              </div>
+            </div>
+          </div>
+
+          <div id="_img_2" class="module_con con__second">
+            <h3>HR / PU</h3>
+            <div class="layout">
+              <div class="upper_con">
+                <div class="left_section">
+                  <div class="box">
+                    <button type="button" class="product" value="B_MODULE_2" id="_B_MODULE_2">Module #2</button>
+                    <button type="button" value="B_HV_W_H_2" id="_B_HV_W_H_2" class="btn btn__orange up-btn">hv w/h #2</button>
+                  </div>
+                  <div class="box">
+                    <button type="button" class="product" value="B_MODULE_1" id="_B_MODULE_1">Module #1</button>
+                    <button type="button" value="B_HV_W_H_1" id="_B_HV_W_H_1" class="btn btn__orange up-btn">hv w/h #1</button>
+                  </div>
+                </div>
+                <div class="middle_section">
+                  <button type="button" class="product" value="B_MODULE_3" id="_B_MODULE_3">
+                    <span>Module #3</span>
+                  </button>
+                  <div class="btn-box">
+                    <button type="button" value="B_CMU_1" id="_B_CMU_1" class="btn btn__gray">
+                      CMU <br />
+                      #1
+                    </button>
+                    <button type="button" value="B_CMU_2" id="_B_CMU_2" class="btn btn__gray">
+                      CMU <br />
+                      #2
+                    </button>
+                  </div>
+                </div>
+                <div class="right_section">
+                  <button type="button" class="product" value="B_MODULE_4" id="_B_MODULE_4">Module #4</button>
+                  <button type="button" class="product" value="B_MODULE_5" id="_B_MODULE_5">Module #5</button>
+                </div>
+              </div>
+              <div class="middle_con">
+                <div class="left_section">
+                  <button type="button" class="product" value="B_MODULE_9" id="_B_MODULE_9">Module #9</button>
+                  <button type="button" class="product" value="B_MODULE_10" id="_B_MODULE_10">Module #10</button>
+                </div>
+                <div class="middle_section">
+                  <div class="btn-box">
+                    <button type="button" value="B_CMU_5" id="_B_CMU_5" class="btn btn__gray">
+                      CMU <br />
+                      #5
+                    </button>
+                    <button type="button" value="B_CMU_4" id="_B_CMU_4" class="btn btn__gray">
+                      CMU <br />
+                      #4
+                    </button>
+                    <button type="button" value="B_CMU_3" id="_B_CMU_3" class="btn btn__gray">
+                      CMU <br />
+                      #3
+                    </button>
+                  </div>
+                  <button type="button" class="product" value="B_MODULE_8" id="_B_MODULE_8">Module #8</button>
+                </div>
+                <div class="right_section">
+                  <button type="button" class="product" value="B_MODULE_7" id="_B_MODULE_7">Module #7</button>
+                  <button type="button" class="product" value="B_MODULE_6" id="_B_MODULE_6">Module #6</button>
+                </div>
+              </div>
+              <div class="bottom_con">
+                <div class="btn-box">
+                  <button type="button" value="B_HV_CNTR" id="_B_HV_CNTR" class="btn btn__orange">
+                    hv <br />
+                    cntr
+                  </button>
+                  <button type="button" value="B_HT_CNTR" id="_B_HT_CNTR" class="btn btn__orange">
+                    h/t <br />
+                    cntr
+                  </button>
+                  <button type="button" value="B_PRA" id="_B_PRA" class="btn btn__navy">PRA</button>
+                </div>
+                <div class="btn-box">
+                  <button type="button" value="B_LWR_CASE" id="_B_LWR_CASE" class="btn btn__green">
+                    lwr <br />
+                    case
+                  </button>
+                  <button type="button" value="B_UPR_CASE" id="_B_UPR_CASE" class="btn btn__green">
+                    upr <br />
+                    case
+                  </button>
+                </div>
+                <div class="btn-box">
+                  <button type="button" value="B_BMU" id="_B_BMU" class="btn btn__navy">BMU</button>
+                  <button type="button" value="B_LV_W_H" id="_B_LV_W_H" class="btn btn__black">LV<br />W/H</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="_img_3" class="module_con con__third">
+            <h3>NE/CV/JW1/LM</h3>
+            <div class="layout">
+              <div class="upper_con">
+                <div class="left_section">
+                  <button type="button" value="C_HT_CNTR" id="_C_HT_CNTR" class="btn btn__orange">H/T <br />CNTR</button>
+                  <button type="button" value="C_PRA" id="_C_PRA" class="btn btn__navy">PRA</button>
+                </div>
+                <div class="middle_section">
+                  <div>
+                    <button type="button" class="product" value="C_MODULE_1" id="_C_MODULE_1">Module #1</button>
+                    <button type="button" class="product" value="C_MODULE_2" id="_C_MODULE_2">Module #2</button>
+                    <button type="button" class="product" value="C_MODULE_3" id="_C_MODULE_3">Module #3</button>
+                    <button type="button" class="product" value="C_MODULE_4" id="_C_MODULE_4">Module #4</button>
+                  </div>
+                  <div>
+                    <button type="button" class="product" value="C_MODULE_5" id="_C_MODULE_5">Module #5</button>
+                    <button type="button" class="product" value="C_MODULE_6" id="_C_MODULE_6">Module #6</button>
+                    <button type="button" class="product" value="C_MODULE_7" id="_C_MODULE_7">Module #7</button>
+                    <button type="button" class="product" value="C_MODULE_8" id="_C_MODULE_8">Module #8</button>
+                  </div>
+                  <div>
+                    <button type="button" class="product" value="C_MODULE_9" id="_C_MODULE_9">Module #9</button>
+                    <button type="button" class="product" value="C_MODULE_10" id="_C_MODULE_10">Module #10</button>
+                    <button type="button" class="product" value="C_MODULE_11" id="_C_MODULE_11">Module #11</button>
+                    <button type="button" class="product" value="C_MODULE_12" id="_C_MODULE_12">Module #12</button>
+                  </div>
+                  <div>
+                    <button type="button" class="product" value="C_MODULE_13" id="_C_MODULE_13">Module #13</button>
+                    <button type="button" class="product" value="C_MODULE_14" id="_C_MODULE_14">Module #14</button>
+                    <button type="button" class="product" value="C_MODULE_15" id="_C_MODULE_15">Module #15</button>
+                    <button type="button" class="product" value="C_MODULE_16" id="_C_MODULE_16">Module #16</button>
+                  </div>
+                </div>
+                <div class="right_section">
+                  <button type="button" value="C_LWR_CASE" id="_C_LWR_CASE" class="btn btn__green">LWR <br />CASE</button>
+                  <button type="button" value="C_UPR_CASE" id="_C_UPR_CASE" class="btn btn__green">UPR <br />CASE</button>
+                </div>
+              </div>
+              <div class="middle_con">
+                <div class="left_section">
+                  <button type="button" value="C_HV_CNTR_1" id="_C_HV_CNTR_1" class="btn btn__orange">HV <br />CNTR#1</button>
+                </div>
+                <div class="smiddle_section">
+                  <div>
+                    <button type="button" value="C_CMU_8" id="_C_CMU_8" class="btn btn__gray">CMU #8</button>
+                    <button type="button" value="C_HV_W_H_8" id="_C_HV_W_H_8" class="btn btn__yellow">HV <br />W/H#8</button>
+                  </div>
+                  <div>
+                    <button type="button" value="C_CMU_1" id="_C_CMU_1" class="btn btn__gray">CMU #1</button>
+                    <button type="button" value="C_HV_W_H_1" id="_C_HV_W_H_1" class="btn btn__yellow">HV <br />W/H#1</button>
+                  </div>
+                  <div>
+                    <button type="button" value="C_CMU_7" id="_C_CMU_7" class="btn btn__gray">CMU #7</button>
+                    <button type="button" value="C_HV_W_H_7" id="_C_HV_W_H_7" class="btn btn__yellow">HV <br />W/H#7</button>
+                  </div>
+                  <div>
+                    <button type="button" value="C_CMU_2" id="_C_CMU_2" class="btn btn__gray">CMU #2</button>
+                    <button type="button" value="C_HV_W_H_2" id="_C_HV_W_H_2" class="btn btn__yellow">HV <br />W/H#2</button>
+                  </div>
+                  <div>
+                    <button type="button" value="C_CMU_6" id="_C_CMU_6" class="btn btn__gray">CMU #6</button>
+                    <button type="button" value="C_HV_W_H_6" id="_C_HV_W_H_6" class="btn btn__yellow">HV <br />W/H#6</button>
+                  </div>
+                  <div>
+                    <button type="button" value="C_CMU_3" id="_C_CMU_3" class="btn btn__gray">CMU #3</button>
+                    <button type="button" value="C_HV_W_H_3" id="_C_HV_W_H_3" class="btn btn__yellow">HV <br />W/H#3</button>
+                  </div>
+                  <div>
+                    <button type="button" value="C_CMU_5" id="_C_CMU_5" class="btn btn__gray">CMU #5</button>
+                    <button type="button" value="C_HV_W_H_5" id="_C_HV_W_H_5" class="btn btn__yellow">HV <br />W/H#5</button>
+                  </div>
+                  <div>
+                    <button type="button" value="C_CMU_4" id="_C_CMU_4" class="btn btn__gray">CMU #4</button>
+                    <button type="button" value="C_HV_W_H_4" id="_C_HV_W_H_4" class="btn btn__yellow">HV <br />W/H#4</button>
+                  </div>
+                </div>
+                <div class="right_section">
+                  <button type="button" value="C_HV_CNTR_2" id="_C_HV_CNTR_2" class="btn btn__orange">HV <br />CNTR#2</button>
+                </div>
+              </div>
+              <div class="bottom_con">
+                <div class="left_section">
+                  <button type="button" value="C_BMU" id="_C_BMU" class="btn btn__navy">BMU</button>
+                  <button type="button" value="C_LV_W_H" id="_C_LV_W_H" class="btn btn__black">LV <br />W/H</button>
+                </div>
+                <div class="middle_section">
+                  <div>
+                    <button type="button" class="product" value="C_MODULE_32" id="_C_MODULE_32">Module #32</button>
+                    <button type="button" class="product" value="C_MODULE_31" id="_C_MODULE_31">Module #31</button>
+                    <button type="button" class="product" value="C_MODULE_30" id="_C_MODULE_30">Module #30</button>
+                    <button type="button" class="product" value="C_MODULE_29" id="_C_MODULE_29">Module #29</button>
+                  </div>
+                  <div>
+                    <button type="button" class="product" value="C_MODULE_28" id="_C_MODULE_28">Module #28</button>
+                    <button type="button" class="product" value="C_MODULE_27" id="_C_MODULE_27">Module #27</button>
+                    <button type="button" class="product" value="C_MODULE_26" id="_C_MODULE_26">Module #26</button>
+                    <button type="button" class="product" value="C_MODULE_25" id="_C_MODULE_25">Module #25</button>
+                  </div>
+                  <div>
+                    <button type="button" class="product" value="C_MODULE_24" id="_C_MODULE_24">Module #24</button>
+                    <button type="button" class="product" value="C_MODULE_23" id="_C_MODULE_23">Module #23</button>
+                    <button type="button" class="product" value="C_MODULE_22" id="_C_MODULE_22">Module #22</button>
+                    <button type="button" class="product" value="C_MODULE_21" id="_C_MODULE_21">Module #21</button>
+                  </div>
+                  <div>
+                    <button type="button" class="product" value="C_MODULE_20" id="_C_MODULE_20">Module #20</button>
+                    <button type="button" class="product" value="C_MODULE_19" id="_C_MODULE_19">Module #19</button>
+                    <button type="button" class="product" value="C_MODULE_18" id="_C_MODULE_18">Module #18</button>
+                    <button type="button" class="product" value="C_MODULE_17" id="_C_MODULE_17">Module #17</button>
+                  </div>
+                </div>
+                <div class="right_section">
+                  <button type="button" value="C_FUSE" id="_C_FUSE" class="btn btn__navy navy2">F<br />U<br />S<br />E</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="fourth">
+            <div id="_img_4" class="module_con con__fourth">
+              <h3>cs</h3>
+              <h4>Master / Slave 2</h4>
+              <div class="layout">
+                <div class="upper_con">
+                  <div class="left_section">
+                    <div class="box">
+                      <button type="button" class="product" value="D_MODULE_2" id="_D_MODULE_2">Module #2</button>
+                      <button type="button" class="btn btn__orange up-btn" value="D_HV_W_H_2" id="_D_HV_W_H_2">hv w/h #2</button>
+                    </div>
+                    <div class="box">
+                      <button type="button" class="product" value="D_MODULE_1" id="_D_MODULE_1">Module #1</button>
+                      <button type="button" class="btn btn__orange up-btn" value="D_HV_W_H_1" id="_D_HV_W_H_1">hv w/h #1</button>
+                    </div>
+                  </div>
+                  <div class="middle_section">
+                    <button type="button" class="btn btn__gray" value="D_CMU_1" id="_D_CMU_1">
+                      cmu<br />
+                      #1
+                    </button>
+                    <button type="button" class="btn btn__navy" value="D_RELAY" id="_D_RELAY">relay</button>
+                  </div>
+                  <div class="right_section">
+                    <button type="button" class="btn btn__navy" value="D_BMU" id="_D_BMU">bmu</button>
+                    <button type="button" class="btn btn__orange" value="D_HV_CNTR_1" id="_D_HV_CNTR_1">
+                      hv<br />
+                      cntr #1
+                    </button>
+                    <button type="button" class="btn btn__orange" value="D_HV_CNTR_2" id="_D_HV_CNTR_2">
+                      hv<br />
+                      cntr #2
+                    </button>
+                  </div>
+                </div>
+                <div class="bottom_con">
+                  <button type="button" class="btn btn__green" value="D_LWR_CASE" id="_D_LWR_CASE">
+                    lwr <br />
+                    case
+                  </button>
+                  <button type="button" class="btn btn__green" value="D_UPR_CASE" id="_D_UPR_CASE">
+                    upr<br />
+                    case
+                  </button>
+                  <button type="button" class="btn btn__black" value="D_LV_W_H" id="_D_LV_W_H">
+                    lv <br />
+                    w/h
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div id="_img_5" class="module_con con__fourth">
+              <h3>cs</h3>
+              <h4>Slave 1</h4>
+              <div class="layout">
+                <div class="upper_con">
+                  <div class="left_section">
+                    <div class="box">
+                      <button type="button" class="product" value="D2_MODULE_1" id="_D2_MODULE_1">Module #1</button>
+                      <button type="button" class="btn btn__orange up-btn" value="D2_HV_W_H_1" id="_D2_HV_W_H_1">hv w/h #1</button>
+                    </div>
+                  </div>
+                  <div class="middle_section">
+                    <button type="button" class="btn btn__gray" value="D2_CMU_1" id="_D2_CMU_1">
+                      cmu<br />
+                      #1
+                    </button>
+                    <button type="button" class="btn btn__navy" value="D2_RELAY" id="_D2_RELAY">relay</button>
+                  </div>
+                  <div class="right_section">
+                    <button type="button" class="btn btn__navy" value="D2_BMU" id="_D2_BMU">bmu</button>
+                    <button type="button" class="btn btn__orange" value="D2_HV_CNTR_1" id="_D2_HV_CNTR_1">
+                      hv<br />
+                      cntr #1
+                    </button>
+                    <button type="button" class="btn btn__orange" value="D2_HV_CNTR_2" id="_D2_HV_CNTR_2">
+                      hv<br />
+                      cntr #2
+                    </button>
+                  </div>
+                </div>
+                <div class="bottom_con">
+                  <button type="button" class="btn btn__green" value="D2_LWR_CASE" id="_D2_LWR_CASE">
+                    lwr <br />
+                    case
+                  </button>
+                  <button type="button" class="btn btn__green" value="D2_UPR_CASE" id="_D2_UPR_CASE">
+                    upr<br />
+                    case
+                  </button>
+                  <button type="button" class="btn btn__black" value="D2_LV_W_H" id="_D2_LV_W_H">
+                    lv <br />
+                    w/h
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="input-group process-step">
+          <table id="_tb" class="tb">
+            <colgroup>
+              <col class="col_1" width="20%" />
+              <col class="col_2" width="40%" />
+              <col class="col_3" width="40%" />
+            </colgroup>
+            <tr>
+              <td>
+                <label for="management_id">관리번호</label>
+              </td>
+              <td colspan="2">
+                <input type="text" id="_management_id" value="" size="100" readonly required />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="_차종">차종</label>
+              </td>
+              <td colspan="2">
+                <input type="text" id="_차종" size="40" readonly required />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <button onClick="불량의심부품_load();">LOAD</button>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="_재제조comment"
+                  >재제조<br />
+                  Com-ment</label
+                >
+              </td>
+              <td class="textarea_custom" title="1. 재제조를 위한 교체 필요 부품 기재 ex) BMU, W/H, CMU &#10; 2. 후공정 작업자에게 전달하고 싶은 사항 기재 &#10; (&#8251;중요)보고서 외부 공유 및 QMS 업로드 시, 본 항목 전체 삭제 후 공유할 것 ">
+                <textarea
+                  name="재제조comment"
+                  id="_재제조comment"
+                  cols="30"
+                  rows="5"
+                  placeholder="1. 재제조를 위한 교체 필요 부품 기재 ex) BMU, W/H, CMU &#10;2. 후공정 작업자에게 전달하고 싶은 사항 기재 &#10;&#10; 보고서 외부 공유 및 QMS 업로드 시 본 항목 전체 삭제 후 공유할 것. (중요) "
+                ></textarea>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="input-group">
+        <div class="input-btn-group">
+          <button onClick="불량의심부품_save();">SAVE</button>
+          <button onClick="flag_기초검사 = true;  loadPage('base/기초검사.html');">이전페이지</button>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      const _management_id = document.getElementById("_management_id");
+      const _차종 = document.getElementById("_차종");
+      const _재제조comment = getElementById("_재제조comment");
+      const _img_1 = document.getElementById("_img_1");
+      const _img_2 = document.getElementById("_img_2");
+      const _img_3 = document.getElementById("_img_3");
+      const _img_4 = document.getElementById("_img_4");
+      const _img_5 = document.getElementById("_img_5");
+
+      const _tb = document.getElementById("_tb");
+
+      const _A_UPR_CASE = document.getElementById("_A_UPR_CASE");
+      const _A_LWR_CASE = document.getElementById("_A_LWR_CASE");
+      const _A_S_PLUG = document.getElementById("_A_S_PLUG");
+      const _A_SPA = document.getElementById("_A_SPA");
+      const _A_HT_CNTR = document.getElementById("_A_HT_CNTR");
+      const _A_HV_CNTR = document.getElementById("_A_HV_CNTR");
+      const _A_PRA = document.getElementById("_A_PRA");
+      const _A_LV_W_H = document.getElementById("_A_LV_W_H");
+      const _A_HV_W_H_1 = document.getElementById("_A_HV_W_H_1");
+      const _A_HV_W_H_2 = document.getElementById("_A_HV_W_H_2");
+      const _A_HV_W_H_3 = document.getElementById("_A_HV_W_H_3");
+      const _A_HV_W_H_4 = document.getElementById("_A_HV_W_H_4");
+      const _A_HV_W_H_5 = document.getElementById("_A_HV_W_H_5");
+      const _A_BMU = document.getElementById("_A_BMU");
+      const _A_CMU_1 = document.getElementById("_A_CMU_1");
+      const _A_CMU_2 = document.getElementById("_A_CMU_2");
+      const _A_CMU_3 = document.getElementById("_A_CMU_3");
+      const _A_CMU_4 = document.getElementById("_A_CMU_4");
+      const _A_CMU_5 = document.getElementById("_A_CMU_5");
+      const _A_MODULE_1 = document.getElementById("_A_MODULE_1");
+      const _A_MODULE_2 = document.getElementById("_A_MODULE_2");
+      const _A_MODULE_3 = document.getElementById("_A_MODULE_3");
+      const _A_MODULE_4 = document.getElementById("_A_MODULE_4");
+      const _A_MODULE_5 = document.getElementById("_A_MODULE_5");
+      const _B_UPR_CASE = document.getElementById("_B_UPR_CASE");
+      const _B_LWR_CASE = document.getElementById("_B_LWR_CASE");
+      const _B_HV_CNTR = document.getElementById("_B_HV_CNTR");
+      const _B_HT_CNTR = document.getElementById("_B_HT_CNTR");
+      const _B_PRA = document.getElementById("_B_PRA");
+      const _B_FUSE = document.getElementById("_B_FUSE");
+      const _B_HV_W_H_1 = document.getElementById("_B_HV_W_H_1");
+      const _B_HV_W_H_2 = document.getElementById("_B_HV_W_H_2");
+      const _B_LV_W_H = document.getElementById("_B_LV_W_H");
+      const _B_BMU = document.getElementById("_B_BMU");
+      const _B_CMU_1 = document.getElementById("_B_CMU_1");
+      const _B_CMU_2 = document.getElementById("_B_CMU_2");
+      const _B_CMU_3 = document.getElementById("_B_CMU_3");
+      const _B_CMU_4 = document.getElementById("_B_CMU_4");
+      const _B_CMU_5 = document.getElementById("_B_CMU_5");
+      const _B_MODULE_1 = document.getElementById("_B_MODULE_1");
+      const _B_MODULE_2 = document.getElementById("_B_MODULE_2");
+      const _B_MODULE_3 = document.getElementById("_B_MODULE_3");
+      const _B_MODULE_4 = document.getElementById("_B_MODULE_4");
+      const _B_MODULE_5 = document.getElementById("_B_MODULE_5");
+      const _B_MODULE_6 = document.getElementById("_B_MODULE_6");
+      const _B_MODULE_7 = document.getElementById("_B_MODULE_7");
+      const _B_MODULE_8 = document.getElementById("_B_MODULE_8");
+      const _B_MODULE_9 = document.getElementById("_B_MODULE_9");
+      const _B_MODULE_10 = document.getElementById("_B_MODULE_10");
+      const _C_UPR_CASE = document.getElementById("_C_UPR_CASE");
+      const _C_LWR_CASE = document.getElementById("_C_LWR_CASE");
+      const _C_HV_CNTR_1 = document.getElementById("_C_HV_CNTR_1");
+      const _C_HV_CNTR_2 = document.getElementById("_C_HV_CNTR_2");
+      const _C_HT_CNTR = document.getElementById("_C_HT_CNTR");
+      const _C_PRA = document.getElementById("_C_PRA");
+      const _C_FUSE = document.getElementById("_C_FUSE");
+      const _C_LV_W_H = document.getElementById("_C_LV_W_H");
+      const _C_HV_W_H_1 = document.getElementById("_C_HV_W_H_1");
+      const _C_HV_W_H_2 = document.getElementById("_C_HV_W_H_2");
+      const _C_HV_W_H_3 = document.getElementById("_C_HV_W_H_3");
+      const _C_HV_W_H_4 = document.getElementById("_C_HV_W_H_4");
+      const _C_HV_W_H_5 = document.getElementById("_C_HV_W_H_5");
+      const _C_HV_W_H_6 = document.getElementById("_C_HV_W_H_6");
+      const _C_HV_W_H_7 = document.getElementById("_C_HV_W_H_7");
+      const _C_HV_W_H_8 = document.getElementById("_C_HV_W_H_8");
+      const _C_BMU = document.getElementById("_C_BMU");
+      const _C_CMU_1 = document.getElementById("_C_CMU_1");
+      const _C_CMU_2 = document.getElementById("_C_CMU_2");
+      const _C_CMU_3 = document.getElementById("_C_CMU_3");
+      const _C_CMU_4 = document.getElementById("_C_CMU_4");
+      const _C_CMU_5 = document.getElementById("_C_CMU_5");
+      const _C_CMU_6 = document.getElementById("_C_CMU_6");
+      const _C_CMU_7 = document.getElementById("_C_CMU_7");
+      const _C_CMU_8 = document.getElementById("_C_CMU_8");
+      const _C_MODULE_1 = document.getElementById("_C_MODULE_1");
+      const _C_MODULE_2 = document.getElementById("_C_MODULE_2");
+      const _C_MODULE_3 = document.getElementById("_C_MODULE_3");
+      const _C_MODULE_4 = document.getElementById("_C_MODULE_4");
+      const _C_MODULE_5 = document.getElementById("_C_MODULE_5");
+      const _C_MODULE_6 = document.getElementById("_C_MODULE_6");
+      const _C_MODULE_7 = document.getElementById("_C_MODULE_7");
+      const _C_MODULE_8 = document.getElementById("_C_MODULE_8");
+      const _C_MODULE_9 = document.getElementById("_C_MODULE_9");
+      const _C_MODULE_10 = document.getElementById("_C_MODULE_10");
+      const _C_MODULE_11 = document.getElementById("_C_MODULE_11");
+      const _C_MODULE_12 = document.getElementById("_C_MODULE_12");
+      const _C_MODULE_13 = document.getElementById("_C_MODULE_13");
+      const _C_MODULE_14 = document.getElementById("_C_MODULE_14");
+      const _C_MODULE_15 = document.getElementById("_C_MODULE_15");
+      const _C_MODULE_16 = document.getElementById("_C_MODULE_16");
+      const _C_MODULE_17 = document.getElementById("_C_MODULE_17");
+      const _C_MODULE_18 = document.getElementById("_C_MODULE_18");
+      const _C_MODULE_19 = document.getElementById("_C_MODULE_19");
+      const _C_MODULE_20 = document.getElementById("_C_MODULE_20");
+      const _C_MODULE_21 = document.getElementById("_C_MODULE_21");
+      const _C_MODULE_22 = document.getElementById("_C_MODULE_22");
+      const _C_MODULE_23 = document.getElementById("_C_MODULE_23");
+      const _C_MODULE_24 = document.getElementById("_C_MODULE_24");
+      const _C_MODULE_25 = document.getElementById("_C_MODULE_25");
+      const _C_MODULE_26 = document.getElementById("_C_MODULE_26");
+      const _C_MODULE_27 = document.getElementById("_C_MODULE_27");
+      const _C_MODULE_28 = document.getElementById("_C_MODULE_28");
+      const _C_MODULE_29 = document.getElementById("_C_MODULE_29");
+      const _C_MODULE_30 = document.getElementById("_C_MODULE_30");
+      const _C_MODULE_31 = document.getElementById("_C_MODULE_31");
+      const _C_MODULE_32 = document.getElementById("_C_MODULE_32");
+      const _D_UPR_CASE = document.getElementById("_D_UPR_CASE");
+      const _D_LWR_CASE = document.getElementById("_D_LWR_CASE");
+      const _D_HV_CNTR_1 = document.getElementById("_D_HV_CNTR_1");
+      const _D_HV_CNTR_2 = document.getElementById("_D_HV_CNTR_2");
+      const _D_RELAY = document.getElementById("_D_RELAY");
+      const _D_LV_W_H = document.getElementById("_D_LV_W_H");
+      const _D_HV_W_H_1 = document.getElementById("_D_HV_W_H_1");
+      const _D_HV_W_H_2 = document.getElementById("_D_HV_W_H_2");
+      const _D_BMU = document.getElementById("_D_BMU");
+      const _D_CMU_1 = document.getElementById("_D_CMU_1");
+      const _D_MODULE_1 = document.getElementById("_D_MODULE_1");
+      const _D_MODULE_2 = document.getElementById("_D_MODULE_2");
+      const _D2_HV_W_H_1 = document.getElementById("_D2_HV_W_H_1");
+      const _D2_CMU_1 = document.getElementById("_D2_CMU_1");
+      const _D2_RELAY = document.getElementById("_D2_RELAY");
+      const _D2_BMU = document.getElementById("_D2_BMU");
+      const _D2_HV_CNTR_1 = document.getElementById("_D2_HV_CNTR_1");
+      const _D2_HV_CNTR_2 = document.getElementById("_D2_HV_CNTR_2");
+      const _D2_LWR_CASE = document.getElementById("_D2_LWR_CASE");
+      const _D2_UPR_CASE = document.getElementById("_D2_UPR_CASE");
+      const _D2_LV_W_H = document.getElementById("_D2_LV_W_H");
+      const _D2_MODULE_1 = document.getElementById("_D2_MODULE_1");
+    </script>
+  </body>
+</html>

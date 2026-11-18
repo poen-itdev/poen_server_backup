@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>거래 확인서</title>
+  <link rel="stylesheet" href="base/style/contract.css" />
+  <script src="base/jslib/luxon.min.js"></script>
+  <script src="base/jslib/socket.io.min.js"></script>
+  <script src="base/js/poenRHS_mini.js"></script>
+</head>
+
+<body>
+  <section class="agreement-all c">
+    <div id="confirmation" class="page">
+      <div class="confirmation-back"></div>
+      <div class="confirmation">
+        <div class="confirmation__header">
+          <div class="header__top">
+            <div class="header__top_logo">
+              <img src="base/img/poen.png" alt="포엔 로고 이미지" class="logo_img" />
+              <h2 class="logo_txt"><span>(주)</span> 포엔</h2>
+            </div>
+            <table class="content__table">
+              <tr>
+                <th class="confirm">보증기간</th>
+              </tr>
+              <tr>
+                <td class="confirm">5년 or 10만km 우선 도래일</td>
+              </tr>
+            </table>
+          </div>
+          <div class="header__text">
+            <h2>전기차 리퍼비시 배터리팩 거래 사실 확인서</h2>
+            <p>
+              고객은 제공된 약관에 따라 구입하는 것에 동의하며, <br />판매자는
+              '리퍼비시 배터리팩'과 부대 서비스를 제공합니다. 납품처는 아래
+              '수리거점'입니다.
+            </p>
+            <div class="amount">
+              <span> - 금&nbsp;액 :</span>금
+              <input type="text" style="color: #444" placeholder="금액 입력란" id="_금액" /><em>원</em>(부가세 제외)
+              <span>(※ 장착비/고품회수 조건 등 옵션 기입 – 특이사항시)</span>
+            </div>
+          </div>
+        </div>
+        <div class="confirmation__content">
+          <div class="privacy__con">
+            <h3>판매자</h3>
+            <p style="letter-spacing: 0.5px">
+              주식회사 포엔 (사업자등록번호 : 368-81-01544)<br />
+              주소 : 경기도 의왕시 안양판교로 82, 6층 605호 (포일동,
+              기업성장지원센터)<br />
+              전화번호 : 070-7797-8423<br />
+              이메일 : refurbish@poen.co.kr<br />
+              대표이사 : 최성진 (인)
+            </p>
+            <img src="base/img/poen-stamp.png" alt="포엔 도장" class="poen-stamp" />
+          </div>
+          <div class="privacy__con">
+            <h3>고객 (고객님 작성)</h3>
+            <table class="content__table">
+              <colgroup>
+                <col class="col_1" width="30%" />
+                <col class="col_2" width="70%" />
+              </colgroup>
+              <tr>
+                <td>성명/상호</td>
+                <td>
+                  <input type="text" id="_성명" />
+                </td>
+              </tr>
+              <tr>
+                <td>생년월일/사업자번호</td>
+                <td>
+                  <input type="text" id="_생년월일" />
+                </td>
+              </tr>
+              <tr>
+                <td>주소</td>
+                <td>
+                  <input type="text" id="_고객_주소" />
+                </td>
+              </tr>
+              <tr>
+                <td>전화번호</td>
+                <td>
+                  <input type="text" id="_고객_전화번호" />
+                </td>
+              </tr>
+              <tr>
+                <td>e-mail</td>
+                <td>
+                  <input type="email" id="_email" />
+                </td>
+              </tr>
+            </table>
+            <div class="sign sign-2" style="text-align: left; font-weight: bold">
+              서명 :
+              <input type="text" placeholder="성    명" id="_서명성명" />
+              <span style="color: #666">(인)</span>
+              <img style="width: 170px; height: 50px" id="_서명" />
+            </div>
+          </div>
+          <div class="privacy__con">
+            <h3>가입차량 (고객님 or 수리처 작성)</h3>
+            <table class="content__table">
+              <colgroup>
+                <col class="col_1" width="35%" />
+                <col class="col_2" width="65%" />
+              </colgroup>
+              <tr>
+                <td>차량제조사/모델명/트림(배터리옵션)</td>
+                <td>
+                  <input type="text" id="_제조사" />
+                </td>
+              </tr>
+              <tr>
+                <td>제조년도</td>
+                <td>
+                  <input type="text" id="_제조년도" />
+                </td>
+              </tr>
+              <tr>
+                <td>구매 신청일 누적주행 거리</td>
+                <td>
+                  <input type="text" placeholder="계기판 사진 제출 必" id="_누적주행거리" />
+                </td>
+              </tr>
+              <tr>
+                <td>차량 번호</td>
+                <td>
+                  <input type="text" id="_차량번호" />
+                </td>
+              </tr>
+              <tr>
+                <td>차대 번호</td>
+                <td>
+                  <input type="text" id="_차대번호" />
+                </td>
+              </tr>
+              <tr>
+                <td>차량 용도</td>
+                <td>
+                  <input type="text" placeholder="법인택시, 개인택시, 렌터카, 리스, 일반법인, 개인, 기타 직접입력 中 택1" id="_차량용도" />
+                </td>
+              </tr>
+            </table>
+          </div>
+          <div class="privacy__con">
+            <h3>수리거점 (수리처 작성)</h3>
+            <table class="content__table">
+              <colgroup>
+                <col class="col_1" width="30%" />
+                <col class="col_2" width="70%" />
+              </colgroup>
+              <tr>
+                <td>상호</td>
+                <td>
+                  <input type="text" id="_상호" />
+                </td>
+              </tr>
+              <tr>
+                <td>주소</td>
+                <td>
+                  <input type="text" id="_수리처_주소" />
+                </td>
+              </tr>
+              <tr>
+                <td>전화번호</td>
+                <td>
+                  <input type="text" id="_수리처_전화번호" />
+                </td>
+              </tr>
+            </table>
+          </div>
+          <div class="privacy__con">
+            <div class="date" style="font-weight: bold">
+              <input type="text" value="20" id="_year" /> .
+              <input type="text" id="_month" />.
+              <input type="text" id="_day" />
+            </div>
+            <p>※ 본 문서를 제시하는 고객에게만 보증수리가 제공됩니다.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="apply__check">
+    <span>서명 후 꼭~ 우측 하단의 '적용' 버튼을 클릭해주세요.</span>
+    <div class="apply__sign">
+      <div class="customer__write">
+        <canvas id="drawCanvas" width="300" height="150" style="position: relative; border: 1px solid #000"></canvas>
+      </div>
+      <div class="customer__modifty">
+        <button onclick="onClear();" class="del">지우기</button>
+        <button onclick="서명저장();" class="apl">적용</button>
+      </div>
+    </div>
+
+    <div class="apply__btn">
+      <button onClick="save();">저장</button>
+      <button onClick="location.href='agreement'">이전화면으로</button>
+    </div>
+  </div>
+
+  <script>
+    if (window.addEventListener) {
+      window.addEventListener("load", InitEvent, false);
+    }
+    var canvas, context, tool;
+    function InitEvent() {
+      canvas = document.getElementById("drawCanvas");
+      if (!canvas) {
+        alert("캔버스 객체를 찾을 수 없음");
+        return;
+      }
+      if (!canvas.getContext) {
+        alert("Drawing Contextf를 찾을 수 없음");
+        return;
+      }
+      context = canvas.getContext("2d");
+      if (!context) {
+        alert("getContext() 함수를 호출 할 수 없음");
+        return;
+      }
+      // Pencil tool 객체를 생성 한다.
+      tool = new tool_pencil();
+      canvas.addEventListener("mousedown", ev_canvas, false);
+      canvas.addEventListener("mousemove", ev_canvas, false);
+      canvas.addEventListener("mouseup", ev_canvas, false);
+      canvas.addEventListener("touchstart", ev_canvas, false);
+      canvas.addEventListener("touchmove", ev_canvas, false);
+      canvas.addEventListener("touchend", ev_canvas, false);
+    }
+    function tool_pencil() {
+      var tool = this;
+      this.started = false;
+
+      // 마우스를 누르는 순간 그리기 작업을 시작 한다.
+      this.mousedown = function (ev) {
+        context.beginPath();
+        context.moveTo(ev._x, ev._y);
+        tool.started = true;
+      };
+      // 마우스가 이동하는 동안 계속 호출하여 Canvas에 Line을 그려 나간다
+      this.mousemove = function (ev) {
+        if (tool.started) {
+          context.lineTo(ev._x, ev._y);
+          context.stroke();
+        }
+      };
+      // 마우스 떼면 그리기 작업을 중단한다
+      this.mouseup = function (ev) {
+        if (tool.started) {
+          tool.mousemove(ev);
+          tool.started = false;
+        }
+      };
+
+      // 마우스를 누르는 순간 그리기 작업을 시작 한다.
+      this.touchstart = function (ev) {
+        context.beginPath();
+        context.moveTo(ev._x, ev._y);
+        tool.started = true;
+      };
+      // 마우스가 이동하는 동안 계속 호출하여 Canvas에 Line을 그려 나간다
+      this.touchmove = function (ev) {
+        if (tool.started) {
+          context.lineTo(ev._x, ev._y);
+          context.stroke();
+        }
+      };
+      // 마우스 떼면 그리기 작업을 중단한다
+      this.touchend = function (ev) {
+        if (tool.started) {
+          tool.touchmove(ev);
+          tool.started = false;
+        }
+      };
+    }
+    // Canvas요소 내의 좌표를 결정 한다.
+    function ev_canvas(ev) {
+      if (ev.layerX || ev.layerX == 0) {
+        // Firefox 브라우저
+        ev._x = ev.layerX;
+        ev._y = ev.layerY;
+      } else if (ev.offsetX || ev.offsetX == 0) {
+        // Opera 브라우저
+        ev._x = ev.offsetX;
+        ev._y = ev.offsetY;
+      } else if (ev.targetTouches[0] || ev.targetTouches[0].pageX == 0) {
+        //핸드폰
+        var left = 0;
+        var top = 0;
+        var elem = document.getElementById("drawCanvas");
+
+        while (elem) {
+          left = left + parseInt(elem.offsetLeft);
+          top = top + parseInt(elem.offsetTop);
+          elem = elem.offsetParent;
+        }
+
+        ev._x = ev.targetTouches[0].pageX - left;
+        ev._y = ev.targetTouches[0].pageY - top;
+      }
+      // tool의 이벤트 핸들러를 호출한다.
+      var func = tool[ev.type];
+      if (func) {
+        func(ev);
+      }
+    }
+
+    function onClear() {
+      canvas = document.getElementById("drawCanvas");
+      context.save();
+      context.setTransform(1, 0, 0, 1, 0, 0);
+      context.clearRect(0, 0, canvas.width, canvas.height);
+      context.restore();
+    }
+
+    function 서명저장() {
+      canvas = document.getElementById("drawCanvas");
+      console.log(canvas.toDataURL());
+      _서명.src = canvas.toDataURL();
+    }
+  </script>
+
+  <script>
+    var _금액 = document.getElementById("_금액");
+    var _성명 = document.getElementById("_성명");
+    var _생년월일 = document.getElementById("_생년월일");
+    var _고객_주소 = document.getElementById("_고객_주소");
+    var _고객_전화번호 = document.getElementById("_고객_전화번호");
+    var _email = document.getElementById("_email");
+    var _서명성명 = document.getElementById("_서명성명");
+    var _서명 = document.getElementById("_서명");
+    var _제조사 = document.getElementById("_제조사");
+    var _제조년도 = document.getElementById("_제조년도");
+    var _누적주행거리 = document.getElementById("_누적주행거리");
+    var _차량번호 = document.getElementById("_차량번호");
+    var _차대번호 = document.getElementById("_차대번호");
+    var _차량용도 = document.getElementById("_차량용도");
+    var _상호 = document.getElementById("_상호");
+    var _수리처_주소 = document.getElementById("_수리처_주소");
+    var _수리처_전화번호 = document.getElementById("_수리처_전화번호");
+    var _year = document.getElementById("_year");
+    var _month = document.getElementById("_month");
+    var _day = document.getElementById("_day");
+
+    async function save() {
+      canvas = document.getElementById("drawCanvas");
+      console.log(canvas.toDataURL());
+
+      var DateTime = luxon.DateTime;
+      var seoul = DateTime.local().setZone("Asia/Seoul");
+      var now = seoul.toString().slice(0, 19);
+
+      var doc = 거래확인서_doc;
+      doc.날짜ID = now;
+      doc.금액 = _금액.value;
+      doc.성명 = _성명.value;
+      doc.서명성명 = _서명성명.value;
+      doc.생년월일 = _생년월일.value;
+      doc.고객_주소 = _고객_주소.value;
+      doc.고객_전화번호 = _고객_전화번호.value;
+      doc.email = _email.value;
+      doc.서명 = canvas.toDataURL();
+      doc.제조사 = _제조사.value;
+      doc.제조년도 = _제조년도.value;
+      doc.누적주행거리 = _누적주행거리.value;
+      doc.차량번호 = _차량번호.value;
+      doc.차대번호 = _차대번호.value;
+      doc.차량용도 = _차량용도.value;
+      doc.상호 = _상호.value;
+      doc.수리처_주소 = _수리처_주소.value;
+      doc.수리처_전화번호 = _수리처_전화번호.value;
+      doc.year = _year.value;
+      doc.month = _month.value;
+      doc.day = _day.value;
+
+      update_거래확인서(거래확인서, doc);
+      await delay();
+
+      console.log("save:", doc);
+      console.log(update_count);
+      console.log(insert_count);
+
+      if (update_count > 0) {
+        alert("업데이트 되었습니다");
+      }
+
+      if (insert_count > 0) {
+        alert("저장 되었습니다");
+      }
+    }
+  </script>
+</body>
+
+</html>

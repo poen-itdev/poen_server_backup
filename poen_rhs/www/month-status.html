@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>월간 현황</title>
+    <link rel="stylesheet" href="base/style/공정.css" />
+  </head>
+
+  <body>
+    <section class="월간현황">
+      <div class="process__tit change-tit">
+        <h2>월간 현황</h2>
+      </div>
+      <div class="data">
+        <select name="year" id="_검색일_year" onchange="yearOnChange(this)">
+          년
+        </select>
+        <select name="year" id="_검색일_month" onchange="monthOnChange(this)">
+          월
+        </select>
+        <button onClick="월간_조회(true);">조회</button>
+      </div>
+      <div class="process">
+        <div class="process__tit">
+          <label for="chart">Chart</label>
+        </div>
+        <canvas id="chart"> </canvas>
+      </div>
+      <div class="process">
+        <div class="process__tit">
+          <label for="grid_입고">입고</label>
+        </div>
+        <div id="grid_입고"></div>
+      </div>
+      <div class="process">
+        <div class="process__tit">
+          <label for="grid_제조완료">제조완료</label>
+        </div>
+        <div id="grid_제조완료"></div>
+      </div>
+      <div class="process">
+        <div class="process__tit">
+          <label for="grid_출하">출하</label>
+        </div>
+        <div id="grid_출하"></div>
+      </div>
+    </section>
+    <script>
+      const _monthcb = document.getElementById("_monthcb");
+    </script>
+  </body>
+</html>

@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>품목 상세 입력</title>
+    <link rel="stylesheet" href="base/style/공정.css" />
+  </head>
+
+  <body>
+    <section class="품목상세">
+      <div class="process__tit change-tit">
+        <h2>품목 상세</h2>
+      </div>
+      <div class="input-group">
+        <table>
+          <colgroup>
+            <col class="col_1" width="20%" />
+            <col class="col_2" width="80%" />
+          </colgroup>
+          <tr>
+            <td>
+              <label for="_management_id">관리번호</label>
+            </td>
+            <td>
+              <input type="text" id="_management_id" value="" size="40" required />
+              <button onClick="상세입력_시작();">조 회</button>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_재제조번호">재제조번호</label>
+            </td>
+            <td>
+              <input type="text" id="_재제조번호" size="40" required />
+              <button onClick="상세입력_시작(true);">조 회</button>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_RO_no">RO_no</label>
+            </td>
+            <td>
+              <input type="text" id="_RO_no" size="40" readonly required />
+              <button onClick="상세입력_시작(true);">조 회</button>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_구분">구분</label>
+            </td>
+            <td>
+              <input type="text" id="_구분" size="40" readonly required />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_차종">차종</label>
+            </td>
+            <td>
+              <input type="text" id="_차종" size="40" readonly required />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_품번">품번</label>
+            </td>
+            <td>
+              <input type="text" id="_품번" size="40" readonly required />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_공정단계">공정단계</label>
+            </td>
+            <td>
+              <input type="text" id="_공정단계" size="40" readonly required />
+              <select name="language" onchange="공정입력_콤보박스(this)">
+                <option value="">---</option>
+                <option value="입고">입고</option>
+                <option value="세척">세척</option>
+                <option value="기초검사">기초검사</option>
+                <option value="분해조립">분해조립</option>
+                <option value="성능검사">성능검사</option>
+                <option value="EOL">EOL</option>
+                <option value="제조완료">제조완료</option>
+                <option value="출하검사">출하검사</option>
+                <option value="출하">출하</option>
+                <option value="완전분해">완전분해</option>
+                <option value="폐기">폐기</option>
+              </select>
+              <!--<button onClick="processStep();">공정 상세 입력</button>-->
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_적재No">적재No</label>
+            </td>
+            <td>
+              <input type="text" id="_적재No" size="40" required />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_입고">입고</label>
+            </td>
+            <td>
+              <input type="datetime-local" id="_입고" value="0000-00-00T00:00" readonly required />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_제조투입">제조투입</label>
+            </td>
+            <td>
+              <input type="datetime-local" id="_제조투입" value="0000-00-00T00:00" required />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_세척투입일">세척투입일</label>
+            </td>
+            <td>
+              <input type="datetime-local" id="_세척투입일" value="0000-00-00T00:00" required />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_세척">세척</label>
+            </td>
+            <td>
+              <input type="datetime-local" id="_세척" value="0000-00-00T00:00" required />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_기초검사투입일">기초검사투입일</label>
+            </td>
+            <td>
+              <input type="datetime-local" id="_기초검사투입일" value="0000-00-00T00:00" required />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_기초검사">기초검사</label>
+            </td>
+            <td>
+              <input type="datetime-local" id="_기초검사" value="0000-00-00T00:00" required />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_분해조립투입일">분해조립투입일</label>
+            </td>
+            <td>
+              <input type="datetime-local" id="_분해조립투입일" value="0000-00-00T00:00" required />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_분해조립">분해조립</label>
+            </td>
+            <td>
+              <input type="datetime-local" id="_분해조립" value="0000-00-00T00:00" required />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_성능검사투입일">성능검사투입일</label>
+            </td>
+            <td>
+              <input type="datetime-local" id="_성능검사투입일" value="0000-00-00T00:00" required />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_성능검사">성능검사</label>
+            </td>
+            <td>
+              <input type="datetime-local" id="_성능검사" value="0000-00-00T00:00" required />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_EOL투입일">EOL투입일</label>
+            </td>
+            <td>
+              <input type="datetime-local" id="_EOL투입일" value="0000-00-00T00:00" required />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_EOL">EOL</label>
+            </td>
+            <td>
+              <input type="datetime-local" id="_EOL" value="0000-00-00T00:00" required />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_출하검사">출하검사</label>
+            </td>
+            <td>
+              <input type="datetime-local" id="_출하검사" value="0000-00-00T00:00" required />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_출하">출하</label>
+            </td>
+            <td>
+              <input type="datetime-local" id="_출하" value="0000-00-00T00:00" required />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_납품처">납품처</label>
+            </td>
+            <td>
+              <input type="text" id="_납품처" required />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_소재지">소재지</label>
+            </td>
+            <td>
+              <input type="text" id="_소재지" size="40" required />
+              <select name="language" onchange="소재지_콤보박스(this)">
+                <option value="">---</option>
+                <option value="마도">마도</option>
+                <option value="구장">구장</option>
+                <option value="공정대기">공정대기</option>
+                <option value="품질대기">품질대기</option>
+                <option value="폐기">폐기</option>
+              </select>
+              <input type="text" id="_소재지사유" size="40" required />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_마지막충전일">마지막 충전일</label>
+            </td>
+            <td>
+              <input type="datetime-local" id="_마지막충전일" value="0000-00-00T00:00" required />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_반품입고">반품입고</label>
+            </td>
+            <td>
+              <input type="datetime-local" id="_반품입고" value="0000-00-00T00:00" required />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_재출하">재출하</label>
+            </td>
+            <td>
+              <input type="datetime-local" id="_재출하" value="0000-00-00T00:00" required />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_완전분해">완전분해</label>
+            </td>
+            <td>
+              <input type="datetime-local" id="_완전분해" value="0000-00-00T00:00" required />
+              <input type="text" id="_완전분해사유" size="40" required />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_폐기">폐기</label>
+            </td>
+            <td>
+              <input type="datetime-local" id="_폐기" value="0000-00-00T00:00" required />
+              <input type="text" id="_폐기사유" size="40" required />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_출하예약">출하예약</label>
+            </td>
+            <td>
+              <input type="text" id="_출하예약" size="40" required />
+              <select name="language" onchange="출하예약_콤보박스(this)">
+                <option value="">---</option>
+                <option value="예약">예약</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_렉번호">렉번호</label>
+            </td>
+            <td>
+              <input type="text" id="_렉번호" value="" required />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label>고품정보등록</label>
+            </td>
+            <td>
+              <button onClick="func_고품정보등록();">고품정보 등록</button>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label>특이사항</label>
+            </td>
+            <td>
+              <button onClick="func_특이사항();">특이 사항</button>
+            </td>
+          </tr>
+          <tr></tr>
+        </table>
+      </div>
+      <div class="input-group">
+        <div class="input-btn-group">
+          <button onClick="item_detail_save();">저장</button>
+          <button onClick="이전페이지();">이전페이지</button>
+          <!-- <div class="select-menu">
+            <div class="select-btn" onclick="showOptionMenu();">
+              <span class="sBtn-text">검사보고서</span>
+            </div>
+            <ul class="options">
+              <li class="option">
+                <span class="option-text" onclick="기초보고서_시작();">기초보고서</span>
+              </li>
+              <li class="option">
+                <span class="option-text" onclick="완료보고서_시작();">완료보고서</span>
+              </li>
+              <li class="option">
+                <span class="option-text" onclick="출하검사성적서_시작();">출하검사 성적서</span>
+              </li>
+            </ul>
+          </div> -->
+        </div>
+      </div>
+    </section>
+    <script>
+      const _management_id = document.getElementById("_management_id");
+      const _재제조번호 = document.getElementById("_재제조번호");
+      const _구분 = document.getElementById("_구분");
+      const _차종 = document.getElementById("_차종");
+      const _품번 = document.getElementById("_품번");
+      const _RO_no = document.getElementById("_RO_no");
+      const _공정단계 = document.getElementById("_공정단계");
+      const _적재No = document.getElementById("_적재No");
+      const _입고 = document.getElementById("_입고");
+      const _제조투입 = document.getElementById("_제조투입");
+      const _세척투입일 = document.getElementById("_세척투입일");
+      const _세척 = document.getElementById("_세척");
+      const _기초검사투입일 = document.getElementById("_기초검사투입일");
+      const _기초검사 = document.getElementById("_기초검사");
+      const _분해조립투입일 = document.getElementById("_분해조립투입일");
+      const _분해조립 = document.getElementById("_분해조립");
+      const _성능검사투입일 = document.getElementById("_성능검사투입일");
+      const _성능검사 = document.getElementById("_성능검사");
+      const _EOL투입일 = document.getElementById("_EOL투입일");
+      const _EOL = document.getElementById("_EOL");
+      const _QR_Label = document.getElementById("_QR_Label");
+      const _출하검사 = document.getElementById("_출하검사");
+      const _출하 = document.getElementById("_출하");
+      const _납품처 = document.getElementById("_납품처");
+      const _소재지 = document.getElementById("_소재지");
+      const _소재지사유 = document.getElementById("_소재지사유");
+      const _반품입고 = document.getElementById("_반품입고");
+      const _재출하 = document.getElementById("_재출하");
+      const _완전분해 = document.getElementById("_완전분해");
+      const _폐기 = document.getElementById("_폐기");
+      const _완전분해사유 = document.getElementById("_완전분해사유");
+      const _폐기사유 = document.getElementById("_폐기사유");
+    </script>
+  </body>
+</html>

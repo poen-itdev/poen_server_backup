@@ -1,0 +1,435 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="base/style/contract.css" />
+    <link rel="stylesheet" href="base/style/tabulator_css/tabulator_modern.min.css" />
+    <title>거래확인서 조회</title>
+    <script src="base/jslib/luxon.min.js"></script>
+    <script src="base/jslib/socket.io.min.js"></script>
+    <script src="base/js/poenRHS_mini.js"></script>
+    <script src="base/jslib/tabulator.js"></script>
+    <script src="base/jslib/pdfmake.min.js"></script>
+    <script src="base/jslib/html2canvas.js"></script>
+  </head>
+
+  <body>
+    <section class="agreement-all c">
+      <div id="_거래확인서">
+        <div id="confirmation" class="page">
+          <div class="confirmation-back"></div>
+          <div class="confirmation">
+            <div class="confirmation__header">
+              <div class="header__top">
+                <div class="header__top_logo">
+                  <img src="base/img/poen.png" alt="포엔 로고 이미지" class="logo_img" />
+                  <h2 class="logo_txt"><span>(주)</span> 포엔</h2>
+                </div>
+                <table class="content__table">
+                  <tr>
+                    <th class="confirm">보증기간</th>
+                  </tr>
+                  <tr>
+                    <td class="confirm">5년 or 10만km 우선 도래일</td>
+                  </tr>
+                </table>
+              </div>
+
+              <div class="header__text">
+                <h2>전기차 리퍼비시 배터리팩 거래 사실 확인서</h2>
+                <p>고객은 제공된 약관에 따라 구입하는 것에 동의하며, 판매자는 '리퍼비시 배터리팩'과 부대 서비스를 제공합니다. 납품처는 아래 '수리거점'입니다.</p>
+                <div class="amount">
+                  <span> - 금&nbsp;액 :</span>금 <input type="text" style="color: #444" placeholder="금액 입력란" id="_금액" /><em>원</em>(부가세 제외)
+                  <span>(※ 장착비/고품회수 조건 등 옵션 기입 – 특이사항시)</span>
+                </div>
+              </div>
+            </div>
+            <div class="confirmation__content">
+              <div class="privacy__con">
+                <h3>판매자</h3>
+                <p style="letter-spacing: 0.5px">
+                  주식회사 포엔 (사업자등록번호 : 368-81-01544)<br />
+                  주소 : 경기도 의왕시 안양판교로 82, 6층 605호 (포일동, 기업성장지원센터)<br />
+                  전화번호 : 070-7797-8423<br />
+                  이메일 : refurbish@poen.co.kr<br />
+                  대표이사 : 최성진 (인)
+                </p>
+                <img src="base/img/poen-stamp.png" alt="포엔 도장" class="poen-stamp" />
+              </div>
+              <div class="privacy__con">
+                <h3>고객 (고객님 작성)</h3>
+                <table class="content__table">
+                  <colgroup>
+                    <col class="col_1" width="30%" />
+                    <col class="col_2" width="70%" />
+                  </colgroup>
+                  <tr>
+                    <td>성명/상호</td>
+                    <td>
+                      <input type="text" id="_성명" />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>생년월일/사업자번호</td>
+                    <td>
+                      <input type="text" id="_생년월일" />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>주소</td>
+                    <td>
+                      <input type="text" id="_고객_주소" />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>전화번호</td>
+                    <td>
+                      <input type="text" id="_고객_전화번호" />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>e-mail</td>
+                    <td>
+                      <input type="text" id="_email" />
+                    </td>
+                  </tr>
+                </table>
+                <div class="sign sign-2" style="text-align: left; font-weight: bold">
+                  서명 :
+                  <input type="text" placeholder="성    명" id="_서명성명" />
+                  <span style="color: #666">(인)</span>
+                  <img style="width: 170px; height: 50px" id="_서명" />
+                </div>
+              </div>
+              <div class="privacy__con">
+                <h3>가입차량 (고객님 or 수리처 작성)</h3>
+                <table class="content__table">
+                  <colgroup>
+                    <col class="col_1" width="35%" />
+                    <col class="col_2" width="65%" />
+                  </colgroup>
+                  <tr>
+                    <td>차량제조사/모델명/트림(배터리옵션)</td>
+                    <td>
+                      <input type="text" id="_제조사" />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>제조년도</td>
+                    <td>
+                      <input type="text" id="_제조년도" />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>구매 신청일 누적주행 거리</td>
+                    <td>
+                      <input type="text" placeholder="계기판 사진 제출 必" id="_누적주행거리" />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>차량 번호</td>
+                    <td>
+                      <input type="text" id="_차량번호" />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>차대 번호</td>
+                    <td>
+                      <input type="text" id="_차대번호" />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>차량 용도</td>
+                    <td>
+                      <input type="text" placeholder="법인택시, 개인택시, 렌터카, 리스, 일반법인, 개인, 기타 직접입력 中 택1" id="_차량용도" />
+                    </td>
+                  </tr>
+                </table>
+              </div>
+              <div class="privacy__con">
+                <h3>수리거점 (수리처 작성)</h3>
+                <table class="content__table">
+                  <colgroup>
+                    <col class="col_1" width="30%" />
+                    <col class="col_2" width="70%" />
+                  </colgroup>
+                  <tr>
+                    <td>상호</td>
+                    <td>
+                      <input type="text" id="_상호" />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>주소</td>
+                    <td>
+                      <input type="text" id="_수리처_주소" />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>전화번호</td>
+                    <td>
+                      <input type="text" id="_수리처_전화번호" />
+                    </td>
+                  </tr>
+                </table>
+              </div>
+              <div class="privacy__con">
+                <div class="date" style="font-weight: bold">
+                  <input type="text" value="20" id="_year" />
+                  .
+                  <input type="text" id="_month" />
+                  .
+                  <input type="text" id="_day" />
+                </div>
+                <p>※ 본 문서를 제시하는 고객에게만 보증수리가 제공됩니다.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="apply__check">
+      <div class="apply__sign">
+        <label for="grid_거래확인서">
+          <h2>거래확인서 조회</h2>
+        </label>
+      </div>
+      <div id="grid_거래확인서"></div>
+      <div class="apply__btn">
+        <button onClick="조회();">조 회</button>
+        <button onClick="save();">저 장</button>
+        <button onClick="pdf();">PDF</button>
+      </div>
+      <canvas id="_canvas"></canvas>
+    </div>
+    <script>
+      var _금액 = document.getElementById("_금액");
+      var _성명 = document.getElementById("_성명");
+      var _생년월일 = document.getElementById("_생년월일");
+      var _고객_주소 = document.getElementById("_고객_주소");
+      var _고객_전화번호 = document.getElementById("_고객_전화번호");
+      var _email = document.getElementById("_email");
+      var _서명성명 = document.getElementById("_서명성명");
+      var _서명 = document.getElementById("_서명");
+      var _제조사 = document.getElementById("_제조사");
+      var _제조년도 = document.getElementById("_제조년도");
+      var _누적주행거리 = document.getElementById("_누적주행거리");
+      var _차량번호 = document.getElementById("_차량번호");
+      var _차대번호 = document.getElementById("_차대번호");
+      var _차량용도 = document.getElementById("_차량용도");
+      var _상호 = document.getElementById("_상호");
+      var _수리처_주소 = document.getElementById("_수리처_주소");
+      var _수리처_전화번호 = document.getElementById("_수리처_전화번호");
+      var _year = document.getElementById("_year");
+      var _month = document.getElementById("_month");
+      var _day = document.getElementById("_day");
+      var 날짜ID;
+
+      async function save() {
+        var doc = 거래확인서_doc;
+        doc.날짜ID = 날짜ID;
+        doc.금액 = _금액.value;
+        doc.성명 = _성명.value;
+        doc.생년월일 = _생년월일.value;
+        doc.고객_주소 = _고객_주소.value;
+        doc.고객_전화번호 = _고객_전화번호.value;
+        doc.email = _email.value;
+        doc.서명성명 = _서명성명.value;
+        doc.제조사 = _제조사.value;
+        doc.제조년도 = _제조년도.value;
+        doc.누적주행거리 = _누적주행거리.value;
+        doc.차량번호 = _차량번호.value;
+        doc.차대번호 = _차대번호.value;
+        doc.차량용도 = _차량용도.value;
+        doc.상호 = _상호.value;
+        doc.수리처_주소 = _수리처_주소.value;
+        doc.수리처_전화번호 = _수리처_전화번호.value;
+        doc.year = _year.value;
+        doc.month = _month.value;
+        doc.day = _day.value;
+
+        update_거래확인서(거래확인서, doc);
+        await delay();
+
+        console.log("save:", doc);
+        console.log(update_count);
+        console.log(insert_count);
+
+        if (update_count > 0) {
+          alert("업데이트 되었습니다");
+        }
+
+        if (insert_count > 0) {
+          alert("저장 되었습니다");
+        }
+      }
+
+      async function 조회() {
+        날짜ID = "";
+
+        _금액.value = "";
+        _성명.value = "";
+        _생년월일.value = "";
+        _고객_주소.value = "";
+        _고객_전화번호.value = "";
+        _email.value = "";
+        _서명성명.value = "";
+        _서명.src = "";
+        _제조사.value = "";
+        _제조년도.value = "";
+        _누적주행거리.value = "";
+        _차량번호.value = "";
+        _차대번호.value = "";
+        _차량용도.value = "";
+        _상호.value = "";
+        _수리처_주소.value = "";
+        _수리처_전화번호.value = "";
+        _year.value = "";
+        _month.value = "";
+        _day.value = "";
+
+        find_거래확인서(거래확인서, { 날짜ID: { $exists: true } });
+        await delay();
+        if (find_array != null) {
+          console.log("find:", find_array);
+
+          날짜ID = find_array[0].날짜ID;
+
+          var table_거래확인서 = new Tabulator("#grid_거래확인서", {
+            layout: "resizableColumnFit",
+            data: find_array,
+            height: "700px",
+            columns: [
+              {
+                title: "날짜ID",
+                field: "날짜ID",
+                sorter: "string",
+                width: "200",
+              },
+              { title: "금액", field: "금액", sorter: "string", width: "150" },
+              { title: "성명", field: "성명", sorter: "string", width: "150" },
+              {
+                title: "생년월일",
+                field: "생년월일",
+                sorter: "string",
+                width: "150",
+              },
+              {
+                title: "고객_주소",
+                field: "고객_주소",
+                sorter: "string",
+                width: "150",
+              },
+              {
+                title: "고객_전화번호",
+                field: "고객_전화번호",
+                sorter: "string",
+                width: "150",
+              },
+              {
+                title: "email",
+                field: "email",
+                sorter: "string",
+                width: "150",
+              },
+              {
+                title: "차량번호",
+                field: "차량번호",
+                sorter: "string",
+                width: "150",
+              },
+              { title: "상호", field: "상호", sorter: "string", width: "150" },
+              { title: "year", field: "year", sorter: "string", width: "80" },
+              { title: "month", field: "month", sorter: "string", width: "80" },
+              { title: "day", field: "day", sorter: "string", width: "80" },
+              {
+                formatter: "buttonCross",
+                width: 40,
+                align: "center",
+                cellClick: async function (e, cell) {
+                  var ok = window.confirm("지워집니다. 계속하겠습니까?");
+                  if (ok == false) return;
+
+                  cell.getRow().delete();
+                  deleteOne(거래확인서, cell.getRow().getData().날짜ID);
+                  await delay();
+
+                  if (delete_count > 0) {
+                    alert("삭제 되었습니다.");
+                  }
+
+                  location.reload();
+                },
+              },
+            ],
+          });
+
+          table_거래확인서.on("rowClick", async function (e, row) {
+            console.log("selected 날짜ID: ", row.getData().날짜ID);
+            날짜ID = row.getData().날짜ID;
+
+            find_거래확인서(거래확인서, { 날짜ID: 날짜ID });
+            await delay();
+
+            _금액.value = find_array[0].금액;
+            _성명.value = find_array[0].성명;
+            _생년월일.value = find_array[0].생년월일;
+            _고객_주소.value = find_array[0].고객_주소;
+            _고객_전화번호.value = find_array[0].고객_전화번호;
+            _email.value = find_array[0].email;
+            _서명성명.value = find_array[0].서명성명;
+            _제조사.value = find_array[0].제조사;
+            _제조년도.value = find_array[0].제조년도;
+            _누적주행거리.value = find_array[0].누적주행거리;
+            _차량번호.value = find_array[0].차량번호;
+            _차대번호.value = find_array[0].차대번호;
+            _차량용도.value = find_array[0].차량용도;
+            _서명.src = find_array[0].서명;
+            _상호.value = find_array[0].상호;
+            _수리처_주소.value = find_array[0].수리처_주소;
+            _수리처_전화번호.value = find_array[0].수리처_전화번호;
+            _year.value = find_array[0].year;
+            _month.value = find_array[0].month;
+            _day.value = find_array[0].day;
+          });
+        }
+      }
+
+      function pdf() {
+        var _거래확인서 = document.getElementById("_거래확인서");
+        var _width = 2650;
+        var _height = 1950;
+
+        html2canvas(_거래확인서, {
+          width: (_width * window.innerWidth) / 1920,
+          height: (_height * window.innerHeight) / 1080,
+        }).then((canvas) => {
+          var data = canvas.toDataURL();
+          var canvas = document.getElementById("_canvas");
+          var ctx = canvas.getContext("2d");
+          var img = new Image();
+          img.src = data;
+          img.onload = function () {
+            ctx.drawImage(img, 1920, 1080);
+          };
+
+          canvas.width = _width / 10;
+          canvas.height = _height / 10;
+
+          var docDefinition = {
+            content: [
+              {
+                image: data,
+                width: 1920,
+                height: 1080,
+              },
+            ],
+            pageSize: "A4",
+            pageOrientation: "portrait",
+          };
+          pdfMake.createPdf(docDefinition).download("거래확인서.pdf");
+        });
+        console.log("file name:", "거래확인서.pdf");
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>신품정보</title>
+    <link rel="stylesheet" href="base/style/공정.css" />
+  </head>
+
+  <body>
+    <section class="신품정보">
+      <div class="process__tit change-tit">
+        <h2>신품 정보 등록</h2>
+      </div>
+      <div class="input-group process-step">
+        <table class="tb">
+          <colgroup>
+            <col class="col_1" width="30%" />
+            <col class="col_2" width="70%" />
+          </colgroup>
+          <tr>
+            <td>
+              <label for="QR">QR</label>
+            </td>
+            <td>
+              <input type="text" id="_QR" value="" size="40" required />
+              <button onClick="신품정보등록_조회();">조 회</button>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_날짜">날짜</label>
+            </td>
+            <td>
+              <input type="date" id="_날짜" value="0000-00-00" required />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="구분">구분</label>
+            </td>
+            <td>
+              <input type="text" id="_구분" value="" size="40" required />
+              <select name="language" onchange="_구분_콤보박스(this);">
+                <option value="">---</option>
+                <option value="입고">입고</option>
+                <option value="출고">출고</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="차종">차종</label>
+            </td>
+            <td>
+              <input type="text" id="_차종" value="" size="40" required />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_품명">품명</label>
+            </td>
+            <td>
+              <input type="text" id="_품명" size="40" required />
+              <select name="language" onchange="_품명_콤보박스(this);">
+                <option value="">---</option>
+                <option value="BMU">BMU</option>
+                <option value="CMU">CMU</option>
+                <option value="PRA">PRA</option>
+                <option value="SPA">SPA</option>
+                <option value="LWR Case">LWR Case</option>
+                <option value="UPR Case">UPR Case</option>
+                <option value="PBE">PBE</option>
+                <option value="Gasket">Gasket</option>
+                <option value="FuseBox">FuseBox</option>
+                <option value="LV W_H">LV W_H</option>
+                <option value="HV W_H">HV W_H</option>
+                <option value="HV CNTR">HV CNTR</option>
+                <option value="Heating CNTR">Heating CNTR</option>
+                <option value="Relay">Relay</option>
+                <option value="ETC">ETC</option>
+                <option value="온도센서">온도센서</option>
+                <option value="Busbars">Busbars</option>
+                <option value="BMA">배터리모듈</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_품번">품번</label>
+            </td>
+            <td>
+              <input type="text" id="_품번" size="40" required />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_단가">단가</label>
+            </td>
+            <td>
+              <input type="text" id="_단가" size="40" required />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_수량">수량</label>
+            </td>
+            <td>
+              <input type="text" id="_수량" size="40" required />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_위치">위치</label>
+            </td>
+            <td>
+              <input type="text" id="_위치" size="40" required />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_LotNo">Lot No.</label>
+            </td>
+            <td>
+              <input type="text" id="_LotNo" size="40" required />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_비고">비고</label>
+            </td>
+            <td>
+              <input type="text" id="_비고" size="40" required />
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="input-group">
+        <div class="input-btn-group">
+          <button onClick="신품정보_save();">SAVE</button>
+        </div>
+      </div>
+      <!-- <div class="new-product">
+        <label
+          for="grid_신품정보"
+          style="display: flex; justify-content: center; font-weight: bold"
+          >신품 정보</label
+        >
+        <div id="grid_신품정보"></div>
+      </div> -->
+      <div class="excel-data">
+        <label>excel 문서 data 자동 입력 </label>
+        <input type="file" id="_재고관리_csv" accept=".csv" />
+      </div>
+    </section>
+    <script>
+      const _바코드 = document.getElementById("_바코드");
+      const _품명 = document.getElementById("_품명");
+      const _품번 = document.getElementById("_품번");
+      const _날짜 = document.getElementById("_날짜");
+      const _구분 = document.getElementById("_구분");
+      const _금액 = document.getElementById("_금액");
+      const _수량 = document.getElementById("_수량");
+      const _위치 = document.getElementById("_위치");
+      const _LotNo = document.getElementById("_LotNo");
+      const _비고 = document.getElementById("_비고");
+      const _grid_신품정보 = document.getElementById("_grid_신품정보");
+      const _재고관리_csv = document.getElementById("_재고관리_csv");
+    </script>
+  </body>
+</html>

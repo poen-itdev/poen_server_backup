@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>품번별 수량 현황</title>
+    <link rel="stylesheet" href="base/style/공정.css" />
+  </head>
+
+  <body>
+    <section>
+      <div class="process__tit change-tit">
+        <h2>품번별 수량 현황</h2>
+      </div>
+      <div class="data">
+        <div class="data__query">
+          <div>
+            <button onClick="수량집계_year();">Year</button>
+            <button onClick="수량집계_month();">Month</button>
+          </div>
+          <div class="data-check">
+            <input type="date" id="_검색일_from" size="40" value="0000-00-00" max="240-12-4" required />
+            <span class="tilde">&#126;</span>
+            <input type="date" id="_검색일_to" size="40" value="0000-00-00" max="240-12-4" required />&nbsp;
+            <button onClick="수량집계_기간조회();">조회</button>
+          </div>
+          <div class="data__radio">
+            <input type="radio" id="_all" name="구분" value="all" checked />
+            <label for="_all"><span>All</span></label>
+            <input type="radio" id="_일반" name="구분" value="일반" />
+            <label for="_일반"><span>일반</span></label>
+            <input type="radio" id="_보증" name="구분" value="보증" />
+            <label for="_보증"><span>보증</span></label>
+          </div>
+        </div>
+      </div>
+      <div class="data__btn">
+        <button onClick="수량집계_export_to_excel();" class="down__excel">Export To Excel</button>
+      </div>
+      <div class="process">
+        <div class="process__tit">
+          <label for="grid_BSA집계">품번별 배터리팩 집계</label>
+        </div>
+        <div id="grid_BSA집계"></div>
+      </div>
+      <div class="process">
+        <div class="process__tit">
+          <label for="grid_BMA집계">품번별 폐기 배터리모듈 집계</label>
+        </div>
+        <div id="grid_BMA집계"></div>
+      </div>
+      <div class="process">
+        <div class="process__tit">
+          <label for="grid_자재집계">품번별 고품 자재 집계</label>
+        </div>
+        <div id="grid_자재집계"></div>
+      </div>
+      <div class="gather-filter">
+        <select id="new_filter-field">
+          <option></option>
+          <option value="품번">품번</option>
+          <option value="품명">품명</option>
+          <option value="차종">차종</option>
+          <option value="입고수">입고수</option>
+          <option value="출고수">출고수</option>
+          <option value="합계">합계</option>
+        </select>
+
+        <select id="new_filter-type">
+          <option value="=">=</option>
+          <option value="<"><</option>
+          <option value="<="><=</option>
+          <option value=">">></option>
+          <option value=">=">>=</option>
+          <option value="!=">!=</option>
+          <option value="like">like</option>
+        </select>
+
+        <input id="new_filter-value" type="text" placeholder="value to filter" />
+
+        <button id="new_filter-clear">Clear Filter</button>
+      </div>
+      <div class="process">
+        <div class="process__tit">
+          <label for="grid_부품집계">부재료 집계</label>
+        </div>
+        <div id="grid_부품집계"></div>
+      </div>
+      <div class="data__btn">
+        <button onClick="부품집계_export_to_excel();" class="down__excel">Export To Excel</button>
+      </div>
+    </section>
+  </body>
+</html>

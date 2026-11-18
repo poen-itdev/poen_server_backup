@@ -1,0 +1,2018 @@
+<html>
+  <head>
+    <title>기초 보고서</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="base/style/inspection.css" />
+    <link rel="stylesheet" href="base/style/공정.css" />
+  </head>
+
+  <body>
+    <div id="_기초보고서">
+      <div class="report__tit">
+        <h3>▣ 기초보고서 [<span id="_차종">CS_EV</span>]</h3>
+        <span id="_재제조번호_HEAD"></span><input type="checkbox" id="_cb기초보고서" checked />
+      </div>
+      <div id="line"></div>
+      <div>
+        <table class="all">
+          <colgroup>
+            <col width="30%" />
+            <col width="70%" />
+          </colgroup>
+          <tr>
+            <td class="base" width="40%">
+              <table class="base" height="100%">
+                <colgroup>
+                  <col width="20%" />
+                  <col width="25%" />
+                  <col width="25%" />
+                  <col width="25%" />
+                </colgroup>
+                <tr>
+                  <td class="base_header" colspan="4">차량 정보</td>
+                </tr>
+                <tr>
+                  <td class="base_header">VIN NO.</td>
+                  <td class="base_header">R/O NO.</td>
+                  <td class="base_header">주행거리</td>
+                  <td class="base_header">차량번호</td>
+                </tr>
+                <tr>
+                  <td class="base2" id="_VIN"></td>
+                  <td class="base2" id="_RO"></td>
+                  <td class="base2" id="_주행거리"></td>
+                  <td class="base2" id="_차량번호"></td>
+                </tr>
+                <tr>
+                  <td class="base_header" colspan="4">배터리팩 정보</td>
+                </tr>
+                <tr>
+                  <td class="base_header">생산일</td>
+                  <td class="base_header">판매일</td>
+                  <td class="base_header">수리일</td>
+                  <td class="base_header">입고일</td>
+                </tr>
+                <tr>
+                  <td class="base" id="_생산일"></td>
+                  <td class="base" id="_판매일"></td>
+                  <td class="base" id="_수리일"></td>
+                  <td class="base" id="_입고일"></td>
+                </tr>
+                <tr>
+                  <td class="base_header3" colspan="2">입고사진</td>
+                  <td class="base_header3" colspan="2">배터리팩 QR 코드 사진</td>
+                </tr>
+                <tr>
+                  <td class="base3" colspan="2">
+                    <div class="imgName widthImg">
+                      <img id="_입고사진" style="max-width: 60%; height: auto; aspect-ratio: 4/3" />
+                    </div>
+                  </td>
+                  <td class="base3" colspan="2">
+                    <div class="imgName widthImg">
+                      <img id="_BSA_QR" style="max-width: 60%; height: auto; aspect-ratio: 4/3" />
+                    </div>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td class="base_left" colspan="4" style="font-weight: bold">
+                    1. 관리번호:
+                    <p id="_관리번호" style="font-weight: normal"></p>
+                    2. 필드현상:
+                    <p id="_필드현상" style="font-weight: normal"></p>
+                    3. A/S 센터 진단:
+                    <p id="_센터진단" style="font-weight: normal"></p>
+                    4. A/S 센터 조치:
+                    <p id="_센터조치" style="font-weight: normal"></p>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="base_header" colspan="2" width="50%">작성자</td>
+                  <td class="base_header" colspan="2" width="50%">작성일</td>
+                </tr>
+                <tr>
+                  <td class="base" colspan="2" id="_작성자"></td>
+                  <td class="base" colspan="2" id="_작성일"></td>
+                </tr>
+              </table>
+            </td>
+            <td class="base" width="60%;" height="2vw">
+              <table class="base tableAll" id="_CS_EV" style="display: none">
+                <colgroup>
+                  <col width="5%" />
+                  <col width="10%" />
+                  <col width="15%" />
+                  <col width="25%" />
+                  <col width="5%" />
+                  <col width="25%" />
+                  <col width="5%" />
+                </colgroup>
+                <tr>
+                  <td class="base_header2">No</td>
+                  <td class="base_header2" colspan="2">점검 항목</td>
+                  <td class="base_header2">점검 기준</td>
+                  <td class="base_header2">판정</td>
+                  <td class="base_header2">결과 값 / 특이사항 / 미실시 사유</td>
+                  <td class="base_header2">첨부</td>
+                </tr>
+                <tr>
+                  <td class="base" rowspan="2">1</td>
+                  <td class="base weight-bold" rowspan="2">육안검사</td>
+                  <td class="base">외부 점검</td>
+                  <td class="base">배터리팩 상,하부 이물질 및 손상 확인</td>
+                  <td class="base" id="_CS_외부점검">OK/NG</td>
+                  <td class="base" id="_CS_외부점검사유">NG 사유 및 특이사항 입력</td>
+                  <td class="base" rowspan="2"></td>
+                </tr>
+                <tr>
+                  <td class="base">내부 점검</td>
+                  <td class="base">배터리팩 내부 이물질 및 손상 확인</td>
+                  <td class="base" id="_CS_내부점검">OK/NG</td>
+                  <td class="base" id="_CS_내부점검사유">NG 사유 및 특이사항 입력</td>
+                </tr>
+                <tr>
+                  <td class="base" rowspan="2">2</td>
+                  <td class="base weight-bold" rowspan="2">기밀 검사</td>
+                  <td class="base">케이스</td>
+                  <td class="base">2분간 감압량 2mbar 이내</td>
+                  <td class="base" id="_CS_케이스">OK/NG</td>
+                  <td class="base" id="_CS_케이스감압량">감압 량(mbar):</td>
+                  <td class="base" rowspan="2"></td>
+                </tr>
+                <tr>
+                  <td class="base">냉각 유로</td>
+                  <td class="base">2분간 감압량 2mbar 이내</td>
+                  <td class="base" id="_CS_냉각유로">OK/NG</td>
+                  <td class="base" id="_CS_냉각유로감압량">감압 량(mbar):</td>
+                </tr>
+                <tr>
+                  <td class="base">2-1</td>
+                  <td class="base weight-bold">토크 검사</td>
+                  <td class="base">케이스</td>
+                  <td class="base">
+                    1.0±0.2kgf.m 의 60&#37; 이상 <br />
+                    (9.80±1.96Nm 의 60&#37; 이상)
+                  </td>
+                  <td class="base" id="_CS_토크검사">OK/NG</td>
+                  <td class="base" id="_CS_토크검사사유">
+                    4.8kgf.m (47Nm) 이하 <br />
+                    기밀 검사 NG 시 진행
+                  </td>
+                  <td class="base"></td>
+                </tr>
+                <tr>
+                  <td class="base" rowspan="2">3</td>
+                  <td class="base weight-bold" rowspan="2">절연 검사</td>
+                  <td class="base">PRA(+) ~ 샤시</td>
+                  <td class="base">100 MΩ 이상</td>
+                  <td class="base" id="_CS_PRA_P">OK/NG</td>
+                  <td class="base" id="_CS_PRA_P값">0000 MΩ</td>
+                  <td class="base" rowspan="2"></td>
+                </tr>
+                <tr>
+                  <td class="base">PRA(-) ~ 샤시</td>
+                  <td class="base">50 MΩ 이상</td>
+                  <td class="base" id="_CS_PRA_N">OK/NG</td>
+                  <td class="base" id="_CS_PRA_N값">0000 MΩ</td>
+                </tr>
+                <tr>
+                  <td class="base" rowspan="4">4</td>
+                  <td class="base weight-bold" rowspan="4">통신 검사</td>
+                  <td class="base">팩 전압</td>
+                  <td class="base">OCV 기준 302.6~410.7V</td>
+                  <td class="base" id="_CS_팩전압">OK/NG</td>
+                  <td class="base" id="_CS_팩전압값">팩 전압(V):</td>
+                  <td class="base" rowspan="4"></td>
+                </tr>
+                <tr>
+                  <td class="base">셀 전압 편차</td>
+                  <td class="base">40mV 이하</td>
+                  <td class="base" id="_CS_셀전압편차">OK/NG</td>
+                  <td class="base" id="_CS_셀전압편차값">셀 전압편차(mV):</td>
+                </tr>
+                <tr>
+                  <td class="base">릴레이 제어</td>
+                  <td class="base">릴레이 제어 가능할 것</td>
+                  <td class="base" id="_CS_릴레이제어">OK/NG</td>
+                  <td class="base" id="_CS_릴레이제어사유">릴레이 제어 가능 / 불가능 사유</td>
+                </tr>
+                <tr>
+                  <td class="base">고장코드</td>
+                  <td class="base">고장코드 없을 것</td>
+                  <td class="base" id="_CS_고장코드">OK/NG</td>
+                  <td class="base" id="_CS_고장코드사유">고장코드 없음 / (현재),(과거)구분</td>
+                </tr>
+                <tr>
+                  <td class="base" rowspan="2">5</td>
+                  <td class="base weight-bold" rowspan="2">이력 확인</td>
+                  <td class="base">입고 정보</td>
+                  <td class="base">데이터 누락 없을 것</td>
+                  <td class="base" id="_CS_입고정보">OK/NG</td>
+                  <td class="base" id="_CS_입고정보사유">데이터 누락 없음</td>
+                  <td class="base"></td>
+                </tr>
+                <tr>
+                  <td class="base">재제조 이력</td>
+                  <td class="base">데이터 누락 없을 것</td>
+                  <td class="base" id="_CS_재제조이력">OK/NG</td>
+                  <td class="base" id="_CS_재제조이력사유">데이터 누락 없음</td>
+                  <td class="base"></td>
+                </tr>
+              </table>
+
+              <table class="base tableAll" id="_CV_EV" style="display: none">
+                <colgroup>
+                  <col width="5%" />
+                  <col width="10%" />
+                  <col width="15%" />
+                  <col width="25%" />
+                  <col width="5%" />
+                  <col width="25%" />
+                  <col width="5%" />
+                </colgroup>
+                <tr>
+                  <td class="base_header2">No</td>
+                  <td class="base_header2" colspan="2">점검 항목</td>
+                  <td class="base_header2">점검 기준</td>
+                  <td class="base_header2">판정</td>
+                  <td class="base_header2">결과 값 / 특이사항 / 미실시 사유</td>
+                  <td class="base_header2">첨부</td>
+                </tr>
+                <tr>
+                  <td class="base" rowspan="3">1</td>
+                  <td class="base weight-bold" rowspan="3">육안검사</td>
+                  <td class="base">외부 점검</td>
+                  <td class="base">배터리팩 상,하부 이물질 및 손상 확인</td>
+                  <td class="base" id="_CV_외부점검">OK/NG</td>
+                  <td class="base" id="_CV_외부점검사유">NG 사유 및 특이사항 입력</td>
+                  <td class="base" rowspan="3"></td>
+                </tr>
+                <tr>
+                  <td class="base">외부 점검</td>
+                  <td class="base">하부 플라스틱 패널 상태 확인</td>
+                  <td class="base" id="_CV_외부점검2">OK/NG</td>
+                  <td class="base" id="_CV_외부점검사유2">NG 사유 및 특이사항 입력</td>
+                </tr>
+                <tr>
+                  <td class="base">내부 점검</td>
+                  <td class="base">배터리팩 내부 이물질 및 손상 확인</td>
+                  <td class="base" id="_CV_내부점검">OK/NG</td>
+                  <td class="base" id="_CV_내부점검사유">NG 사유 및 특이사항 입력</td>
+                </tr>
+                <tr>
+                  <td class="base" rowspan="2">2</td>
+                  <td class="base weight-bold" rowspan="2">기밀 검사</td>
+                  <td class="base">케이스</td>
+                  <td class="base">2분간 감압량 2mbar 이내</td>
+                  <td class="base" id="_CV_케이스">OK/NG</td>
+                  <td class="base" id="_CV_케이스감압량">감압 량(mbar):</td>
+                  <td class="base" rowspan="2"></td>
+                </tr>
+                <tr>
+                  <td class="base">냉각 유로</td>
+                  <td class="base">2분간 감압량 2mbar 이내</td>
+                  <td class="base" id="_CV_냉각유로">OK/NG</td>
+                  <td class="base" id="_CV_냉각유로감압량">감압 량(mbar):</td>
+                </tr>
+                <tr>
+                  <td class="base" rowspan="2">3</td>
+                  <td class="base weight-bold" rowspan="2">절연 검사</td>
+                  <td class="base">PRA(+) ~ 샤시</td>
+                  <td class="base">40 MΩ 이상</td>
+                  <td class="base" id="_CV_PRA_P">OK/NG</td>
+                  <td class="base" id="_CV_PRA_P값">0000 MΩ</td>
+                  <td class="base" rowspan="2"></td>
+                </tr>
+                <tr>
+                  <td class="base">PRA(-) ~ 샤시</td>
+                  <td class="base">15 MΩ 이상</td>
+                  <td class="base" id="_CV_PRA_N">OK/NG</td>
+                  <td class="base" id="_CV_PRA_N값">0000 MΩ</td>
+                </tr>
+                <tr>
+                  <td class="base" rowspan="4">4</td>
+                  <td class="base weight-bold" rowspan="4">통신 검사</td>
+                  <td class="base">팩 전압</td>
+                  <td class="base">OCV 기준 595.2~806.4 V</td>
+                  <td class="base" id="_CV_팩전압">OK/NG</td>
+                  <td class="base" id="_CV_팩전압값">팩 전압(V):</td>
+                  <td class="base" rowspan="4"></td>
+                </tr>
+                <tr>
+                  <td class="base">셀 전압 편차</td>
+                  <td class="base">40mV 이하</td>
+                  <td class="base" id="_CV_셀전압편차">OK/NG</td>
+                  <td class="base" id="_CV_셀전압편차값">셀 전압편차(mV):</td>
+                </tr>
+                <tr>
+                  <td class="base">릴레이 제어</td>
+                  <td class="base">릴레이 제어 가능할 것</td>
+                  <td class="base" id="_CV_릴레이제어">OK/NG</td>
+                  <td class="base" id="_CV_릴레이제어사유">릴레이 제어 가능 / 불가능 사유</td>
+                </tr>
+                <tr>
+                  <td class="base">고장코드</td>
+                  <td class="base">고장코드 없을 것</td>
+                  <td class="base" id="_CV_고장코드">OK/NG</td>
+                  <td class="base" id="_CV_고장코드사유">고장코드 없음 / (현재),(과거)구분</td>
+                </tr>
+                <tr>
+                  <td class="base" rowspan="2">5</td>
+                  <td class="base weight-bold" rowspan="2">이력 확인</td>
+                  <td class="base">입고 정보</td>
+                  <td class="base">데이터 누락 없을 것</td>
+                  <td class="base" id="_CV_입고정보">OK/NG</td>
+                  <td class="base" id="_CV_입고정보사유">데이터 누락 없음</td>
+                  <td class="base"></td>
+                </tr>
+                <tr>
+                  <td class="base">재제조 이력</td>
+                  <td class="base">데이터 누락 없을 것</td>
+                  <td class="base" id="_CV_재제조이력">OK/NG</td>
+                  <td class="base" id="_CV_재제조이력사유">데이터 누락 없음</td>
+                  <td class="base"></td>
+                </tr>
+              </table>
+
+              <table class="base tableAll" id="_DE_EV" style="display: none">
+                <colgroup>
+                  <col width="5%" />
+                  <col width="10%" />
+                  <col width="15%" />
+                  <col width="25%" />
+                  <col width="5%" />
+                  <col width="25%" />
+                  <col width="5%" />
+                </colgroup>
+                <tr>
+                  <td class="base_header2">No</td>
+                  <td class="base_header2" colspan="2">점검 항목</td>
+                  <td class="base_header2">점검 기준</td>
+                  <td class="base_header2">판정</td>
+                  <td class="base_header2">결과 값 / 특이사항 / 미실시 사유</td>
+                  <td class="base_header2">첨부</td>
+                </tr>
+                <tr>
+                  <td class="base" rowspan="2">1</td>
+                  <td class="base weight-bold" rowspan="2">육안검사</td>
+                  <td class="base">외부 점검</td>
+                  <td class="base">배터리팩 상,하부 이물질 및 손상 확인</td>
+                  <td class="base" id="_DE_외부점검">OK/NG</td>
+                  <td class="base" id="_DE_외부점검사유">NG 사유 및 특이사항 입력</td>
+                  <td class="base" rowspan="2"></td>
+                </tr>
+                <tr>
+                  <td class="base">내부 점검</td>
+                  <td class="base">배터리팩 내부 이물질 및 손상 확인</td>
+                  <td class="base" id="_DE_내부점검">OK/NG</td>
+                  <td class="base" id="_DE_내부점검사유">NG 사유 및 특이사항 입력</td>
+                </tr>
+                <tr>
+                  <td class="base" rowspan="2">2</td>
+                  <td class="base weight-bold" rowspan="2">기밀 검사</td>
+                  <td class="base">케이스</td>
+                  <td class="base">2분간 감압량 2mbar 이내</td>
+                  <td class="base" id="_DE_케이스">OK/NG</td>
+                  <td class="base" id="_DE_케이스감압량">감압 량(mbar):</td>
+                  <td class="base" rowspan="2"></td>
+                </tr>
+                <tr>
+                  <td class="base">냉각 유로</td>
+                  <td class="base">2분간 감압량 2mbar 이내</td>
+                  <td class="base" id="_DE_냉각유로">OK/NG</td>
+                  <td class="base" id="_DE_냉각유로감압량">감압 량(mbar):</td>
+                </tr>
+                <tr>
+                  <td class="base" rowspan="2">3</td>
+                  <td class="base weight-bold" rowspan="2">절연 검사</td>
+                  <td class="base">PRA(+) ~ 샤시</td>
+                  <td class="base">100 MΩ 이상</td>
+                  <td class="base" id="_DE_PRA_P">OK/NG</td>
+                  <td class="base" id="_DE_PRA_P값">0000 MΩ</td>
+                  <td class="base" rowspan="2"></td>
+                </tr>
+                <tr>
+                  <td class="base">PRA(-) ~ 샤시</td>
+                  <td class="base">50 MΩ 이상</td>
+                  <td class="base" id="_DE_PRA_N">OK/NG</td>
+                  <td class="base" id="_DE_PRA_N값">0000 MΩ</td>
+                </tr>
+                <tr>
+                  <td class="base" rowspan="4">4</td>
+                  <td class="base weight-bold" rowspan="4">통신 검사</td>
+                  <td class="base">팩 전압</td>
+                  <td class="base">OCV 기준 302.6~410.7V</td>
+                  <td class="base" id="_DE_팩전압">OK/NG</td>
+                  <td class="base" id="_DE_팩전압값">팩 전압(V):</td>
+                  <td class="base" rowspan="4"></td>
+                </tr>
+                <tr>
+                  <td class="base">셀 전압 편차</td>
+                  <td class="base">40mV 이하</td>
+                  <td class="base" id="_DE_셀전압편차">OK/NG</td>
+                  <td class="base" id="_DE_셀전압편차값">셀 전압편차(mV):</td>
+                </tr>
+                <tr>
+                  <td class="base">릴레이 제어</td>
+                  <td class="base">릴레이 제어 가능할 것</td>
+                  <td class="base" id="_DE_릴레이제어">OK/NG</td>
+                  <td class="base" id="_DE_릴레이제어사유">릴레이 제어 가능 / 불가능 사유</td>
+                </tr>
+                <tr>
+                  <td class="base">고장코드</td>
+                  <td class="base">고장코드 없을 것</td>
+                  <td class="base" id="_DE_고장코드">OK/NG</td>
+                  <td class="base" id="_DE_고장코드사유">고장코드 없음 / (현재),(과거)구분</td>
+                </tr>
+                <tr>
+                  <td class="base" rowspan="2">5</td>
+                  <td class="base weight-bold" rowspan="2">이력 확인</td>
+                  <td class="base">입고 정보</td>
+                  <td class="base">데이터 누락 없을 것</td>
+                  <td class="base" id="_DE_입고정보">OK/NG</td>
+                  <td class="base" id="_DE_입고정보사유">데이터 누락 없음</td>
+                  <td class="base"></td>
+                </tr>
+                <tr>
+                  <td class="base">재제조 이력</td>
+                  <td class="base">데이터 누락 없을 것</td>
+                  <td class="base" id="_DE_재제조이력">OK/NG</td>
+                  <td class="base" id="_DE_재제조이력사유">데이터 누락 없음</td>
+                  <td class="base"></td>
+                </tr>
+              </table>
+
+              <table class="base tableAll" id="_HR_EV" style="display: none">
+                <colgroup>
+                  <col width="5%" />
+                  <col width="10%" />
+                  <col width="15%" />
+                  <col width="25%" />
+                  <col width="5%" />
+                  <col width="25%" />
+                  <col width="5%" />
+                </colgroup>
+                <tr>
+                  <td class="base_header2">No</td>
+                  <td class="base_header2" colspan="2">점검 항목</td>
+                  <td class="base_header2">점검 기준</td>
+                  <td class="base_header2">판정</td>
+                  <td class="base_header2">결과 값 / 특이사항 / 미실시 사유</td>
+                  <td class="base_header2">첨부</td>
+                </tr>
+                <tr>
+                  <td class="base" rowspan="3">1</td>
+                  <td class="base weight-bold" rowspan="3">육안검사</td>
+                  <td class="base">외부 점검</td>
+                  <td class="base">배터리팩 상,하부 이물질 및 손상 확인</td>
+                  <td class="base" id="_HR_외부점검">OK/NG</td>
+                  <td class="base" id="_HR_외부점검사유">NG 사유 및 특이사항 입력</td>
+                  <td class="base" rowspan="3"></td>
+                </tr>
+                <tr>
+                  <td class="base">내부 점검</td>
+                  <td class="base">배터리팩 내부 이물질 및 손상 확인</td>
+                  <td class="base" id="_HR_내부점검">OK/NG</td>
+                  <td class="base" id="_HR_내부점검사유">NG 사유 및 특이사항 입력</td>
+                </tr>
+                <tr>
+                  <td class="base">셀 제조사 확인</td>
+                  <td class="base">-</td>
+                  <td class="base">-</td>
+                  <td class="base" id="_HR_셀제조사사유">NG 사유 및 특이사항 입력</td>
+                </tr>
+                <tr>
+                  <td class="base" rowspan="2">2</td>
+                  <td class="base weight-bold" rowspan="2">기밀 검사</td>
+                  <td class="base">케이스</td>
+                  <td class="base">2분간 감압량 2mbar 이내</td>
+                  <td class="base" id="_HR_케이스">OK/NG</td>
+                  <td class="base" id="_HR_케이스감압량">감압 량(mbar):</td>
+                  <td class="base" rowspan="2"></td>
+                </tr>
+                <tr>
+                  <td class="base">냉각 유로</td>
+                  <td class="base">2분간 감압량 2mbar 이내</td>
+                  <td class="base" id="_HR_냉각유로">OK/NG</td>
+                  <td class="base" id="_HR_냉각유로감압량">감압 량(mbar):</td>
+                </tr>
+                <tr>
+                  <td class="base" rowspan="4">3</td>
+                  <td class="base weight-bold" rowspan="4">절연 검사</td>
+                  <td class="base">PRA(+) ~ 샤시</td>
+                  <td class="base">100 MΩ 이상</td>
+                  <td class="base" id="_HR_PRA_P">OK/NG</td>
+                  <td class="base" id="_HR_PRA_P값">0000 MΩ</td>
+                  <td class="base" rowspan="4"></td>
+                </tr>
+                <tr>
+                  <td class="base">PRA(-) ~ 샤시</td>
+                  <td class="base">50 MΩ 이상</td>
+                  <td class="base" id="_HR_PRA_N">OK/NG</td>
+                  <td class="base" id="_HR_PRA_N값">0000 MΩ</td>
+                </tr>
+                <tr>
+                  <td class="base">HV커넥터(+)~샤시</td>
+                  <td class="base">O/F MΩ 이상</td>
+                  <td class="base" id="_HR_HV커넥터_P">OK/NG</td>
+                  <td class="base" id="_HR_HV커넥터_P값  ">0000 MΩ</td>
+                </tr>
+                <tr>
+                  <td class="base">HV커넥터(-)~샤시</td>
+                  <td class="base">O/F MΩ 이상</td>
+                  <td class="base" id="_HR_HV커넥터_N">OK/NG</td>
+                  <td class="base" id="_HR_HV커넥터_N값">0000 MΩ</td>
+                </tr>
+                <tr>
+                  <td class="base" rowspan="5">4</td>
+                  <td class="base weight-bold" rowspan="5">통신 검사</td>
+                  <td class="base">팩 전압</td>
+                  <td class="base">OCV 기준 277.9~377.2V</td>
+                  <td class="base" id="_HR_팩전압">OK/NG</td>
+                  <td class="base" id="_HR_팩전압값">팩 전압(V):</td>
+                  <td class="base" rowspan="5"></td>
+                </tr>
+                <tr>
+                  <td class="base">셀 전압 편차</td>
+                  <td class="base">40mV 이하</td>
+                  <td class="base" id="_HR_셀전압편차">OK/NG</td>
+                  <td class="base" id="_HR_셀전압편차값">셀 전압편차(mV):</td>
+                </tr>
+                <tr>
+                  <td class="base">릴레이 제어</td>
+                  <td class="base">릴레이 제어 가능할 것</td>
+                  <td class="base" id="_HR_릴레이제어">OK/NG</td>
+                  <td class="base" id="_HR_릴레이제어사유">릴레이 제어 가능 / 불가능 사유</td>
+                </tr>
+                <tr>
+                  <td class="base">고장코드</td>
+                  <td class="base">고장코드 없을 것</td>
+                  <td class="base" id="_HR_고장코드">OK/NG</td>
+                  <td class="base" id="_HR_고장코드사유">고장코드 없음 / (현재),(과거)구분</td>
+                </tr>
+                <tr>
+                  <td class="base">ROM ID</td>
+                  <td class="base">-</td>
+                  <td class="base">-</td>
+                  <td class="base">-</td>
+                </tr>
+                <tr>
+                  <td class="base" rowspan="2">5</td>
+                  <td class="base weight-bold" rowspan="2">이력 확인</td>
+                  <td class="base">입고 정보</td>
+                  <td class="base">데이터 누락 없을 것</td>
+                  <td class="base" id="_HR_입고정보">OK/NG</td>
+                  <td class="base" id="_HR_입고정보사유">데이터 누락 없음</td>
+                  <td class="base"></td>
+                </tr>
+                <tr>
+                  <td class="base">재제조 이력</td>
+                  <td class="base">데이터 누락 없을 것</td>
+                  <td class="base" id="_HR_재제조이력">OK/NG</td>
+                  <td class="base" id="_HR_재제조이력사유">데이터 누락 없음</td>
+                  <td class="base"></td>
+                </tr>
+              </table>
+
+              <table class="base tableAll" id="_LK_EV" style="display: none">
+                <colgroup>
+                  <col width="5%" />
+                  <col width="10%" />
+                  <col width="15%" />
+                  <col width="25%" />
+                  <col width="5%" />
+                  <col width="25%" />
+                  <col width="5%" />
+                </colgroup>
+                <tr>
+                  <td class="base_header2">No</td>
+                  <td class="base_header2" colspan="2">점검 항목</td>
+                  <td class="base_header2">점검 기준</td>
+                  <td class="base_header2">판정</td>
+                  <td class="base_header2">결과 값 / 특이사항 / 미실시 사유</td>
+                  <td class="base_header2">첨부</td>
+                </tr>
+                <tr>
+                  <td class="base" rowspan="2">1</td>
+                  <td class="base weight-bold" rowspan="2">육안검사</td>
+                  <td class="base">외부 점검</td>
+                  <td class="base">배터리팩 상,하부 이물질 및 손상 확인</td>
+                  <td class="base" id="_LK_외부점검">OK/NG</td>
+                  <td class="base" id="_LK_외부점검사유">NG 사유 및 특이사항 입력</td>
+                  <td class="base" rowspan="2"></td>
+                </tr>
+                <tr>
+                  <td class="base">내부 점검</td>
+                  <td class="base">배터리팩 내부 이물질 및 손상 확인</td>
+                  <td class="base" id="_LK_내부점검">OK/NG</td>
+                  <td class="base" id="_LK_내부점검사유">NG 사유 및 특이사항 입력</td>
+                </tr>
+                <tr>
+                  <td class="base" rowspan="2">2</td>
+                  <td class="base weight-bold" rowspan="2">기밀 검사</td>
+                  <td class="base">케이스</td>
+                  <td class="base">2분간 감압량 2mbar 이내</td>
+                  <td class="base" id="_LK_케이스">OK/NG</td>
+                  <td class="base" id="_LK_케이스감압량">감압 량(mbar):</td>
+                  <td class="base" rowspan="2"></td>
+                </tr>
+                <tr>
+                  <td class="base">냉각 유로</td>
+                  <td class="base">2분간 감압량 2mbar 이내</td>
+                  <td class="base" id="_LK_냉각유로">OK/NG</td>
+                  <td class="base" id="_LK_냉각유로감압량">감압 량(mbar):</td>
+                </tr>
+                <tr>
+                  <td class="base">2-1</td>
+                  <td class="base weight-bold">토크 검사</td>
+                  <td class="base">케이스</td>
+                  <td class="base">
+                    1.0±0.2kgf.m 의 60&#37; 이상 <br />
+                    (9.80±1.96Nm 의 60&#37; 이상)
+                  </td>
+                  <td class="base" id="_LK_토크검사">OK/NG</td>
+                  <td class="base" id="_LK_토크검사사유">
+                    4.8kgf.m (47Nm) 이하 <br />
+                    기밀 검사 NG 시 진행
+                  </td>
+                  <td class="base"></td>
+                </tr>
+                <tr>
+                  <td class="base" rowspan="4">3</td>
+                  <td class="base weight-bold" rowspan="4">절연 검사</td>
+                  <td class="base">PRA(+) ~ 샤시</td>
+                  <td class="base">100 MΩ 이상</td>
+                  <td class="base" id="_LK_PRA_P">OK/NG</td>
+                  <td class="base" id="_LK_PRA_P값">0000 MΩ</td>
+                  <td class="base" rowspan="4"></td>
+                </tr>
+                <tr>
+                  <td class="base">PRA(-) ~ 샤시</td>
+                  <td class="base">100 MΩ 이상</td>
+                  <td class="base" id="_LK_PRA_N">OK/NG</td>
+                  <td class="base" id="_LK_PRA_N값">0000 MΩ</td>
+                </tr>
+                <tr>
+                  <td class="base">HV(+) ~ 샤시</td>
+                  <td class="base">100 MΩ 이상</td>
+                  <td class="base" id="_LK_HV_P">OK/NG</td>
+                  <td class="base" id="_LK_HV_P값">0000 MΩ</td>
+                </tr>
+                <tr>
+                  <td class="base">HV(-) ~ 샤시</td>
+                  <td class="base">O/F</td>
+                  <td class="base" id="_LK_HV_N">OK/NG</td>
+                  <td class="base" id="_LK_HV_N값">0000 MΩ</td>
+                </tr>
+                <tr>
+                  <td class="base" rowspan="4">4</td>
+                  <td class="base weight-bold" rowspan="4">통신 검사</td>
+                  <td class="base">팩 전압</td>
+                  <td class="base">OCV 기준 302.6~410.7V</td>
+                  <td class="base" id="_LK_팩전압">OK/NG</td>
+                  <td class="base" id="_LK_팩전압값">팩 전압(V):</td>
+                  <td class="base" rowspan="4"></td>
+                </tr>
+                <tr>
+                  <td class="base">셀 전압 편차</td>
+                  <td class="base">40mV 이하</td>
+                  <td class="base" id="_LK_셀전압편차">OK/NG</td>
+                  <td class="base" id="_LK_셀전압편차값">셀 전압편차(mV):</td>
+                </tr>
+                <tr>
+                  <td class="base">릴레이 제어</td>
+                  <td class="base">릴레이 제어 가능할 것</td>
+                  <td class="base" id="_LK_릴레이제어">OK/NG</td>
+                  <td class="base" id="_LK_릴레이제어사유">릴레이 제어 가능 / 불가능 사유</td>
+                </tr>
+                <tr>
+                  <td class="base">고장코드</td>
+                  <td class="base">고장코드 없을 것</td>
+                  <td class="base" id="_LK_고장코드">OK/NG</td>
+                  <td class="base" id="_LK_고장코드사유">고장코드 없음 / (현재),(과거)구분</td>
+                </tr>
+                <tr>
+                  <td class="base" rowspan="2">5</td>
+                  <td class="base weight-bold" rowspan="2">이력 확인</td>
+                  <td class="base">입고 정보</td>
+                  <td class="base">데이터 누락 없을 것</td>
+                  <td class="base" id="_LK_입고정보">OK/NG</td>
+                  <td class="base" id="_LK_입고정보사유">데이터 누락 없음</td>
+                  <td class="base"></td>
+                </tr>
+                <tr>
+                  <td class="base">재제조 이력</td>
+                  <td class="base">데이터 누락 없을 것</td>
+                  <td class="base" id="_LK_재제조이력">OK/NG</td>
+                  <td class="base" id="_LK_재제조이력사유">데이터 누락 없음</td>
+                  <td class="base"></td>
+                </tr>
+              </table>
+
+              <table class="base tableAll" id="_LM_EV" style="display: none">
+                <colgroup>
+                  <col width="5%" />
+                  <col width="10%" />
+                  <col width="15%" />
+                  <col width="25%" />
+                  <col width="5%" />
+                  <col width="25%" />
+                  <col width="5%" />
+                </colgroup>
+                <tr>
+                  <td class="base_header2">No</td>
+                  <td class="base_header2" colspan="2">점검 항목</td>
+                  <td class="base_header2">점검 기준</td>
+                  <td class="base_header2">판정</td>
+                  <td class="base_header2">결과 값 / 특이사항 / 미실시 사유</td>
+                  <td class="base_header2">첨부</td>
+                </tr>
+                <tr>
+                  <td class="base" rowspan="2">1</td>
+                  <td class="base weight-bold" rowspan="2">육안검사</td>
+                  <td class="base">외부 점검</td>
+                  <td class="base">배터리팩 상,하부 이물질 및 손상 확인</td>
+                  <td class="base" id="_LM_외부점검">OK/NG</td>
+                  <td class="base" id="_LM_외부점검사유">NG 사유 및 특이사항 입력</td>
+                  <td class="base" rowspan="2"></td>
+                </tr>
+                <tr>
+                  <td class="base">내부 점검</td>
+                  <td class="base">배터리팩 내부 이물질 및 손상 확인</td>
+                  <td class="base" id="_LM_내부점검">OK/NG</td>
+                  <td class="base" id="_LM_내부점검사유">NG 사유 및 특이사항 입력</td>
+                </tr>
+                <tr>
+                  <td class="base" rowspan="2">2</td>
+                  <td class="base weight-bold" rowspan="2">기밀 검사</td>
+                  <td class="base">케이스</td>
+                  <td class="base">2분간 감압량 2mbar 이내</td>
+                  <td class="base" id="_LM_케이스">OK/NG</td>
+                  <td class="base" id="_LM_케이스감압량">감압 량(mbar):</td>
+                  <td class="base" rowspan="2"></td>
+                </tr>
+                <tr>
+                  <td class="base">냉각 유로</td>
+                  <td class="base">2분간 감압량 2mbar 이내</td>
+                  <td class="base" id="_LM_냉각유로">OK/NG</td>
+                  <td class="base" id="_LM_냉각유로감압량">감압 량(mbar):</td>
+                </tr>
+                <tr>
+                  <td class="base">2-1</td>
+                  <td class="base weight-bold">토크 검사</td>
+                  <td class="base">케이스</td>
+                  <td class="base">
+                    1.0±0.2kgf.m 의 60&#37; 이상 <br />
+                    (9.80±1.96Nm 의 60&#37; 이상)
+                  </td>
+                  <td class="base" id="_LM_토크검사">OK/NG</td>
+                  <td class="base" id="_LM_토크검사사유">
+                    4.8kgf.m (47Nm) 이하 <br />
+                    기밀 검사 NG 시 진행
+                  </td>
+                  <td class="base"></td>
+                </tr>
+                <tr>
+                  <td class="base" rowspan="2">3</td>
+                  <td class="base weight-bold" rowspan="2">절연 검사</td>
+                  <td class="base">PRA(+) ~ 샤시</td>
+                  <td class="base">40 MΩ 이상</td>
+                  <td class="base" id="_LM_PRA_P">OK/NG</td>
+                  <td class="base" id="_LM_PRA_P값">0000 MΩ</td>
+                  <td class="base" rowspan="2"></td>
+                </tr>
+                <tr>
+                  <td class="base">PRA(-) ~ 샤시</td>
+                  <td class="base">15 MΩ 이상</td>
+                  <td class="base" id="_LM_PRA_N">OK/NG</td>
+                  <td class="base" id="_LM_PRA_N값">0000 MΩ</td>
+                </tr>
+                <tr>
+                  <td class="base" rowspan="4">4</td>
+                  <td class="base weight-bold" rowspan="4">통신 검사</td>
+                  <td class="base">팩 전압</td>
+                  <td class="base">OCV 기준 558~752.4 V</td>
+                  <td class="base" id="_LM_팩전압">OK/NG</td>
+                  <td class="base" id="_LM_팩전압값">팩 전압(V):</td>
+                  <td class="base" rowspan="4"></td>
+                </tr>
+                <tr>
+                  <td class="base">셀 전압 편차</td>
+                  <td class="base">40mV 이하</td>
+                  <td class="base" id="_LM_셀전압편차">OK/NG</td>
+                  <td class="base" id="_LM_셀전압편차값">셀 전압편차(mV):</td>
+                </tr>
+                <tr>
+                  <td class="base">릴레이 제어</td>
+                  <td class="base">릴레이 제어 가능할 것</td>
+                  <td class="base" id="_LM_릴레이제어">OK/NG</td>
+                  <td class="base" id="_LM_릴레이제어사유">릴레이 제어 가능 / 불가능 사유</td>
+                </tr>
+                <tr>
+                  <td class="base">고장코드</td>
+                  <td class="base">고장코드 없을 것</td>
+                  <td class="base" id="_LM_고장코드">OK/NG</td>
+                  <td class="base" id="_LM_고장코드사유">고장코드 없음 / (현재),(과거)구분</td>
+                </tr>
+                <tr>
+                  <td class="base" rowspan="2">5</td>
+                  <td class="base weight-bold" rowspan="2">이력 확인</td>
+                  <td class="base">입고 정보</td>
+                  <td class="base">데이터 누락 없을 것</td>
+                  <td class="base" id="_LM_입고정보">OK/NG</td>
+                  <td class="base" id="_LM_입고정보사유">데이터 누락 없음</td>
+                  <td class="base"></td>
+                </tr>
+                <tr>
+                  <td class="base">재제조 이력</td>
+                  <td class="base">데이터 누락 없을 것</td>
+                  <td class="base" id="_LM_재제조이력">OK/NG</td>
+                  <td class="base" id="_LM_재제조이력사유">데이터 누락 없음</td>
+                  <td class="base"></td>
+                </tr>
+              </table>
+
+              <table class="base tableAll" id="_NE_EV" style="display: none">
+                <colgroup>
+                  <col width="5%" />
+                  <col width="10%" />
+                  <col width="15%" />
+                  <col width="25%" />
+                  <col width="5%" />
+                  <col width="25%" />
+                  <col width="5%" />
+                </colgroup>
+                <tr>
+                  <td class="base_header2">No</td>
+                  <td class="base_header2" colspan="2">점검 항목</td>
+                  <td class="base_header2">점검 기준</td>
+                  <td class="base_header2">판정</td>
+                  <td class="base_header2">결과 값 / 특이사항 / 미실시 사유</td>
+                  <td class="base_header2">첨부</td>
+                </tr>
+                <tr>
+                  <td class="base" rowspan="2">1</td>
+                  <td class="base weight-bold" rowspan="2">육안검사</td>
+                  <td class="base">외부 점검</td>
+                  <td class="base">배터리팩 상,하부 이물질 및 손상 확인</td>
+                  <td class="base" id="_NE_외부점검">OK/NG</td>
+                  <td class="base" id="_NE_외부점검사유">NG 사유 및 특이사항 입력</td>
+                  <td class="base" rowspan="2"></td>
+                </tr>
+                <tr>
+                  <td class="base">내부 점검</td>
+                  <td class="base">배터리팩 내부 이물질 및 손상 확인</td>
+                  <td class="base" id="_NE_내부점검">OK/NG</td>
+                  <td class="base" id="_NE_내부점검사유">NG 사유 및 특이사항 입력</td>
+                </tr>
+                <tr>
+                  <td class="base" rowspan="2">2</td>
+                  <td class="base weight-bold" rowspan="2">기밀 검사</td>
+                  <td class="base">케이스</td>
+                  <td class="base">2분간 감압량 2mbar 이내</td>
+                  <td class="base" id="_NE_케이스">OK/NG</td>
+                  <td class="base" id="_NE_케이스감압량">감압 량(mbar):</td>
+                  <td class="base" rowspan="2"></td>
+                </tr>
+                <tr>
+                  <td class="base">냉각 유로</td>
+                  <td class="base">2분간 감압량 2mbar 이내</td>
+                  <td class="base" id="_NE_냉각유로">OK/NG</td>
+                  <td class="base" id="_NE_냉각유로감압량">감압 량(mbar):</td>
+                </tr>
+                <tr>
+                  <td class="base" rowspan="2">3</td>
+                  <td class="base weight-bold" rowspan="2">절연 검사</td>
+                  <td class="base">PRA(+) ~ 샤시</td>
+                  <td class="base">40 MΩ 이상</td>
+                  <td class="base" id="_NE_PRA_P">OK/NG</td>
+                  <td class="base" id="_NE_PRA_P값">0000 MΩ</td>
+                  <td class="base" rowspan="2"></td>
+                </tr>
+                <tr>
+                  <td class="base">PRA(-) ~ 샤시</td>
+                  <td class="base">15 MΩ 이상</td>
+                  <td class="base" id="_NE_PRA_N">OK/NG</td>
+                  <td class="base" id="_NE_PRA_N값">0000 MΩ</td>
+                </tr>
+                <tr>
+                  <td class="base" rowspan="4">4</td>
+                  <td class="base weight-bold" rowspan="4">통신 검사</td>
+                  <td class="base">팩 전압</td>
+                  <td class="base">OCV 기준 558~752.4 V</td>
+                  <td class="base" id="_NE_팩전압">OK/NG</td>
+                  <td class="base" id="_NE_팩전압값">팩 전압(V):</td>
+                  <td class="base" rowspan="4"></td>
+                </tr>
+                <tr>
+                  <td class="base">셀 전압 편차</td>
+                  <td class="base">40mV 이하</td>
+                  <td class="base" id="_NE_셀전압편차">OK/NG</td>
+                  <td class="base" id="_NE_셀전압편차값">셀 전압편차(mV):</td>
+                </tr>
+                <tr>
+                  <td class="base">릴레이 제어</td>
+                  <td class="base">릴레이 제어 가능할 것</td>
+                  <td class="base" id="_NE_릴레이제어">OK/NG</td>
+                  <td class="base" id="_NE_릴레이제어사유">릴레이 제어 가능 / 불가능 사유</td>
+                </tr>
+                <tr>
+                  <td class="base">고장코드</td>
+                  <td class="base">고장코드 없을 것</td>
+                  <td class="base" id="_NE_고장코드">OK/NG</td>
+                  <td class="base" id="_NE_고장코드사유">고장코드 없음 / (현재),(과거)구분</td>
+                </tr>
+                <tr>
+                  <td class="base" rowspan="2">5</td>
+                  <td class="base weight-bold" rowspan="2">이력 확인</td>
+                  <td class="base">입고 정보</td>
+                  <td class="base">데이터 누락 없을 것</td>
+                  <td class="base" id="_NE_입고정보">OK/NG</td>
+                  <td class="base" id="_NE_입고정보사유">데이터 누락 없음</td>
+                  <td class="base"></td>
+                </tr>
+                <tr>
+                  <td class="base">재제조 이력</td>
+                  <td class="base">데이터 누락 없을 것</td>
+                  <td class="base" id="_NE_재제조이력">OK/NG</td>
+                  <td class="base" id="_NE_재제조이력사유">데이터 누락 없음</td>
+                  <td class="base"></td>
+                </tr>
+              </table>
+
+              <table class="base tableAll" id="_OS_SK3_EV" style="display: none">
+                <colgroup>
+                  <col width="5%" />
+                  <col width="10%" />
+                  <col width="15%" />
+                  <col width="25%" />
+                  <col width="5%" />
+                  <col width="25%" />
+                  <col width="5%" />
+                </colgroup>
+                <tr>
+                  <td class="base_header2">No</td>
+                  <td class="base_header2" colspan="2">점검 항목</td>
+                  <td class="base_header2">점검 기준</td>
+                  <td class="base_header2">판정</td>
+                  <td class="base_header2">결과 값 / 특이사항 / 미실시 사유</td>
+                  <td class="base_header2">첨부</td>
+                </tr>
+                <tr>
+                  <td class="base" rowspan="2">1</td>
+                  <td class="base weight-bold" rowspan="2">육안검사</td>
+                  <td class="base">외부 점검</td>
+                  <td class="base">배터리팩 상,하부 이물질 및 손상 확인</td>
+                  <td class="base" id="_OS_SK3_외부점검">OK/NG</td>
+                  <td class="base" id="_OS_SK3_외부점검사유">NG 사유 및 특이사항 입력</td>
+                  <td class="base" rowspan="2"></td>
+                </tr>
+                <tr>
+                  <td class="base">내부 점검</td>
+                  <td class="base">배터리팩 내부 이물질 및 손상 확인</td>
+                  <td class="base" id="_OS_SK3_내부점검">OK/NG</td>
+                  <td class="base" id="_OS_SK3_내부점검사유">NG 사유 및 특이사항 입력</td>
+                </tr>
+                <tr>
+                  <td class="base" rowspan="2">2</td>
+                  <td class="base weight-bold" rowspan="2">기밀 검사</td>
+                  <td class="base">케이스</td>
+                  <td class="base">2분간 감압량 2mbar 이내</td>
+                  <td class="base" id="_OS_SK3_케이스">OK/NG</td>
+                  <td class="base" id="_OS_SK3_케이스감압량">감압 량(mbar):</td>
+                  <td class="base" rowspan="2"></td>
+                </tr>
+                <tr>
+                  <td class="base">냉각 유로</td>
+                  <td class="base">2분간 감압량 2mbar 이내</td>
+                  <td class="base" id="_OS_SK3_냉각유로">OK/NG</td>
+                  <td class="base" id="_OS_SK3_냉각유로감압량">감압 량(mbar):</td>
+                </tr>
+                <tr>
+                  <td class="base" rowspan="2">3</td>
+                  <td class="base weight-bold" rowspan="2">절연 검사</td>
+                  <td class="base">PRA(+) ~ 샤시</td>
+                  <td class="base">300 MΩ 이상</td>
+                  <td class="base" id="_OS_SK3_PRA_P">OK/NG</td>
+                  <td class="base" id="_OS_SK3_PRA_P값">0000 MΩ</td>
+                  <td class="base" rowspan="2"></td>
+                </tr>
+                <tr>
+                  <td class="base">PRA(-) ~ 샤시</td>
+                  <td class="base">150 MΩ 이상</td>
+                  <td class="base" id="_OS_SK3_PRA_N">OK/NG</td>
+                  <td class="base" id="_OS_SK3_PRA_N값">0000 MΩ</td>
+                </tr>
+                <tr>
+                  <td class="base" rowspan="4">4</td>
+                  <td class="base weight-bold" rowspan="4">통신 검사</td>
+                  <td class="base">팩 전압</td>
+                  <td class="base">OCV 기준 302.6~410.7 V</td>
+                  <td class="base" id="_OS_SK3_팩전압">OK/NG</td>
+                  <td class="base" id="_OS_SK3_팩전압값">팩 전압(V):</td>
+                  <td class="base" rowspan="4"></td>
+                </tr>
+                <tr>
+                  <td class="base">셀 전압 편차</td>
+                  <td class="base">40mV 이하</td>
+                  <td class="base" id="_OS_SK3_셀전압편차">OK/NG</td>
+                  <td class="base" id="_OS_SK3_셀전압편차값">셀 전압편차(mV):</td>
+                </tr>
+                <tr>
+                  <td class="base">릴레이 제어</td>
+                  <td class="base">릴레이 제어 가능할 것</td>
+                  <td class="base" id="_OS_SK3_릴레이제어">OK/NG</td>
+                  <td class="base" id="_OS_SK3_릴레이제어사유">릴레이 제어 가능 / 불가능 사유</td>
+                </tr>
+                <tr>
+                  <td class="base">고장코드</td>
+                  <td class="base">고장코드 없을 것</td>
+                  <td class="base" id="_OS_SK3_고장코드">OK/NG</td>
+                  <td class="base" id="_OS_SK3_고장코드사유">고장코드 없음 / (현재),(과거)구분</td>
+                </tr>
+                <tr>
+                  <td class="base" rowspan="2">5</td>
+                  <td class="base weight-bold" rowspan="2">이력 확인</td>
+                  <td class="base">입고 정보</td>
+                  <td class="base">데이터 누락 없을 것</td>
+                  <td class="base" id="_OS_SK3_입고정보">OK/NG</td>
+                  <td class="base" id="_OS_SK3_입고정보사유">데이터 누락 없음</td>
+                  <td class="base"></td>
+                </tr>
+                <tr>
+                  <td class="base">재제조 이력</td>
+                  <td class="base">데이터 누락 없을 것</td>
+                  <td class="base" id="_OS_SK3_재제조이력">OK/NG</td>
+                  <td class="base" id="_OS_SK3_재제조이력사유">데이터 누락 없음</td>
+                  <td class="base"></td>
+                </tr>
+              </table>
+
+              <table class="base tableAll" id="_PU_EV" style="display: none">
+                <colgroup>
+                  <col width="5%" />
+                  <col width="10%" />
+                  <col width="15%" />
+                  <col width="25%" />
+                  <col width="5%" />
+                  <col width="25%" />
+                  <col width="5%" />
+                </colgroup>
+                <tr>
+                  <td class="base_header2">No</td>
+                  <td class="base_header2" colspan="2">점검 항목</td>
+                  <td class="base_header2">점검 기준</td>
+                  <td class="base_header2">판정</td>
+                  <td class="base_header2">결과 값 / 특이사항 / 미실시 사유</td>
+                  <td class="base_header2">첨부</td>
+                </tr>
+                <tr>
+                  <td class="base" rowspan="2">1</td>
+                  <td class="base weight-bold" rowspan="2">육안검사</td>
+                  <td class="base">외부 점검</td>
+                  <td class="base">배터리팩 상,하부 이물질 및 손상 확인</td>
+                  <td class="base" id="_PU_외부점검">OK/NG</td>
+                  <td class="base" id="_PU_외부점검사유">NG 사유 및 특이사항 입력</td>
+                  <td class="base" rowspan="2"></td>
+                </tr>
+                <tr>
+                  <td class="base">내부 점검</td>
+                  <td class="base">배터리팩 내부 이물질 및 손상 확인</td>
+                  <td class="base" id="_PU_내부점검">OK/NG</td>
+                  <td class="base" id="_PU_내부점검사유">NG 사유 및 특이사항 입력</td>
+                </tr>
+                <tr>
+                  <td class="base" rowspan="2">2</td>
+                  <td class="base weight-bold" rowspan="2">기밀 검사</td>
+                  <td class="base">케이스</td>
+                  <td class="base">2분간 감압량 2mbar 이내</td>
+                  <td class="base" id="_PU_케이스">OK/NG</td>
+                  <td class="base" id="_PU_케이스감압량">감압 량(mbar):</td>
+                  <td class="base" rowspan="2"></td>
+                </tr>
+                <tr>
+                  <td class="base">냉각 유로</td>
+                  <td class="base">2분간 감압량 2mbar 이내</td>
+                  <td class="base" id="_PU_냉각유로">OK/NG</td>
+                  <td class="base" id="_PU_냉각유로감압량">감압 량(mbar):</td>
+                </tr>
+                <tr>
+                  <td class="base" rowspan="2">3</td>
+                  <td class="base weight-bold" rowspan="2">절연 검사</td>
+                  <td class="base">PRA(+) ~ 샤시</td>
+                  <td class="base">100 MΩ 이상</td>
+                  <td class="base" id="_PU_PRA_P">OK/NG</td>
+                  <td class="base" id="_PU_PRA_P값">0000 MΩ</td>
+                  <td class="base" rowspan="2"></td>
+                </tr>
+                <tr>
+                  <td class="base">PRA(-) ~ 샤시</td>
+                  <td class="base">50 MΩ 이상</td>
+                  <td class="base" id="_PU_PRA_N">OK/NG</td>
+                  <td class="base" id="_PU_PRA_N값">0000 MΩ</td>
+                </tr>
+                <tr>
+                  <td class="base" rowspan="4">4</td>
+                  <td class="base weight-bold" rowspan="4">통신 검사</td>
+                  <td class="base">팩 전압</td>
+                  <td class="base">OCV 기준 277.9~377.2V</td>
+                  <td class="base" id="_PU_팩전압">OK/NG</td>
+                  <td class="base" id="_PU_팩전압값">팩 전압(V):</td>
+                  <td class="base" rowspan="4"></td>
+                </tr>
+                <tr>
+                  <td class="base">셀 전압 편차</td>
+                  <td class="base">40mV 이하</td>
+                  <td class="base" id="_PU_셀전압편차">OK/NG</td>
+                  <td class="base" id="_PU_셀전압편차값">셀 전압편차(mV):</td>
+                </tr>
+                <tr>
+                  <td class="base">릴레이 제어</td>
+                  <td class="base">릴레이 제어 가능할 것</td>
+                  <td class="base" id="_PU_릴레이제어">OK/NG</td>
+                  <td class="base" id="_PU_릴레이제어사유">릴레이 제어 가능 / 불가능 사유</td>
+                </tr>
+                <tr>
+                  <td class="base">고장코드</td>
+                  <td class="base">고장코드 없을 것</td>
+                  <td class="base" id="_PU_고장코드">OK/NG</td>
+                  <td class="base" id="_PU_고장코드사유">고장코드 없음 / (현재),(과거)구분</td>
+                </tr>
+                <tr>
+                  <td class="base" rowspan="2">5</td>
+                  <td class="base weight-bold" rowspan="2">이력 확인</td>
+                  <td class="base">입고 정보</td>
+                  <td class="base">데이터 누락 없을 것</td>
+                  <td class="base" id="_PU_입고정보">OK/NG</td>
+                  <td class="base" id="_PU_입고정보사유">데이터 누락 없음</td>
+                  <td class="base"></td>
+                </tr>
+                <tr>
+                  <td class="base">재제조 이력</td>
+                  <td class="base">데이터 누락 없을 것</td>
+                  <td class="base" id="_PU_재제조이력">OK/NG</td>
+                  <td class="base" id="_PU_재제조이력사유">데이터 누락 없음</td>
+                  <td class="base"></td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <table class="_기초보고서_결과">
+              <colgroup>
+                <col width="10%" />
+                <col />
+              </colgroup>
+              <tr>
+                <td class="result_header">분석결과</td>
+                <td id="_분석결과값"></td>
+              </tr>
+              <tr>
+                <td class="result_header">
+                  재제조<br />
+                  Com-ment
+                </td>
+                <td id="_재제조comment"></td>
+              </tr>
+            </table>
+          </tr>
+        </table>
+        <div class="bottom">
+          <p>FQ850-05</p>
+          <p>A4(297x210mm)</p>
+          <p>Positive Energy</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="_육안검사외부1" class="check-all">
+      <div class="report__tit">
+        <h3>▣ 육안 검사 - 외부</h3>
+        <input type="checkbox" id="_cb육안검사외부" checked />
+      </div>
+      <div>
+        <table class="all">
+          <colgroup>
+            <col width="33.3333%" />
+            <col width="33.3333%" />
+            <col width="33.3333%" />
+          </colgroup>
+          <tr>
+            <td class="title">TOP</td>
+            <td class="title">FRONT</td>
+            <td class="title">LEFT</td>
+          </tr>
+          <tr>
+            <td class="imgName">
+              <img id="_top_pic" />
+            </td>
+            <!-- id명 ??? img id명 ??? -->
+            <td id="front_pic" class="imgName">
+              <img id="_front_pic" />
+            </td>
+            <td class="imgName">
+              <img id="_left_pic" />
+            </td>
+          </tr>
+          <tr>
+            <td class="title">BOTTOM</td>
+            <td class="title">REAR</td>
+            <td class="title">RIGHT</td>
+          </tr>
+          <tr>
+            <td class="imgName">
+              <img id="_bottom_pic" />
+            </td>
+            <td class="imgName">
+              <img id="_rear_pic" />
+            </td>
+            <td class="imgName">
+              <img id="_right_pic" />
+            </td>
+          </tr>
+          <tr>
+            <th>결 과 :</th>
+            <td class="result" id="_육안검사_결과" colspan="3"></td>
+          </tr>
+        </table>
+        <div class="bottom">
+          <p>FQ850-05</p>
+          <p>A4(297x210mm)</p>
+          <p>Positive Energy</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="_육안검사외부2" class="check-all">
+      <div class="report__tit">
+        <h3>▣ 육안검사 - 외부_<em>이상부위 상세사진</em></h3>
+        <input type="checkbox" id="_cb육안검사외부상세" checked />
+      </div>
+
+      <table border="2" class="all">
+        <colgroup>
+          <col width="50%" />
+          <col width="50%" />
+        </colgroup>
+        <tbody>
+          <tr class="imgName">
+            <td>
+              <img id="_이상부위_외부1" />
+            </td>
+            <td class="imgName">
+              <img id="_이상부위_외부2" />
+            </td>
+          </tr>
+          <tr>
+            <td class="imgName">
+              <img id="_이상부위_외부3" />
+            </td>
+            <td class="imgName">
+              <img id="_이상부위_외부4" />
+            </td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <th>결 과 :</th>
+            <td class="result" id="_육안검사_결과2" colspan="2"></td>
+            <td></td>
+          </tr>
+        </tfoot>
+      </table>
+      <div class="bottom">
+        <p>FQ850-05</p>
+        <p>A4(297x210mm)</p>
+        <p>Positive Energy</p>
+      </div>
+    </div>
+
+    <div id="_육안검사내부1" class="check-all">
+      <div class="report__tit">
+        <h3>▣ 육안검사 - 내부</h3>
+        <input type="checkbox" id="_cb육안검사내부" checked />
+      </div>
+      <table border="2" class="all">
+        <colgroup>
+          <col width="70%" />
+          <col width="100%" />
+          <col />
+        </colgroup>
+        <tbody>
+          <tr>
+            <th class="title" colspan="2">전체 사진</th>
+            <td rowspan="2" class="imgName changeWidth">
+              <p style="text-align: left">주요부품1(BMU)</p>
+              <img id="_BMU" />
+            </td>
+          </tr>
+          <tr>
+            <td rowspan="5" colspan="2" class="imgName heightPhoto">
+              <img id="_allImg" />
+            </td>
+          </tr>
+          <tr>
+            <td class="imgName changeWidth">
+              <p style="text-align: left">주요부품2 (CMU)</p>
+              <img id="_CMU" />
+            </td>
+          </tr>
+          <tr>
+            <td class="imgName changeWidth">
+              <p style="text-align: left">주요부품3 (PRA)</p>
+              <img id="_PRA" />
+            </td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <th>결 과 :</th>
+            <td class="result" id="_육안검사_내부_결과" colspan="3"></td>
+          </tr>
+        </tfoot>
+      </table>
+      <div class="bottom">
+        <p>FQ850-05</p>
+        <p>A4(297x210mm)</p>
+        <p>Positive Energy</p>
+      </div>
+    </div>
+
+    <div id="_육안검사내부2" class="check-all">
+      <div class="report__tit">
+        <h3>▣ 육안검사 - 내부_<em>이상부위 상세사진</em></h3>
+        <input type="checkbox" id="_cb육안검사내부상세" checked />
+      </div>
+      <table border="2" class="all">
+        <colgroup>
+          <col width="50%" />
+          <col width="50%" />
+        </colgroup>
+        <tbody>
+          <tr>
+            <td class="imgName">
+              <img id="_이상부위_내부1" />
+            </td>
+            <td class="imgName">
+              <img id="_이상부위_내부2" />
+            </td>
+          </tr>
+          <tr>
+            <td class="imgName">
+              <img id="_이상부위_내부3" />
+            </td>
+            <td class="imgName">
+              <img id="_이상부위_내부4" />
+            </td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <th>결 과 :</th>
+            <td class="result" id="_육안검사_내부_결과2" colspan="3"></td>
+            <td></td>
+          </tr>
+        </tfoot>
+      </table>
+      <div class="bottom">
+        <p>FQ850-05</p>
+        <p>A4(297x210mm)</p>
+        <p>Positive Energy</p>
+      </div>
+    </div>
+
+    <div id="_기밀검사" class="check-all">
+      <div class="report__tit">
+        <h3>▣ 기밀검사</h3>
+        <input type="checkbox" id="_cb기밀검사" checked />
+      </div>
+      <table border="2" class="all">
+        <colgroup>
+          <col width="8%" />
+          <col width="8%" />
+          <col />
+          <col width="8%" />
+        </colgroup>
+        <thead>
+          <tr class="title">
+            <th>항목</th>
+            <th colspan="2">케이스 기밀 검사</th>
+            <th colspan="2">냉각유로 기밀 검사</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">장비</th>
+            <td colspan="2">기밀테스터 (Universal Leak Tester)</td>
+            <td colspan="2">기밀테스터 (Universal Leak Tester)</td>
+          </tr>
+          <tr>
+            <th scope="row">평가방법</th>
+            <td colspan="2" class="td1">
+              <span> &lt;압력조정재를 통한 가압TEST&gt;</span><br />
+              - 기밀커넥터 3종 체결, 서비스플러그 장착 <br />
+              - 내부 압력이 20mbar에 도달 시 까지 가압<br />
+              - 20mbar 도달 후 30초간 유지, 2분간 감압량 확인
+            </td>
+            <td colspan="2" class="td1">
+              <span> &lt;압력조정재를 통한 가압TEST&gt;</span><br />
+              - 내부 잔류 냉각유 제거<br />
+              - 압력 게이지 1종 체결, 냉각 어댑터 2종 장착<br />
+              - 내부 압력이 2.1bar에 도달 시 까지 가압<br />
+              - 2.1bar 도달 후 30초간 유지, 2분간 감압량 확인
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">판정기준</th>
+            <td colspan="2" style="color: blue">
+              19.5 ~ 20.9mbar를 30초간 유지 확인 후, <br />
+              2분간 감압 량 2mbar 이내
+            </td>
+            <td colspan="2" style="color: blue">
+              1.9 ~ 2.1bar를 30초간 유지 확인 후, <br />
+              2분간 감압 량 2mbar 이내
+            </td>
+          </tr>
+          <tr>
+            <th rowspan="2" scope="row">장비품목</th>
+            <td class="photoName">측정 <br />전체 사진</td>
+            <td class="photo">
+              <img id="_측정사진1" />
+            </td>
+            <td class="photoName">측정 <br />전체 사진</td>
+            <td class="photo">
+              <img id="_측정사진2" />
+            </td>
+          </tr>
+          <tr>
+            <td class="photoName">측정값 <br />확대 사진</td>
+            <td class="photo">
+              <img id="_측정값사진1" />
+            </td>
+            <td class="photoName">측정값 <br />확대 사진</td>
+            <td class="photo">
+              <img id="_측정값사진2" />
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">합부판정</th>
+            <td colspan="2" class="result" id="_케이스">
+              <span class="result-vlaue r1">OK</span>
+              <strong> &sol;</strong>
+              <span class="result-vlaue r2">NG</span>
+              <stdrong> &sol;</stdrong>
+              <span class="result-vlaue r3">미실시(이유:)</span>
+            </td>
+            <td colspan="2" class="result" id="_냉각유로">
+              <span class="result-vlaue r1">OK</span>
+              <strong> &sol;</strong>
+              <span class="result-vlaue r2">NG</span>
+              <strong> &sol;</strong>
+              <span class="result-vlaue r3">미실시(이유:)</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="bottom">
+        <p>FQ850-05</p>
+        <p>A4(297x210mm)</p>
+        <p>Positive Energy</p>
+      </div>
+    </div>
+    <div id="_기밀검사2" class="check-all">
+      <div class="report__tit">
+        <h3>▣ 기밀검사 - 특이사항</h3>
+        <input type="checkbox" id="_cb기밀검사특이사항" checked />
+      </div>
+      <table border="2" class="all">
+        <colgroup>
+          <col width="50%" />
+          <col width="50%" />
+        </colgroup>
+        <tbody>
+          <tr>
+            <td class="imgName">
+              <img id="_기밀검사_특이사항1" />
+            </td>
+            <td class="imgName">
+              <img id="_기밀검사_특이사항2" />
+            </td>
+          </tr>
+          <tr>
+            <td class="imgName">
+              <img id="_기밀검사_특이사항3" />
+            </td>
+            <td class="imgName">
+              <img id="_기밀검사_특이사항4" />
+            </td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <th>결 과 :</th>
+            <td class="result" id="_기밀검사_특이사항_결과" colspan="3"></td>
+            <td></td>
+          </tr>
+        </tfoot>
+      </table>
+      <div class="bottom">
+        <p>FQ850-05</p>
+        <p>A4(297x210mm)</p>
+        <p>Positive</p>
+      </div>
+    </div>
+    <div id="_절연저항검사" class="check-all">
+      <div class="report__tit">
+        <h3>▣ 절연 저항 검사</h3>
+        <input type="checkbox" id="_cb절연저항검사" checked />
+      </div>
+      <table border="2" class="all">
+        <colgroup>
+          <col width="8%" />
+          <col width="8%" />
+          <col />
+          <col width="8%" />
+        </colgroup>
+        <thead>
+          <tr class="title">
+            <th>항목</th>
+            <th colspan="4">절연 저항 검사</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">장비</th>
+            <td colspan="4">HIOKI ST5520</td>
+          </tr>
+          <tr>
+            <th scope="row">평가방법</th>
+            <td colspan="4" class="td1">
+              하부케이스 어스볼트부에(-) 연결, PRA측 배터리(+), (-) 절연저항 측정<br />
+              DC 500V인가, 30초 후 결과값 확인<br />
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">판정기준</th>
+            <td colspan="4" style="color: blue">측정 결과 (+)100MΩ, (-)100MΩ 이상 합격</td>
+          </tr>
+          <tr>
+            <th rowspan="3" scope="row">측정결과</th>
+            <td colspan="2">PRA (+) ~ 샤시</td>
+            <td colspan="2">PRA (-) ~ 샤시</td>
+          </tr>
+          <tr>
+            <td class="photoName">장비셋팅 <br />전체 사진</td>
+            <td class="photo">
+              <img id="_절연측정사진1" />
+            </td>
+            <td class="photoName">장비셋팅 <br />전체 사진</td>
+            <td class="photo">
+              <img id="_절연측정사진2" />
+            </td>
+          </tr>
+          <tr>
+            <td class="photoName">측정값 <br />확대 사진</td>
+            <td class="photo">
+              <img id="_절연측정값사진1" />
+            </td>
+            <td class="photoName">측정값 <br />확대 사진</td>
+            <td class="photo">
+              <img id="_절연측정값사진2" />
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">합부판정</th>
+            <td colspan="2" class="result" id="_절연PRA_P">
+              <span class="result-vlaue r1">OK</span>
+              <strong> &sol;</strong>
+              <span class="result-vlaue r2">NG</span>
+              <stdrong> &sol;</stdrong>
+              <span class="result-vlaue r3">미실시(이유:)</span>
+            </td>
+            <td colspan="2" class="result" id="_절연PRA_N">
+              <span class="result-vlaue r1">OK</span>
+              <strong> &sol;</strong>
+              <span class="result-vlaue r2">NG</span>
+              <strong> &sol;</strong>
+              <span class="result-vlaue r3">미실시(이유:)</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="bottom">
+        <p>FQ850-05</p>
+        <p>A4(297x210mm)</p>
+        <p>Positive Energy</p>
+      </div>
+    </div>
+
+    <div id="_CAN통신검사" class="check-all">
+      <div class="report__tit">
+        <h3>▣ CAN 통신 검사</h3>
+        <input type="checkbox" id="_cbCAN통신검사" checked />
+      </div>
+      <table border="2" class="all">
+        <colgroup>
+          <col width="8%" />
+          <col />
+          <col />
+          <col width="20%" />
+        </colgroup>
+        <thead>
+          <tr class="title">
+            <th>항목</th>
+            <th colspan="3">통신검사</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th rowspan="4" scope="row">진단결과</th>
+            <td colspan="2" style="background: #fff5e4">G-SACN 진단</td>
+            <td rowspan="2" style="background: #fff5e4">PDS 진단</td>
+          </tr>
+          <tr>
+            <td style="padding: 0.5em">고장코드 진단</td>
+            <td style="padding: 0.5em">센서데이터 진단</td>
+          </tr>
+          <tr>
+            <td class="photo">
+              <img id="_CAN현재" />
+            </td>
+            <td rowspan="2" class="photo heightPhoto">
+              <img id="_CAN진단" width="100%" />
+            </td>
+            <td rowspan="2" class="photo">
+              <img id="_PDS진단1" style="aspect-ratio: 1" />
+              <img id="_PDS진단2" style="aspect-ratio: 1" />
+            </td>
+          </tr>
+          <tr>
+            <td class="photo">
+              <img id="_CAN과거" />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="bottom">
+        <p>FQ850-05</p>
+        <p>A4(297x210mm)</p>
+        <p>Positive Energy</p>
+      </div>
+    </div>
+
+    <div>
+      <canvas id="_canvas"></canvas>
+    </div>
+    <div>
+      <table id="tb" class="tb">
+        <tr>
+          <td>
+            <label for="management_id"><b>관리번호</b></label>
+          </td>
+          <td class="td-p">
+            <input type="text" id="_management_id" value="" size="40" required />
+            <button onClick="기초보고서_조회();">조 회</button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for="_재제조번호">재제조번호</label>
+          </td>
+          <td class="td-p">
+            <input type="text" id="_재제조번호" value="" size="40" required />
+            <button onClick="기초보고서_조회(true);">조 회</button>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class="report__btns">
+      <button onClick="기초보고서_save();">기초보고서</button>
+      <button onClick="기초보고서_save('육외');">육안검사외부</button>
+      <button onClick="기초보고서_save('육외상');">육안검사외부 상세</button>
+      <button onClick="기초보고서_save('육내');">육안검사내부</button>
+      <button onClick="기초보고서_save('육내상');">육안검사내부 상세</button>
+      <button onClick="기초보고서_save('기밀');">기밀검사</button>
+      <button onClick="기초보고서_save('기밀특이')">기밀검사 특이사항</button>
+      <button onClick="기초보고서_save('절연');">절연저항검사</button>
+      <button onClick="기초보고서_save('CAN');">CAN통신검사</button>
+    </div>
+    <button onClick="기초검사_이전페이지();">이전페이지</button>
+    <div></div>
+
+    <script>
+      var _차종 = document.getElementById("_차종");
+      var _재제조번호_HEAD = document.getElementById("_재제조번호_HEAD");
+
+      var _management_id = document.getElementById("_management_id");
+      var _재제조번호 = document.getElementById("_재제조번호");
+
+      var _VIN = document.getElementById("_VIN");
+      var _RO = document.getElementById("_RO");
+      var _주행거리 = document.getElementById("_주행거리");
+      var _차량번호 = document.getElementById("_차량번호");
+      var _생산일 = document.getElementById("_생산일");
+      var _판매일 = document.getElementById("_판매일");
+      var _수리일 = document.getElementById("_수리일");
+      var _입고일 = document.getElementById("_입고일");
+      var _입고사진 = document.getElementById("_입고사진");
+      var _BSA_QR = document.getElementById("_BSA_QR");
+      var _관리번호 = document.getElementById("_관리번호");
+      var _필드현상 = document.getElementById("_필드현상");
+      var _센터진단 = document.getElementById("_센터진단");
+      var _센터조치 = document.getElementById("_센터조치");
+      var _작성자 = document.getElementById("_작성자");
+      var _작성일 = document.getElementById("_작성일");
+      var _분석결과값 = document.getElementById("_분석결과값");
+      var _재제조comment = document.getElementById("_재제조comment");
+
+      var _CS_외부점검 = document.getElementById("_CS_외부점검");
+      var _CS_외부점검사유 = document.getElementById("_CS_외부점검사유");
+      var _CS_내부점검 = document.getElementById("_CS_내부점검");
+      var _CS_내부점검사유 = document.getElementById("_CS_내부점검사유");
+      var _CS_케이스 = document.getElementById("_CS_케이스");
+      var _CS_케이스감압량 = document.getElementById("_CS_케이스감압량");
+      var _CS_냉각유로 = document.getElementById("_CS_냉각유로");
+      var _CS_냉각유로감압량 = document.getElementById("_CS_냉각유로감압량");
+      var _CS_PRA_P = document.getElementById("_CS_PRA_P");
+      var _CS_PRA_P값 = document.getElementById("_CS_PRA_P값");
+      var _CS_PRA_N = document.getElementById("_CS_PRA_N");
+      var _CS_PRA_N값 = document.getElementById("_CS_PRA_N값");
+      var _CS_팩전압 = document.getElementById("_CS_팩전압");
+      var _CS_팩전압값 = document.getElementById("_CS_팩전압값");
+      var _CS_셀전압편차 = document.getElementById("_CS_셀전압편차");
+      var _CS_셀전압편차값 = document.getElementById("_CS_셀전압편차값");
+      var _CS_릴레이제어 = document.getElementById("_CS_릴레이제어");
+      var _CS_릴레이제어사유 = document.getElementById("_CS_릴레이제어사유");
+      var _CS_고장코드 = document.getElementById("_CS_고장코드");
+      var _CS_고장코드사유 = document.getElementById("_CS_고장코드사유");
+      var _CS_입고정보 = document.getElementById("_CS_입고정보");
+      var _CS_입고정보사유 = document.getElementById("_CS_입고정보사유");
+      var _CS_재제조이력 = document.getElementById("_CS_재제조이력");
+      var _CS_재제조이력사유 = document.getElementById("_CS_재제조이력사유");
+
+      var _CV_외부점검 = document.getElementById("_CV_외부점검");
+      var _CV_외부점검사유 = document.getElementById("_CV_외부점검사유");
+      var _CV_외부점검2 = document.getElementById("_CV_외부점검2");
+      var _CV_외부점검사유2 = document.getElementById("_CV_외부점검사유2");
+      var _CV_내부점검 = document.getElementById("_CV_내부점검");
+      var _CV_내부점검사유 = document.getElementById("_CV_내부점검사유");
+      var _CV_케이스 = document.getElementById("_CV_케이스");
+      var _CV_케이스감압량 = document.getElementById("_CV_케이스감압량");
+      var _CV_냉각유로 = document.getElementById("_CV_냉각유로");
+      var _CV_냉각유로감압량 = document.getElementById("_CV_냉각유로감압량");
+      var _CV_PRA_P = document.getElementById("_CV_PRA_P");
+      var _CV_PRA_P값 = document.getElementById("_CV_PRA_P값");
+      var _CV_PRA_N = document.getElementById("_CV_PRA_N");
+      var _CV_PRA_N값 = document.getElementById("_CV_PRA_N값");
+      var _CV_팩전압 = document.getElementById("_CV_팩전압");
+      var _CV_팩전압값 = document.getElementById("_CV_팩전압값");
+      var _CV_셀전압편차 = document.getElementById("_CV_셀전압편차");
+      var _CV_셀전압편차값 = document.getElementById("_CV_셀전압편차값");
+      var _CV_릴레이제어 = document.getElementById("_CV_릴레이제어");
+      var _CV_릴레이제어사유 = document.getElementById("_CV_릴레이제어사유");
+      var _CV_고장코드 = document.getElementById("_CV_고장코드");
+      var _CV_고장코드사유 = document.getElementById("_CV_고장코드사유");
+      var _CV_입고정보 = document.getElementById("_CV_입고정보");
+      var _CV_입고정보사유 = document.getElementById("_CV_입고정보사유");
+      var _CV_재제조이력 = document.getElementById("_CV_재제조이력");
+      var _CV_재제조이력사유 = document.getElementById("_CV_재제조이력사유");
+
+      var _DE_외부점검 = document.getElementById("_DE_외부점검");
+      var _DE_외부점검사유 = document.getElementById("_DE_외부점검사유");
+      var _DE_내부점검 = document.getElementById("_DE_내부점검");
+      var _DE_내부점검사유 = document.getElementById("_DE_내부점검사유");
+      var _DE_케이스 = document.getElementById("_DE_케이스");
+      var _DE_케이스감압량 = document.getElementById("_DE_케이스감압량");
+      var _DE_냉각유로 = document.getElementById("_DE_냉각유로");
+      var _DE_냉각유로감압량 = document.getElementById("_DE_냉각유로감압량");
+      var _DE_PRA_P = document.getElementById("_DE_PRA_P");
+      var _DE_PRA_P값 = document.getElementById("_DE_PRA_P값");
+      var _DE_PRA_N = document.getElementById("_DE_PRA_N");
+      var _DE_PRA_N값 = document.getElementById("_DE_PRA_N값");
+      var _DE_팩전압 = document.getElementById("_DE_팩전압");
+      var _DE_팩전압값 = document.getElementById("_DE_팩전압값");
+      var _DE_셀전압편차 = document.getElementById("_DE_셀전압편차");
+      var _DE_셀전압편차값 = document.getElementById("_DE_셀전압편차값");
+      var _DE_릴레이제어 = document.getElementById("_DE_릴레이제어");
+      var _DE_릴레이제어사유 = document.getElementById("_DE_릴레이제어사유");
+      var _DE_고장코드 = document.getElementById("_DE_고장코드");
+      var _DE_고장코드사유 = document.getElementById("_DE_고장코드사유");
+      var _DE_입고정보 = document.getElementById("_DE_입고정보");
+      var _DE_입고정보사유 = document.getElementById("_DE_입고정보사유");
+      var _DE_재제조이력 = document.getElementById("_DE_재제조이력");
+      var _DE_재제조이력사유 = document.getElementById("_DE_재제조이력사유");
+
+      var _HR_외부점검 = document.getElementById("_HR_외부점검");
+      var _HR_외부점검사유 = document.getElementById("_HR_외부점검사유");
+      var _HR_내부점검 = document.getElementById("_HR_내부점검");
+      var _HR_내부점검사유 = document.getElementById("_HR_내부점검사유");
+      var _HR_실제조사사유 = document.getElementById("_HR_실제조사사유");
+      var _HR_케이스 = document.getElementById("_HR_케이스");
+      var _HR_케이스감압량 = document.getElementById("_HR_케이스감압량");
+      var _HR_냉각유로 = document.getElementById("_HR_냉각유로");
+      var _HR_냉각유로감압량 = document.getElementById("_HR_냉각유로감압량");
+      var _HR_PRA_P = document.getElementById("_HR_PRA_P");
+      var _HR_PRA_P값 = document.getElementById("_HR_PRA_P값");
+      var _HR_PRA_N = document.getElementById("_HR_PRA_N");
+      var _HR_PRA_N값 = document.getElementById("_HR_PRA_N값");
+      var _HR_HV커넥터_P = document.getElementById("_HR_HV커넥터_P");
+      var _HR_HV커넥터_P값 = document.getElementById("_HR_HV커넥터_P값");
+      var _HR_HV커넥터_N = document.getElementById("_HR_HV커넥터_N");
+      var _HR_HV커넥터_N값 = document.getElementById("_HR_HV커넥터_N값");
+      var _HR_팩전압 = document.getElementById("_HR_팩전압");
+      var _HR_팩전압값 = document.getElementById("_HR_팩전압값");
+      var _HR_셀전압편차 = document.getElementById("_HR_셀전압편차");
+      var _HR_셀전압편차값 = document.getElementById("_HR_셀전압편차값");
+      var _HR_릴레이제어 = document.getElementById("_HR_릴레이제어");
+      var _HR_릴레이제어사유 = document.getElementById("_HR_릴레이제어사유");
+      var _HR_고장코드 = document.getElementById("_HR_고장코드");
+      var _HR_고장코드사유 = document.getElementById("_HR_고장코드사유");
+      var _HR_입고정보 = document.getElementById("_HR_입고정보");
+      var _HR_입고정보사유 = document.getElementById("_HR_입고정보사유");
+      var _HR_재제조이력 = document.getElementById("_HR_재제조이력");
+      var _HR_재제조이력사유 = document.getElementById("_HR_재제조이력사유");
+
+      var _LK_외부점검 = document.getElementById("_LK_외부점검");
+      var _LK_외부점검사유 = document.getElementById("_LK_외부점검사유");
+      var _LK_내부점검 = document.getElementById("_LK_내부점검");
+      var _LK_내부점검사유 = document.getElementById("_LK_내부점검사유");
+      var _LK_실제조사사유 = document.getElementById("_LK_실제조사사유");
+      var _LK_케이스 = document.getElementById("_LK_케이스");
+      var _LK_케이스감압량 = document.getElementById("_LK_케이스감압량");
+      var _LK_냉각유로 = document.getElementById("_LK_냉각유로");
+      var _LK_냉각유로감압량 = document.getElementById("_LK_냉각유로감압량");
+      var _LK_토크검사 = document.getElementById("_LK_토크검사");
+      var _LK_토크검사사유 = document.getElementById("_LK_토크검사사유");
+      var _LK_PRA_P = document.getElementById("_LK_PRA_P");
+      var _LK_PRA_P값 = document.getElementById("_LK_PRA_P값");
+      var _LK_PRA_N = document.getElementById("_LK_PRA_N");
+      var _LK_PRA_N값 = document.getElementById("_LK_PRA_N값");
+      var _LK_HV커넥터_P = document.getElementById("_LK_HV커넥터_P");
+      var _LK_HV커넥터_P값 = document.getElementById("_LK_HV커넥터_P값");
+      var _LK_HV커넥터_N = document.getElementById("_LK_HV커넥터_N");
+      var _LK_HV커넥터_N값 = document.getElementById("_LK_HV커넥터_N값");
+      var _LK_팩전압 = document.getElementById("_LK_팩전압");
+      var _LK_팩전압값 = document.getElementById("_LK_팩전압값");
+      var _LK_셀전압편차 = document.getElementById("_LK_셀전압편차");
+      var _LK_셀전압편차값 = document.getElementById("_LK_셀전압편차값");
+      var _LK_릴레이제어 = document.getElementById("_LK_릴레이제어");
+      var _LK_릴레이제어사유 = document.getElementById("_LK_릴레이제어사유");
+      var _LK_고장코드 = document.getElementById("_LK_고장코드");
+      var _LK_고장코드사유 = document.getElementById("_LK_고장코드사유");
+      var _LK_입고정보 = document.getElementById("_LK_입고정보");
+      var _LK_입고정보사유 = document.getElementById("_LK_입고정보사유");
+      var _LK_재제조이력 = document.getElementById("_LK_재제조이력");
+      var _LK_재제조이력사유 = document.getElementById("_LK_재제조이력사유");
+
+      var _NE_외부점검 = document.getElementById("_NE_외부점검");
+      var _NE_외부점검사유 = document.getElementById("_NE_외부점검사유");
+      var _NE_내부점검 = document.getElementById("_NE_내부점검");
+      var _NE_내부점검사유 = document.getElementById("_NE_내부점검사유");
+      var _NE_실제조사사유 = document.getElementById("_NE_실제조사사유");
+      var _NE_케이스 = document.getElementById("_NE_케이스");
+      var _NE_케이스감압량 = document.getElementById("_NE_케이스감압량");
+      var _NE_냉각유로 = document.getElementById("_NE_냉각유로");
+      var _NE_냉각유로감압량 = document.getElementById("_NE_냉각유로감압량");
+      var _NE_PRA_P = document.getElementById("_NE_PRA_P");
+      var _NE_PRA_P값 = document.getElementById("_NE_PRA_P값");
+      var _NE_PRA_N = document.getElementById("_NE_PRA_N");
+      var _NE_PRA_N값 = document.getElementById("_NE_PRA_N값");
+      var _NE_팩전압 = document.getElementById("_NE_팩전압");
+      var _NE_팩전압값 = document.getElementById("_NE_팩전압값");
+      var _NE_셀전압편차 = document.getElementById("_NE_셀전압편차");
+      var _NE_셀전압편차값 = document.getElementById("_NE_셀전압편차값");
+      var _NE_릴레이제어 = document.getElementById("_NE_릴레이제어");
+      var _NE_릴레이제어사유 = document.getElementById("_NE_릴레이제어사유");
+      var _NE_고장코드 = document.getElementById("_NE_고장코드");
+      var _NE_고장코드사유 = document.getElementById("_NE_고장코드사유");
+      var _NE_입고정보 = document.getElementById("_NE_입고정보");
+      var _NE_입고정보사유 = document.getElementById("_NE_입고정보사유");
+      var _NE_재제조이력 = document.getElementById("_NE_재제조이력");
+      var _NE_재제조이력사유 = document.getElementById("_NE_재제조이력사유");
+
+      var _OS_SK3_외부점검 = document.getElementById("_OS_SK3_외부점검");
+      var _OS_SK3_외부점검사유 = document.getElementById("_OS_SK3_외부점검사유");
+      var _OS_SK3_내부점검 = document.getElementById("_OS_SK3_내부점검");
+      var _OS_SK3_내부점검사유 = document.getElementById("_OS_SK3_내부점검사유");
+      var _OS_SK3_실제조사사유 = document.getElementById("_OS_SK3_실제조사사유");
+      var _OS_SK3_케이스 = document.getElementById("_OS_SK3_케이스");
+      var _OS_SK3_케이스감압량 = document.getElementById("_OS_SK3_케이스감압량");
+      var _OS_SK3_냉각유로 = document.getElementById("_OS_SK3_냉각유로");
+      var _OS_SK3_냉각유로감압량 = document.getElementById("_OS_SK3_냉각유로감압량");
+      var _OS_SK3_PRA_P = document.getElementById("_OS_SK3_PRA_P");
+      var _OS_SK3_PRA_P값 = document.getElementById("_OS_SK3_PRA_P값");
+      var _OS_SK3_PRA_N = document.getElementById("_OS_SK3_PRA_N");
+      var _OS_SK3_PRA_N값 = document.getElementById("_OS_SK3_PRA_N값");
+      var _OS_SK3_팩전압 = document.getElementById("_OS_SK3_팩전압");
+      var _OS_SK3_팩전압값 = document.getElementById("_OS_SK3_팩전압값");
+      var _OS_SK3_셀전압편차 = document.getElementById("_OS_SK3_셀전압편차");
+      var _OS_SK3_셀전압편차값 = document.getElementById("_OS_SK3_셀전압편차값");
+      var _OS_SK3_릴레이제어 = document.getElementById("_OS_SK3_릴레이제어");
+      var _OS_SK3_릴레이제어사유 = document.getElementById("_OS_SK3_릴레이제어사유");
+      var _OS_SK3_고장코드 = document.getElementById("_OS_SK3_고장코드");
+      var _OS_SK3_고장코드사유 = document.getElementById("_OS_SK3_고장코드사유");
+      var _OS_SK3_입고정보 = document.getElementById("_OS_SK3_입고정보");
+      var _OS_SK3_입고정보사유 = document.getElementById("_OS_SK3_입고정보사유");
+      var _OS_SK3_재제조이력 = document.getElementById("_OS_SK3_재제조이력");
+      var _OS_SK3_재제조이력사유 = document.getElementById("_OS_SK3_재제조이력사유");
+
+      var _PU_외부점검 = document.getElementById("_PU_외부점검");
+      var _PU_외부점검사유 = document.getElementById("_PU_외부점검사유");
+      var _PU_내부점검 = document.getElementById("_PU_내부점검");
+      var _PU_내부점검사유 = document.getElementById("_PU_내부점검사유");
+      var _PU_케이스 = document.getElementById("_PU_케이스");
+      var _PU_케이스감압량 = document.getElementById("_PU_케이스감압량");
+      var _PU_냉각유로 = document.getElementById("_PU_냉각유로");
+      var _PU_냉각유로감압량 = document.getElementById("_PU_냉각유로감압량");
+      var _PU_PRA_P = document.getElementById("_PU_PRA_P");
+      var _PU_PRA_P값 = document.getElementById("_PU_PRA_P값");
+      var _PU_PRA_N = document.getElementById("_PU_PRA_N");
+      var _PU_PRA_N값 = document.getElementById("_PU_PRA_N값");
+      var _PU_팩전압 = document.getElementById("_PU_팩전압");
+      var _PU_팩전압값 = document.getElementById("_PU_팩전압값");
+      var _PU_셀전압편차 = document.getElementById("_PU_셀전압편차");
+      var _PU_셀전압편차값 = document.getElementById("_PU_셀전압편차값");
+      var _PU_릴레이제어 = document.getElementById("_PU_릴레이제어");
+      var _PU_릴레이제어사유 = document.getElementById("_PU_릴레이제어사유");
+      var _PU_고장코드 = document.getElementById("_PU_고장코드");
+      var _PU_고장코드사유 = document.getElementById("_PU_고장코드사유");
+      var _PU_입고정보 = document.getElementById("_PU_입고정보");
+      var _PU_입고정보사유 = document.getElementById("_PU_입고정보사유");
+      var _PU_재제조이력 = document.getElementById("_PU_재제조이력");
+      var _PU_재제조이력사유 = document.getElementById("_PU_재제조이력사유");
+
+      var _결과 = document.getElementById("_결과");
+
+      //육안검사외부1
+      var _top_pic = document.getElementById("_top_pic");
+      var _front_pic = document.getElementById("_front_pic");
+      var _left_pic = document.getElementById("_left_pic");
+      var _bottom_pic = document.getElementById("_bottom_pic");
+      var _rear_pic = document.getElementById("_rear_pic");
+      var _right_pic = document.getElementById("_right_pic");
+      var _육안검사_결과 = document.getElementById("_육안검사_결과");
+
+      //육안검사외부2
+      var _이상부위_외부1 = document.getElementById("_이상부위_외부1");
+      var _이상부위_위부2 = document.getElementById("_이상부위_외부2");
+      var _이상부위_위부3 = document.getElementById("_이상부위_외부3");
+      var _이상부위_위부4 = document.getElementById("_이상부위_외부4");
+      var _육안검사_결과2 = document.getElementById("_육안검사_결과2");
+
+      //육안검사내부1
+      var _allImg = document.getElementById("_allImg");
+      var _BMU = document.getElementById("_BMU");
+      var _CMU = document.getElementById("_CMU");
+      var _PRA = document.getElementById("_PRA");
+      var _육안검사_내부_결과 = document.getElementById("_육안검사_내부_결과");
+
+      //육안검사내부2
+      var _이상부위_내부1 = document.getElementById("_이상부위_내부1");
+      var _이상부위_내부2 = document.getElementById("_이상부위_내부2");
+      var _이상부위_내부3 = document.getElementById("_이상부위_내부3");
+      var _이상부위_내부4 = document.getElementById("_이상부위_내부4");
+      var _육안검사_내부_결과2 = document.getElementById("_육안검사_내부_결과2");
+
+      //기밀검사
+      var _측정사진1 = document.getElementById("_측정사진1");
+      var _측정사진2 = document.getElementById("_측정사진2");
+      var _측정값사진1 = document.getElementById("_측정값사진1");
+      var _측정값사진2 = document.getElementById("_측정값사진2");
+      var _케이스 = document.getElementById("_케이스");
+      var _냉각유로 = document.getElementById("_냉각유로");
+
+      var _기밀검사_특이사항1 = document.getElementById("_기밀검사_특이사항1");
+      var _기밀검사_특이사항2 = document.getElementById("_기밀검사_특이사항2");
+      var _기밀검사_특이사항3 = document.getElementById("_기밀검사_특이사항3");
+      var _기밀검사_특이사항4 = document.getElementById("_기밀검사_특이사항4");
+      var _기밀검사_특이사항_결과 = document.getElementById("_기밀검사_특이사항_결과");
+
+      //절연저항검사
+      var _절연측정사진1 = document.getElementById("_절연측정사진1");
+      var _절연측정사진2 = document.getElementById("_절연측정사진1");
+      var _절연측정값사진1 = document.getElementById("_절연측정값사진1");
+      var _절연측정값사진1 = document.getElementById("_절연측정값사진1");
+      var _절연PRA_P = document.getElementById("_절연PRA_P");
+      var _절연PRA_N = document.getElementById("_절연PRA_N");
+
+      //CAN통신검사
+      var _CAN현재 = document.getElementById("_CAN현재");
+      var _CAN진단 = document.getElementById("_CAN진단");
+      var _CAN과거 = document.getElementById("_CAN과거");
+      var _PDS진단1 = document.getElementById("_PDS진단1");
+      var _PDS진단2 = document.getElementById("_PDS진단2");
+
+      //checkbox
+      var _cb기초보고서 = document.getElementById("_cb기초보고서");
+      var _육안검사외부 = document.getElementById("_cb육안검사외부");
+      var _육안검사외부상세 = document.getElementById("_cb육안검사외부상세");
+      var _육안검사내부 = document.getElementById("_cb육안검사내부");
+      var _육안검사내부상세 = document.getElementById("_cb육안검사내부상세");
+      var _기밀검사 = document.getElementById("_cb기밀검사");
+      var _기밀검사_특이사항 = document.getElementById("_cb기밀검사특이사항");
+      var _절연저항검사 = document.getElementById("_cb절연저항검사");
+      var _CAN통신검사 = document.getElementById("_cbCAN통신검사");
+    </script>
+  </body>
+</html>

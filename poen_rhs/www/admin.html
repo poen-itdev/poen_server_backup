@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Poen Admin System</title>
+    <link rel="stylesheet" href="base/style/style.css" />
+    <link rel="stylesheet" href="base/style/공정.css" />
+  </head>
+
+  <body>
+    <section class="adminSystem">
+      <div class="process__tit change-tit">
+        <h2>계정 관리</h2>
+      </div>
+      <div class="input-group">
+        <table>
+          <tr>
+            <td>
+              <label for="_id">ID</label>
+            </td>
+            <td class="answer">
+              <input type="text" id="_id" require />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_pawsswd">Password</label>
+            </td>
+            <td class="answer">
+              <input type="password" id="_passwd" require />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_pawsswd2">Password</label>
+            </td>
+            <td class="answer">
+              <input type="password" id="_passwd2" require />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_level">Level</label>
+            </td>
+            <td class="answer">
+              <input type="text" id="_level" require />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_이름">이름</label>
+            </td>
+            <td class="answer">
+              <input type="text" id="_이름" require />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_기본정보">기본정보</label>
+            </td>
+            <td class="answer">
+              <input type="text" id="_기본정보" require />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_입고">입고</label>
+            </td>
+            <td class="answer">
+              <input type="text" id="_입고" require />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_세척">세척</label>
+            </td>
+            <td class="answer">
+              <input type="text" id="_세척" require />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_기초검사">기초검사</label>
+            </td>
+            <td class="answer">
+              <input type="text" id="_기초검사" require />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_분해조립">분해조립</label>
+            </td>
+            <td class="answer">
+              <input type="text" id="_분해조립" require />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_성능검사">성능검사</label>
+            </td>
+            <td class="answer">
+              <input type="text" id="_성능검사" require />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_EOL">EOL</label>
+            </td>
+            <td class="answer">
+              <input type="text" id="_EOL" require />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_출하검사">출하검사</label>
+            </td>
+            <td class="answer">
+              <input type="text" id="_출하검사" require />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_부품재고">부품재고</label>
+            </td>
+            <td class="answer">
+              <input type="text" id="_부품재고" require />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_완료일수정">완료일수정</label>
+            </td>
+            <td class="answer">
+              <input type="text" id="_완료일수정" require />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_관리번호">관리번호</label>
+            </td>
+            <td class="answer">
+              <input type="text" id="_관리번호" require />
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2" class="btn-group">
+              <button onClick="add_user();">OK</button>
+              <button onClick="delete_user();">Delete user</button>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div id="grid_user_info"></div>
+    </section>
+  </body>
+</html>

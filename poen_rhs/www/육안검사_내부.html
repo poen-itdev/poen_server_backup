@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>육안검사 - 내부</title>
+    <link rel="stylesheet" href="base/style/공정.css" />
+  </head>
+
+  <body>
+    <div>
+      <table border="2" id="tb">
+        <tr>
+          <td class="base">
+            <label for="management_id"><b>관리번호</b></label>
+          </td>
+          <td class="base">
+            <input type="text" id="_management_id" value="조회 버튼을 누르세요" size="40" required />
+            <button onClick="육안검사내부_조회();">조 회</button>
+          </td>
+        </tr>
+        <tr>
+          <td class="base">
+            <label for="_재제조번호"><b>재제조번호</b></label>
+          </td>
+          <td class="base">
+            <input type="text" id="_재제조번호" value="조회 버튼을 누르세요" size="40" required />
+            <button onClick="육안검사내부_조회(true);">조 회</button>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div id="internal">
+      <button type="button" class="btn btn1">내부사진</button>
+      <button type="button" class="btn btn2">이상부위 상세사진</button>
+      <div id="_육안검사내부1" class="check-all">
+        <h3>▣ 육안검사 - 내부</h3>
+        <table border="2" class="all">
+          <caption>
+            육안검사 - 내부
+          </caption>
+          <colgroup>
+            <col class="col_1" style="width: 20%" />
+            <col class="col_2" style="width: 100%" />
+            <col class="col_3" style="width: 100%" />
+          </colgroup>
+          <tbody>
+            <tr>
+              <th scope="col" colspan="3" class="title">전체 사진</th>
+              <td rowspan="2" style="height: 20vh" class="imgName">
+                <p style="text-align: left">주요부품1(BMU)</p>
+                <img id="_BMU" width="90%" height="90%" />
+              </td>
+            </tr>
+            <tr>
+              <td rowspan="5" colspan="3" class="imgName" style="height: 60vh">
+                <img id="_allImg" width="100%" height="100%" />
+              </td>
+            </tr>
+            <tr>
+              <td rowspan="2" style="height: 20vh" class="imgName">
+                <p style="text-align: left">주요부품2 (CMU)</p>
+                <img id="_CMU" width="90%" height="90%" />
+              </td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td rowspan="2" style="height: 20vh" class="imgName">
+                <p style="text-align: left">주요부품3 (PRA)</p>
+                <img id="_PRA" width="90%" height="90%" />
+              </td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <th>결 과 :</th>
+              <td class="result" id="_결과" colspan="3"></td>
+              <td></td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+      <div id="_육안검사내부2" class="check-all">
+        <h3>▣ 육안검사 - 내부_<em>이상부위 상세사진</em></h3>
+        <table border="2" class="all">
+          <caption>
+            육안검사 - 내부_이상부위 상세사진
+          </caption>
+          <colgroup>
+            <col class="col_1" />
+            <col class="col_2" />
+          </colgroup>
+          <tbody>
+            <tr>
+              <td>
+                <img id="_이상부위_내부1" width="100%" height="100%" />
+              </td>
+              <td>
+                <img id="_이상부위_내부2" width="100%" height="100%" />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <img id="_이상부위_내부3" width="100%" height="100%" />
+              </td>
+              <td>
+                <img id="_이상부위_내부4" width="100%" height="100%" />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <table class="bottom" width="100%">
+        <tr>
+          <td class="bottom" align="left">FQ850-05</td>
+          <td class="bottom" align="center">A4(297x210mm)</td>
+          <td class="bottom" align="right">Positive <font color="skyblue">En</font>ergy</td>
+        </tr>
+      </table>
+      <div>
+        <canvas id="_canvas"></canvas>
+      </div>
+      <div>
+        <button onClick="육안검사내부_save();">SAVE</button>
+        <button onClick="back();">되돌아 가기</button>
+      </div>
+    </div>
+  </body>
+</html>

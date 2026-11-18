@@ -1,0 +1,227 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>배터리팩 재제조 현황</title>
+    <link rel="stylesheet" href="base/style/공정.css" />
+    <link rel="stylesheet" href="base/style/camera.css" />
+  </head>
+
+  <body>
+    <div class="loding-bar">
+      <span>Loading..</span>
+      <progress id="progress" value="0" max="100"></progress>
+    </div>
+    <div class="process__tit change-tit">
+      <label for="grid_BSA">재제조 배터리팩 현황</label>
+    </div>
+    <section class="BSA 재제조 현황 bsa-info">
+      <div class="gather-filter">
+        <select id="filter-field">
+          <option></option>
+          <option value="관리번호">관리번호</option>
+          <option value="재제조번호">재제조번호</option>
+          <option value="구분">구분</option>
+          <option value="차종">차종</option>
+          <option value="품번">품번</option>
+          <option value="RO_no">RO_no</option>
+          <option value="공정단계">공정단계</option>
+          <option value="적재No">적재No</option>
+          <option value="입고">입고</option>
+          <option value="제조투입">제조투입</option>
+          <option value="세척투입일">세척투입일</option>
+          <option value="세척">세척</option>
+          <option value="기초검사투입">기초검사투입</option>
+          <option value="기초검사">기초검사</option>
+          <option value="분해조립투입">분해조립투입</option>
+          <option value="분해조립">분해조립</option>
+          <option value="성능검사투입">성능검사투입</option>
+          <option value="성능검사">성능검사</option>
+          <option value="EOL투입일">EOL투입일</option>
+          <option value="EOL">EOL</option>
+          <option value="출하검사">출하검사</option>
+          <option value="납품처">납품처</option>
+          <option value="출하">출하</option>
+          <option value="소재지">소재지</option>
+          <option value="반품입고">반품입고</option>
+          <option value="재출하">재출하</option>
+          <option value="완전분해">완전분해</option>
+          <option value="폐기">폐기</option>
+          <option value="마지막충전일">마지막충전일</option>
+        </select>
+
+        <select id="filter-type">
+          <option value="=">=</option>
+          <option value="<"><</option>
+
+          <option value="<="><=</option>
+
+          <option value=">">></option>
+          <option value=">=">>=</option>
+          <option value="!=">!=</option>
+          <option value="like">like</option>
+        </select>
+
+        <input id="filter-value" type="text" placeholder="value to filter" />
+
+        <button id="filter-clear">Clear Filter</button>
+      </div>
+      <div class="process p-pb">
+        <div id="grid_BSA"></div>
+      </div>
+      <div class="pb">
+        <p id="m_id" class="id__name"></p>
+        <div class="process__btn">
+          <div class="process__btns">
+            <input id="copy_관리번호" type="text" placeholder="To 관리번호" />
+            <button onClick="if(계정_stat.관리번호 == 'o') copy();">복사</button>
+            <!--<button onClick="if(계정_stat.관리번호 == 'o') 관리번호_변경();" disabled>
+              변경
+	    </button>-->
+          </div>
+          <div class="process__btns">
+            <button onClick="if(계정_stat.관리번호 == 'o') delete_bsa();" class="delete__bsa">삭제</button>
+            <button onClick="export_excel();" class="down__excel">배터리팩 정보 Data Excel</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="process">
+        <div class="process__tit">
+          <label for="grid_입고정보">입고 정보</label>
+        </div>
+        <div id="grid_입고정보"></div>
+      </div>
+
+      <div class="process">
+        <div class="process__tit">
+          <label for="grid_세척정보">세척 정보</label>
+        </div>
+        <div id="grid_세척정보"></div>
+      </div>
+
+      <div class="process">
+        <div class="process__tit">
+          <label for="grid_기초검사">기초 검사</label>
+        </div>
+        <div id="grid_기초검사"></div>
+      </div>
+
+      <div class="process">
+        <div class="process__tit">
+          <label for="grid_분해조립">분해 조립</label>
+        </div>
+        <div id="grid_분해조립"></div>
+      </div>
+
+      <div class="process">
+        <div class="process__tit">
+          <label for="grid_분해조립new">분해 조립 New</label>
+        </div>
+        <div id="grid_분해조립new"></div>
+      </div>
+
+      <div class="process">
+        <div class="process__tit">
+          <label for="grid_성능검사">성능 검사</label>
+        </div>
+        <div id="grid_성능검사"></div>
+      </div>
+
+      <div class="process">
+        <div class="process__tit">
+          <label for="grid_EOL">EOL</label>
+        </div>
+        <div id="grid_EOL"></div>
+      </div>
+
+      <div class="process">
+        <div class="process__tit">
+          <label for="grid_출하정보">출하 정보</label>
+        </div>
+        <div id="grid_출하정보"></div>
+      </div>
+
+      <div class="process">
+        <div class="process__tit">
+          <label for="grid_특이사항">특이사항</label>
+        </div>
+        <div id="grid_특이사항"></div>
+      </div>
+
+      <div class="process">
+        <div class="process__tit">
+          <label for="grid_교체부품상세1">교체부품상세1</label>
+        </div>
+        <div id="grid_교체부품상세1"></div>
+      </div>
+
+      <div class="process">
+        <div class="process__tit">
+          <label for="grid_교체부품상세2">교체부품상세2</label>
+        </div>
+        <div id="grid_교체부품상세2"></div>
+      </div>
+
+      <div class="process">
+        <div class="process__tit">
+          <label for="grid_교체부품상세3">교체부품상세3</label>
+        </div>
+        <div id="grid_교체부품상세3"></div>
+      </div>
+
+      <div class="process">
+        <div class="process__tit">
+          <label for="grid_교체부품상세4">교체부품상세4</label>
+        </div>
+        <div id="grid_교체부품상세4"></div>
+      </div>
+
+      <div class="process">
+        <div class="process__tit">
+          <label for="grid_교체부품상세5">교체부품상세5</label>
+        </div>
+        <div id="grid_교체부품상세5"></div>
+      </div>
+
+      <div class="process">
+        <div class="process__tit">
+          <label for="grid_교체부품상세6">교체부품상세6</label>
+        </div>
+        <div id="grid_교체부품상세6"></div>
+      </div>
+
+      <div class="process">
+        <div class="process__tit">
+          <label for="grid_교체부품상세7">교체부품상세7</label>
+        </div>
+        <div id="grid_교체부품상세7"></div>
+      </div>
+
+      <div class="process">
+        <div class="process__tit">
+          <label for="grid_교체부품상세8">교체부품상세8</label>
+        </div>
+        <div id="grid_교체부품상세8"></div>
+      </div>
+
+      <div class="process">
+        <div class="process__tit">
+          <label for="grid_교체부품상세9">교체부품상세9</label>
+        </div>
+        <div id="grid_교체부품상세9"></div>
+      </div>
+
+      <div class="process">
+        <div class="process__tit">
+          <label for="grid_교체부품상세10">교체부품상세10</label>
+        </div>
+        <div id="grid_교체부품상세10"></div>
+      </div>
+    </section>
+    <script>
+      var _management_id = document.getElementById("_management_id");
+      var _재제조번호 = document.getElementById("_재제조번호");
+    </script>
+  </body>
+</html>

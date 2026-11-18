@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>특이사항</title>
+    <link rel="stylesheet" href="base/style/공정.css" />
+  </head>
+
+  <body>
+    <section class="특이사항">
+      <div class="process__tit change-tit">
+        <h2>특이사항</h2>
+      </div>
+      <div class="input-group process-step">
+        <table class="tb">
+          <colgroup>
+            <col class="col_1" width="30%" />
+            <col class="col_2" width="70%" />
+          </colgroup>
+          <tr>
+            <td>
+              <label for="management_id">관리번호</label>
+            </td>
+            <td>
+              <input type="text" id="_management_id" value="조회 버튼을 누르세요" size="25" required />
+              <button onClick="특이사항_시작();">조 회</button>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_특이사항">특이 사항</label>
+            </td>
+            <td>
+              <input type="text" id="_특이사항" size="100" required />
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="input-group">
+        <div class="input-btn-group">
+          <button onClick="특이사항_save();">저장</button>
+          <button onClick="이전페이지();">이전페이지</button>
+        </div>
+      </div>
+    </section>
+    <script>
+      const _management_id = document.getElementById("_management_id");
+      const _특이사항 = document.getElementById("_특이사항");
+    </script>
+  </body>
+</html>

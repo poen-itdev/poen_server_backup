@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>배터리팩 정보입력 - 기초검사</title>
+    <link rel="stylesheet" href="base/style/공정.css" />
+  </head>
+
+  <body>
+    <div class="gather-filter">
+      <select id="filter-field">
+        <option></option>
+        <option value="관리번호">관리번호</option>
+        <option value="재제조번호">재제조번호</option>
+        <option value="구분">구분</option>
+        <option value="차종">차종</option>
+        <option value="품번">품번</option>
+        <option value="RO_no">RO_no</option>
+        <option value="공정단계">공정단계</option>
+        <option value="적재No">적재No</option>
+        <option value="입고">입고</option>
+        <option value="제조투입">제조투입</option>
+        <option value="세척투입일">세척투입일</option>
+        <option value="세척">세척</option>
+        <option value="기초검사투입">기초검사투입</option>
+        <option value="기초검사">기초검사</option>
+        <option value="분해조립투입">분해조립투입</option>
+        <option value="분해조립">분해조립</option>
+        <option value="성능검사투입">성능검사투입</option>
+        <option value="성능검사">성능검사</option>
+        <option value="EOL투입일">EOL투입일</option>
+        <option value="EOL">EOL</option>
+        <option value="출하검사">출하검사</option>
+        <option value="납품처">납품처</option>
+        <option value="출하">출하</option>
+        <option value="소재지">소재지</option>
+        <option value="반품입고">반품입고</option>
+        <option value="재출하">재출하</option>
+        <option value="완전분해">완전분해</option>
+        <option value="폐기">폐기</option>
+        <option value="마지막충전일">마지막충전일</option>
+      </select>
+
+      <select id="filter-type">
+        <option value="=">=</option>
+        <option value="<"><</option>
+        <option value="<="><=</option>
+        <option value=">">></option>
+        <option value=">=">>=</option>
+        <option value="!=">!=</option>
+        <option value="like">like</option>
+      </select>
+
+      <input id="filter-value" type="text" placeholder="value to filter" />
+
+      <button id="filter-clear">Clear Filter</button>
+    </div>
+    <button onClick="기초검사_list();">LIST</button>
+    <div id="grid_list"></div>
+
+    <div class="기초검사">
+      <div class="process__tit">
+        <h2>기초 검사</h2>
+      </div>
+      <div class="input-group process-step">
+        <table id="tb" class="tb">
+          <colgroup>
+            <col class="col_1" width="30%" />
+            <col class="col_2" width="60%" />
+            <col class="col_3" width="10%" />
+          </colgroup>
+          <tr>
+            <td class="_항목">
+              <label for="management_id">관리번호</label>
+            </td>
+            <td>
+              <input type="text" id="_management_id" value="" size="40" required />
+              <button onClick="기초검사_시작(0);">조 회</button>
+            </td>
+          </tr>
+          <tr>
+            <td class="_항목">
+              <label for="_재제조번호">재제조번호</label>
+            </td>
+            <td>
+              <input type="text" id="_재제조번호" value="" size="40" required />
+              <button onClick="기초검사_시작(1);">조 회</button>
+            </td>
+          </tr>
+          <tr>
+            <td class="_항목">
+              <label for="_RO_no">RO no.</label>
+            </td>
+            <td>
+              <input type="text" id="_RO_no" value="" size="40" required />
+              <button onClick="기초검사_시작(2);">조 회</button>
+            </td>
+          </tr>
+          <tr>
+            <td class="_항목">
+              <label for="_구분">구분</label>
+            </td>
+            <td>
+              <input type="text" id="_구분" size="40" readonly required />
+            </td>
+          </tr>
+          <tr>
+            <td class="_항목">
+              <label for="_차종">차종</label>
+            </td>
+            <td>
+              <input type="text" id="_차종" size="40" readonly required />
+            </td>
+          </tr>
+          <tr>
+            <td class="_항목">
+              <label for="_품번">품번</label>
+            </td>
+            <td>
+              <input type="text" id="_품번" size="40" readonly required />
+            </td>
+          </tr>
+          <tr>
+            <td class="_항목">
+              <label for="_공정입고일">공정 입고일</label>
+            </td>
+            <td>
+              <input type="datetime-local" id="_공정입고일" value="0000-00-00T00:00" required />
+            </td>
+          </tr>
+          <tr>
+            <td class="_항목">
+              <label for="_VIN">VIN</label>
+            </td>
+            <td>
+              <input type="text" id="_VIN" size="40" required />
+            </td>
+          </tr>
+          <tr>
+            <td class="_항목">
+              <label for="_QRCode">QR</label>
+            </td>
+            <td>
+              <input type="text" id="_QRCode" size="40" required />
+            </td>
+            <td class="process__img once">
+              <div class="images">
+                <img id="_img1" width="100vw" height="100vh" />
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="_항목">
+              <label for="_주행거리">주행거리</label>
+            </td>
+            <td>
+              <input type="text" id="_주행거리" size="40" required />
+            </td>
+          </tr>
+          <tr>
+            <td class="_항목">
+              <label for="_차량번호">차량 번호</label>
+            </td>
+            <td>
+              <input type="text" id="_차량번호" size="40" required />
+            </td>
+          </tr>
+          <tr id="_육안검사_내부_box">
+            <td rowspan="2" class="_항목">
+              <label for="_육안검사_내부">육안검사 내부</label>
+            </td>
+            <td>
+              <input type="text" id="_육안검사_내부" size="40" required />
+              <select name="language" onchange="_육안검사내부_콤보박스(this);">
+                <option value="">---</option>
+                <option value="OK">OK</option>
+                <option value="NG">NG</option>
+              </select>
+            </td>
+          </tr>
+          <tr id="_육안검사_내부_img">
+            <td colspan="2" class="process__img img-box">
+              <div class="images">
+                <h3>전체사진</h3>
+                <img id="_img2" />
+              </div>
+              <div class="images">
+                <h3>BMU</h3>
+                <img id="_img3" />
+              </div>
+              <div class="images">
+                <h3>CMU</h3>
+                <img id="_img4" />
+              </div>
+              <div class="images">
+                <h3>PRA</h3>
+                <img id="_img5" />
+              </div>
+            </td>
+          </tr>
+          <tr id="_육안검사_내부_특이사항_box">
+            <td rowspan="2" class="_항목">
+              <label for="_육안검사_내부_특이사항">육안검사 내부 특이사항</label>
+            </td>
+            <td>
+              <input type="text" id="_육안검사_내부_특이사항" size="100" required />
+            </td>
+          </tr>
+          <tr id="_육안검사_내부_특이사항_img">
+            <td class="process__img img-box">
+              <div class="images top">
+                <img id="_img6" />
+              </div>
+              <div class="images top">
+                <img id="_img7" />
+              </div>
+              <div class="images top">
+                <img id="_img8" />
+              </div>
+              <div class="images top">
+                <img id="_img9" />
+              </div>
+            </td>
+          </tr>
+          <tr id="_기밀검사_냉각유로_box">
+            <td rowspan="2" class="_항목">
+              <label for="_기밀검사_냉각유로">기밀검사 냉각유로</label>
+            </td>
+            <td>
+              <input type="text" id="_기밀검사_냉각유로" size="40" required />
+              <select name="language" onchange="_기밀검사_냉각유로_콤보박스(this);">
+                <option value="">---</option>
+                <option value="OK">OK</option>
+                <option value="NG">NG</option>
+              </select>
+            </td>
+          </tr>
+          <tr id="_기밀검사_냉각유로_img">
+            <td class="process__img img-box">
+              <div class="images">
+                <h3>측정 전체</h3>
+                <img id="_img10" />
+              </div>
+              <div class="images">
+                <h3>측정값 확대</h3>
+                <img id="_img11" />
+              </div>
+            </td>
+          </tr>
+          <tr id="_기밀검사_냉각유로_특이사항_box">
+            <td class="_항목">
+              <label for="_기밀검사_냉각유로_특이사항">기밀검사 냉각유로 특이사항</label>
+            </td>
+            <td>
+              <input type="text" id="_기밀검사_냉각유로_특이사항" size="100" required />
+            </td>
+            <!--<td class="process__img once">
+              <div class="images">
+                <img id="_img12" width="100vw" height="100vh" />
+              </div>
+            </td>
+	    -->
+          </tr>
+          <tr id="_절연검사P_box">
+            <td rowspan="2" class="_항목">
+              <label for="_절연검사P">절연 검사 B(+)(MΩ)</label>
+            </td>
+            <td>
+              <input type="text" id="_절연검사P판정" size="40" required />
+              <select name="language" onchange="_절연검사P_콤보박스(this);">
+                <option value="">---</option>
+                <option value="OK">OK</option>
+                <option value="NG">NG</option>
+              </select>
+              <input type="text" id="_절연검사P" size="40" required />
+            </td>
+          </tr>
+          <tr id="_절연검사P_img">
+            <td class="process__img img-box">
+              <div class="images">
+                <h3>장비세팅 전체</h3>
+                <img id="_img13" />
+              </div>
+              <div class="images">
+                <h3>측정값 확대</h3>
+                <img id="_img14" />
+              </div>
+            </td>
+          </tr>
+          <tr id="_절연검사N_box">
+            <td rowspan="2" class="_항목">
+              <label for="_절연검사N">절연 검사 B(-)(MΩ)</label>
+            </td>
+            <td>
+              <input type="text" id="_절연검사N판정" size="40" required />
+              <select name="language" onchange="_절연검사N_콤보박스(this);">
+                <option value="">---</option>
+                <option value="OK">OK</option>
+                <option value="NG">NG</option>
+              </select>
+              <input type="text" id="_절연검사N" size="40" required />
+            </td>
+          </tr>
+          <tr id="_절연검사N_img">
+            <td class="process__img img-box">
+              <div class="images">
+                <h3>장비세팅 전체</h3>
+                <img id="_img15" />
+              </div>
+              <div class="images">
+                <h3>측정값 확대</h3>
+                <img id="_img16" />
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td rowspan="2" class="_항목">
+              <label for="_센서데이터진단">센서데이터 진단</label>
+            </td>
+            <td>
+              <input type="text" id="_센서데이터진단_판정" size="40" required />
+              <select name="language" onchange="_센서데이터진단_콤보박스(this);">
+                <option value="">---</option>
+                <option value="OK">OK</option>
+                <option value="NG">NG</option>
+              </select>
+              <input type="text" id="_센서데이터진단" size="40" required />
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2" class="process__img img-box">
+              <div class="images">
+                <h3>고장코드-현재</h3>
+                <img id="_img17" />
+              </div>
+              <div class="images">
+                <h3>고장코드-과거</h3>
+                <img id="_img19" />
+              </div>
+              <div class="images">
+                <h3>센서데이터진단</h3>
+                <img id="_img18" />
+              </div>
+              <div class="images">
+                <h3>PDS진단1</h3>
+                <img id="_img20" />
+              </div>
+              <div class="images">
+                <h3>PDS진단2</h3>
+                <img id="_img21" />
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2" style="text-align: center">
+              <button onClick="_기초검사_add_DTC_Code();">Add DTC Code(+)</button>
+            </td>
+          </tr>
+          <tr>
+            <td class="_항목">
+              <label for="_통신검사_팩전압">통신검사 팩전압(V)</label>
+            </td>
+            <td>
+              <input type="text" id="_통신검사_팩전압판정" size="40" required />
+              <select name="language" onchange="_기초검사_통신검사_팩전압_콤보박스(this);">
+                <option value="">---</option>
+                <option value="OK">OK</option>
+                <option value="NG">NG</option>
+              </select>
+              <input type="text" id="_통신검사_팩전압" size="40" required />
+            </td>
+          </tr>
+          <tr>
+            <td class="_항목">
+              <label for="_통신검사_셀전압편차">통신검사 셀전압 편차(mV)</label>
+            </td>
+            <td>
+              <input type="text" id="_통신검사_셀전압편차판정" size="40" required />
+              <select name="language" onchange="_통신검사_셀전압_콤보박스(this);">
+                <option value="">---</option>
+                <option value="OK">OK</option>
+                <option value="NG">NG</option>
+              </select>
+              <input type="text" id="_통신검사_셀전압편차" size="40" required />
+            </td>
+          </tr>
+          <tr>
+            <td class="_항목">
+              <label for="_통신검사_릴레이구동">통신검사 릴레이 구동 판정</label>
+            </td>
+            <td>
+              <input type="text" id="_통신검사_릴레이구동" size="40" required />
+              <select name="language" onchange="_통신검사_릴레이구동_콤보박스(this);">
+                <option value="">---</option>
+                <option value="통신불가">통신불가</option>
+                <option value="OK">OK</option>
+                <option value="NG">NG</option>
+                <input type="text" id="_통신검사_릴레이구동사유" size="40" required />
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td class="_항목">
+              <label for="_BSA생산일자">배터리팩 생산일자</label>
+            </td>
+            <td>
+              <input type="datetime-local" id="_BSA생산일자" value="0000-00-00T00:00" required />
+            </td>
+          </tr>
+          <tr>
+            <td class="_항목">
+              <label for="_BSA판매일자">배터리팩 판매일</label>
+            </td>
+            <td>
+              <input type="datetime-local" id="_BSA판매일자" value="0000-00-00T00:00" required />
+            </td>
+          </tr>
+          <tr>
+            <td class="_항목">
+              <label for="_BSA수리일자">배터리팩 수리일</label>
+            </td>
+            <td>
+              <input type="datetime-local" id="_BSA수리일자" value="0000-00-00T00:00" required />
+            </td>
+          </tr>
+          <tr>
+            <td class="_항목">
+              <label for="_BMA_ROM_ID">배터리모듈 ROM ID</label>
+            </td>
+            <td>
+              <input type="text" id="_BMA_ROM_ID" size="40" required />
+            </td>
+          </tr>
+          <tr>
+            <td class="_항목">
+              <label for="_공정완료일">공정 완료일</label>
+            </td>
+            <td>
+              <input type="datetime-local" id="_공정완료일" value="0000-00-00T00:00" required />
+            </td>
+          </tr>
+          <tr>
+            <td class="_항목">
+              <label for="_분석결과">분석결과</label>
+            </td>
+            <td class="textarea_custom" title="1. 기초검사를 통해 찾아낸 현상과 필드현상 또는 A/S센터 진단의 원인과 분석내용 기재 &#10; 2. 고장원인부품 및 원인 추정 탈거 부품 기재. &#10; 3. 원인 확인 불가 시 'NTF'기재">
+              <textarea name="" id="_분석결과" cols="30" rows="5" placeholder="1. 기초검사를 통해 찾아낸 현상과 필드현상 또는 A/S센터 진단의 원인과 분석 내용을 기재.&#10;2. 고장 원인부품 및 원인 추정 탈거 부품 기재.&#10;3. 원인 확인 불가 시 “NTF” 기재"></textarea>
+            </td>
+          </tr>
+          <tr>
+            <td class="_항목">
+              <label for="_비고">비고</label>
+            </td>
+            <td>
+              <input type="text" id="_비고" size="40" required />
+            </td>
+          </tr>
+          <tr>
+            <td class="_항목">
+              <label for="_필드현상">필드 현상</label>
+            </td>
+            <td>
+              <input type="text" id="_필드현상" size="40" required />
+            </td>
+          </tr>
+          <tr>
+            <td class="_항목">
+              <label for="_센터진단내용">센터 진단내용</label>
+            </td>
+            <td>
+              <input type="text" id="_센터진단내용" size="40" required />
+            </td>
+          </tr>
+          <tr>
+            <td class="_항목">
+              <label for="_AS센터조치">센터 조치내용</label>
+            </td>
+            <td>
+              <input type="text" id="_AS센터조치" size="40" required />
+            </td>
+          </tr>
+          <tr>
+            <td class="_항목">
+              <label for="_검사자">검사자</label>
+            </td>
+            <td>
+              <input type="text" id="_검사자" size="40" required />
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="input-group">
+        <div class="input-btn-group">
+          <button onClick="기초검사_save();">저장</button>
+          <button onClick="이전페이지();">이전페이지</button>
+          <button onClick="flag_부품정보_list = true; loadPage('base/부품정보_list.html')">부품정보</button>
+          <button onclick="기초보고서_load();">기초보고서</button>
+        </div>
+      </div>
+      <div class="loding-bar">
+        <span>Save..</span>
+        <progress id="progress" value="0" max="100"></progress>
+      </div>
+    </div>
+    <script>
+      const _management_id = document.getElementById("_management_id");
+      const _재제조번호 = document.getElementById("_재제조번호");
+      const _RO_no = document.getElementById("_RO_no");
+      const _VIN = document.getElementById("_VIN");
+      const _QRCode = document.getElementById("_QRCode");
+      const _주행거리 = document.getElementById("_주행거리");
+      const _차량번호 = document.getElementById("_차량번호");
+      const _공정입고일 = document.getElementById("_공정입고일");
+      const _육안검사_내부 = document.getElementById("_육안검사_내부");
+      const _육안검사_내부_특이사항 = document.getElementById("_육안검사_내부");
+      const _기밀검사_케이스 = document.getElementById("_기밀검사_케이스");
+      const _기밀검사_케이스_특이사항 = document.getElementById("_기밀검사_케이스");
+      const _기밀검사_냉각유로 = document.getElementById("_기밀검사_냉각유로");
+      const _기밀검사_냉각유로_특이사항 = document.getElementById("_기밀검사_냉각유로_특이사항");
+      const _절연검사P = document.getElementById("_절연검사P");
+      const _절연검사P판정 = document.getElementById("_절연검사P판정");
+      const _절연검사N = document.getElementById("_절연검사N");
+      const _절연검사N판정 = document.getElementById("_절연검사N판정");
+      const _토크검사_UPR_C = document.getElementById("_토크검사_UPR_C");
+      const _토크검사_버스바 = document.getElementById("_통신검사_버스바");
+      const _센서데이터진단 = document.getElementById("_센서데이터진단");
+      const _센서데이터진단_판정 = document.getElementById("_센서데이터진단_판정");
+      const _통신검사_팩전압 = document.getElementById("_통신검사_팩전압");
+      const _통신검사_팩전압판정 = document.getElementById("_통신검사_팩전압판정");
+      const _통신검사_셀전압편차 = document.getElementById("_통신검사_셀전압편차");
+      const _통신검사_셀전압편차판정 = document.getElementById("_통신검사_셀전압편차판정");
+      const _통신검사_릴레이구동 = document.getElementById("_통신검사_릴레이구동");
+      const _통신검사_릴레이구동사유 = document.getElementById("_통신검사_릴레이구동사유");
+      const _BSA생산일자 = document.getElementById("_BSA생산일자");
+      const _BMA_ROM_ID = document.getElementById("_BMA_ROM_ID");
+      const _고장현상코드 = document.getElementById("_고장현상코드");
+      const _고장현상명 = document.getElementById("_고장현상명");
+      //const _문제Cell_No = document.getElementById("_문제Cell_No");
+      //const _문제BMA_No = document.getElementById("_문제BMA_No");
+      //const _문제BMA_cnt = document.getElementById("_문제BMA_cnt");
+      const _공정완료일 = document.getElementById("_공정완료일");
+      const _분석결과 = document.getElementById("_분석결과");
+      const _비고 = document.getElementById("_비고");
+      const _센터진단내용 = document.getElementById("_센터진단내용");
+      const _필드현상 = document.getElementById("_필드현상");
+      const _AS센터조치 = document.getElementById("_AS센터조치");
+      const _검사자 = document.getElementById("_검사자");
+      const _육안검사_내부_box = document.getElementById("_육안검사_내부_box");
+      const _육안검사_내부_특이사항_box = document.getElementById("_육안검사_내부_box");
+      const _기밀검사_냉각유로_box = document.getElementById("_기밀검사_냉각유로_box");
+      const _기밀검사_냉각유로_특이사항_box = document.getElementById("_기밀검사_냉각유로_box");
+      const _절연검사P_box = document.getElementById("_절연검사P_box");
+      const _절연검사N_box = document.getElementById("_절연검사N_box");
+      const _통신검사_DTC코드1_box = document.getElementById("_통신검사_DTC코드1_box");
+      const _통신검사_DTC코드1;
+      const _통신검사_DTC코드2;
+      const _통신검사_DTC코드3;
+      const _통신검사_DTC코드4;
+      const _통신검사_DTC코드5;
+      const _통신검사_DTC코드6;
+      const _통신검사_DTC코드7;
+      const _통신검사_DTC코드8;
+      const _통신검사_DTC코드9;
+      const _통신검사_DTC코드10;
+      const _기초검사 = document.getElementById("_기초검사");
+
+      const _육안검사_내부_img = document.getElementById("_육안검사_내부_img");
+      const _육안검사_내부_특이사항_img = document.getElementById("_육안검사_내부_특이사항_img");
+      const _img1 = document.getElementById("_img1");
+      const _img2 = document.getElementById("_img2");
+      const _img3 = document.getElementById("_img3");
+      const _img4 = document.getElementById("_img4");
+      const _img5 = document.getElementById("_img5");
+      const _img6 = document.getElementById("_img6");
+      const _img7 = document.getElementById("_img7");
+      const _img8 = document.getElementById("_img8");
+      const _img9 = document.getElementById("_img9");
+      const _img10 = document.getElementById("_img10");
+      const _img11 = document.getElementById("_img11");
+      //const _img12 = document.get.getElementById("_img12");
+      const _img13 = document.getElementById("_img13");
+      const _img14 = document.getElementById("_img14");
+      const _img15 = document.getElementById("_img15");
+      const _img16 = document.getElementById("_img16");
+      const _img17 = document.getElementById("_img17");
+      const _img18 = document.getElementById("_img18");
+      const _img19 = document.getElementById("_img19");
+      const _img20 = document.getElementById("_img20");
+      const _img21 = document.getElementById("_img21");
+    </script>
+  </body>
+</html>

@@ -1,0 +1,57 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Poen Admin System</title>
+    <link rel="stylesheet" href="base/style/style.css" />
+    <link rel="stylesheet" href="base/style/공정.css" />
+  </head>
+
+  <body>
+    <section class="adminSystem">
+      <div class="process__tit change-tit">
+        <h2>PASSWORD CHANGE</h2>
+      </div>
+      <br />
+      <div class="input-group">
+        <tr>
+          <td>
+            <label for="_old_pawsswd">Current Password</label>
+          </td>
+          <td class="answer">
+            <input type="password" id="_old_passwd" require />
+          </td>
+        </tr>
+        <br />
+        <tr>
+          <td>
+            <label for="_pawsswd1">New Password</label>
+          </td>
+          <td class="answer">
+            <input type="password" id="_passwd1" require />
+          </td>
+        </tr>
+        <br />
+        <tr>
+          <td>
+            <label for="_pawsswd2">New Password Confirm</label>
+          </td>
+          <td class="answer">
+            <input type="password" id="_passwd2" require />
+          </td>
+        </tr>
+        <br />
+        <tr>
+          <td colspan="2" class="btn-group">
+            <button onClick="passwd_change();">비밀번호 변경</button>
+          </td>
+        </tr>
+      </div>
+    </section>
+    <script>
+      var _old_passwd = document.getElementById("_old_passwd");
+      var _passwd1 = document.getElementById("_passwd1");
+      var _passwd2 = document.getElementById("_passwd2");
+    </script>
+  </body>
+</html>

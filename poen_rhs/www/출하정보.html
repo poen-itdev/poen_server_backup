@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>출하정보</title>
+    <link rel="stylesheet" href="base/style/공정.css" />
+  </head>
+
+  <body>
+    <section>
+      <div class="gather-filter">
+        <select id="filter-field">
+          <option></option>
+          <option value="관리번호">관리번호</option>
+          <option value="재제조번호">재제조번호</option>
+          <option value="구분">구분</option>
+          <option value="차종">차종</option>
+          <option value="품번">품번</option>
+          <option value="RO_no">RO_no</option>
+          <option value="공정단계">공정단계</option>
+          <option value="적재No">적재No</option>
+          <option value="입고">입고</option>
+          <option value="제조투입">제조투입</option>
+          <option value="세척투입일">세척투입일</option>
+          <option value="세척">세척</option>
+          <option value="기초검사투입">기초검사투입</option>
+          <option value="기초검사">기초검사</option>
+          <option value="분해조립투입">분해조립투입</option>
+          <option value="분해조립">분해조립</option>
+          <option value="성능검사투입">성능검사투입</option>
+          <option value="성능검사">성능검사</option>
+          <option value="EOL투입일">EOL투입일</option>
+          <option value="EOL">EOL</option>
+          <option value="출하검사">출하검사</option>
+          <option value="납품처">납품처</option>
+          <option value="출하">출하</option>
+          <option value="소재지">소재지</option>
+          <option value="반품입고">반품입고</option>
+          <option value="재출하">재출하</option>
+          <option value="완전분해">완전분해</option>
+          <option value="폐기">폐기</option>
+          <option value="마지막충전일">마지막충전일</option>
+        </select>
+
+        <select id="filter-type">
+          <option value="=">=</option>
+          <option value="<"><</option>
+          <option value="<="><=</option>
+          <option value=">">></option>
+          <option value=">=">>=</option>
+          <option value="!=">!=</option>
+          <option value="like">like</option>
+        </select>
+
+        <input id="filter-value" type="text" placeholder="value to filter" />
+
+        <button id="filter-clear">Clear Filter</button>
+      </div>
+      <div id="grid_list"></div>
+      <button onClick="출하정보_list();">LIST</button>
+    </section>
+    <br />
+    <br />
+    <section class="출하정보">
+      <div class="input-group">
+        <div class="process__tit">
+          <h2>출하검사 정보</h2>
+        </div>
+      </div>
+      <div class="input-group process-step t2">
+        <table class="tb">
+          <colgroup>
+            <col class="col_1" width="30%" />
+            <col class="col_2" width="70%" />
+          </colgroup>
+          <tr>
+            <td>
+              <label for="_management_id">관리번호</label>
+            </td>
+            <td>
+              <input type="text" id="_management_id" value="" size="20" required />
+              <button onClick="출하정보_시작(0);">조 회</button>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_재제조번호">재제조번호</label>
+            </td>
+            <td>
+              <input type="text" id="_재제조번호" value="" size="20" required />
+              <button onClick="출하정보_시작(1);">조 회</button>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_RO_no">RO no.</label>
+            </td>
+            <td>
+              <input type="text" id="_RO_no" size="20" required />
+              <button onClick="출하정보_시작(2);">조 회</button>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_출하코드">출하코드</label>
+            </td>
+            <td>
+              <input type="text" id="_출하코드" size="20" required />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_검사일">검사일</label>
+            </td>
+            <td>
+              <input type="datetime-local" id="_검사일" value="0000-00-00T00:00" required />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_검사자">검사자</label>
+            </td>
+            <td>
+              <input type="text" id="_검사자" size="20" required />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_차종">차종</label>
+            </td>
+            <td>
+              <input type="text" id="_차종" size="20" readonly />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_품번">품번</label>
+            </td>
+            <td>
+              <input type="text" id="_품번" size="20" readonly />
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2" class="process__sec__tit">관리문서 및 보고서 작성</td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_기초보고서_작성확인">기초보고서 작성확인(입고증상/진단결과)</label>
+            </td>
+            <td>
+              <input type="text" id="_기초보고서_작성확인" size="20" required />
+              <select id="s1" name="language" onchange="_기초보고서_작성확인_콤보박스(this);">
+                <option value="">---</option>
+                <option value="OK">OK</option>
+                <option value="NG">NG</option>
+                <option value="조치완료">조치완료</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_완료보고서_작성확인">완료보고서_작성확인(교체부품)</label>
+            </td>
+            <td>
+              <input type="text" id="_완료보고서_작성확인" size="20" required />
+              <select id="s2" name="language" onchange="_완료보고서_작성확인_콤보박스(this);">
+                <option value="">---</option>
+                <option value="OK">OK</option>
+                <option value="NG">NG</option>
+                <option value="조치완료">조치완료</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2" class="process__sec__tit">육안 검사</td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_클린상태">클린 상태</label>
+            </td>
+            <td>
+              <input type="text" id="_클린상태" size="20" required />
+              <select id="s3" name="language" onchange="_클린상태_콤보박스(this);">
+                <option value="">---</option>
+                <option value="OK">OK</option>
+                <option value="NG">NG</option>
+                <option value="조치완료">조치완료</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_팔레트_적정위치">팔레트 적정위치</label>
+            </td>
+            <td>
+              <input type="text" id="_팔레트_적정위치" size="20" required />
+              <select id="s4" name="language" onchange="_팔레트_적정위치_콤보박스(this);">
+                <option value="">---</option>
+                <option value="OK">OK</option>
+                <option value="NG">NG</option>
+                <option value="조치완료">조치완료</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_포장랩상태">포장랩 상태</label>
+            </td>
+            <td>
+              <input type="text" id="_포장랩상태" size="20" required />
+              <select id="s5" name="language" onchange="_포장랩상태_콤보박스(this);">
+                <option value="">---</option>
+                <option value="OK">OK</option>
+                <option value="NG">NG</option>
+                <option value="조치완료">조치완료</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_UPR_QR">UPR QR</label>
+            </td>
+            <td>
+              <input type="text" id="_UPR_QR" size="20" required />
+              <select id="s6" name="language" onchange="_UPR_QR_콤보박스(this);">
+                <option value="">---</option>
+                <option value="OK">OK</option>
+                <option value="NG">NG</option>
+                <option value="조치완료">조치완료</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_LWR_QR">LWR QR</label>
+            </td>
+            <td>
+              <input type="text" id="_LWR_QR" size="20" required />
+              <select id="s7" name="language" onchange="_LWR_QR_콤보박스(this);">
+                <option value="">---</option>
+                <option value="OK">OK</option>
+                <option value="NG">NG</option>
+                <option value="조치완료">조치완료</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_HKMC_스티커_URP">HKMC 스티커 URP</label>
+            </td>
+            <td>
+              <input type="text" id="_HKMC_스티커_URP" size="20" required />
+              <select id="s8" name="language" onchange="_HKMC_스티커_URP_콤보박스(this);">
+                <option value="">---</option>
+                <option value="OK">OK</option>
+                <option value="NG">NG</option>
+                <option value="조치완료">조치완료</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_냉각유로_커버">냉각유로 커버 2개소</label>
+            </td>
+            <td>
+              <input type="text" id="_냉각유로_커버" size="20" required />
+              <select id="s9" name="language" onchange="_냉각유로_커버_콤보박스(this);">
+                <option value="">---</option>
+                <option value="OK">OK</option>
+                <option value="NG">NG</option>
+                <option value="조치완료">조치완료</option>
+              </select>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="input-group process-step t2">
+        <table class="tb">
+          <colgroup>
+            <col class="col_1" width="20%" />
+            <col class="col_2" width="30%" />
+            <col class="col_3" width="10%" />
+            <col class="col_4" width="40%" />
+          </colgroup>
+          <tr>
+            <td colspan="4" class="process__sec__tit">장착물 부착여부</td>
+          </tr>
+          <tr>
+            <td>브라켓</td>
+            <td id="_브라켓">브라켓 4개</td>
+            <td>
+              <select id="_bracket" name="language" onchange="_브라켓_콤보박스(this);">
+                <option value="">---</option>
+                <option value="OK">OK</option>
+                <option value="NG">NG</option>
+                <option value="조치완료">조치완료</option>
+              </select>
+            </td>
+            <td>
+              <input type="text" id="_브라켓_비고" size="20" required />
+            </td>
+          </tr>
+          <tr>
+            <td>S/PLUG</td>
+            <td>장착되어 있을 것</td>
+            <td>
+              <select id="_S_PLUG" name="language" onchange="_S_PLUG_콤보박스(this);">
+                <option value="">---</option>
+                <option value="OK">OK</option>
+                <option value="NG">NG</option>
+                <option value="조치완료">조치완료</option>
+              </select>
+            </td>
+            <td>
+              <input type="text" id="_S_PLUG_비고" size="20" required />
+            </td>
+          </tr>
+          <tr>
+            <td>접지</td>
+            <td>장착되어 있을 것</td>
+            <td>
+              <select id="_접지" name="language" onchange="_접지_콤보박스(this);">
+                <option value="">---</option>
+                <option value="OK">OK</option>
+                <option value="NG">NG</option>
+                <option value="조치완료">조치완료</option>
+              </select>
+            </td>
+            <td>
+              <input type="text" id="_접지_비고" size="20" required />
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="input-group process-step t2">
+        <table class="tb">
+          <colgroup>
+            <col class="col_1" width="15%" />
+            <col class="col_2" width="30%" />
+            <col class="col_3" width="7%" />
+            <col class="col_4" width="20%" />
+            <col class="col_5" width="7%" />
+            <col class="col_6" width="20%" />
+          </colgroup>
+          <tr>
+            <td colspan="6" class="process__sec__tit">출하 검사</td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_DTC">DTC</label>
+            </td>
+            <td>
+              <input type="text" id="_DTC" size="20" require />
+              <select id="s10" name="language" onchange="_DTC_콤보박스(this);">
+                <option value="">---</option>
+                <option value="OK">OK</option>
+                <option value="NG">NG</option>
+                <option value="조치완료">조치완료</option>
+              </select>
+            </td>
+            <td>
+              <label for="_DTC_현재">현재</label>
+            </td>
+            <td>
+              <input type="text" id="_DTC_현재" size="20" require />
+            </td>
+            <td>
+              <label for="_DTC_과거">과거</label>
+            </td>
+            <td>
+              <input type="text" id="_DTC_과거" size="20" require />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_배터리충전상태">배터리 충전 상태(%)</label>
+            </td>
+            <td>
+              <input type="text" id="_배터리충전상태" size="20" require />
+              <select id="s11" name="language" onchange="_배터리충전상태_콤보박스(this);">
+                <option value="">---</option>
+                <option value="OK">OK</option>
+                <option value="NG">NG</option>
+                <option value="조치완료">조치완료</option>
+              </select>
+            </td>
+            <td>
+              <label for="_배터리충전상태_측정값">측정값</label>
+            </td>
+            <td>
+              <input type="text" id="_배터리충전상태_측정값" size="20" require />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_BMS고장NO">BMS 고장 NO</label>
+            </td>
+            <td>
+              <input type="text" id="_BMS고장NO" size="20" require />
+              <select id="s12" name="language" onchange="_BMS고장NO_콤보박스(this);">
+                <option value="">---</option>
+                <option value="OK">OK</option>
+                <option value="NG">NG</option>
+                <option value="조치완료">조치완료</option>
+              </select>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_BMS융착NO">BMS융착NO</label>
+            </td>
+            <td>
+              <input type="text" id="_BMS융착NO" size="20" require />
+              <select id="s13" name="language" onchange="_BMS융착NO_콤보박스(this);">
+                <option value="">---</option>
+                <option value="OK">OK</option>
+                <option value="NG">NG</option>
+                <option value="조치완료">조치완료</option>
+              </select>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_배터리팩전압">배터리 팩 전압(V)</label>
+            </td>
+            <td>
+              <input type="text" id="_배터리팩전압" size="20" require />
+              <select id="s14" name="language" onchange="_배터리팩전압_콤보박스(this);">
+                <option value="">---</option>
+                <option value="OK">OK</option>
+                <option value="NG">NG</option>
+                <option value="조치완료">조치완료</option>
+              </select>
+            </td>
+            <td>
+              <label for="_배터리팩_측정값">측정값</label>
+            </td>
+            <td>
+              <input type="text" id="_배터리팩_측정값" size="20" require />
+            </td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_배터리모듈온도">배터리 모듈 온도(℃ )</label>
+            </td>
+            <td>
+              <input type="text" id="_배터리모듈온도" size="20" require />
+              <select id="s15" name="language" onchange="_배터리모듈온도_콤보박스(this);">
+                <option value="">---</option>
+                <option value="OK">OK</option>
+                <option value="NG">NG</option>
+                <option value="조치완료">조치완료</option>
+              </select>
+            </td>
+            <td>
+              <label for="_배터리모듈온도_최대">최대</label>
+            </td>
+            <td>
+              <input type="text" id="_배터리모듈온도_최대" size="20" require />
+            </td>
+            <td>
+              <label for="_배터리모듈온도_최소">최소</label>
+            </td>
+            <td>
+              <input type="text" id="_배터리모듈온도_최소" size="20" require />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_배터리셀전압">배터리 셀 전압(V) </label>
+            </td>
+            <td>
+              <input type="text" id="_배터리셀전압" size="20" require />
+              <select id="s16" name="language" onchange="_배터리셀전압_콤보박스(this);">
+                <option value="">---</option>
+                <option value="OK">OK</option>
+                <option value="NG">NG</option>
+                <option value="조치완료">조치완료</option>
+              </select>
+            </td>
+            <td>
+              <label for="_배터리셀전압_최대">최대</label>
+            </td>
+            <td>
+              <input type="text" id="_배터리셀전압_최대" size="20" require />
+            </td>
+            <td>
+              <label for="_배터리셀전압_최소">최소</label>
+            </td>
+            <td>
+              <input type="text" id="_배터리셀전압_최소" size="20" require />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_셀전압편차">셀 전압 편차(mV)</label>
+            </td>
+            <td>
+              <input type="text" id="_셀전압편차" size="20" require />
+              <select id="s17" name="language" onchange="_셀전압편차_콤보박스(this);">
+                <option value="">---</option>
+                <option value="OK">OK</option>
+                <option value="NG">NG</option>
+                <option value="조치완료">조치완료</option>
+              </select>
+            </td>
+            <td>
+              <label for="_셀전압편차_측정값">측정값</label>
+            </td>
+            <td>
+              <input type="text" id="_셀전압편차_측정값" size="20" require />
+            </td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_절연저항">절연저항(kΩ) - GDS</label>
+            </td>
+            <td>
+              <input type="text" id="_절연저항" size="20" require />
+              <select id="s18" name="language" onchange="_절연저항_콤보박스(this);">
+                <option value="">---</option>
+                <option value="OK">OK</option>
+                <option value="NG">NG</option>
+                <option value="조치완료">조치완료</option>
+              </select>
+            </td>
+            <td>
+              <label for="_절연저항_측정값">측정값</label>
+            </td>
+            <td>
+              <input type="text" id="_절연저항_측정값" size="20" require />
+            </td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_SOH">SOH 100%</label>
+            </td>
+            <td>
+              <input type="text" id="_SOH" size="20" require />
+              <select id="s19" name="language" onchange="_SOH_콤보박스(this);">
+                <option value="">---</option>
+                <option value="OK">OK</option>
+                <option value="NG">NG</option>
+                <option value="조치완료">조치완료</option>
+              </select>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_릴레이_강제구동">릴레이 강제구동 - GDS</label>
+            </td>
+            <td>
+              <input type="text" id="_릴레이_강제구동" size="20" require />
+              <select id="s20" name="language" onchange="_릴레이_강제구동_콤보박스(this);">
+                <option value="">---</option>
+                <option value="OK">OK</option>
+                <option value="NG">NG</option>
+                <option value="조치완료">조치완료</option>
+              </select>
+            </td>
+            <td></td>
+            <td></td>
+            <td colspan="2">
+              <label>승용 모델에 한함</label>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="_커넥터_체결검사">커넥터 체결검사 [DE, OS, SK3 - 진단프로그램 / CV - GDS ]</label>
+            </td>
+            <td>
+              <input type="text" id="_커넥터_체결검사" size="20" require />
+              <select id="s21" name="language" onchange="_커넥터_체결검사_콤보박스(this);">
+                <option value="">---</option>
+                <option value="OK">OK</option>
+                <option value="NG">NG</option>
+                <option value="조치완료">조치완료</option>
+              </select>
+            </td>
+            <td></td>
+            <td></td>
+            <td colspan="2">
+              <label>CV : GDS / ETC : PDS</label>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="6" style="font-size: 1.1vw; padding: 0.8vw; line-height: 1.4">
+              <p>출하검사 완료된 제품에 한하여 QC PASS 스티커를 부착한다.</p>
+              <p>배터리 온도는 최대/최소 값이 아닌 온도센서 개별 센싱값 모두 확인할 것</p>
+              <p>부착물 재고 없을 시 반드시 영업팀에 확인하여 협의할 것</p>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="input-group">
+        <div class="input-btn-group">
+          <button onClick="출하정보_save();">저장</button>
+          <button onClick="이전페이지();">이전페이지</button>
+        </div>
+      </div>
+    </section>
+    <script>
+      var _management_id = document.ElementById("_management_id");
+      var _재제조번호 = document.ElementById("_재제조번호");
+      var _RO_no = document.ElementById("_RO_no");
+      var _출하코드 = document.ElementById("_출하코드");
+      var _검사일 = document.ElementById("_검사일");
+      var _검사자 = document.ElementById("_검사자");
+      var _차종 = document.ElementById("_차종");
+      var _품번 = document.ElementById("_품번");
+      var _기초보고서_작성확인 = document.ElementById("_기초보고서_작성확인");
+      var _완료보고서_작성확인 = document.ElementById("_완료보고서_작성확인");
+      var _클린상태 = document.ElementById("_클린상태");
+      var _팔레트_적정위치 = document.ElementById("_팔레트_적정위치");
+      var _포장랩상태 = document.ElementById("_포장랩상태");
+      var _UPR_QR = document.ElementById("_UPR_QR");
+      var _LWR_QR = document.ElementById("_LWR_QR");
+      var _HKMC_스티커_URP = document.ElementById("_HKMC_스티커_URP");
+      var _냉각유로_커버 = document.ElementById("_냉각유로_커버");
+      var _bracket = document.ElementById("_bracket");
+      var _브라켓_비고 = document.ElementById("_브라켓_비고");
+      var _S_PLUG = document.ElementById("_S_PLUG");
+      var _S_PLUG_비고 = document.ElementById("_S_PLUG_비고");
+      var _접지 = document.ElementById("_접지");
+      var _접지_비고 = document.ElementById("_접지_비고");
+      var _DTC = document.ElementById("_DTC");
+      var _DTC_현재 = document.ElementById("_DTC_현재");
+      var _DTC_과거 = document.ElementById("_DTC_과거");
+      var _배터리충전상태 = document.ElementById("_배터리충전상태");
+      var _배터리충전상태_측정값 = document.ElementById("_배터리충전상태_측정값");
+      var _BMS고장NO = document.ElementById("_BMS고장NO");
+      var _BMS융착NO = document.ElementById("_BMS융착NO");
+      var _배터리팩전압 = document.ElementById("_배터리팩전압");
+      var _배터리팩_측정값 = document.ElementById("_배터리팩_측정값");
+      var _배터리온도 = document.ElementById("_배터리온도");
+      var _배터리온도_최대 = document.ElementById("_배터리온도_최대");
+      var _배터리온도_최소 = document.ElementById("_배터리온도_최소");
+      var _배터리온도_최소 = document.ElementById("_배터리온도_최소");
+      var _배터리셀전압 = document.ElementById("_배터리셀전압");
+      var _배터리셀전압_최대 = document.ElementById("_배터리셀전압_최대");
+      var _배터리셀전압_최소 = document.ElementById("_배터리셀전압_최소");
+      var _셀전압편차 = document.ElementById("_셀전압편차");
+      var _셀전압편차_측정값 = document.ElementById("_셀전압편차_측정값");
+      var _절연저항 = document.ElementById("_절연저항");
+      var _절연저항_측정값 = document.ElementById("_절연저항_측정값");
+      var _SOH = document.ElementById("_SOH");
+      var _릴레이_강제구동 = document.ElementById("_릴레이_강제구동");
+      var _커넥터_체결검사 = document.ElementById("_커넥터_체결검사");
+      var s1 = document.ElementById("s1");
+      var s2 = document.ElementById("s2");
+      var s3 = document.ElementById("s3");
+      var s4 = document.ElementById("s4");
+      var s5 = document.ElementById("s5");
+      var s6 = document.ElementById("s6");
+      var s7 = document.ElementById("s7");
+      var s8 = document.ElementById("s8");
+      var s9 = document.ElementById("s9");
+      var s10 = document.ElementById("s10");
+      var s11 = document.ElementById("s11");
+      var s12 = document.ElementById("s12");
+      var s13 = document.ElementById("s13");
+      var s14 = document.ElementById("s14");
+      var s15 = document.ElementById("s15");
+      var s16 = document.ElementById("s16");
+      var s17 = document.ElementById("s17");
+      var s18 = document.ElementById("s18");
+      var s19 = document.ElementById("s19");
+      var s20 = document.ElementById("s20");
+      var s21 = document.ElementById("s21");
+    </script>
+  </body>
+</html>

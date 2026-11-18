@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- fontawsome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+    <!-- tabulator -->
+    <link rel="stylesheet" href="base/style/tabulator_css/tabulator_modern.min.css" />
+    <!-- my css -->
+    <link rel="stylesheet" href="base/style/style.css" />
+    <title>Poen RHMS</title>
+  </head>
+
+  <body oncontextmenu="return blockRightClick()">
+    <div id="main">
+      <div class="logo__img">
+        <img src="base/img/poen.png" />
+      </div>
+      <div>
+        <h1>RHMS</h1>
+        <p class="version" style="font: italic bold 0.3em/1em Georgia, serif">
+          (Remanufacturing History Management System) Ver.
+          <span>Code sky 0.79</span>
+          <span id="connection_status">(연결끊김)</span>
+        </p>
+      </div>
+      <br />
+      <div id="menu">
+        <ul>
+          <li>
+            <button class="menu-btn" id="login_btn" onclick="pre_관리번호 = ''; loadPage('base/login.html'); change_label();">로그인</button>
+          </li>
+          <li>
+            <a href="javascript:void(0)"><span onclick="pre_관리번호 = ''; loadPage('base/bsa_info.html'); flag_재제조현황 = true;">조회</span></a>
+            <ul>
+              <li>
+                <button class="menu-btn" onclick="pre_관리번호 = ''; loadPage('base/bsa_info.html'); flag_재제조현황 = true;">재제조 DATA</button>
+              </li>
+              <li>
+                <button class="menu-btn" onclick="pre_관리번호 = '';  loadPage('base/품목상세입력.html'); flag_정보 = true;">배터리팩 기본정보</button>
+              </li>
+              <li>
+                <button class="menu-btn" onclick="pre_관리번호 = ''; loadPage('base/dashboard.html'); flag_대시보드 = true;">대시보드</button>
+              </li>
+              <li>
+                <button class="menu-btn" onclick="pre_관리번호 = ''; loadPage('base/대기수량.html'); flag_대기수량_현황 = true;">배터리팩 대기수량</button>
+              </li>
+              <li>
+                <button class="menu-btn" onclick="pre_관리번호 = ''; loadPage('base/공정제외.html'); flag_BSA_제외분류 = true;">배터리팩 제외분류</button>
+              </li>
+              <li>
+                <button class="menu-btn" onclick="pre_관리번호 = ''; loadPage('base/재충전정보.html'); flag_재충전정보 = true;">재충전정보</button>
+              </li>
+              <li>
+                <button class="menu-btn" onclick="pre_관리번호 = ''; loadPage('base/구장재고조회.html'); flag_구장재고조회 = true;">창고재고 조회(구장)</button>
+              </li>
+              <li>
+                <button class="menu-btn" onclick="pre_관리번호 = ''; loadPage('base/군포재고조회.html'); flag_군포재고조회 = true;">창고재고 조회(군포)</button>
+              </li>
+              <li>
+                <button class="menu-btn" onclick="pre_관리번호 = ''; loadPage('base/제주재고조회.html'); flag_제주재고조회 = true;">창고재고 조회(제주)</button>
+              </li>
+              <li>
+                <button class="menu-btn" onclick="pre_관리번호 = ''; loadPage('base/창고재고조회.html'); flag_창고재고조회 = true;">창고재고 조회</button>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="javascript:void(0)"><span onclick="pre_관리번호 = ''; loadPage('base/item-details.html');">DATA 입력</span></a>
+            <ul>
+              <li>
+                <button class="menu-btn" id="item_detail_btn" onclick="pre_관리번호 = ''; loadPage('base/item-details.html');">배터리팩 정보 입력(마도)</button>
+              </li>
+              <li>
+                <button class="menu-btn" onclick="pre_관리번호 = ''; 창고 = '구장'; flag_racks = true;">창고재고 입력(구장)</button>
+              </li>
+              <li>
+                <button class="menu-btn" onclick="pre_관리번호 = ''; 창고 = '군포'; flag_racks = true;">창고재고 입력(군포)</button>
+              </li>
+              <li>
+                <button class="menu-btn" onclick="pre_관리번호 = ''; 창고 = '제주'; flag_racks = true;">창고재고 입력(제주)</button>
+              </li>
+            </ul>
+          </li>
+          <li id="부품재고_btn">
+            <button class="menu-btn" onclick="pre_관리번호 = ''; if(계정_stat.부품재고 == 'o') loadPage('base/부품재고.html'); flag_부품재고 = true;">부품재고</button>
+          </li>
+          <li>
+            <button class="menu-btn" onclick="pre_관리번호 = ''; loadPage('base/수량집계.html'); flag_수량집계 = true;">수량집계</button>
+          </li>
+          <li>
+            <a href="javascript:void(0)">
+              <span onclick="loadPage('base/year-status.html' ); flag_년간현황 = true;">현황 조회</span>
+            </a>
+            <ul>
+              <li>
+                <button class="menu-btn" onclick="loadPage('base/year-status.html' ); flag_년간현황 = true;">년간 현황</button>
+              </li>
+              <li>
+                <button class="menu-btn" onclick="loadPage('base/month-status.html'); flag_월간현황 = true;">월간 현황</button>
+              </li>
+              <li>
+                <button class="menu-btn" onclick="loadPage('base/week-status.html'  ); flag_주간현황 = true;">주간 현황</button>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <button class="menu-btn" onclick="pre_관리번호 = ''; loadPage('base/ETC.html');">ETC</button>
+          </li>
+          <li id="admin_btn">
+            <button class="menu-btn" onclick="pre_관리번호 = ''; loadPage('base/admin.html'); flag_관리자 = true; ">관리자</button>
+          </li>
+          <li>
+            <button class="menu-btn" onClick="loadPage('base/passwd.html');">
+              <font id="login_info" color="green"></font>
+            </button>
+          </li>
+          <li>
+            <font id="auto_backup_db_status" color="tomato"></font>
+          </li>
+        </ul>
+      </div>
+      <div id="content"></div>
+    </div>
+    <script src="base/js/script.js"></script>
+    <script src="base/jslib/pdfmake.min.js"></script>
+    <script src="base/jslib/xlsx.full.min.js"></script>
+    <script src="base/jslib/aes.js"></script>
+    <script src="base/jslib/socket.io.min.js"></script>
+    <script src="base/jslib/jquery-3.7.1.min.js"></script>
+    <script src="base/jslib/tabulator.js"></script>
+    <script src="base/jslib/chart.js"></script>
+    <script src="base/jslib/luxon.min.js"></script>
+    <script src="base/jslib/qrcode.js"></script>
+    <script src="base/jslib/html2canvas.js"></script>
+    <script src="base/jslib/modernizr-custom.js"></script>
+    <script src="base/jslib/imageResizer.min.js"></script>
+    <script src="base/js/poenRHS.js"></script>
+    <script src="base/js/재충전정보.js"></script>
+    <script src="base/js/품목상세입력.js"></script>
+    <script src="base/js/입고.js"></script>
+    <script src="base/js/세척.js"></script>
+    <script src="base/js/기초검사.js"></script>
+    <script src="base/js/성능검사.js"></script>
+    <script src="base/js/분해조립.js"></script>
+    <script src="base/js/old_분해조립.js"></script>
+    <script src="base/js/분해조립_재제조.js"></script>
+    <script src="base/js/분해조립_공정대기.js"></script>
+    <script src="base/js/분해조립_폐기자재.js"></script>
+    <script src="base/js/출하정보.js"></script>
+    <script src="base/js/EOL.js"></script>
+    <script src="base/js/고품정보.js"></script>
+    <script src="base/js/신품정보.js"></script>
+    <script src="base/js/부품재고.js"></script>
+    <script src="base/js/특이사항.js"></script>
+    <script src="base/js/bsa_info.js"></script>
+    <script src="base/js/week-status.js"></script>
+    <script src="base/js/month-status.js"></script>
+    <script src="base/js/year-status.js"></script>
+    <script src="base/js/type-status.js"></script>
+    <script src="base/js/dashboard.js"></script>
+    <script src="base/jslib/d3@7"></script>
+    <script src="base/js/admin.js"></script>
+    <script src="base/js/대기수량.js"></script>
+    <script src="base/js/기초보고서.js"></script>
+    <script src="base/js/완료보고서.js"></script>
+    <script src="base/js/출하검사성적서.js"></script>
+    <script src="base/js/공정제외.js"></script>
+    <script src="base/js/수량집계.js"></script>
+    <script src="base/js/구장재고.js"></script>
+    <script src="base/js/군포재고.js"></script>
+    <script src="base/js/제주재고.js"></script>
+    <script src="base/js/구장재고조회.js"></script>
+    <script src="base/js/군포재고조회.js"></script>
+    <script src="base/js/제주재고조회.js"></script>
+    <script src="base/js/창고재고조회.js"></script>
+    <script src="base/js/부품정보_list.js"></script>
+    <script src="base/js/불량의심부품.js"></script>
+    <script src="base/js/rack_배치도.js"></script>
+    <script src="base/js/login.js"></script>
+    <script src="base/js/passwd_change.js"></script>
+    <script src="base/js/main.js"></script>
+  </body>
+</html>
